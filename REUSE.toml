@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+#
+# REUSE (https://reuse.software) licensing for files that cannot carry an
+# SPDX header themselves. Code is MIT; original assets are CC-BY-SA-4.0;
+# third-party assets keep their own licence (see CREDITS.md).
+version = 1
+
+# Godot-generated metadata (import settings, UIDs, scenes, resources) and
+# engine config: part of the code base.
+[[annotations]]
+path = [
+  "**/*.import",
+  "**/*.uid",
+  "**/*.tscn",
+  "**/*.tres",
+  "**/*.godot",
+  "**/*.cfg",
+  "game/export_presets.cfg",
+  "tests/os-release/**",
+  "flake.lock",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Siegefall contributors"
+SPDX-License-Identifier = "MIT"
+
+# Game data (levels, realms, ammo, materials, schemas) and translations.
+[[annotations]]
+path = ["game/data/**", "game/locale/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Siegefall contributors"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Original art/audio produced by this project (procedural or hand-written)
+# and documentation screenshots.
+[[annotations]]
+path = ["game/art/**", "game/audio/**", "docs/screenshots/**", "packaging/**/*.png"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Siegefall contributors"
+SPDX-License-Identifier = "CC-BY-SA-4.0"

@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+external-sources=true
+source-path=SCRIPTDIR
+source-path=SCRIPTDIR/..
+source-path=SCRIPTDIR/../..
+enable=require-variable-braces,check-unassigned-uppercase,quote-safe-variables

@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+max-line-length: 100
+max-file-lines: 1500
+max-public-methods: 40
+max-returns: 8
+function-arguments-number: 8

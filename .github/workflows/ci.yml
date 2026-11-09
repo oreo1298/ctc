@@ -1,0 +1,57 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+#
+# Runs on every push and pull request. Later milestones add: distro container
+# matrix (bootstrap + install + smoke test), export builds, packaging, the
+# level-validator bot, iOS (macOS runner) and tagged releases.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint (shellcheck, gdlint, schemas, REUSE, identity)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned dev tools
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --quiet -r requirements-dev.txt
+      - run: make lint-shell
+      - run: make lint-gd
+      - run: make lint-data
+      - run: make lint-reuse
+      - run: make lint-identity
+      - run: make test-scripts
+
+  test:
+    name: Unit + smoke tests (Godot headless)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache pinned Godot
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/siegefall-dev/godot
+          key: godot-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('toolchain.lock') }}
+      - name: Bootstrap (packages, pinned Godot, GUT)
+        run: scripts/bootstrap.sh --yes --refresh --editor-only --no-venv
+      - run: make test
+      - name: Smoke test with a real GL context (Xvfb + llvmpipe + Compatibility)
+        run: |
+          xvfb-run -a -s "-screen 0 1280x720x24" \
+            scripts/godot.sh --path game --rendering-method gl_compatibility -- --smoke-test

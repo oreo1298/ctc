@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+
+# Godot
+game/.godot/
+*.translation
+export_credentials.cfg
+
+# Fetched by scripts/bootstrap.sh (pinned, not vendored)
+game/addons/gut/
+
+# Tooling
+.venv/
+__pycache__/
+
+# Outputs
+/build/
+/dist/
+/screenshots-tmp/

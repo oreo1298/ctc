@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{gd,sh,bash,tscn,tres,cfg,godot}]
+indent_style = tab
+indent_size = 4
+
+[{Makefile,*.mk}]
+indent_style = tab
+
+[*.{json,yml,yaml,md,py,toml,nix,svg,xml,desktop,spec}]
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_size = 4
