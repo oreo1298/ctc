@@ -135,6 +135,10 @@ install: ## Install for this user under ~/.local (ARGS=--system for /usr/local)
 uninstall: ## Remove what install added (ARGS=--purge also removes saves)
 	$(call dispatch,uninstall)
 
+.PHONY: perf
+perf: ## Physics/CPU cost of the heaviest scenes (ARGS="--write" updates docs/benchmarks/perf.md)
+	scripts/perf.sh $(ARGS)
+
 .PHONY: test-install
 test-install: ## install.sh/uninstall.sh in a temporary HOME (after build/package)
 	tests/packaging/test_install.sh

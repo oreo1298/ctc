@@ -277,6 +277,13 @@ make_flatpak() {
 		skipped+=("flatpak bundle (needs flatpak-builder; the manifest was written)")
 		return 0
 	fi
+	# The runtime comes from Flathub; never add remotes behind the user's back.
+	if ! flatpak remotes --columns=name 2>/dev/null | grep -qx flathub; then
+		local hint="flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo"
+		[[ "${EXPLICIT}" == 1 ]] && die "the Flatpak bundle needs the Flathub remote for its runtime. Add it with: ${hint}"
+		skipped+=("flatpak bundle (no Flathub remote; the manifest was written. Add it with: ${hint})")
+		return 0
+	fi
 	log "flatpak: building ${APP_ID} (runtime ${FLATPAK_RUNTIME})"
 	run flatpak-builder --user --force-clean --install-deps-from=flathub --disable-rofiles-fuse \
 		--repo="${dir}/repo" "${dir}/build" "${manifest}"

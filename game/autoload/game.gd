@@ -36,6 +36,7 @@ var _changing: bool = false
 var _dev_time: float = 0.0
 var _shots: Array[Dictionary] = []
 var _quit_after: float = -1.0
+var _perf: PerfProbe = null
 
 
 func _ready() -> void:
@@ -49,6 +50,7 @@ func _ready() -> void:
 ## --screenshots=t:file,...  save the viewport t seconds after launch
 ## --quit-after=seconds      quit then (exit 0, or 3 if a level was not won
 ##                           while --level was given)
+## --perf                    print frame/physics timings when quitting
 func _setup_dev_options() -> void:
 	if cli.has("screenshots"):
 		for s: String in str(cli["screenshots"]).split(",", false):
@@ -60,11 +62,15 @@ func _setup_dev_options() -> void:
 		)
 	if cli.has("quit-after"):
 		_quit_after = str(cli["quit-after"]).to_float()
-	set_process(not _shots.is_empty() or _quit_after > 0.0)
+	if cli.has("perf"):
+		_perf = PerfProbe.new()
+	set_process(not _shots.is_empty() or _quit_after > 0.0 or _perf != null)
 
 
 func _process(delta: float) -> void:
 	_dev_time += delta
+	if _perf != null:
+		_perf.sample()
 	if not _shots.is_empty():
 		# Skip rendering until just before the next capture (fast on llvmpipe).
 		RenderingServer.render_loop_enabled = _dev_time >= float(_shots[0]["t"]) - 0.3
@@ -81,6 +87,8 @@ func _process(delta: float) -> void:
 		var code: int = 0
 		if cli.has("level") and cli.has("autoplay") and not last_level_won:
 			code = 3
+		if _perf != null:
+			print(_perf.summary())
 		get_tree().quit(code)
 
 

@@ -60,6 +60,8 @@ jobs:
             --level=greenmantle-01 --autoplay=0.65 --quit-after=14 --no-save
       - name: Every castle stands still and every level is still beatable
         run: make check-levels
+      - name: Performance budget (a physics tick stays under 8 ms at p95)
+        run: scripts/perf.sh --budget 8
       - name: Smoke test with a real GL context (Xvfb + llvmpipe + Compatibility)
         run: |
           xvfb-run -a -s "-screen 0 1280x720x24" \
