@@ -380,3 +380,94 @@ func flames(host: Node2D, size: float, extents: Vector2 = Vector2(30, 30)) -> No
 		tw.tween_property(light, "energy", 0.5, 0.12)
 		tw.tween_property(light, "energy", 0.9, 0.09)
 	return root
+
+
+## Powder keg: flash, fireball, smoke and flying grit.
+func explosion(parent: Node, pos: Vector2, radius_px: float) -> void:
+	if parent == null:
+		return
+	var flash := Sprite2D.new()
+	flash.texture = soft_circle()
+	flash.position = pos
+	flash.z_index = 9
+	var add := CanvasItemMaterial.new()
+	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	flash.material = add
+	flash.scale = Vector2.ONE * radius_px / 32.0 * 0.6
+	flash.modulate = Color(1.0, 0.85, 0.5, 0.0 if Settings.reduce_flashing else 0.9)
+	parent.add_child(flash)
+	var tw := flash.create_tween()
+	tw.tween_property(flash, "modulate:a", 0.0, 0.35)
+	tw.parallel().tween_property(flash, "scale", flash.scale * 1.6, 0.35)
+	tw.tween_callback(flash.queue_free)
+	var fire := _burst(parent, pos, 26, 0.6)
+	fire.texture = soft_circle()
+	fire.z_index = 8
+	fire.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
+	fire.emission_sphere_radius = radius_px * 0.2
+	fire.direction = Vector2.UP
+	fire.spread = 180.0
+	fire.initial_velocity_min = 200.0
+	fire.initial_velocity_max = 520.0
+	fire.damping_min = 300.0
+	fire.damping_max = 500.0
+	fire.scale_amount_min = 1.2
+	fire.scale_amount_max = 2.6
+	var ramp := Gradient.new()
+	ramp.set_color(0, Color(1.0, 0.95, 0.6, 1.0))
+	ramp.add_point(0.3, Color(1.0, 0.5, 0.15, 0.9))
+	ramp.set_color(1, Color(0.3, 0.25, 0.22, 0.0))
+	fire.color_ramp = ramp
+	dust(parent, pos, radius_px / 160.0, Color(0.35, 0.32, 0.3))
+	_flying(
+		parent, pos, 24, shard_texture(), [Color(0.4, 0.3, 0.2), Color(0.2, 0.15, 0.1)], 1.0, false
+	)
+
+
+## Firepot: a splash of flame.
+func fire_burst(parent: Node, pos: Vector2, radius_px: float) -> void:
+	if parent == null:
+		return
+	var f := _burst(parent, pos, 22, 0.9)
+	f.texture = soft_circle()
+	f.z_index = 8
+	f.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
+	f.emission_sphere_radius = radius_px * 0.25
+	f.direction = Vector2.UP
+	f.spread = 75.0
+	f.initial_velocity_min = 120.0
+	f.initial_velocity_max = 360.0
+	f.gravity = Vector2(0, -150)
+	f.scale_amount_min = 0.8
+	f.scale_amount_max = 1.8
+	var ramp := Gradient.new()
+	ramp.set_color(0, Color(1.0, 0.9, 0.45, 0.95))
+	ramp.add_point(0.5, Color(1.0, 0.4, 0.1, 0.8))
+	ramp.set_color(1, Color(0.5, 0.1, 0.05, 0.0))
+	f.color_ramp = ramp
+	_flying(
+		parent,
+		pos,
+		12,
+		shard_texture(),
+		[Color(0.72, 0.37, 0.2), Color(0.48, 0.23, 0.12)],
+		0.9,
+		false
+	)
+
+
+## Frost flask: icy mist and sparkle.
+func frost_burst(parent: Node, pos: Vector2, radius_px: float) -> void:
+	if parent == null:
+		return
+	dust(parent, pos, radius_px / 120.0, Color(0.82, 0.95, 1.0))
+	glitter(parent, pos, radius_px / 100.0)
+	_flying(
+		parent,
+		pos,
+		18,
+		shard_texture(),
+		[Color(0.85, 0.97, 1.0), Color(0.5, 0.8, 0.95)],
+		0.8,
+		false
+	)

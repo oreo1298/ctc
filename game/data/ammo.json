@@ -2,9 +2,192 @@
   "$schema": "schemas/ammo.schema.json",
   "ammo": [
     {
-      "id": "boulder", "name": "Boulder", "description": "A trusty lump of rock. Goes where you send it.",
-      "shape": "circle", "radius": 0.42, "density": 2400, "material": "stone",
-      "unlock_after": null, "speed_scale": 1.0, "linear_damp": 0.0, "tap_action": "none"
+      "id": "boulder",
+      "name": "Boulder",
+      "description": "A trusty lump of rock. Goes where you send it.",
+      "shape": "circle",
+      "radius": 0.42,
+      "density": 2400,
+      "material": "stone",
+      "unlock_after": null,
+      "speed_scale": 1.0,
+      "tap_action": "none",
+      "look": {
+        "pattern": "rock",
+        "base": "#a8a196",
+        "dark": "#6f685e",
+        "light": "#d6d0c4"
+      }
+    },
+    {
+      "id": "scatter",
+      "name": "Scatter-stones",
+      "description": "A sack of five stones. Tap in flight to fan them out; they burst on impact anyway.",
+      "shape": "cluster",
+      "radius": 0.45,
+      "density": 1500,
+      "material": "stone",
+      "unlock_after": "greenmantle-03",
+      "speed_scale": 1.0,
+      "tap_action": "burst",
+      "effect": {
+        "count": 5,
+        "child_radius": 0.2,
+        "child_density": 2400,
+        "spread_deg": 7.0
+      },
+      "look": {
+        "pattern": "rock",
+        "base": "#b5ab9c",
+        "dark": "#746b5f",
+        "light": "#ddd5c8"
+      }
+    },
+    {
+      "id": "iron",
+      "name": "Iron ball",
+      "description": "Heavy and dense. Punches straight through wood.",
+      "shape": "circle",
+      "radius": 0.32,
+      "density": 7800,
+      "material": "iron",
+      "unlock_after": "greenmantle-08",
+      "speed_scale": 0.94,
+      "tap_action": "none",
+      "damage_vs": {
+        "wood": 3.0,
+        "thatch": 2.0,
+        "cloth": 2.0,
+        "glass": 1.5
+      },
+      "look": {
+        "pattern": "rock",
+        "base": "#5d626d",
+        "dark": "#33363d",
+        "light": "#9aa1ad"
+      }
+    },
+    {
+      "id": "keg",
+      "name": "Powder keg",
+      "description": "Goes off a moment after it lands. Tap to light it early.",
+      "shape": "keg",
+      "radius": 0.33,
+      "density": 900,
+      "material": "wood",
+      "unlock_after": "greenmantle-12",
+      "speed_scale": 0.97,
+      "tap_action": "detonate",
+      "effect": {
+        "fuse": 0.25,
+        "radius": 3.6,
+        "impulse": 5200,
+        "damage": 130
+      },
+      "look": {
+        "pattern": "wood",
+        "base": "#9a6a43",
+        "dark": "#6b4529",
+        "light": "#c49466"
+      }
+    },
+    {
+      "id": "firepot",
+      "name": "Firepot",
+      "description": "Shatters into flames. Wood, thatch and cloth keep burning.",
+      "shape": "flask",
+      "radius": 0.3,
+      "density": 1100,
+      "material": "stone",
+      "unlock_after": "saffron-04",
+      "speed_scale": 1.0,
+      "tap_action": "none",
+      "effect": {
+        "ignite_radius": 2.0,
+        "damage": 25
+      },
+      "look": {
+        "pattern": "rock",
+        "base": "#b85e34",
+        "dark": "#7a3a1f",
+        "light": "#e39a62",
+        "glow": "#ffb347"
+      }
+    },
+    {
+      "id": "chain",
+      "name": "Chain shot",
+      "description": "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart.",
+      "shape": "chain",
+      "radius": 0.22,
+      "density": 7800,
+      "material": "iron",
+      "unlock_after": "saffron-08",
+      "speed_scale": 0.98,
+      "tap_action": "snap",
+      "damage_vs": {
+        "cloth": 3.0,
+        "wood": 1.5,
+        "thatch": 2.0
+      },
+      "effect": {
+        "length": 1.3,
+        "spin": 12.0
+      },
+      "look": {
+        "pattern": "rock",
+        "base": "#5d626d",
+        "dark": "#33363d",
+        "light": "#9aa1ad"
+      }
+    },
+    {
+      "id": "frost",
+      "name": "Frost flask",
+      "description": "Freezes everything nearby. Frozen blocks turn brittle and shatter like glass.",
+      "shape": "flask",
+      "radius": 0.28,
+      "density": 1200,
+      "material": "glass",
+      "unlock_after": "saffron-12",
+      "speed_scale": 1.0,
+      "tap_action": "none",
+      "effect": {
+        "freeze_radius": 2.6
+      },
+      "look": {
+        "pattern": "glass",
+        "base": "#9fdcf0",
+        "dark": "#4f9fc0",
+        "light": "#f0fdff",
+        "glow": "#bff2ff"
+      }
+    },
+    {
+      "id": "void",
+      "name": "Void flask",
+      "description": "Opens a tiny black hole that drags everything in, then pops. Tap to open it early.",
+      "shape": "flask",
+      "radius": 0.28,
+      "density": 1200,
+      "material": "glass",
+      "unlock_after": "frostfang-06",
+      "speed_scale": 1.0,
+      "tap_action": "open",
+      "effect": {
+        "radius": 4.2,
+        "core": 1.0,
+        "duration": 1.6,
+        "pull": 34.0,
+        "core_damage": 90
+      },
+      "look": {
+        "pattern": "glass",
+        "base": "#4b2d6e",
+        "dark": "#20112f",
+        "light": "#a77bd6",
+        "glow": "#c8a6ff"
+      }
     }
   ]
 }

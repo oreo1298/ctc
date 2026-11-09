@@ -369,6 +369,44 @@ def medal_gold(rng: random.Random) -> Buf:
     return mix(crown_ding(rng), jingle(rng, [587.33, 739.99, 880.0], 0.08), 0, 0.6)
 
 
+def boom(rng: random.Random) -> Buf:
+    blast = env_exp(lowpass(noise(1.4, rng), lambda t: 3000 * math.exp(-t * 7) + 120), 1.2, 0.001)
+    sub = env_exp(sine_sweep(70, 30, 1.0, 3), 0.9)
+    crack = env_exp(highpass(noise(0.08, rng), 1500), 0.05)
+    out = mix(mix(blast, sub, 0, 0.9), crack, 0, 0.7)
+    return mix(out, grains(1.0, lambda t: 40 * math.exp(-t * 3), lambda r: pebble(r), rng), 0.1, 0.3)
+
+
+def burst(rng: random.Random) -> Buf:
+    pop = env_exp(bandpass(noise(0.1, rng), 900, 0.8), 0.08)
+    return mix(pop, cloth_break(rng), 0, 0.4)
+
+
+def flask_shatter(rng: random.Random) -> Buf:
+    return mix(glass_break(rng), env_exp(bandpass(noise(0.08, rng), 1800, 1.0), 0.06), 0, 0.5)
+
+
+def frost_burst(rng: random.Random) -> Buf:
+    hiss = env_bell(bandpass(noise(0.9, rng), lambda t: 6000 - 3000 * t, 2.0), 0.15)
+    return mix(hiss, ice_crack(rng), 0.05, 0.6)
+
+
+def void_hum(rng: random.Random) -> Buf:
+    out, ph = [], 0.0
+    n = int(1.6 * SR)
+    for i in range(n):
+        t = i / SR
+        f = 55 + 25 * t + 6 * math.sin(t * 2 * math.pi * 5)
+        ph += 2 * math.pi * f / SR
+        out.append(math.sin(ph) + 0.4 * math.sin(2.01 * ph) + 0.2 * math.sin(3.03 * ph))
+    swirl = bandpass(noise(1.6, rng), lambda t: 400 + 1200 * t, 3.0)
+    return env_bell(mix(out, swirl, 0, 0.5), 0.6)
+
+
+def void_pop(rng: random.Random) -> Buf:
+    return mix(env_exp(sine_sweep(120, 900, 0.18, 6), 0.15), poof(rng), 0.05, 0.8)
+
+
 SOUNDS: dict[str, tuple[Callable[[random.Random], Buf], int]] = {
     "wood_hit": (wood_hit, 4),
     "wood_crack": (wood_crack, 3),
@@ -402,6 +440,12 @@ SOUNDS: dict[str, tuple[Callable[[random.Random], Buf], int]] = {
     "ui_stamp": (ui_stamp, 1),
     "win_jingle": (win_jingle, 1),
     "medal_gold": (medal_gold, 1),
+    "boom": (boom, 3),
+    "burst": (burst, 2),
+    "flask_shatter": (flask_shatter, 2),
+    "frost_burst": (frost_burst, 2),
+    "void_hum": (void_hum, 1),
+    "void_pop": (void_pop, 2),
 }
 
 

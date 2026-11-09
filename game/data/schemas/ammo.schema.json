@@ -3,31 +3,142 @@
   "$id": "ammo.schema.json",
   "title": "Ammo types",
   "type": "object",
-  "required": ["$schema", "ammo"],
+  "required": [
+    "$schema",
+    "ammo"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": {"type": "string"},
+    "$schema": {
+      "type": "string"
+    },
     "ammo": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "name", "description", "shape", "radius", "density", "unlock_after", "speed_scale"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "shape",
+          "radius",
+          "density",
+          "unlock_after",
+          "speed_scale",
+          "look"
+        ],
         "additionalProperties": false,
         "properties": {
-          "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
-          "name": {"type": "string"},
-          "description": {"type": "string"},
-          "shape": {"enum": ["circle", "cluster", "keg", "flask", "chain"]},
-          "radius": {"type": "number", "exclusiveMinimum": 0, "description": "metres"},
-          "density": {"type": "number", "exclusiveMinimum": 0, "description": "kg per m²"},
-          "material": {"type": "string", "description": "Material id used for the projectile's look and sounds."},
-          "unlock_after": {"type": ["string", "null"], "description": "Level id whose completion unlocks this ammo; null = from the start."},
-          "speed_scale": {"type": "number", "exclusiveMinimum": 0},
-          "linear_damp": {"type": "number", "minimum": 0, "default": 0},
-          "damage_vs": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}, "description": "Damage multiplier per target material id."},
-          "tap_action": {"enum": ["none", "burst", "detonate", "snap", "open"], "default": "none"},
-          "effect": {"type": "object", "description": "Ammo-specific effect parameters (blast radius, freeze radius, ...)."}
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "shape": {
+            "enum": [
+              "circle",
+              "cluster",
+              "keg",
+              "flask",
+              "chain"
+            ]
+          },
+          "radius": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "description": "metres"
+          },
+          "density": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "description": "kg per m\u00b2"
+          },
+          "material": {
+            "type": "string",
+            "description": "Material id used for the projectile's look and sounds."
+          },
+          "unlock_after": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Level id whose completion unlocks this ammo; null = from the start."
+          },
+          "speed_scale": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "linear_damp": {
+            "type": "number",
+            "minimum": 0,
+            "default": 0
+          },
+          "damage_vs": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": 0
+            },
+            "description": "Damage multiplier per target material id."
+          },
+          "tap_action": {
+            "enum": [
+              "none",
+              "burst",
+              "detonate",
+              "snap",
+              "open"
+            ],
+            "default": "none"
+          },
+          "effect": {
+            "type": "object",
+            "description": "Ammo-specific effect parameters (blast radius, freeze radius, ...)."
+          },
+          "look": {
+            "type": "object",
+            "required": [
+              "pattern",
+              "base",
+              "dark",
+              "light"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "pattern": {
+                "enum": [
+                  "rock",
+                  "wood",
+                  "stone",
+                  "glass",
+                  "ice",
+                  "iron"
+                ]
+              },
+              "base": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "dark": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "light": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "glow": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              }
+            }
+          }
         }
       }
     }

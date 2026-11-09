@@ -38,7 +38,11 @@ var _settle_t: float = 0.0
 var _win_t: float = 0.0
 var _won_pending: bool = false
 var _time: float = 0.0
-var _autoplay: PackedFloat32Array = PackedFloat32Array()
+## Scripted shots: {"ammo": String, "phase": float, "tap": float (s, <0 = none)}
+var _autoplay: Array[Dictionary] = []
+var _pending_tap_tick: int = -1
+## Every projectile of the current shot still in play (splits add more).
+var _live: Array[Projectile] = []
 var _ghost: Line2D
 var _ghost_points: PackedVector2Array = PackedVector2Array()
 var _frame_tick: int = 0
@@ -78,10 +82,24 @@ func _ready() -> void:
 		state = State.READY
 
 
+## "[ammo:]phase[@tap_seconds]", e.g. "0.62", "keg:0.6@0.9".
+static func parse_shot(s: String) -> Dictionary:
+	var shot: Dictionary = {"ammo": "", "phase": 0.0, "tap": -1.0}
+	var rest: String = s
+	if rest.contains(":"):
+		shot["ammo"] = rest.get_slice(":", 0)
+		rest = rest.get_slice(":", 1)
+	if rest.contains("@"):
+		shot["tap"] = rest.get_slice("@", 1).to_float()
+		rest = rest.get_slice("@", 0)
+	shot["phase"] = rest.to_float()
+	return shot
+
+
 func _parse_dev_options() -> void:
 	if Game.cli.has("autoplay"):
 		for s: String in str(Game.cli["autoplay"]).split(",", false):
-			_autoplay.append(s.to_float())
+			_autoplay.append(parse_shot(s))
 
 
 # ----------------------------------------------------------------- build ---
@@ -252,8 +270,19 @@ func on_fire() -> void:
 				hud.fade_hint()
 		State.SWINGING:
 			trebuchet.release()
+		State.FLYING, State.SETTLING:
+			tap_projectile()
 		_:
 			pass
+
+
+## Mid-air action: the first projectile in play that still has one uses it.
+func tap_projectile() -> bool:
+	for p: Projectile in _live:
+		if is_instance_valid(p) and p.can_tap():
+			_log("tap after %d ticks" % p.ticks)
+			return p.tap()
+	return false
 
 
 func toggle_pause() -> void:
@@ -286,6 +315,7 @@ func _on_released(phase: float, pos: Vector2, vel: Vector2) -> void:
 		)
 	)
 	hud.set_shots(shots)
+	_live.clear()
 	projectile = Projectile.new()
 	world.add_child(projectile)
 	projectile.setup(trebuchet.ammo, pos, vel)
@@ -294,8 +324,7 @@ func _on_released(phase: float, pos: Vector2, vel: Vector2) -> void:
 		Vector2(-3000.0, -8000.0),
 		Vector2(right + 3000.0, 8000.0 + Units.to_px(Vector2(0, data.kill_y)).y)
 	)
-	projectile.settled.connect(_on_projectile_settled)
-	projectile.impacted.connect(_on_projectile_impacted)
+	_track(projectile)
 	camera.follow_node(projectile)
 	state = State.FLYING
 	_ghost_points = PackedVector2Array([pos])
@@ -306,26 +335,43 @@ func _log(msg: String) -> void:
 		print("[t=%.2f] %s" % [_time, msg])
 
 
-func _on_projectile_impacted(_p: Projectile, speed_mps: float) -> void:
-	_log(
-		(
-			"impact at %s m, %.1f m/s"
-			% [Units.to_m(projectile.global_position).snapped(Vector2(0.1, 0.1)), speed_mps]
-		)
-	)
+func _track(p: Projectile) -> void:
+	_live.append(p)
+	p.settled.connect(_on_projectile_settled)
+	p.impacted.connect(_on_projectile_impacted)
+	p.split.connect(_on_projectile_split)
+
+
+func _on_projectile_split(parent: Projectile, children: Array[Projectile]) -> void:
+	for c: Projectile in children:
+		_track(c)
+	if parent == projectile and not children.is_empty():
+		projectile = children[children.size() / 2]
+		camera.follow_node(projectile)
+
+
+func _on_projectile_impacted(p: Projectile, speed_mps: float) -> void:
+	if not is_instance_valid(p):
+		return
+	var pos: Vector2 = p.global_position
+	_log("impact at %s m, %.1f m/s" % [Units.to_m(pos).snapped(Vector2(0.1, 0.1)), speed_mps])
 	Effects.shake(clampf(speed_mps / 40.0, 0.1, 0.6))
 	Effects.haptic(clampf(speed_mps / 30.0, 0.1, 0.8))
-	Effects.ground_puff(world, projectile.global_position + Vector2(0, 30), speed_mps)
-	Sfx.play_at("thud", projectile.global_position, clampf(speed_mps - 24.0, -12.0, 0.0))
-	if state == State.FLYING:
+	Effects.ground_puff(world, pos + Vector2(0, 30), speed_mps)
+	Sfx.play_at("thud", pos, clampf(speed_mps - 24.0, -12.0, 0.0))
+	if state == State.FLYING and p == projectile:
 		var r := castle_rect.grow(120.0)
-		if castle_rect.grow(600.0).has_point(projectile.global_position):
-			r = r.expand(projectile.global_position)
+		if castle_rect.grow(600.0).has_point(pos):
+			r = r.expand(pos)
 		camera.frame(r)
 
 
-func _on_projectile_settled(_p: Projectile) -> void:
-	if state != State.FLYING:
+func _on_projectile_settled(p: Projectile) -> void:
+	_live.erase(p)
+	for q: Projectile in _live.duplicate():
+		if not is_instance_valid(q) or q.is_done:
+			_live.erase(q)
+	if state != State.FLYING or not _live.is_empty():
 		return
 	state = State.SETTLING
 	_settle_t = 0.0
@@ -370,6 +416,13 @@ func _on_enemy_eliminated(e: Enemy, pts: int) -> void:
 func _physics_process(delta: float) -> void:
 	if state == State.FLYING and is_instance_valid(projectile) and not projectile.has_impacted:
 		_ghost_points.append(projectile.global_position)
+	if (
+		_pending_tap_tick >= 0
+		and is_instance_valid(projectile)
+		and projectile.ticks >= _pending_tap_tick
+	):
+		_pending_tap_tick = -1
+		tap_projectile()
 	_frame_collapse()
 	if _won_pending and state != State.WON:
 		_win_t += delta
@@ -479,10 +532,19 @@ func _go_next() -> void:
 func _run_autoplay() -> void:
 	if _autoplay.is_empty():
 		return
+	var shot: Dictionary = _autoplay[0]
 	if state == State.READY and trebuchet.can_fire():
+		var want: String = str(shot["ammo"])
+		if not want.is_empty() and str(trebuchet.ammo.get("id", "")) != want:
+			var def: Dictionary = Data.ammo_def(want)
+			if not def.is_empty():
+				trebuchet.set_ammo(def)
+				hud.set_ammo(def, ammo_list.size())
 		trebuchet.start_swing()
 		state = State.SWINGING
 		hud.fade_hint()
-	elif state == State.SWINGING and trebuchet.current_phase() >= _autoplay[0]:
-		trebuchet.release_at(_autoplay[0])
+	elif state == State.SWINGING and trebuchet.current_phase() >= float(shot["phase"]):
+		trebuchet.release_at(float(shot["phase"]))
+		var tap: float = float(shot["tap"])
+		_pending_tap_tick = roundi(tap * Units.TICKS_PER_SECOND) if tap >= 0.0 else -1
 		_autoplay.remove_at(0)

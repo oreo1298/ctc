@@ -17,6 +17,7 @@ var max_hp: float = 40.0
 var hp: float = 40.0
 var is_target: bool = true
 var is_dead: bool = false
+var frozen: bool = false
 var pre_velocity: Vector2 = Vector2.ZERO
 var kill_y_px: float = 1000.0
 
@@ -35,6 +36,7 @@ var _rng := RandomNumberGenerator.new()
 func setup(id: String, enemy_def: Dictionary, pos_m: Vector2, flip: bool) -> void:
 	type_id = id
 	def = enemy_def
+	add_to_group("enemies")
 	_rng.seed = hash("%s@%.2f,%.2f" % [id, pos_m.x, pos_m.y])
 	max_hp = float(def.get("hp", 40.0))
 	hp = max_hp
@@ -208,3 +210,14 @@ func eliminate() -> void:
 	tw.tween_callback(func() -> void: Effects.poof(get_parent(), global_position))
 	tw.tween_property(_body, "modulate:a", 0.0, 0.12)
 	tw.tween_callback(queue_free)
+
+
+## Frost flask: frozen royals take double damage and turn icy blue.
+func freeze_solid() -> void:
+	if frozen or is_dead:
+		return
+	frozen = true
+	def = def.duplicate()
+	def["damage_taken"] = float(def.get("damage_taken", 1.0)) * 2.0
+	def["impact_speed"] = float(def.get("impact_speed", 1.0)) * 0.5
+	_body.self_modulate = Color(0.7, 0.88, 1.0)

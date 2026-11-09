@@ -7,6 +7,7 @@ extends RefCounted
 
 const PX_PER_M: float = 100.0
 const GRAVITY_M: float = 9.8
+const TICKS_PER_SECOND: int = 60
 
 
 static func to_px(v: Vector2) -> Vector2:
