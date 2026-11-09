@@ -45,7 +45,12 @@ func build(pieces: Array[Dictionary], kill_y: float, palette: Dictionary) -> voi
 		add_child(cp)
 		var mi := MeshInstance2D.new()
 		mi.mesh = _strip_mesh(top, bottom_m)
-		mi.material = mat
+		var styles: Array[String] = ["grass", "sand", "snow", "rock"]
+		var piece_mat := mat.duplicate() as ShaderMaterial
+		piece_mat.set_shader_parameter(
+			"style", maxi(0, styles.find(str(piece.get("style", "grass"))))
+		)
+		mi.material = piece_mat
 		mi.z_index = -1
 		add_child(mi)
 		var occ := LightOccluder2D.new()

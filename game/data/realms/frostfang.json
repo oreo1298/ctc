@@ -1,0 +1,26 @@
+{
+  "$schema": "../schemas/realm.schema.json",
+  "id": "frostfang",
+  "name": "Frostfang Peaks",
+  "tagline": "Cold towers, colder hearts, and the coldest shoulder in the kingdom.",
+  "order": 3,
+  "levels": [],
+  "palette": {
+    "ink": "#2c2f3b",
+    "paper": "#eef3f8",
+    "ground_top": "#f4f8fc",
+    "ground": "#c4d3e2",
+    "ground_deep": "#7a8ea6",
+    "far": "#9fb2d2",
+    "mid": "#b9cadf",
+    "near": "#5f7f8f",
+    "accent": "#5c7fb0"
+  },
+  "backdrop": {
+    "layers": 4,
+    "roughness": 1.5,
+    "props": "pines",
+    "ridge": "peaks",
+    "aurora": 1.0
+  }
+}

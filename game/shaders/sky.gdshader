@@ -20,6 +20,7 @@ uniform float aspect = 1.7778;
 uniform vec2 cam_offset = vec2(0.0);
 uniform float time_s = 0.0;
 uniform int octaves_hint = 4;
+uniform float aurora = 0.0;
 
 float clouds(vec2 p) {
 	float n = fbm(p);
@@ -42,6 +43,16 @@ void fragment() {
 		float tw = 0.6 + 0.4 * sin(time_s * 2.0 + s * 40.0);
 		float star = step(0.993, s) * (1.0 - smoothstep(0.05, 0.3, length(fract(g) - 0.5)));
 		c += vec3(star * tw * stars * (1.0 - uv.y));
+	}
+
+	// aurora curtains (Frostfang nights)
+	if (aurora > 0.0) {
+		float x = uv.x * aspect * 1.3 + time_s * 0.02;
+		float wave = sin(x * 3.0 + sin(x * 1.7 + time_s * 0.3) * 1.5) * 0.06;
+		float band = smoothstep(0.08, 0.0, abs(uv.y - 0.22 - wave));
+		float rays = 0.6 + 0.4 * vnoise(vec2(x * 14.0, time_s * 0.5));
+		vec3 col = mix(vec3(0.3, 1.0, 0.6), vec3(0.6, 0.4, 1.0), smoothstep(0.1, 0.35, uv.y + wave));
+		c += col * band * rays * aurora * 0.55;
 	}
 
 	// sun / moon

@@ -1,0 +1,25 @@
+{
+  "$schema": "../schemas/realm.schema.json",
+  "id": "saffron",
+  "name": "Saffron Reach",
+  "tagline": "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters.",
+  "order": 2,
+  "levels": [],
+  "palette": {
+    "ink": "#3b2f26",
+    "paper": "#f6ecd6",
+    "ground_top": "#ecd197",
+    "ground": "#d9ae68",
+    "ground_deep": "#9c6a37",
+    "far": "#c79f9a",
+    "mid": "#ddb27a",
+    "near": "#c98f4f",
+    "accent": "#2f8f83"
+  },
+  "backdrop": {
+    "layers": 4,
+    "roughness": 1.1,
+    "props": "cacti",
+    "ridge": "mesas"
+  }
+}

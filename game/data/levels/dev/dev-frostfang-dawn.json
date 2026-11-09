@@ -1,0 +1,221 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "dev-frostfang-dawn",
+  "name": "Preview frostfang",
+  "grievance": "Developer preview.",
+  "time_of_day": "dawn",
+  "realm": "frostfang",
+  "world": {
+    "right": 52,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          24.5,
+          1.0
+        ],
+        [
+          70,
+          1.0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.8,
+        1.6
+      ],
+      "size": [
+        0.6,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.25,
+        2.0
+      ],
+      "size": [
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.25,
+        2.0
+      ],
+      "size": [
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.75,
+        3.15
+      ],
+      "size": [
+        3.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.6,
+        4.1
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.9,
+        4.1
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.75,
+        5.05
+      ],
+      "size": [
+        3.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        31.75,
+        5.6
+      ],
+      "size": [
+        3.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.6,
+        1.4
+      ],
+      "size": [
+        1.2,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.6,
+        2.2
+      ],
+      "size": [
+        1.2,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.6,
+        3.0
+      ],
+      "size": [
+        1.2,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.6,
+        3.525
+      ],
+      "size": [
+        1.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.6,
+        3.95
+      ],
+      "size": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        31.75,
+        1.6
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        31.75,
+        3.86
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null
+}

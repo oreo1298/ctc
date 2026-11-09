@@ -11,6 +11,8 @@ extends Node2D
 ## (--screenshots and --quit-after are handled by the Game autoload.)
 
 signal won(shots: int)
+## Bot mode only: emitted once with {won, shots, score, state, eliminated}.
+signal bot_done(result: Dictionary)
 
 enum State { INTRO, READY, SWINGING, FLYING, SETTLING, WON }
 
@@ -46,6 +48,13 @@ var _live: Array[Projectile] = []
 var _ghost: Line2D
 var _ghost_points: PackedVector2Array = PackedVector2Array()
 var _frame_tick: int = 0
+## Validator bot: set both before adding the level to the tree.
+var bot_mode: bool = false
+var bot_shots: Array[Dictionary] = []
+var _bot_reported: bool = false
+var _broken_blocks: int = 0
+var _hostages_hit: int = 0
+var _targets_total: int = 0
 
 
 func _ready() -> void:
@@ -97,6 +106,9 @@ static func parse_shot(s: String) -> Dictionary:
 
 
 func _parse_dev_options() -> void:
+	if bot_mode:
+		_autoplay = bot_shots.duplicate()
+		return
 	if Game.cli.has("autoplay"):
 		for s: String in str(Game.cli["autoplay"]).split(",", false):
 			_autoplay.append(parse_shot(s))
@@ -108,10 +120,11 @@ func _build() -> void:
 	var palette: Dictionary = realm.get("palette", {})
 	var grade: Dictionary = Data.grade(data.time_of_day)
 
-	var backdrop := Backdrop.new()
-	backdrop.name = "Backdrop"
-	add_child(backdrop)
-	backdrop.build(palette, grade, realm.get("backdrop", {}), data.world_right, data.id.hash())
+	if not bot_mode:
+		var backdrop := Backdrop.new()
+		backdrop.name = "Backdrop"
+		add_child(backdrop)
+		backdrop.build(palette, grade, realm.get("backdrop", {}), data.world_right, data.id.hash())
 
 	var ambient := CanvasModulate.new()
 	ambient.color = Units.color(grade.get("ambient"), Color(0.85, 0.85, 0.85))
@@ -171,6 +184,7 @@ func _build() -> void:
 		)
 		rect_init = true
 	castle_rect = castle_rect.grow(150.0)
+	_targets_total = targets_left
 
 	_ghost = Line2D.new()
 	_ghost.width = 10.0
@@ -394,12 +408,15 @@ func _hook_block(b: Block) -> void:
 
 func _on_block_broken(b: Block, pts: int) -> void:
 	points += pts
+	_broken_blocks += 1
 	_log("broke %s block (+%d)" % [b.material_id, pts])
 
 
 func _on_enemy_eliminated(e: Enemy, pts: int) -> void:
 	points += pts
 	_log("eliminated %s (+%d)" % [e.type_id, pts])
+	if not e.is_target:
+		_hostages_hit += 1
 	if e.is_target:
 		targets_left -= 1
 		Effects.shake(0.35)
@@ -486,6 +503,9 @@ func _exit_tree() -> void:
 
 func _win() -> void:
 	state = State.WON
+	if bot_mode:
+		_bot_report(true)
+		return
 	var medal: Scoring.Medal = Scoring.medal_for(shots, data.par)
 	var score: int = Scoring.final_score(points, shots, data.par)
 	var prev_best: int = int(Game.save.levels.get(data.id, {}).get("best_score", 0))
@@ -498,6 +518,36 @@ func _win() -> void:
 		(
 			"[level] won %s in %d shot(s), medal=%s score=%d state=%s"
 			% [data.id, shots, Scoring.medal_key(medal), score, state_hash()]
+		)
+	)
+
+
+## Progress score for the validator bot's search: targets down dominate,
+## then damage to the survivors, then general destruction.
+func bot_score() -> float:
+	var s: float = 1000.0 * maxi(0, _targets_total - targets_left)
+	for e: Enemy in _enemies:
+		if is_instance_valid(e) and not e.is_dead and e.is_target:
+			s += 400.0 * clampf(1.0 - e.hp / e.max_hp, 0.0, 1.0)
+			s += 60.0 * clampf(absf(e.rotation) / 1.5, 0.0, 1.0)
+	return s + _broken_blocks * 3.0 - _hostages_hit * 300.0
+
+
+func _bot_report(did_win: bool) -> void:
+	if _bot_reported:
+		return
+	_bot_reported = true
+	(
+		bot_done
+		. emit(
+			{
+				"won": did_win,
+				"shots": shots,
+				"score": bot_score() + (100000.0 if did_win else 0.0),
+				"state": state_hash(),
+				"targets_left": targets_left,
+				"hostages_hit": _hostages_hit,
+			}
 		)
 	)
 
@@ -530,6 +580,17 @@ func _go_next() -> void:
 
 # ------------------------------------------------------------ dev tools ---
 func _run_autoplay() -> void:
+	if bot_mode and not _bot_reported and _autoplay.is_empty() and shots > 0:
+		# Last shot is done once every projectile settled and the world rests.
+		if (
+			state == State.READY
+			or (state == State.SETTLING and _world_asleep() and not _won_pending)
+		):
+			_bot_report(false)
+			return
+		if _time > 30.0 * shots:
+			_bot_report(false)
+			return
 	if _autoplay.is_empty():
 		return
 	var shot: Dictionary = _autoplay[0]

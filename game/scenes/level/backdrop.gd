@@ -39,6 +39,8 @@ func build(
 	_sky_mat.set_shader_parameter("cloud_color", Units.color(grade.get("cloud"), Color.WHITE))
 	_sky_mat.set_shader_parameter("stars", float(grade.get("stars", 0.0)))
 	_sky_mat.set_shader_parameter("moon", bool(grade.get("moon", false)))
+	var aurora: float = float(backdrop.get("aurora", 0.0)) * float(grade.get("stars", 0.0))
+	_sky_mat.set_shader_parameter("aurora", aurora)
 	_sky_mat.set_shader_parameter("octaves_hint", 4 if _high_quality() else 3)
 	_sun_elev = float(grade.get("sun_angle_deg", 30.0))
 
@@ -76,11 +78,14 @@ func build(
 		mat.set_shader_parameter("rim", sun)
 		mat.set_shader_parameter("haze_amount", depth * 0.15)
 		mat.set_shader_parameter("rim_amount", 0.14 + (1.0 - depth) * 0.12)
-		var heights := _ridge(width, amp, ridge, seed_value + i * 101, 0.0011 / maxf(depth, 0.35))
+		var style: String = str(backdrop.get("ridge", "rolling")) if depth > 0.4 else "rolling"
+		var heights := _ridge(
+			width, amp, ridge, seed_value + i * 101, 0.0011 / maxf(depth, 0.35), style
+		)
 		layer.add_child(_hill_polygon(heights, width, mat))
-		if props == "trees" and i >= n - 2:
+		if props != "none" and i >= n - 2:
 			var tree_col: Color = pal.darkened(0.28).lerp(air, pow(depth, 1.5) * 0.4)
-			_add_trees(
+			_add_props(
 				layer,
 				heights,
 				width,
@@ -88,7 +93,8 @@ func build(
 				tree_col,
 				seed_value + i * 7,
 				lerpf(0.55, 1.0, 1.0 - depth),
-				i == n - 1
+				i == n - 1,
+				props
 			)
 
 
@@ -100,8 +106,9 @@ func _high_quality() -> bool:
 
 
 ## Ridge heights sampled every 40 layer-px from x = -4000.
+## style: "rolling" hills, "mesas" (flat tops, steep sides) or "peaks".
 static func _ridge(
-	width: float, amp: float, ridge: float, s: int, freq: float
+	width: float, amp: float, ridge: float, s: int, freq: float, style: String = "rolling"
 ) -> PackedFloat32Array:
 	var noise := FastNoiseLite.new()
 	noise.seed = s
@@ -112,7 +119,15 @@ static func _ridge(
 	var count: int = int(width / 40.0) + 2
 	for k: int in count:
 		var x: float = -4000.0 + k * 40.0
-		out.append(ridge - (noise.get_noise_1d(x) * 0.5 + 0.5) * amp)
+		var n: float = noise.get_noise_1d(x) * 0.5 + 0.5
+		match style:
+			"mesas":
+				var t: float = clampf((n - 0.42) * 5.0, 0.0, 1.0)
+				n = 0.15 + 0.85 * t * t * (3.0 - 2.0 * t)
+			"peaks":
+				var r: float = 1.0 - absf(noise.get_noise_1d(x * 0.8 + 999.0))
+				n = pow(r, 2.4) * 0.8 + n * 0.2
+		out.append(ridge - n * amp)
 	return out
 
 
@@ -193,6 +208,136 @@ static func _add_trees(
 				pts.append(Vector2(tx, cy) + Vector2(cos(ang) * 0.92, sin(ang)) * r * wob)
 			layer.add_child(_canopy_mesh(pts, cy - r, tree_mat))
 		x += rng.randf_range(260.0, 900.0) if nearest else rng.randf_range(160.0, 700.0)
+
+
+## Realm-specific backdrop props on the nearest layers.
+static func _add_props(
+	layer: Node2D,
+	heights: PackedFloat32Array,
+	width: float,
+	mat: ShaderMaterial,
+	col: Color,
+	s: int,
+	size: float,
+	nearest: bool,
+	kind: String
+) -> void:
+	match kind:
+		"cacti":
+			_add_cacti(layer, heights, width, mat, col, s, size)
+		"pines":
+			_add_pines(layer, heights, width, mat, col, s, size, nearest)
+		_:
+			_add_trees(layer, heights, width, mat, col, s, size, nearest)
+
+
+static func _prop_mat(mat: ShaderMaterial, col: Color) -> ShaderMaterial:
+	var m := mat.duplicate() as ShaderMaterial
+	m.set_shader_parameter("color", col)
+	m.set_shader_parameter("rim_amount", 0.4)
+	m.set_shader_parameter("haze_amount", 0.0)
+	return m
+
+
+static func _ground_at(heights: PackedFloat32Array, x: float) -> float:
+	var k: int = clampi(int((x + 4000.0) / 40.0), 0, heights.size() - 1)
+	return heights[k] + 16.0
+
+
+## Saguaro cacti: a rounded column with one or two raised arms.
+static func _add_cacti(
+	layer: Node2D,
+	heights: PackedFloat32Array,
+	width: float,
+	mat: ShaderMaterial,
+	col: Color,
+	s: int,
+	size: float
+) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = s
+	var m := _prop_mat(mat, col)
+	var x: float = -3800.0 + rng.randf_range(0.0, 400.0)
+	while x < width - 4200.0:
+		var gy: float = _ground_at(heights, x)
+		var h: float = rng.randf_range(110.0, 190.0) * size
+		var w: float = 26.0 * size
+		layer.add_child(_canopy_mesh(_capsule(Vector2(x, gy - h * 0.5), w, h), gy - h, m))
+		for side: float in [-1.0, 1.0]:
+			if rng.randf() < 0.75:
+				var ay: float = gy - h * rng.randf_range(0.45, 0.65)
+				var ah: float = h * rng.randf_range(0.25, 0.4)
+				var ax: float = x + side * w * 1.4
+				layer.add_child(
+					_canopy_mesh(_capsule(Vector2(ax, ay - ah * 0.5), w * 0.8, ah), ay - ah, m)
+				)
+				var elbow := PackedVector2Array(
+					[
+						Vector2(x, ay - w * 0.3),
+						Vector2(ax, ay - w * 0.3),
+						Vector2(ax, ay + w * 0.4),
+						Vector2(x, ay + w * 0.4)
+					]
+				)
+				if side < 0.0:
+					elbow.reverse()
+				layer.add_child(_canopy_mesh(elbow, ay - ah, m))
+		x += rng.randf_range(300.0, 1100.0)
+
+
+static func _capsule(center: Vector2, w: float, h: float) -> PackedVector2Array:
+	var pts := PackedVector2Array()
+	var r: float = w * 0.5
+	var top: float = center.y - h * 0.5 + r
+	var bottom: float = center.y + h * 0.5
+	pts.append(Vector2(center.x - r, bottom))
+	pts.append(Vector2(center.x + r, bottom))
+	for a: int in 9:
+		var ang: float = PI * a / 8.0
+		pts.append(Vector2(center.x + cos(ang) * r, top - sin(ang) * r))
+	return pts
+
+
+## Fir trees in tiers, with snow on each tier's tips.
+static func _add_pines(
+	layer: Node2D,
+	heights: PackedFloat32Array,
+	width: float,
+	mat: ShaderMaterial,
+	col: Color,
+	s: int,
+	size: float,
+	nearest: bool
+) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = s
+	var m := _prop_mat(mat, col)
+	var snow := _prop_mat(mat, Color(0.94, 0.97, 1.0))
+	var x: float = -3800.0 + rng.randf_range(0.0, 200.0)
+	while x < width - 4200.0:
+		var group: int = rng.randi_range(1, 2 if nearest else 4)
+		for g: int in group:
+			var tx: float = x + g * rng.randf_range(40.0, 70.0) * size
+			var gy: float = _ground_at(heights, tx)
+			var h: float = rng.randf_range(130.0, 220.0) * size
+			var w: float = h * 0.42
+			for tier: int in 3:
+				var tb: float = gy - h * (0.12 + tier * 0.27)
+				var tt: float = tb - h * 0.42
+				var tw: float = w * (1.0 - tier * 0.24)
+				var tri := PackedVector2Array(
+					[Vector2(tx - tw, tb), Vector2(tx + tw, tb), Vector2(tx, tt)]
+				)
+				layer.add_child(_canopy_mesh(tri, tt, m))
+				var cap := PackedVector2Array(
+					[
+						Vector2(tx - tw * 0.32, tt + (tb - tt) * 0.32),
+						Vector2(tx + tw * 0.32, tt + (tb - tt) * 0.32),
+						Vector2(tx, tt)
+					]
+				)
+				layer.add_child(_canopy_mesh(cap, tt, snow))
+		x += rng.randf_range(180.0, 650.0) if nearest else rng.randf_range(90.0, 420.0)
 
 
 ## A filled polygon as a mesh whose UV.y is depth below `top_y` (for the

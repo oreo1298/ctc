@@ -21,6 +21,7 @@
   "backdrop": {
     "layers": 4,
     "roughness": 1.0,
-    "props": "trees"
+    "props": "trees",
+    "ridge": "rolling"
   }
 }
