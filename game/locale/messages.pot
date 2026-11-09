@@ -22,6 +22,10 @@ msgid "A petty king. A trebuchet. Your timing."
 msgstr ""
 
 #: data/ammo.json
+msgid "A sack of five stones. Tap in flight to fan them out; they burst on impact anyway."
+msgstr ""
+
+#: data/ammo.json
 msgid "A trusty lump of rock. Goes where you send it."
 msgstr ""
 
@@ -46,12 +50,40 @@ msgstr ""
 msgid "Castle flattened!"
 msgstr ""
 
+#: data/ammo.json
+msgid "Chain shot"
+msgstr ""
+
 #: data/materials.json
 msgid "Cloth"
 msgstr ""
 
+#: data/realms/frostfang.json
+msgid "Cold towers, colder hearts, and the coldest shoulder in the kingdom."
+msgstr ""
+
+#: data/ammo.json
+msgid "Firepot"
+msgstr ""
+
+#: data/ammo.json
+msgid "Freezes everything nearby. Frozen blocks turn brittle and shatter like glass."
+msgstr ""
+
+#: data/ammo.json
+msgid "Frost flask"
+msgstr ""
+
+#: data/realms/frostfang.json
+msgid "Frostfang Peaks"
+msgstr ""
+
 #: data/materials.json
 msgid "Glass"
+msgstr ""
+
+#: data/ammo.json
+msgid "Goes off a moment after it lands. Tap to light it early."
 msgstr ""
 
 #: ui/hud.gd
@@ -67,6 +99,10 @@ msgstr ""
 msgid "Greenmantle Hills"
 msgstr ""
 
+#: data/ammo.json
+msgid "Heavy and dense. Punches straight through wood."
+msgstr ""
+
 #: data/enemies.json
 msgid "Hostage"
 msgstr ""
@@ -77,6 +113,10 @@ msgstr ""
 
 #: data/materials.json
 msgid "Iron"
+msgstr ""
+
+#: data/ammo.json
+msgid "Iron ball"
 msgstr ""
 
 #: data/enemies.json
@@ -108,6 +148,10 @@ msgstr ""
 msgid "No medal"
 msgstr ""
 
+#: data/ammo.json
+msgid "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
+msgstr ""
+
 #: ui/hud.gd
 msgid "Pause"
 msgstr ""
@@ -118,6 +162,10 @@ msgstr ""
 
 #: scenes/menu/main_menu.gd
 msgid "Play"
+msgstr ""
+
+#: data/ammo.json
+msgid "Powder keg"
 msgstr ""
 
 #: data/enemies.json
@@ -140,9 +188,25 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
+#: data/realms/saffron.json
+msgid "Saffron Reach"
+msgstr ""
+
+#: data/realms/saffron.json
+msgid "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
+msgstr ""
+
+#: data/ammo.json
+msgid "Scatter-stones"
+msgstr ""
+
 #: ui/hud.gd
 #, c-format
 msgid "Score %d"
+msgstr ""
+
+#: data/ammo.json
+msgid "Shatters into flames. Wood, thatch and cloth keep burning."
 msgstr ""
 
 #: ui/hud.gd
@@ -175,9 +239,17 @@ msgstr ""
 msgid "The Wider Moat"
 msgstr ""
 
+#: data/ammo.json
+msgid "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart."
+msgstr ""
+
 #: scenes/boot/boot.gd
 #, c-format
 msgid "Version %s"
+msgstr ""
+
+#: data/ammo.json
+msgid "Void flask"
 msgstr ""
 
 #: data/realms/greenmantle.json

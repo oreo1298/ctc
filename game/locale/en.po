@@ -23,6 +23,10 @@ msgid "A petty king. A trebuchet. Your timing."
 msgstr "A petty king. A trebuchet. Your timing."
 
 #: data/ammo.json
+msgid "A sack of five stones. Tap in flight to fan them out; they burst on impact anyway."
+msgstr "A sack of five stones. Tap in flight to fan them out; they burst on impact anyway."
+
+#: data/ammo.json
 msgid "A trusty lump of rock. Goes where you send it."
 msgstr "A trusty lump of rock. Goes where you send it."
 
@@ -47,13 +51,41 @@ msgstr "Bronze ≤ %d"
 msgid "Castle flattened!"
 msgstr "Castle flattened!"
 
+#: data/ammo.json
+msgid "Chain shot"
+msgstr "Chain shot"
+
 #: data/materials.json
 msgid "Cloth"
 msgstr "Cloth"
 
+#: data/realms/frostfang.json
+msgid "Cold towers, colder hearts, and the coldest shoulder in the kingdom."
+msgstr "Cold towers, colder hearts, and the coldest shoulder in the kingdom."
+
+#: data/ammo.json
+msgid "Firepot"
+msgstr "Firepot"
+
+#: data/ammo.json
+msgid "Freezes everything nearby. Frozen blocks turn brittle and shatter like glass."
+msgstr "Freezes everything nearby. Frozen blocks turn brittle and shatter like glass."
+
+#: data/ammo.json
+msgid "Frost flask"
+msgstr "Frost flask"
+
+#: data/realms/frostfang.json
+msgid "Frostfang Peaks"
+msgstr "Frostfang Peaks"
+
 #: data/materials.json
 msgid "Glass"
 msgstr "Glass"
+
+#: data/ammo.json
+msgid "Goes off a moment after it lands. Tap to light it early."
+msgstr "Goes off a moment after it lands. Tap to light it early."
 
 #: ui/hud.gd
 msgid "Gold"
@@ -68,6 +100,10 @@ msgstr "Gold ≤ %d"
 msgid "Greenmantle Hills"
 msgstr "Greenmantle Hills"
 
+#: data/ammo.json
+msgid "Heavy and dense. Punches straight through wood."
+msgstr "Heavy and dense. Punches straight through wood."
+
 #: data/enemies.json
 msgid "Hostage"
 msgstr "Hostage"
@@ -79,6 +115,10 @@ msgstr "Ice"
 #: data/materials.json
 msgid "Iron"
 msgstr "Iron"
+
+#: data/ammo.json
+msgid "Iron ball"
+msgstr "Iron ball"
 
 #: data/enemies.json
 msgid "King"
@@ -109,6 +149,10 @@ msgstr "Next"
 msgid "No medal"
 msgstr "No medal"
 
+#: data/ammo.json
+msgid "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
+msgstr "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
+
 #: ui/hud.gd
 msgid "Pause"
 msgstr "Pause"
@@ -120,6 +164,10 @@ msgstr "Paused"
 #: scenes/menu/main_menu.gd
 msgid "Play"
 msgstr "Play"
+
+#: data/ammo.json
+msgid "Powder keg"
+msgstr "Powder keg"
 
 #: data/enemies.json
 msgid "Queen"
@@ -141,10 +189,26 @@ msgstr "Resume"
 msgid "Retry"
 msgstr "Retry"
 
+#: data/realms/saffron.json
+msgid "Saffron Reach"
+msgstr "Saffron Reach"
+
+#: data/realms/saffron.json
+msgid "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
+msgstr "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
+
+#: data/ammo.json
+msgid "Scatter-stones"
+msgstr "Scatter-stones"
+
 #: ui/hud.gd
 #, c-format
 msgid "Score %d"
 msgstr "Score %d"
+
+#: data/ammo.json
+msgid "Shatters into flames. Wood, thatch and cloth keep burning."
+msgstr "Shatters into flames. Wood, thatch and cloth keep burning."
 
 #: ui/hud.gd
 #, c-format
@@ -176,10 +240,18 @@ msgstr "Thatch"
 msgid "The Wider Moat"
 msgstr "The Wider Moat"
 
+#: data/ammo.json
+msgid "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart."
+msgstr "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart."
+
 #: scenes/boot/boot.gd
 #, c-format
 msgid "Version %s"
 msgstr "Version %s"
+
+#: data/ammo.json
+msgid "Void flask"
+msgstr "Void flask"
 
 #: data/realms/greenmantle.json
 msgid "Where King Grumbold's grudges grow greenest."

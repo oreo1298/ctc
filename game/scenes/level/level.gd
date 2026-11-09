@@ -35,6 +35,9 @@ var projectile: Projectile = null
 var castle_rect: Rect2 = Rect2()
 
 var debris: DebrisManager
+## Validator bot: set both before adding the level to the tree.
+var bot_mode: bool = false
+var bot_shots: Array[Dictionary] = []
 var _enemies: Array[Enemy] = []
 var _settle_t: float = 0.0
 var _win_t: float = 0.0
@@ -48,9 +51,6 @@ var _live: Array[Projectile] = []
 var _ghost: Line2D
 var _ghost_points: PackedVector2Array = PackedVector2Array()
 var _frame_tick: int = 0
-## Validator bot: set both before adding the level to the tree.
-var bot_mode: bool = false
-var bot_shots: Array[Dictionary] = []
 var _bot_reported: bool = false
 var _broken_blocks: int = 0
 var _hostages_hit: int = 0
