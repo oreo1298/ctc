@@ -5,7 +5,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # iOS and iPadOS
 
-The game runs on iPhone and iPad (iOS 16 or newer, 64-bit ARM), landscape
+The game runs on iPhone and iPad (iOS 15 or newer, 64-bit ARM), landscape
 only, with touch controls, safe areas, haptics and auto-pause. There is no App
 Store release; you build it yourself and install it on your own device.
 
@@ -20,7 +20,7 @@ Apple ID can.
 ## Build it yourself on a Mac
 
 You need Xcode 26 or newer (Godot 4.7's iOS template is built against the
-iOS 26 SDK; the app itself still runs on iOS 16) and a free Apple account.
+iOS 26 SDK; the app itself still runs on iOS 15) and a free Apple account.
 
 1. Get the Xcode project, either from a Linux machine
    (`make build ARGS="--target ios"`, then copy `build/export/ios/` to the Mac)
@@ -45,6 +45,12 @@ With a free account the app stops launching after 7 days; build and run it
 again to renew. A paid developer account lasts a year.
 
 ## Platform details
+
+* **iOS version:** 15 or newer (`application/min_ios_version` in
+  `packaging/godot/export_presets.cfg.in`). Every library the app links is
+  built for iOS 14 or older: Godot's engine and MoltenVK for 14.0,
+  godot-rapier for 12.0. That covers iPhone 6s / SE (1st generation) and
+  newer, and iPad (5th generation), iPad mini 4, iPad Air 2 and newer.
 
 * **Display:** landscape left and right, full screen, safe areas respected in
   the HUD, menus and editor (`UiTheme.safe_insets`).

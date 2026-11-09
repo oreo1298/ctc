@@ -11,6 +11,10 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+- iOS: the minimum is now iOS 15 (was 16). Every library the app links
+  (Godot, MoltenVK, godot-rapier) is built for iOS 14 or older.
+
 ### Added
 - Press again after a shot to go straight back to the trebuchet and load
   the next one (the ammo's mid-air trick still comes first). A quick double
