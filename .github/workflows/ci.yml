@@ -23,8 +23,8 @@ jobs:
     name: Lint (shellcheck, gdlint, schemas, REUSE, identity)
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install pinned dev tools
@@ -43,7 +43,7 @@ jobs:
     name: Unit + smoke tests (Godot headless)
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Cache pinned Godot and godot-rapier
         uses: actions/cache@v4
         with:

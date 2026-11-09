@@ -53,8 +53,10 @@ def collect(game: Path) -> tuple[dict[str, set[str]], dict[str, tuple[str, set[s
         if rel.parts[0] in ("addons", ".godot"):
             continue
         text = gd.read_text(encoding="utf-8")
-        for lineno, line in enumerate(text.splitlines(), 1):
-            ref = f"{rel}:{lineno}"
+        # File-only references: line numbers would make every code edit
+        # invalidate the catalogue.
+        for line in text.splitlines():
+            ref = str(rel)
             for m in TRN_RE.finditer(line):
                 one, many = unesc(m.group(1)), unesc(m.group(2))
                 plurals.setdefault(one, (many, set()))[1].add(ref)
@@ -68,7 +70,7 @@ def collect(game: Path) -> tuple[dict[str, set[str]], dict[str, tuple[str, set[s
             if isinstance(node, dict):
                 for k, v in node.items():
                     if k in DATA_KEYS and isinstance(v, str) and v.strip():
-                        singles.setdefault(v, set()).add(f"{rel}:{path}/{k}")
+                        singles.setdefault(v, set()).add(str(rel))
                     else:
                         walk(v, f"{path}/{k}")
             elif isinstance(node, list):

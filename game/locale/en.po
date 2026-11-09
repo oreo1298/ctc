@@ -13,185 +13,183 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 
-#: ui/hud.gd:224
+#: ui/hud.gd
 #, c-format
 msgid "%s (gold ≤ %d)"
 msgstr "%s (gold ≤ %d)"
 
-#: scenes/menu/main_menu.gd:43
+#: scenes/menu/main_menu.gd
 msgid "A petty king. A trebuchet. Your timing."
 msgstr "A petty king. A trebuchet. Your timing."
 
-#: data/ammo.json:/ammo/0/description
+#: data/ammo.json
 msgid "A trusty lump of rock. Goes where you send it."
 msgstr "A trusty lump of rock. Goes where you send it."
 
-#: data/levels/greenmantle/greenmantle-01.json:/grievance
+#: data/levels/greenmantle/greenmantle-01.json
 msgid "Baron Fennick's moat is wider than mine. Make his keep smaller to compensate."
 msgstr "Baron Fennick's moat is wider than mine. Make his keep smaller to compensate."
 
-#: data/ammo.json:/ammo/0/name
+#: data/ammo.json
 msgid "Boulder"
 msgstr "Boulder"
 
-#: ui/hud.gd:220
+#: ui/hud.gd
 msgid "Bronze"
 msgstr "Bronze"
 
-#: ui/hud.gd:161
+#: ui/hud.gd
 #, c-format
 msgid "Bronze ≤ %d"
 msgstr "Bronze ≤ %d"
 
-#: ui/hud.gd:211
+#: ui/hud.gd
 msgid "Castle flattened!"
 msgstr "Castle flattened!"
 
-#: data/materials.json:/materials/cloth/name
+#: data/materials.json
 msgid "Cloth"
 msgstr "Cloth"
 
-#: data/materials.json:/materials/glass/name
+#: data/materials.json
 msgid "Glass"
 msgstr "Glass"
 
-#: ui/hud.gd:220
+#: ui/hud.gd
 msgid "Gold"
 msgstr "Gold"
 
-#: ui/hud.gd:159
+#: ui/hud.gd
 #, c-format
 msgid "Gold ≤ %d"
 msgstr "Gold ≤ %d"
 
-#: data/realms/greenmantle.json:/name
+#: data/realms/greenmantle.json
 msgid "Greenmantle Hills"
 msgstr "Greenmantle Hills"
 
-#: data/enemies.json:/enemies/hostage/name
+#: data/enemies.json
 msgid "Hostage"
 msgstr "Hostage"
 
-#: data/materials.json:/materials/ice/name
+#: data/materials.json
 msgid "Ice"
 msgstr "Ice"
 
-#: data/materials.json:/materials/iron/name
+#: data/materials.json
 msgid "Iron"
 msgstr "Iron"
 
-#: data/enemies.json:/enemies/king/name
+#: data/enemies.json
 msgid "King"
 msgstr "King"
 
-#: data/enemies.json:/enemies/knight/name
+#: data/enemies.json
 msgid "Knight"
 msgstr "Knight"
 
-#: ui/hud.gd:243
-#: ui/hud.gd:277
+#: ui/hud.gd
 msgid "Menu"
 msgstr "Menu"
 
-#: ui/hud.gd:236
+#: ui/hud.gd
 #, c-format
 msgid "New ammo unlocked: %s"
 msgstr "New ammo unlocked: %s"
 
-#: ui/hud.gd:230
+#: ui/hud.gd
 msgid "New best!"
 msgstr "New best!"
 
-#: ui/hud.gd:254
+#: ui/hud.gd
 msgid "Next"
 msgstr "Next"
 
-#: ui/hud.gd:220
+#: ui/hud.gd
 msgid "No medal"
 msgstr "No medal"
 
-#: ui/hud.gd:89
+#: ui/hud.gd
 msgid "Pause"
 msgstr "Pause"
 
-#: ui/hud.gd:273
+#: ui/hud.gd
 msgid "Paused"
 msgstr "Paused"
 
-#: scenes/menu/main_menu.gd:51
+#: scenes/menu/main_menu.gd
 msgid "Play"
 msgstr "Play"
 
-#: data/enemies.json:/enemies/queen/name
+#: data/enemies.json
 msgid "Queen"
 msgstr "Queen"
 
-#: scenes/menu/main_menu.gd:57
+#: scenes/menu/main_menu.gd
 msgid "Quit"
 msgstr "Quit"
 
-#: ui/hud.gd:277
-#: ui/hud.gd:88
+#: ui/hud.gd
 msgid "Restart"
 msgstr "Restart"
 
-#: ui/hud.gd:277
+#: ui/hud.gd
 msgid "Resume"
 msgstr "Resume"
 
-#: ui/hud.gd:247
+#: ui/hud.gd
 msgid "Retry"
 msgstr "Retry"
 
-#: ui/hud.gd:230
+#: ui/hud.gd
 #, c-format
 msgid "Score %d"
 msgstr "Score %d"
 
-#: ui/hud.gd:166
+#: ui/hud.gd
 #, c-format
 msgid "Shots: %d"
 msgstr "Shots: %d"
 
-#: ui/hud.gd:220
+#: ui/hud.gd
 msgid "Silver"
 msgstr "Silver"
 
-#: ui/hud.gd:160
+#: ui/hud.gd
 #, c-format
 msgid "Silver ≤ %d"
 msgstr "Silver ≤ %d"
 
-#: data/materials.json:/materials/stone/name
+#: data/materials.json
 msgid "Stone"
 msgstr "Stone"
 
-#: scenes/level/level.gd:169
+#: scenes/level/level.gd
 msgid "Tap to swing, tap again to let go"
 msgstr "Tap to swing, tap again to let go"
 
-#: data/materials.json:/materials/thatch/name
+#: data/materials.json
 msgid "Thatch"
 msgstr "Thatch"
 
-#: data/levels/greenmantle/greenmantle-01.json:/name
+#: data/levels/greenmantle/greenmantle-01.json
 msgid "The Wider Moat"
 msgstr "The Wider Moat"
 
-#: scenes/boot/boot.gd:21
+#: scenes/boot/boot.gd
 #, c-format
 msgid "Version %s"
 msgstr "Version %s"
 
-#: data/realms/greenmantle.json:/tagline
+#: data/realms/greenmantle.json
 msgid "Where King Grumbold's grudges grow greenest."
 msgstr "Where King Grumbold's grudges grow greenest."
 
-#: data/materials.json:/materials/wood/name
+#: data/materials.json
 msgid "Wood"
 msgstr "Wood"
 
-#: ui/hud.gd:223
+#: ui/hud.gd
 #, c-format
 msgid "%d shot"
 msgid_plural "%d shots"
