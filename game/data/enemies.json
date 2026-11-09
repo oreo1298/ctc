@@ -2,24 +2,63 @@
   "$schema": "schemas/enemies.schema.json",
   "enemies": {
     "king": {
-      "name": "King", "hp": 40, "damage_taken": 1.0, "impact_speed": 1.2, "radius": 0.32, "height": 1.1,
-      "mass": 90, "target": true, "points": 1000, "art": "res://art/characters/king.svg",
-      "headgear": "res://art/characters/crown.svg", "headgear_at_hp": 0
+      "name": "King",
+      "hp": 8,
+      "damage_taken": 1.0,
+      "impact_speed": 0.8,
+      "radius": 0.32,
+      "height": 1.1,
+      "mass": 90,
+      "target": true,
+      "points": 1000,
+      "art": "res://art/characters/king.svg",
+      "headgear": "res://art/characters/crown.svg",
+      "headgear_at_hp": 0,
+      "crush_force": 2200
     },
     "queen": {
-      "name": "Queen", "hp": 35, "damage_taken": 1.0, "impact_speed": 1.2, "radius": 0.3, "height": 1.1,
-      "mass": 80, "target": true, "points": 800, "art": "res://art/characters/queen.svg",
-      "headgear": "res://art/characters/tiara.svg", "headgear_at_hp": 0
+      "name": "Queen",
+      "hp": 8,
+      "damage_taken": 1.0,
+      "impact_speed": 0.8,
+      "radius": 0.3,
+      "height": 1.1,
+      "mass": 80,
+      "target": true,
+      "points": 800,
+      "art": "res://art/characters/queen.svg",
+      "headgear": "res://art/characters/tiara.svg",
+      "headgear_at_hp": 0,
+      "crush_force": 2200
     },
     "knight": {
-      "name": "Knight", "hp": 90, "damage_taken": 0.4, "impact_speed": 1.6, "radius": 0.34, "height": 1.15,
-      "mass": 140, "target": true, "points": 500, "art": "res://art/characters/knight.svg",
-      "headgear": "res://art/characters/helmet.svg", "headgear_at_hp": 0.5
+      "name": "Knight",
+      "hp": 20,
+      "damage_taken": 0.6,
+      "impact_speed": 1.0,
+      "radius": 0.34,
+      "height": 1.15,
+      "mass": 140,
+      "target": true,
+      "points": 500,
+      "art": "res://art/characters/knight.svg",
+      "headgear": "res://art/characters/helmet.svg",
+      "headgear_at_hp": 0.5,
+      "crush_force": 3500
     },
     "hostage": {
-      "name": "Hostage", "hp": 30, "damage_taken": 1.0, "impact_speed": 1.2, "radius": 0.3, "height": 1.0,
-      "mass": 70, "target": false, "points": -750, "art": "res://art/characters/hostage.svg",
-      "headgear": null
+      "name": "Hostage",
+      "hp": 8,
+      "damage_taken": 1.0,
+      "impact_speed": 0.8,
+      "radius": 0.3,
+      "height": 1.0,
+      "mass": 70,
+      "target": false,
+      "points": -750,
+      "art": "res://art/characters/hostage.svg",
+      "headgear": null,
+      "crush_force": 2200
     }
   }
 }

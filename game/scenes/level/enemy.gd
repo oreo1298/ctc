@@ -21,6 +21,8 @@ var pre_velocity: Vector2 = Vector2.ZERO
 var kill_y_px: float = 1000.0
 
 var _pending: float = 0.0
+## Newtons of load from blocks resting on top, measured last physics step.
+var _load_n: float = 0.0
 var _body: Sprite2D
 var _headgear: Sprite2D = null
 var _headgear_lost: bool = false
@@ -100,11 +102,15 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if is_dead:
 		return
 	var threshold: float = float(def.get("impact_speed", 1.2)) * Units.PX_PER_M
+	var load_n: float = 0.0
 	for i: int in state.get_contact_count():
 		var imp: float = state.get_contact_impulse(i).length()
 		if imp <= 0.0:
 			continue
 		var other: Object = state.get_contact_collider_object(i)
+		# Sustained weight pressing down from a block above us (crushing).
+		if other is Block and state.get_contact_local_normal(i).y > 0.5:
+			load_n += imp / Units.PX_PER_M / state.step
 		var other_v := Vector2.ZERO
 		if other is Block:
 			other_v = (other as Block).pre_velocity
@@ -117,6 +123,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			continue
 		# Enemies are light, so scale their damage per kg moved rather than raw impulse.
 		_pending += imp / Units.PX_PER_M / 100.0 * float(def.get("damage_taken", 1.0)) * 2.0
+	_load_n = load_n
+	var crush: float = float(def.get("crush_force", 2200.0))
+	if load_n > crush:
+		# Squashed under a heavy block: a few tenths of a second does it.
+		_pending += (load_n - crush) / crush * 30.0 * state.step * float(def.get("damage_taken", 1.0))
 
 
 func take_damage(amount: float) -> void:
