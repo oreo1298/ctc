@@ -18,12 +18,13 @@ tap again to let go. The moment of release is your aim.
 * Made for Linux first, also on Windows and iOS
 * No ads, no in-app purchases, no tracking, no network. Ever.
 
-> **Status: early development.** Milestones 1–6 are done: the full campaign
-> (3 realms × 12 levels, each proven beatable by a bot that also sets par),
+> **Status: release candidate 1.0.0-rc.1.** Milestones 0–7 are done: the
+> full campaign (3 realms × 12 levels, each proven beatable by a bot that
+> also sets par),
 > eight ammo types, seven materials that crack and break into real pieces,
 > fire and frost, procedural sound, level select, settings and accessibility
 > options, a castle editor with offline share codes, and packages for
-> Linux, Windows and iOS. Next: performance, polish and a release candidate.
+> Linux, Windows and iOS. Nothing has been published yet.
 > See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 | | |

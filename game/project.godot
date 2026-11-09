@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Siegefall"
 config/description="Fling a trebuchet at petty kings' castles"
-config/version="0.1.0"
+config/version="1.0.0-rc.1"
 run/main_scene="res://scenes/boot/boot.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="siegefall"

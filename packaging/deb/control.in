@@ -1,5 +1,5 @@
 Package: @APP_SLUG@
-Version: @APP_VERSION@-1
+Version: @VERSION_TILDE@-1
 Architecture: @DEB_ARCH@
 Maintainer: @APP_DEVELOPER@ <@APP_CONTACT@>
 Installed-Size: @INSTALLED_SIZE@

@@ -197,7 +197,7 @@ make_deb() {
 	local arch root size out darch
 	for arch in "${ARCHS[@]}"; do
 		darch="$(deb_arch "${arch}")"
-		out="${DIST}/${APP_SLUG}_${APP_VERSION}-1_${darch}.deb"
+		out="${DIST}/${APP_SLUG}_$(version_tilde)-1_${darch}.deb"
 		log "deb: $(basename "${out}")"
 		root="$(stage "${arch}" /usr deb)"
 		render_template "${SF_PACKAGING}/deb/copyright.in" "${root}/usr/share/doc/${APP_SLUG}/copyright"
@@ -208,7 +208,7 @@ make_deb() {
 		run ln -sfn "../lib/${APP_SLUG}/${APP_SLUG}" "${root}/usr/games/${APP_SLUG}"
 		if [[ "${DRY_RUN}" == 0 ]]; then
 			printf '%s (%s-1) unstable; urgency=low\n\n  * Release %s.\n\n -- %s <%s>  %s\n' \
-				"${APP_SLUG}" "${APP_VERSION}" "${APP_VERSION}" "${APP_DEVELOPER}" "${APP_CONTACT}" \
+				"${APP_SLUG}" "$(version_tilde)" "${APP_VERSION}" "${APP_DEVELOPER}" "${APP_CONTACT}" \
 				"$(date -u -d "$(release_date)" -R)" | gzip -9n >"${root}/usr/share/doc/${APP_SLUG}/changelog.Debian.gz"
 			size="$(du -sk --apparent-size "${root}" | cut -f1)"
 		else
@@ -228,7 +228,7 @@ make_rpm() {
 	local arch root top rarch spec
 	for arch in "${ARCHS[@]}"; do
 		rarch="$(rpm_arch "${arch}")"
-		log "rpm: ${APP_SLUG}-${APP_VERSION}-1.${rarch}.rpm"
+		log "rpm: ${APP_SLUG}-$(version_tilde)-1.${rarch}.rpm"
 		root="$(stage "${arch}" /usr rpm)"
 		top="${PKG}/rpmbuild"
 		spec="${top}/SPECS/${APP_SLUG}.spec"
@@ -238,8 +238,8 @@ make_rpm() {
 			"RPM_DATE=$(LC_ALL=C date -u -d "$(release_date)" '+%a %b %d %Y')"
 		run rpmbuild --quiet -bb --target "${rarch}" \
 			--define "_topdir ${top}" --define "sf_stage ${root}" "${spec}"
-		run cp "${top}/RPMS/${rarch}/${APP_SLUG}-${APP_VERSION}-1.${rarch}.rpm" "${DIST}/"
-		made+=("${DIST}/${APP_SLUG}-${APP_VERSION}-1.${rarch}.rpm")
+		run cp "${top}/RPMS/${rarch}/${APP_SLUG}-$(version_tilde)-1.${rarch}.rpm" "${DIST}/"
+		made+=("${DIST}/${APP_SLUG}-$(version_tilde)-1.${rarch}.rpm")
 	done
 }
 
@@ -323,7 +323,7 @@ make_aur() {
 		[[ -n "${arm}" ]] || sed -i -e "/_aarch64=/d" -e "s/ 'aarch64'//" "${dir}/${APP_SLUG}-bin/PKGBUILD"
 	fi
 	render_template "${SF_PACKAGING}/aur/PKGBUILD.in" "${dir}/${APP_SLUG}/PKGBUILD" \
-		"SOURCE_GIT=git+${APP_HOMEPAGE}.git#tag=v\${pkgver}" \
+		"SOURCE_GIT=git+${APP_HOMEPAGE}.git#tag=v\${_ver}" \
 		"GODOT_RELEASE_URL=${GODOT_RELEASE_URL}" "GODOT_SHA512_TEMPLATES=${GODOT_SHA512_TEMPLATES}" \
 		"GODOT_SHA512_LINUX_X86_64=${GODOT_SHA512_LINUX_X86_64}" \
 		"GODOT_SHA512_LINUX_ARM64=${GODOT_SHA512_LINUX_ARM64}" \
@@ -370,7 +370,8 @@ make_nsis() {
 	stage_windows "${src}"
 	run makensis -V2 -INPUTCHARSET UTF8 \
 		"-DAPP_NAME=${APP_NAME}" "-DAPP_ID=${APP_ID}" "-DAPP_SLUG=${APP_SLUG}" \
-		"-DAPP_VERSION=${APP_VERSION}" "-DAPP_DEVELOPER=${APP_DEVELOPER}" \
+		"-DAPP_VERSION=${APP_VERSION}" "-DAPP_VERSION_NUM=$(version_numeric)" \
+		"-DAPP_DEVELOPER=${APP_DEVELOPER}" \
 		"-DAPP_HOMEPAGE=${APP_HOMEPAGE}" "-DSRC_DIR=${src}" "-DOUT_FILE=${out}" \
 		"-DICON=${SF_BUILD}/icons/${APP_SLUG}.ico" "-DLICENSE_FILE=${src}/LICENSE.txt" \
 		"${SF_PACKAGING}/windows/installer.nsi"

@@ -14,7 +14,7 @@
 %global __requires_exclude ^libgodot_rapier.*$
 
 Name:           @APP_SLUG@
-Version:        @APP_VERSION@
+Version:        @VERSION_TILDE@
 Release:        1
 Summary:        @APP_SUMMARY@
 License:        MIT AND CC-BY-SA-4.0 AND OFL-1.1
@@ -60,5 +60,5 @@ cp -a %{sf_stage}/. %{buildroot}/
 %license %{_datadir}/licenses/@APP_SLUG@/
 
 %changelog
-* @RPM_DATE@ @APP_DEVELOPER@ <@APP_CONTACT@> - @APP_VERSION@-1
+* @RPM_DATE@ @APP_DEVELOPER@ <@APP_CONTACT@> - @VERSION_TILDE@-1
 - Release @APP_VERSION@

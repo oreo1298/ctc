@@ -11,6 +11,10 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.0-rc.1] - 2026-11-09
+
+First release candidate: everything below, nothing published yet.
+
 ### Added
 - Milestone 0 foundations: design document, single-source app identity
   (`app.env`), pinned Godot 4.7.2-stable with SHA-512 verification
@@ -72,6 +76,12 @@ All notable changes are documented here. The format follows
   the HUD; levels pause when the app goes to the background; the editor
   shows touch tips on touch screens. docs/IOS.md explains signing with a
   free Apple account.
+- Milestone 7: performance harness (`make perf`: cost of a physics tick
+  in the heaviest scenes; worst 8.5 ms, p95 at most 3.5 ms) with a CI
+  budget; fire drawn as overlapping flame tongues with embers and a
+  flickering light; one SemVer version in `app.env` mapped to what each
+  format needs (deb/rpm `1.0.0~rc.1`, pacman `1.0.0rc1`, numeric for
+  Windows and iOS, AppStream `type="development"`).
 
 ### Fixed
 - Translatable strings split over several lines (or built from pieces)
@@ -84,3 +94,6 @@ All notable changes are documented here. The format follows
   call.
 - Simulation was not reproducible between runs (global RNG in headgear
   props); slow motion could shift body removal. Both fixed and tested.
+
+[Unreleased]: https://github.com/oreo1298/ctc/compare/v1.0.0-rc.1...HEAD
+[1.0.0-rc.1]: https://github.com/oreo1298/ctc/releases/tag/v1.0.0-rc.1

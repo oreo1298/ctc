@@ -7,7 +7,7 @@
 ; ticks the box in the uninstaller.
 ;
 ; makensis is given these on the command line:
-;   APP_NAME APP_ID APP_SLUG APP_VERSION APP_DEVELOPER APP_HOMEPAGE
+;   APP_NAME APP_ID APP_SLUG APP_VERSION APP_VERSION_NUM APP_DEVELOPER APP_HOMEPAGE
 ;   SRC_DIR (the Windows export) OUT_FILE ICON LICENSE_FILE
 
 Unicode true
@@ -23,10 +23,10 @@ SetCompressor /SOLID lzma
 ManifestDPIAware true
 BrandingText "${APP_NAME} ${APP_VERSION}"
 
-VIProductVersion "${APP_VERSION}.0"
+VIProductVersion "${APP_VERSION_NUM}.0"
 VIAddVersionKey "ProductName" "${APP_NAME}"
 VIAddVersionKey "ProductVersion" "${APP_VERSION}"
-VIAddVersionKey "FileVersion" "${APP_VERSION}"
+VIAddVersionKey "FileVersion" "${APP_VERSION_NUM}"
 VIAddVersionKey "CompanyName" "${APP_DEVELOPER}"
 VIAddVersionKey "FileDescription" "${APP_NAME} installer"
 VIAddVersionKey "LegalCopyright" "${APP_DEVELOPER}"

@@ -35,7 +35,7 @@ Renders these scenes to DIR (default build/screenshots/):
   share       castle editor, share dialog
   testplay    a castle won in the editor's test-play
 Needs Xvfb and Mesa (installed by scripts/bootstrap.sh).
-  --update-docs  also copy the PNGs into docs/screenshots/
+  --update-docs  also refresh the matching PNGs in docs/screenshots/
 EOF
 }
 UPDATE_DOCS=0
@@ -135,7 +135,10 @@ shot testplay 9.0 --screen=editor --edit=greenmantle-01 --edit-test --autoplay=0
 	--screenshots="8.4:${OUT}/testplay.png"
 
 if [[ "${UPDATE_DOCS}" == 1 ]]; then
-	run mkdir -p "${SF_ROOT}/docs/screenshots"
-	run cp "${OUT}"/*.png "${SF_ROOT}/docs/screenshots/"
+	# Refresh the images the docs already use; never add stray renders.
+	for doc in "${SF_ROOT}"/docs/screenshots/*.png; do
+		name="$(basename "${doc}")"
+		[[ -f "${OUT}/${name}" ]] && run cp "${OUT}/${name}" "${doc}"
+	done
 fi
 ok "screenshots in ${OUT#"${SF_ROOT}"/}"

@@ -6,7 +6,8 @@
 # large (about 1.3 GB); only the Linux template for your architecture is
 # unpacked from it.
 pkgname=@APP_SLUG@
-pkgver=@APP_VERSION@
+pkgver=@VERSION_PACMAN@
+_ver=@APP_VERSION@
 pkgrel=1
 pkgdesc="@APP_SUMMARY@"
 arch=('x86_64' 'aarch64')

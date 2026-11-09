@@ -76,6 +76,6 @@
     <color type="primary" scheme_preference="dark">#3b2f26</color>
   </branding>
   <releases>
-    <release version="@APP_VERSION@" date="@RELEASE_DATE@"/>
+    <release version="@APP_VERSION@" date="@RELEASE_DATE@" type="@RELEASE_TYPE@"/>
   </releases>
 </component>

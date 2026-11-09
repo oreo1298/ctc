@@ -9,6 +9,8 @@ set -Eeuo pipefail
 # shellcheck source=../../scripts/lib/common.sh
 source "$(dirname "${BASH_SOURCE[0]}")/../../scripts/lib/common.sh"
 load_identity
+# shellcheck source=../../scripts/lib/stage.sh
+source "${SF_ROOT}/scripts/lib/stage.sh"
 
 ALL=(arch ubuntu debian fedora tumbleweed void)
 
@@ -93,8 +95,8 @@ arm64) DEB_ARCH=arm64 RPM_ARCH=aarch64 ;;
 *) die "unknown arch '${ARCH}'" ;;
 esac
 TARBALL="${APP_SLUG}-${APP_VERSION}-linux-${ARCH}.tar.gz"
-DEB="${APP_SLUG}_${APP_VERSION}-1_${DEB_ARCH}.deb"
-RPM="${APP_SLUG}-${APP_VERSION}-1.${RPM_ARCH}.rpm"
+DEB="${APP_SLUG}_$(version_tilde)-1_${DEB_ARCH}.deb"
+RPM="${APP_SLUG}-$(version_tilde)-1.${RPM_ARCH}.rpm"
 
 # Checks shared by every distribution, run inside the container.
 read -r -d '' CHECKS <<EOF || true

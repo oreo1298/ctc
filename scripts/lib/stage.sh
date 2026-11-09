@@ -15,6 +15,19 @@ ICON_SIZES=(16 24 32 48 64 128 256 512)
 # shellcheck disable=SC2034
 APP_ICON_EXTRA=(1024)
 
+# Versions per format, from APP_VERSION (SemVer: 1.0.0 or 1.0.0-rc.1).
+# rpm and pacman forbid '-'; deb and rpm sort '~' before the release; pacman
+# sorts a trailing letter segment before it; Windows and iOS want numbers.
+version_numeric() { printf '%s' "${APP_VERSION%%-*}"; }
+version_tilde() { printf '%s' "${APP_VERSION/-/\~}"; }
+version_pacman() {
+	local base="${APP_VERSION%%-*}" pre
+	pre="${APP_VERSION#"${base}"}"
+	pre="${pre#-}"
+	printf '%s%s' "${base}" "${pre//./}"
+}
+is_prerelease() { [[ "${APP_VERSION}" == *-* ]]; }
+
 # The build's architecture names: x86_64 / arm64 (Godot), and the packaging
 # names other tools want.
 deb_arch() { case "$1" in x86_64) echo amd64 ;; arm64) echo arm64 ;; esac; }
@@ -54,6 +67,9 @@ render_template() {
 		"RELEASE_DATE=$(release_date)" "YEAR=$(release_date | cut -c1-4)"
 		"GODOT_VERSION=${GODOT_VERSION}" "GODOT_TAG=${GODOT_TAG}"
 		"APP_SLUG_UPPER=${APP_SLUG^^}"
+		"VERSION_NUM=$(version_numeric)" "VERSION_TILDE=$(version_tilde)"
+		"VERSION_PACMAN=$(version_pacman)"
+		"RELEASE_TYPE=$(is_prerelease && echo development || echo stable)"
 		"$@"
 	)
 	local -a sed_args=()
