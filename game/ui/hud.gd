@@ -116,6 +116,7 @@ func _ready() -> void:
 	_hint.offset_top = -120
 	_hint.offset_bottom = -76
 	_root.add_child(_hint)
+	_wire_clicks(_root)
 
 
 func _icon_button(icon_path: String, tooltip: String, cb: Callable) -> Button:
@@ -256,6 +257,7 @@ func show_win(
 		row.add_child(nxt)
 		focus_target = nxt
 	focus_target.grab_focus.call_deferred()
+	_wire_clicks(_win)
 	var tw := create_tween()
 	tw.tween_interval(0.25)
 	tw.tween_property(stamp, "stamp", 1.0, 0.35).set_trans(Tween.TRANS_BACK).set_ease(
@@ -282,12 +284,25 @@ func show_pause() -> void:
 		b.pressed.connect(sig.emit)
 		box.add_child(b)
 	(box.get_child(1) as Button).grab_focus.call_deferred()
+	_wire_clicks(_pause)
 
 
 func hide_pause() -> void:
 	if _pause != null:
 		_pause.queue_free()
 		_pause = null
+
+
+## Every button in the HUD clicks.
+func _wire_clicks(node: Node) -> void:
+	for c: Node in node.get_children():
+		if c is BaseButton and not (c as BaseButton).pressed.is_connected(_click):
+			(c as BaseButton).pressed.connect(_click)
+		_wire_clicks(c)
+
+
+func _click() -> void:
+	Sfx.play_ui("ui_click", -8.0)
 
 
 func _card() -> Control:

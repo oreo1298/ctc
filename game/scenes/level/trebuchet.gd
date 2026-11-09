@@ -29,6 +29,7 @@ var _sling: Line2D
 var _payload: Node2D = null
 var _pivot_cap: MeshInstance2D
 var _rewind_from: float = 1.0
+var _thunked: bool = false
 
 
 func setup(treb_model: TrebuchetModel) -> void:
@@ -156,6 +157,8 @@ func start_swing() -> void:
 	state = State.SWINGING
 	_elapsed = 0.0
 	_last_frame_usec = Time.get_ticks_usec()
+	_thunked = false
+	Sfx.play_at("treb_creak", global_position + Vector2(0, -150), -4.0)
 
 
 ## Phase for a release happening right now, with sub-frame precision.
@@ -183,6 +186,7 @@ func release_at(p: float) -> float:
 	var v_m: Vector2 = model.launch_velocity(ph, float(ammo.get("speed_scale", 1.0)))
 	var vel: Vector2 = Vector2(v_m.x, -v_m.y) * Units.PX_PER_M
 	set_pose(ph)
+	Sfx.play_at("treb_whoosh", pos, -3.0)
 	released.emit(ph, pos, vel)
 	return ph
 
@@ -205,6 +209,9 @@ func _process(delta: float) -> void:
 				release_at(model.auto_release_phase)
 		State.FOLLOW_THROUGH:
 			set_pose(minf(1.0, phase + delta * Settings.swing_speed / model.swing_duration))
+			if phase >= 1.0 and not _thunked:
+				_thunked = true
+				Sfx.play_at("treb_thunk", global_position + Vector2(0, -300), -6.0)
 		State.REWINDING:
 			_elapsed += delta
 			var k: float = clampf(_elapsed / REWIND_TIME, 0.0, 1.0)

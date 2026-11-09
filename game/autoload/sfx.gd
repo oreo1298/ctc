@@ -15,10 +15,14 @@ var _ui: AudioStreamPlayer
 var _next: int = 0
 var _playing: Dictionary = {}  # name -> count this frame window
 var _rng := RandomNumberGenerator.new()
+## False on the Dummy audio driver (headless runs, machines without sound):
+## nothing could be heard, and Dummy never releases playbacks.
+var _enabled: bool = true
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_enabled = AudioServer.get_driver_name() != "Dummy"
 	_ensure_buses()
 	_scan()
 	for i: int in POOL_SIZE:
@@ -82,7 +86,7 @@ func has(name: String) -> bool:
 func play_at(
 	name: String, pos: Vector2, volume_db: float = 0.0, pitch_jitter: float = 0.08
 ) -> bool:
-	if not _streams.has(name):
+	if not _enabled or not _streams.has(name):
 		return false
 	if int(_playing.get(name, 0)) >= MAX_PER_SOUND:
 		return false
@@ -102,7 +106,7 @@ func play_at(
 
 
 func play_ui(name: String, volume_db: float = 0.0) -> void:
-	if not _streams.has(name):
+	if not _enabled or not _streams.has(name):
 		return
 	var list: Array = _streams[name]
 	_ui.stream = list[_rng.randi() % list.size()]
@@ -123,3 +127,12 @@ func shatter(material_id: String, area_m2: float, pos: Vector2) -> void:
 	play_at(material_id + "_break", pos, clampf(-8.0 + area_m2 * 6.0, -8.0, 2.0))
 	if area_m2 > 1.0:
 		play_at("rumble", pos, -6.0, 0.15)
+
+
+func _exit_tree() -> void:
+	for p: AudioStreamPlayer2D in _pool:
+		p.stop()
+		p.stream = null
+	_ui.stop()
+	_ui.stream = null
+	_streams.clear()

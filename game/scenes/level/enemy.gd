@@ -27,11 +27,15 @@ var _body: Sprite2D
 var _headgear: Sprite2D = null
 var _headgear_lost: bool = false
 var _wobble: float = 0.0
+## Seeded per enemy: anything that affects physics must be reproducible
+## (validator proofs, slow motion). Never use the global randf() here.
+var _rng := RandomNumberGenerator.new()
 
 
 func setup(id: String, enemy_def: Dictionary, pos_m: Vector2, flip: bool) -> void:
 	type_id = id
 	def = enemy_def
+	_rng.seed = hash("%s@%.2f,%.2f" % [id, pos_m.x, pos_m.y])
 	max_hp = float(def.get("hp", 40.0))
 	hp = max_hp
 	is_target = bool(def.get("target", true))
@@ -127,7 +131,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var crush: float = float(def.get("crush_force", 2200.0))
 	if load_n > crush:
 		# Squashed under a heavy block: a few tenths of a second does it.
-		_pending += (load_n - crush) / crush * 30.0 * state.step * float(def.get("damage_taken", 1.0))
+		_pending += (
+			(load_n - crush) / crush * 30.0 * state.step * float(def.get("damage_taken", 1.0))
+		)
 
 
 func take_damage(amount: float) -> void:
@@ -135,6 +141,8 @@ func take_damage(amount: float) -> void:
 		return
 	hp -= amount
 	hurt.emit(self, amount)
+	if type_id == "knight":
+		Sfx.play_at("iron_crack", global_position, -10.0)
 	var at: float = float(def.get("headgear_at_hp", 0.0))
 	if _headgear != null and not _headgear_lost and at > 0.0 and hp <= max_hp * at:
 		_pop_headgear()
@@ -165,13 +173,19 @@ func _pop_headgear() -> void:
 	prop.add_child(spr)
 	prop.global_position = _headgear.global_position
 	prop.rotation = global_rotation
-	var side: float = 1.0 if randf() > 0.5 else -1.0
-	prop.linear_velocity = Vector2(side * randf_range(120.0, 260.0), randf_range(-620.0, -460.0))
-	prop.angular_velocity = side * randf_range(8.0, 14.0)
+	var side: float = 1.0 if _rng.randf() > 0.5 else -1.0
+	prop.linear_velocity = Vector2(
+		side * _rng.randf_range(120.0, 260.0), _rng.randf_range(-620.0, -460.0)
+	)
+	prop.angular_velocity = side * _rng.randf_range(8.0, 14.0)
 	get_parent().add_child(prop)
 	_headgear.visible = false
+	Sfx.play_at("iron_hit" if type_id == "knight" else "crown_ding", prop.global_position, -8.0)
 	# Lost headgear fades away after a while so it never clutters the level.
 	var tw := prop.create_tween()
+	# Physics clock: this frees a body, which must happen on the same physics
+	# step no matter how fast real time runs (slow motion).
+	tw.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tw.tween_interval(6.0)
 	tw.tween_property(spr, "modulate:a", 0.0, 1.0)
 	tw.tween_callback(prop.queue_free)
@@ -184,9 +198,11 @@ func eliminate() -> void:
 	hp = 0.0
 	_pop_headgear()
 	eliminated.emit(self, int(def.get("points", 0)))
+	Sfx.play_at("squash", global_position, -2.0)
 	collision_layer = 0
 	collision_mask = Block.Layer.WORLD
 	var tw := create_tween()
+	tw.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tw.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	tw.tween_property(_body, "scale", Vector2(_body.scale.x * 1.45, _body.scale.y * 0.18), 0.16)
 	tw.tween_callback(func() -> void: Effects.poof(get_parent(), global_position))

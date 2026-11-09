@@ -42,4 +42,4 @@ also machine-readable through REUSE.
 | `game/fonts/Fraunces.ttf` (headings) | The Fraunces Project Authors | OFL-1.1 | [google/fonts `ofl/fraunces`](https://github.com/google/fonts/tree/main/ofl/fraunces) @ `5bb2873`, licence in `Fraunces-OFL.txt` |
 | `game/fonts/Nunito.ttf` (body text) | The Nunito Project Authors | OFL-1.1 | [google/fonts `ofl/nunito`](https://github.com/google/fonts/tree/main/ofl/nunito) @ `5bb2873`, licence in `Nunito-OFL.txt` |
 
-*(SFX are added here as they land in milestone 2.)*
+| `game/audio/sfx/*.wav` (77 files: impacts, breaks, trebuchet, royals, UI, jingles) | Siegefall contributors | CC-BY-SA-4.0 | synthesised by `tools/sfx/generate.py` (noise, filters, inharmonic partials, Karplus-Strong strings); regenerate with `make sfx` |

@@ -16,7 +16,7 @@ GAME := game
 # Extra arguments for `make run`, e.g. make run ARGS="--level greenmantle-01"
 ARGS ?=
 
-SHELL_SCRIPTS := $(shell find scripts tests/scripts packaging -name '*.sh' -type f 2>/dev/null | sort)
+SHELL_SCRIPTS := $(shell find scripts tests packaging benchmarks tools -name '*.sh' -type f 2>/dev/null | sort)
 GD_SOURCES = $(shell find $(GAME) -name '*.gd' -not -path '$(GAME)/addons/*' -not -path '$(GAME)/.godot/*' | sort)
 
 .PHONY: help
@@ -44,7 +44,11 @@ editor: ## Open the Godot editor on the project
 
 # ------------------------------------------------------------------ test ---
 .PHONY: test
-test: import test-scripts test-unit smoke ## Run all tests
+test: import test-scripts test-unit test-sim smoke ## Run all tests
+
+.PHONY: test-sim
+test-sim: ## Simulation determinism (repeat runs, slow motion)
+	tests/sim/test_slowmo_determinism.sh
 
 .PHONY: test-unit
 test-unit: ## GDScript unit tests (GUT, headless)
@@ -94,6 +98,10 @@ lint-pot: ## Check translation catalogues are up to date
 .PHONY: pot
 pot: ## Regenerate locale/messages.pot and en.po from code and data
 	$(PY) -I tools/extract_pot.py $(GAME)
+
+.PHONY: sfx
+sfx: ## Regenerate the procedural sound effects (game/audio/sfx)
+	python3 -I tools/sfx/generate.py $(GAME)/audio/sfx
 
 .PHONY: fmt
 fmt: ## Auto-format GDScript

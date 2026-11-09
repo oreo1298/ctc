@@ -331,6 +331,9 @@ func shrink_away() -> void:
 	collision_layer = 0
 	collision_mask = Layer.WORLD
 	var tw := create_tween()
+	# Physics clock: freeing a body must land on the same physics step no
+	# matter how fast real time runs (slow motion).
+	tw.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	(
 		tw
 		. tween_property(_visual, "scale", Vector2(0.05, 0.05), 0.6)

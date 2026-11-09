@@ -384,10 +384,28 @@ func _win() -> void:
 	Game.last_level_won = true
 	print(
 		(
-			"[level] won %s in %d shot(s), medal=%s score=%d"
-			% [data.id, shots, Scoring.medal_key(medal), score]
+			"[level] won %s in %d shot(s), medal=%s score=%d state=%s"
+			% [data.id, shots, Scoring.medal_key(medal), score, state_hash()]
 		)
 	)
+
+
+## Hash of every block's and enemy's position, rounded to 0.01 px. Equal
+## hashes mean two runs simulated identically (used by the slow-mo test).
+func state_hash() -> String:
+	var ctx := HashingContext.new()
+	ctx.start(HashingContext.HASH_SHA256)
+	var bodies: Array[Node] = get_tree().get_nodes_in_group("blocks")
+	for e: Enemy in _enemies:
+		if is_instance_valid(e):
+			bodies.append(e)
+	for n: Node in bodies:
+		var b := n as Node2D
+		if b == null or not is_instance_valid(b):
+			continue
+		var p: Vector2 = b.global_position
+		ctx.update(("%d,%d;" % [roundi(p.x * 100.0), roundi(p.y * 100.0)]).to_utf8_buffer())
+	return ctx.finish().hex_encode().left(16)
 
 
 func _go_next() -> void:

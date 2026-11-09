@@ -211,3 +211,7 @@ func write_save() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.copy_absolute(abs_save, abs_save + ".bak")
 	DirAccess.rename_absolute(ProjectSettings.globalize_path(tmp), abs_save)
+
+
+func _exit_tree() -> void:
+	Block.clear_shared()
