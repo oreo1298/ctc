@@ -235,10 +235,20 @@ renderer and adjustable by the player:
   (thatch), embers and smoke (fire), and impact decals (scuffs and dents)
   painted onto blocks.
 * **Audio:** layered and procedural. Each impact plays a material *body*
-  layer (thud or crunch) plus a *texture* layer (crack, tink or clang)
-  chosen by impulse, with random pitch and gain. Big collapses add a low rumble
-  bed. All SFX are synthesised by our own script (`tools/sfx/`) into WAVs,
-  so they are original and CC BY-SA.
+  layer (thud or crunch), plus a *texture* layer (crack, tink or clang) for
+  hard hits. Volume follows the impulse, and pitch and gain are jittered.
+  Big collapses add a low rumble bed.
+  All 77 SFX (32 sounds × variations) are synthesised by `tools/sfx/generate.py`
+  (standard-library Python: filtered noise, inharmonic partials for glass
+  and iron, Karplus-Strong strings for the lute-like jingles), so they are
+  original and CC BY-SA. `make sfx` regenerates them. Each sound is capped at
+  4 simultaneous voices. Audio is skipped on Godot's Dummy driver (headless).
+* **Determinism rules** (enforced by `make test-sim`):
+  1. Nothing that touches physics uses the global RNG; every entity seeds
+     its own.
+  2. Tweens that free or alter bodies run on the physics clock.
+  3. Slow motion keeps the 1/60 s step.
+  Level 1 replayed twice, and with slow motion, must end in the same state hash.
 
 ## 6. Content pipeline
 

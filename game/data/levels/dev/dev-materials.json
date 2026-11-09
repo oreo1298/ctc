@@ -1,0 +1,407 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "dev-materials",
+  "name": "Material Showcase",
+  "grievance": "Developer level: one tower per material.",
+  "time_of_day": "noon",
+  "realm": "greenmantle",
+  "world": {
+    "right": 40,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          60,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        15.45,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        16.55,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        16.0,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        16.0,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        18.05,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        19.150000000000002,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        18.6,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "stone",
+      "pos": [
+        18.6,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        20.650000000000002,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        21.750000000000004,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        21.200000000000003,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        21.200000000000003,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        23.250000000000004,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        24.350000000000005,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        23.800000000000004,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "ice",
+      "pos": [
+        23.800000000000004,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.850000000000005,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        26.950000000000006,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        26.400000000000006,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "iron",
+      "pos": [
+        26.400000000000006,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "thatch",
+      "pos": [
+        28.450000000000006,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "thatch",
+      "pos": [
+        29.550000000000008,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "thatch",
+      "pos": [
+        29.000000000000007,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        29.000000000000007,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        31.050000000000008,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        32.150000000000006,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        31.60000000000001,
+        2.15
+      ],
+      "size": [
+        1.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        31.60000000000001,
+        2.7
+      ],
+      "size": [
+        1.6,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        16.0,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        21.2,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        26.4,
+        0.58
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        31.6,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 3,
+    "silver": 5,
+    "bronze": 8
+  },
+  "par_override": null
+}

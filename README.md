@@ -18,14 +18,16 @@ tap again to let go. The moment of release is your aim.
 * Made for Linux first, also on Windows and iOS
 * No ads, no in-app purchases, no tracking, no network. Ever.
 
-> **Status: early development.** Milestone 1 (vertical slice) is playable:
-> one level, the two-tap trebuchet, boulders, wood and stone, a king and a
-> knight, and medals. See [docs/ROADMAP.md](docs/ROADMAP.md).
+> **Status: early development.** Milestones 1–2 are done: a playable level
+> with the two-tap trebuchet, seven materials that crack and break into real
+> pieces, fire and frost, slow motion, dust, sparks and procedural sound.
+> See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 | | |
 |---|---|
 | ![Aiming](docs/screenshots/aim.png) | ![The swing](docs/screenshots/swing.png) |
 | ![Impact](docs/screenshots/impact.png) | ![Gold medal](docs/screenshots/win.png) |
+| ![Seven materials, cracked](docs/screenshots/materials.png) | ![Each material breaks its own way](docs/screenshots/shatter.png) |
 
 <sub>Rendered by `make screenshots` (software OpenGL, the low-quality tier).</sub>
 

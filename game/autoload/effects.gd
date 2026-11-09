@@ -114,7 +114,9 @@ func _burst(parent: Node, pos: Vector2, amount: int, life: float) -> CPUParticle
 	p.position = pos
 	p.local_coords = false
 	p.emitting = true
-	p.z_index = 4
+	# Behind the terrain (z -1) and blocks: falling chips disappear into the
+	# ground instead of drawing over the soil (CPU particles do not collide).
+	p.z_index = -2
 	parent.add_child(p)
 	p.finished.connect(p.queue_free)
 	return p
@@ -155,7 +157,7 @@ func break_burst(
 			_flying(parent, pos, n, shard_texture(), [c[0], c[1]], 1.2, false)
 			dust(parent, pos, size * 1.6, c[2].lerp(Color(0.9, 0.87, 0.82), 0.5))
 		"shards":
-			n = clampi(int(area_m2 * 60.0), 12, 40)
+			n = clampi(int(area_m2 * 40.0), 8, 24)
 			_flying(parent, pos, n, shard_texture(), [c[2], c[0]], 0.9, false)
 			glitter(parent, pos, size)
 		"dent":
@@ -242,7 +244,7 @@ func dust(parent: Node, pos: Vector2, size: float, tint: Color = Color(0.9, 0.86
 
 
 func glitter(parent: Node, pos: Vector2, size: float) -> void:
-	var g := _burst(parent, pos, clampi(int(size * 14.0), 6, 20), 0.9)
+	var g := _burst(parent, pos, clampi(int(size * 8.0), 4, 10), 0.9)
 	g.texture = soft_circle()
 	g.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
 	g.emission_sphere_radius = 40.0 * size
@@ -251,12 +253,13 @@ func glitter(parent: Node, pos: Vector2, size: float) -> void:
 	g.initial_velocity_min = 40.0
 	g.initial_velocity_max = 160.0
 	g.gravity = Vector2(0, 120)
-	g.scale_amount_min = 0.12
-	g.scale_amount_max = 0.3
+	g.scale_amount_min = 0.08
+	g.scale_amount_max = 0.18
 	var mat := CanvasItemMaterial.new()
 	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	g.material = mat
-	g.color_ramp = _ramp(Color(1, 1, 1, 0.9), Color(0.7, 0.9, 1.0, 0.0))
+	g.color_ramp = _ramp(Color(1, 1, 1, 0.55), Color(0.7, 0.9, 1.0, 0.0))
+	g.z_index = 5
 
 
 func sparks(parent: Node, pos: Vector2, strength: float) -> void:
@@ -276,7 +279,7 @@ func sparks(parent: Node, pos: Vector2, strength: float) -> void:
 	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	s.material = mat
 	s.color_ramp = _ramp(Color(1.0, 0.95, 0.6), Color(1.0, 0.45, 0.1, 0.0))
-	s.z_index = 7
+	s.z_index = -2
 
 
 ## Cartoon "poof" for eliminated royals.
@@ -303,33 +306,56 @@ func ground_puff(parent: Node, pos: Vector2, speed_mps: float) -> void:
 
 
 ## Flames attached to a burning block; returns the node so it can be removed.
-func flames(host: Node2D, size: float) -> Node2D:
+## `extents` = half-size of the burning block in px (flames cover it).
+func flames(host: Node2D, size: float, extents: Vector2 = Vector2(30, 30)) -> Node2D:
 	var root := Node2D.new()
 	root.z_index = 5
 	host.add_child(root)
+	# Body: opaque tongues of flame (readable against a bright sky).
 	var f := CPUParticles2D.new()
-	f.amount = maxi(4, roundi(14 * size * particle_scale))
-	f.lifetime = 0.7
+	var area_m2: float = extents.x * extents.y * 4.0 / 10000.0
+	f.amount = maxi(8, roundi((10.0 + area_m2 * 14.0) * particle_scale))
+	f.lifetime = 0.8
 	f.local_coords = false
 	f.texture = soft_circle()
-	f.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
-	f.emission_sphere_radius = 30.0 * size
+	f.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	f.emission_rect_extents = extents * 0.8
 	f.direction = Vector2.UP
-	f.spread = 20.0
-	f.gravity = Vector2(0, -260)
-	f.initial_velocity_min = 20.0
-	f.initial_velocity_max = 60.0
-	f.scale_amount_min = 0.5 * size
-	f.scale_amount_max = 1.0 * size
-	var add := CanvasItemMaterial.new()
-	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-	f.material = add
+	f.spread = 15.0
+	f.gravity = Vector2(0, -320)
+	f.initial_velocity_min = 30.0
+	f.initial_velocity_max = 80.0
+	# The soft texture is 64 px (0.64 m): tongues of roughly 0.6-1.2 m.
+	f.scale_amount_min = 1.0
+	f.scale_amount_max = 1.9
+	var sc := Curve.new()
+	sc.add_point(Vector2(0, 1.0))
+	sc.add_point(Vector2(1, 0.2))
+	f.scale_amount_curve = sc
 	var ramp := Gradient.new()
-	ramp.set_color(0, Color(1.0, 0.9, 0.5, 0.9))
-	ramp.add_point(0.4, Color(1.0, 0.5, 0.15, 0.7))
-	ramp.set_color(1, Color(0.6, 0.1, 0.05, 0.0))
+	ramp.set_color(0, Color(1.0, 0.85, 0.35, 0.95))
+	ramp.add_point(0.35, Color(1.0, 0.45, 0.12, 0.9))
+	ramp.add_point(0.7, Color(0.8, 0.18, 0.08, 0.6))
+	ramp.set_color(1, Color(0.4, 0.08, 0.05, 0.0))
 	f.color_ramp = ramp
 	root.add_child(f)
+	# Core: a small additive glow.
+	var core := CPUParticles2D.new()
+	core.amount = maxi(3, roundi(8 * size * particle_scale))
+	core.lifetime = 0.4
+	core.local_coords = false
+	core.texture = soft_circle()
+	core.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	core.emission_rect_extents = extents * 0.6
+	core.direction = Vector2.UP
+	core.gravity = Vector2(0, -200)
+	core.scale_amount_min = 0.6
+	core.scale_amount_max = 1.0
+	var add := CanvasItemMaterial.new()
+	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	core.material = add
+	core.color_ramp = _ramp(Color(1.0, 0.95, 0.6, 0.8), Color(1.0, 0.5, 0.1, 0.0))
+	root.add_child(core)
 	var smoke := CPUParticles2D.new()
 	smoke.amount = maxi(3, roundi(6 * size * particle_scale))
 	smoke.lifetime = 2.2

@@ -29,3 +29,17 @@ All notable changes are documented here. The format follows
   normal-mapped procedural block shading, OFL fonts, screenshot harness,
   gettext catalogue extraction, unit tests for trebuchet determinism,
   scoring, level parsing, saves and geometry.
+- Milestone 2: runtime Voronoi fracture (benchmarked against pre-broken
+  shards) with a style per material, debris budget and cleanup, impact
+  marks, iron sparks and dents, fire (burning, spreading, charring) and
+  frost (brittle) states, material-specific particles, lingering dust,
+  collapse-following camera, dotted ghost trail, deterministic slow motion,
+  haptics, and 77 procedurally synthesised sound effects. Royals and
+  knights are much easier to knock out and can be crushed.
+
+### Fixed
+- `make dev` exited silently on interactive runs (no `--yes`); optional
+  packages are now filtered by availability and installed in one visible
+  call.
+- Simulation was not reproducible between runs (global RNG in headgear
+  props); slow motion could shift body removal. Both fixed and tested.

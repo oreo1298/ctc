@@ -41,6 +41,7 @@ var _time: float = 0.0
 var _autoplay: PackedFloat32Array = PackedFloat32Array()
 var _ghost: Line2D
 var _ghost_points: PackedVector2Array = PackedVector2Array()
+var _frame_tick: int = 0
 
 
 func _ready() -> void:
@@ -55,7 +56,22 @@ func _ready() -> void:
 		return
 	_parse_dev_options()
 	_build()
-	if _autoplay.is_empty() and not Game.cli.has("no-intro"):
+	if Game.cli.has("debug-damage"):
+		var frac: float = str(Game.cli["debug-damage"]).to_float()
+		for n: Node in get_tree().get_nodes_in_group("blocks"):
+			var b := n as Block
+			b.apply_damage(b.max_hp * frac, 0.0, b.global_position + Vector2(10, -10))
+	if Game.cli.has("debug-ignite"):
+		for n: Node in get_tree().get_nodes_in_group("blocks"):
+			(n as Block).ignite()
+	if Game.cli.has("debug-freeze"):
+		for n: Node in get_tree().get_nodes_in_group("blocks"):
+			(n as Block).freeze_solid()
+	if Game.cli.get("camera", "") == "castle":
+		camera.frame(castle_rect.grow(200.0))
+		camera.smoothing = 50.0
+		state = State.READY
+	elif _autoplay.is_empty() and not Game.cli.has("no-intro"):
 		camera.start_intro()
 	else:
 		camera.go_aim(true)
@@ -139,9 +155,11 @@ func _build() -> void:
 	castle_rect = castle_rect.grow(150.0)
 
 	_ghost = Line2D.new()
-	_ghost.width = 6.0
-	_ghost.default_color = Color(1.0, 0.98, 0.9, 0.55)
+	_ghost.width = 10.0
+	_ghost.default_color = Color(1.0, 0.98, 0.9, 0.7)
+	_ghost.texture = _dot_texture()
 	_ghost.texture_mode = Line2D.LINE_TEXTURE_TILE
+	_ghost.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	_ghost.z_index = -1
 	world.add_child(_ghost)
 
@@ -175,6 +193,17 @@ func _build() -> void:
 	hud.menu_pressed.connect(Game.goto_menu)
 	hud.next_pressed.connect(_go_next)
 	hud.ammo_cycle.connect(cycle_ammo)
+
+
+## One dot per tile: a dotted line for the last shot's ghost trail.
+static func _dot_texture() -> Texture2D:
+	var img := Image.create(32, 16, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	for y: int in 16:
+		for x: int in 16:
+			var d: float = Vector2(x - 7.5, y - 7.5).length()
+			img.set_pixel(x, y, Color(1, 1, 1, clampf(7.0 - d, 0.0, 1.0)))
+	return ImageTexture.create_from_image(img)
 
 
 func _shadows_enabled() -> bool:
@@ -341,6 +370,7 @@ func _on_enemy_eliminated(e: Enemy, pts: int) -> void:
 func _physics_process(delta: float) -> void:
 	if state == State.FLYING and is_instance_valid(projectile) and not projectile.has_impacted:
 		_ghost_points.append(projectile.global_position)
+	_frame_collapse()
 	if _won_pending and state != State.WON:
 		_win_t += delta
 		if _win_t > 0.6 and (_world_asleep() or _win_t > WIN_SETTLE_MAX):
@@ -358,6 +388,35 @@ func _process(delta: float) -> void:
 		trebuchet.phase, trebuchet.last_release_phase, trebuchet.state == Trebuchet.State.SWINGING
 	)
 	_run_autoplay()
+
+
+## After impact, keep everything that is still moving in frame
+## (docs/DESIGN.md §5: "pull back to frame the collapse").
+func _frame_collapse() -> void:
+	if not (
+		state == State.SETTLING
+		or (state == State.FLYING and is_instance_valid(projectile) and projectile.has_impacted)
+	):
+		if not (_won_pending and state != State.WON):
+			return
+	_frame_tick += 1
+	if _frame_tick % 6 != 0:
+		return
+	var r := Rect2()
+	var have: bool = false
+	for n: Node in get_tree().get_nodes_in_group("blocks"):
+		var b := n as Block
+		if b == null or b.is_broken or b.linear_velocity.length() < 40.0:
+			continue
+		r = Rect2(b.global_position, Vector2.ZERO) if not have else r.expand(b.global_position)
+		have = true
+	for e: Enemy in _enemies:
+		if is_instance_valid(e) and not e.is_dead:
+			r = Rect2(e.global_position, Vector2.ZERO) if not have else r.expand(e.global_position)
+			have = true
+	if have:
+		var core := Rect2(castle_rect.get_center() - Vector2(250, 250), Vector2(500, 500))
+		camera.frame(r.grow(260.0).merge(core))
 
 
 func _world_asleep() -> bool:

@@ -87,9 +87,11 @@ func _spawn(job: Dictionary) -> void:
 		register(p)
 		var r: Vector2 = world_pos - xf.origin
 		var spin: Vector2 = Vector2(-r.y, r.x) * float(job["ang"])
-		var kick: Vector2 = (world_pos - (job["impact"] as Vector2)).normalized() * 90.0
-		p.linear_velocity = (job["lin"] as Vector2) + spin + kick
-		p.angular_velocity = float(job["ang"])
+		var away: Vector2 = (world_pos - (job["impact"] as Vector2)).normalized()
+		# Torn cloth flops apart; everything else gets a small outward kick.
+		var torn: bool = str(mat.get("fracture", "")) == "tear"
+		p.linear_velocity = (job["lin"] as Vector2) + spin + away * (220.0 if torn else 90.0)
+		p.angular_velocity = float(job["ang"]) + (signf(away.x) * 2.5 if torn else 0.0)
 		if bool(job["frozen"]):
 			p.freeze_solid()
 		_pieces.append(p)

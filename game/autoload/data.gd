@@ -93,7 +93,7 @@ func campaign_levels() -> PackedStringArray:
 
 
 func level_path(level_id: String) -> String:
-	var realm: String = str(level_realm.get(level_id, ""))
+	var realm: String = str(level_realm.get(level_id, "dev"))
 	return DATA_DIR.path_join("levels").path_join(realm).path_join(level_id + ".json")
 
 

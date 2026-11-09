@@ -25,6 +25,9 @@ Renders these scenes to DIR (default build/screenshots/):
   impact      the moment of impact
   collapse    the collapse framed by the camera
   win         win card with medal
+  materials   every material, heavily cracked
+  shatter     every material breaking at once
+  fire        flammable materials burning (fire spread, charring)
 Needs Xvfb and Mesa (installed by scripts/bootstrap.sh).
   --update-docs  also copy the PNGs into docs/screenshots/
 EOF
@@ -110,6 +113,11 @@ shot flight 3.0 "${L[@]}" --autoplay=0.65 --screenshots="2.55:${OUT}/flight.png"
 shot impact 4.0 "${L[@]}" --autoplay=0.65 --screenshots="3.45:${OUT}/impact.png"
 shot collapse 5.5 "${L[@]}" --autoplay=0.65 --screenshots="4.9:${OUT}/collapse.png"
 shot win 8.0 "${L[@]}" --autoplay=0.65 --screenshots="7.5:${OUT}/win.png"
+# Every material: cracked, then all breaking at once.
+M=(--level=dev-materials --camera=castle)
+shot materials 2.2 "${M[@]}" --debug-damage=0.7 --screenshots="2.0:${OUT}/materials.png"
+shot shatter 2.0 "${M[@]}" --debug-damage=1.0 --screenshots="1.25:${OUT}/shatter.png"
+shot fire 4.2 "${M[@]}" --debug-ignite --screenshots="4.0:${OUT}/fire.png"
 
 if [[ "${UPDATE_DOCS}" == 1 ]]; then
 	run mkdir -p "${SF_ROOT}/docs/screenshots"

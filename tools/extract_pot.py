@@ -64,7 +64,8 @@ def collect(game: Path) -> tuple[dict[str, set[str]], dict[str, tuple[str, set[s
                 singles.setdefault(unesc(m.group(1)), set()).add(ref)
     for js in sorted((game / "data").rglob("*.json")):
         rel = js.relative_to(game)
-        if "schemas" in rel.parts:
+        # Schemas and developer test levels are not player-facing text.
+        if "schemas" in rel.parts or "dev" in rel.parts:
             continue
         def walk(node: object, path: str) -> None:
             if isinstance(node, dict):

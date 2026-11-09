@@ -292,7 +292,8 @@ func ignite() -> void:
 		return
 	burning = true
 	_ensure_own_material()
-	_burn_fx = Effects.flames(self, sqrt(area_m2))
+	var bb: Rect2 = Fracture._bounds(ShapeGeometry.polygon_for(spec))
+	_burn_fx = Effects.flames(self, sqrt(area_m2), bb.size * 0.5)
 	Sfx.play_at("fire_start", global_position, -6.0)
 
 

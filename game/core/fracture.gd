@@ -138,7 +138,9 @@ static func voronoi_cells_geometry2d(
 static func tear(
 	poly: PackedVector2Array, impact: Vector2, rng: RandomNumberGenerator
 ) -> Array[PackedVector2Array]:
-	var angle: float = rng.randf_range(-0.5, 0.5) + PI * 0.5
+	# A roughly vertical tear (horizontal normal): banners and drapes split
+	# into two strips that flop apart instead of restacking.
+	var angle: float = rng.randf_range(-0.4, 0.4)
 	var n: Vector2 = Vector2.from_angle(angle)
 	var a: PackedVector2Array = clip_half_plane(poly, impact, n)
 	var b: PackedVector2Array = clip_half_plane(poly, impact, -n)
