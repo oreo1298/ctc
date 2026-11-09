@@ -19,7 +19,8 @@ Apple ID can.
 
 ## Build it yourself on a Mac
 
-You need Xcode 16 or newer and a free Apple account.
+You need Xcode 26 or newer (Godot 4.7's iOS template is built against the
+iOS 26 SDK; the app itself still runs on iOS 16) and a free Apple account.
 
 1. Get the Xcode project, either from a Linux machine
    (`make build ARGS="--target ios"`, then copy `build/export/ios/` to the Mac)
