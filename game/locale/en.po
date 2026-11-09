@@ -13,6 +13,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 
+#: scenes/editor/editor.gd
+#, c-format
+msgid "%d characters"
+msgstr "%d characters"
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "%d m"
+msgstr "%d m"
+
 #: ui/hud.gd
 #, c-format
 msgid "%s (gold ≤ %d)"
@@ -31,6 +41,14 @@ msgstr "75%"
 #: data/levels/greenmantle/greenmantle-02.json
 msgid "A Taller Tower"
 msgstr "A Taller Tower"
+
+#: scenes/editor/editor.gd
+msgid "A code or file for friends"
+msgstr "A code or file for friends"
+
+#: scenes/editor/editor.gd
+msgid "A fresh hill. Pick a block on the left to start."
+msgstr "A fresh hill. Pick a block on the left to start."
 
 #: scenes/menu/settings_menu.gd
 msgid "A meter showing the arm's position and your last release."
@@ -52,6 +70,19 @@ msgstr "A trusty lump of rock. Goes where you send it."
 msgid "Access"
 msgstr "Access"
 
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Added “%s” to your castles."
+msgstr "Added “%s” to your castles."
+
+#: scenes/editor/editor.gd
+msgid "Afternoon"
+msgstr "Afternoon"
+
+#: scenes/editor/editor.gd
+msgid "Anchor: never moves or breaks (A)"
+msgstr "Anchor: never moves or breaks (A)"
+
 #: scenes/menu/settings_menu.gd
 msgid "Automatic"
 msgstr "Automatic"
@@ -60,10 +91,19 @@ msgstr "Automatic"
 msgid "Avalanche"
 msgstr "Avalanche"
 
+#: scenes/editor/editor.gd
 #: scenes/menu/level_select.gd
 #: scenes/menu/settings_menu.gd
 msgid "Back"
 msgstr "Back"
+
+#: scenes/editor/editor.gd
+msgid "Back to the main menu (your castle is saved)"
+msgstr "Back to the main menu (your castle is saved)"
+
+#: data/editor.json
+msgid "Ball"
+msgstr "Ball"
 
 #: data/levels/greenmantle/greenmantle-01.json
 msgid "Baron Fennick's moat is wider than mine. Make his keep smaller to compensate."
@@ -76,6 +116,31 @@ msgstr "Baron Mudge hired knights. Real ones. With hats."
 #: data/levels/frostfang/frostfang-04.json
 msgid "Baroness Steelbrow wears iron underwear. Allegedly. Find out."
 msgstr "Baroness Steelbrow wears iron underwear. Allegedly. Find out."
+
+#: data/editor.json
+msgid "Beam"
+msgstr "Beam"
+
+#: scenes/editor/editor.gd
+msgid "Beat it in Test to set its medals."
+msgstr "Beat it in Test to set its medals."
+
+#: scenes/editor/editor.gd
+msgid "Bigger"
+msgstr "Bigger"
+
+#: data/editor.json
+msgid "Block"
+msgstr "Block"
+
+#: scenes/editor/editor_palette.gd
+msgid "Blocks"
+msgstr "Blocks"
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Blocks: %d · People: %d"
+msgstr "Blocks: %d · People: %d"
 
 #: data/ammo.json
 msgid "Boulder"
@@ -94,6 +159,14 @@ msgstr "Bronze"
 msgid "Bronze ≤ %d"
 msgstr "Bronze ≤ %d"
 
+#: scenes/editor/editor.gd
+msgid "Castle"
+msgstr "Castle"
+
+#: scenes/editor/editor.gd
+msgid "Castle deleted."
+msgstr "Castle deleted."
+
 #: scenes/menu/main_menu.gd
 msgid "Castle editor"
 msgstr "Castle editor"
@@ -101,6 +174,10 @@ msgstr "Castle editor"
 #: ui/hud.gd
 msgid "Castle flattened!"
 msgstr "Castle flattened!"
+
+#: scenes/editor/editor.gd
+msgid "Castles"
+msgstr "Castles"
 
 #: data/levels/saffron/saffron-09.json
 msgid "Chain Reaction"
@@ -118,6 +195,10 @@ msgstr "Choose level"
 msgid "Cloth"
 msgstr "Cloth"
 
+#: scenes/editor/editor.gd
+msgid "Code copied."
+msgstr "Code copied."
+
 #: data/levels/frostfang/frostfang-01.json
 msgid "Cold Reception"
 msgstr "Cold Reception"
@@ -134,6 +215,18 @@ msgstr "Continue"
 msgid "Controls"
 msgstr "Controls"
 
+#: scenes/editor/editor.gd
+msgid "Copy (Ctrl+D)"
+msgstr "Copy (Ctrl+D)"
+
+#: scenes/editor/editor.gd
+msgid "Copy code"
+msgstr "Copy code"
+
+#: scenes/editor/editor.gd
+msgid "Couldn't save there. Try another folder?"
+msgstr "Couldn't save there. Try another folder?"
+
 #: data/levels/greenmantle/greenmantle-09.json
 msgid "Count Orlo's palisade is so thick, he says nothing gets through. We'll see."
 msgstr "Count Orlo's palisade is so thick, he says nothing gets through. We'll see."
@@ -142,9 +235,57 @@ msgstr "Count Orlo's palisade is so thick, he says nothing gets through. We'll s
 msgid "Countess Vey's castle uses every material. Every. Single. One."
 msgstr "Countess Vey's castle uses every material. Every. Single. One."
 
+#: data/editor.json
+msgid "Cube"
+msgstr "Cube"
+
+#: scenes/editor/editor.gd
+msgid "Dawn"
+msgstr "Dawn"
+
+#: scenes/editor/editor.gd
+msgid "Delete"
+msgstr "Delete"
+
+#: scenes/editor/editor.gd
+msgid "Delete (Del)"
+msgstr "Delete (Del)"
+
+#: scenes/editor/editor.gd
+msgid "Delete castle"
+msgstr "Delete castle"
+
+#: scenes/editor/editor.gd
+msgid "Delete castle?"
+msgstr "Delete castle?"
+
+#: scenes/editor/editor.gd
+msgid "Done"
+msgstr "Done"
+
+#: scenes/editor/editor.gd
+msgid "Drag a point to shape the ground. Click the ground to add a point."
+msgstr "Drag a point to shape the ground. Click the ground to add a point."
+
+#: scenes/editor/editor_palette.gd
+msgid "Drag the ground's points; click the ground to add one (G)"
+msgstr "Drag the ground's points; click the ground to add one (G)"
+
+#: scenes/editor/editor.gd
+msgid "Dusk"
+msgstr "Dusk"
+
 #: data/levels/greenmantle/greenmantle-07.json
 msgid "Earl Brask built on a hill so he could look down on me. Literally."
 msgstr "Earl Brask built on a hill so he could look down on me. Literally."
+
+#: scenes/editor/editor.gd
+msgid "Edit"
+msgstr "Edit"
+
+#: scenes/level/level.gd
+msgid "Edit castle"
+msgstr "Edit castle"
 
 #: scenes/menu/settings_menu.gd
 msgid "Effects volume"
@@ -157,6 +298,14 @@ msgstr "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries
 #: data/levels/saffron/saffron-03.json
 msgid "Every stall at the Saffron market sells my portrait. Upside down."
 msgstr "Every stall at the Saffron market sells my portrait. Upside down."
+
+#: scenes/editor/editor.gd
+msgid "Face the other way (F)"
+msgstr "Face the other way (F)"
+
+#: core/custom_levels.gd
+msgid "File not found."
+msgstr "File not found."
 
 #: data/levels/saffron/saffron-05.json
 msgid "Fire Sale"
@@ -206,6 +355,11 @@ msgstr "Goes off a moment after it lands. Tap to light it early."
 msgid "Gold"
 msgstr "Gold"
 
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Gold in %d"
+msgstr "Gold in %d"
+
 #: scenes/menu/level_select.gd
 msgid "Gold · Silver · Bronze medals"
 msgstr "Gold · Silver · Bronze medals"
@@ -215,9 +369,17 @@ msgstr "Gold · Silver · Bronze medals"
 msgid "Gold ≤ %d"
 msgstr "Gold ≤ %d"
 
+#: scenes/editor/editor.gd
+msgid "Golden hour"
+msgstr "Golden hour"
+
 #: data/levels/frostfang/frostfang-07.json
 msgid "Grand Duke Varn's fortress is iron, stone and ego. Swallow it whole."
 msgstr "Grand Duke Varn's fortress is iron, stone and ego. Swallow it whole."
+
+#: scenes/editor/editor.gd
+msgid "Grass"
+msgstr "Grass"
 
 #: data/realms/greenmantle.json
 msgid "Greenmantle Hills"
@@ -226,6 +388,15 @@ msgstr "Greenmantle Hills"
 #: data/levels/greenmantle/greenmantle-12.json
 msgid "Greenmantle Keep"
 msgstr "Greenmantle Keep"
+
+#: scenes/editor/editor.gd
+msgid "Grievance"
+msgstr "Grievance"
+
+#: scenes/editor/editor.gd
+#: scenes/editor/editor_palette.gd
+msgid "Ground"
+msgstr "Ground"
 
 #: data/levels/frostfang/frostfang-06.json
 msgid "Hall of Mirrors"
@@ -275,6 +446,10 @@ msgstr "Iron ball"
 msgid "Jarl Ingmar's hall is built on ice. On purpose. Help him slide."
 msgstr "Jarl Ingmar's hall is built on ice. On purpose. Help him slide."
 
+#: scenes/editor/editor.gd
+msgid "Keep it"
+msgstr "Keep it"
+
 #: data/enemies.json
 msgid "King"
 msgstr "King"
@@ -315,6 +490,10 @@ msgstr "Market Day"
 msgid "Master volume"
 msgstr "Master volume"
 
+#: scenes/editor/editor_palette.gd
+msgid "Material"
+msgstr "Material"
+
 #: scenes/menu/settings_menu.gd
 msgid "Material patterns"
 msgstr "Material patterns"
@@ -335,6 +514,10 @@ msgstr "Mind the Guests"
 msgid "Mixed Blessings"
 msgstr "Mixed Blessings"
 
+#: scenes/editor/editor.gd
+msgid "Morning"
+msgstr "Morning"
+
 #: scenes/menu/settings_menu.gd
 msgid "Music volume"
 msgstr "Music volume"
@@ -342,6 +525,18 @@ msgstr "Music volume"
 #: data/levels/greenmantle/greenmantle-12.json
 msgid "My cousin Wendel claims the Greenmantle crown. My crown. Flatten his keep."
 msgstr "My cousin Wendel claims the Greenmantle crown. My crown. Flatten his keep."
+
+#: scenes/editor/editor.gd
+msgid "Name"
+msgstr "Name"
+
+#: scenes/editor/editor.gd
+msgid "Name, sky, scenery and size"
+msgstr "Name, sky, scenery and size"
+
+#: scenes/editor/editor.gd
+msgid "Narrower"
+msgstr "Narrower"
 
 #: ui/hud.gd
 #, c-format
@@ -352,6 +547,10 @@ msgstr "New ammo unlocked: %s"
 msgid "New best!"
 msgstr "New best!"
 
+#: scenes/editor/editor.gd
+msgid "New castle"
+msgstr "New castle"
+
 #: ui/hud.gd
 msgid "Next"
 msgstr "Next"
@@ -360,9 +559,21 @@ msgstr "Next"
 msgid "Next ammo"
 msgstr "Next ammo"
 
+#: scenes/editor/editor.gd
+msgid "Night"
+msgstr "Night"
+
+#: scenes/editor/editor.gd
+msgid "No castles yet. Everything you build is kept here."
+msgstr "No castles yet. Everything you build is kept here."
+
 #: ui/hud.gd
 msgid "No medal"
 msgstr "No medal"
+
+#: scenes/editor/editor.gd
+msgid "Noon"
+msgstr "Noon"
 
 #: scenes/menu/settings_menu.gd
 msgid "Normal"
@@ -384,6 +595,14 @@ msgstr "One button does everything: tap to shoot, hold to change ammo."
 msgid "One-button mode"
 msgstr "One-button mode"
 
+#: scenes/editor/editor.gd
+msgid "Open code"
+msgstr "Open code"
+
+#: scenes/editor/editor.gd
+msgid "Open file…"
+msgstr "Open file…"
+
 #: data/ammo.json
 msgid "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
 msgstr "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
@@ -391,6 +610,14 @@ msgstr "Opens a tiny black hole that drags everything in, then pops. Tap to open
 #: data/levels/frostfang/frostfang-05.json
 msgid "Overhang"
 msgstr "Overhang"
+
+#: scenes/editor/editor.gd
+msgid "Paste"
+msgstr "Paste"
+
+#: scenes/editor/editor.gd
+msgid "Paste a castle code (SF1.…)"
+msgstr "Paste a castle code (SF1.…)"
 
 #: scenes/menu/settings_menu.gd
 #: ui/hud.gd
@@ -405,14 +632,44 @@ msgstr "Paused"
 msgid "Peak Watch"
 msgstr "Peak Watch"
 
+#: scenes/editor/editor_palette.gd
+msgid "People"
+msgstr "People"
+
 #: data/levels/saffron/saffron-06.json
 msgid "Pharaoh-ish Pteran built a pyramid. I didn't even know we had pyramids."
 msgstr "Pharaoh-ish Pteran built a pyramid. I didn't even know we had pyramids."
 
+#: scenes/editor/editor.gd
+msgid "Pick a block on the left, then click to place it."
+msgstr "Pick a block on the left, then click to place it."
+
+#: scenes/editor/editor_palette.gd
+msgid "Pick, drag and edit pieces (V)"
+msgstr "Pick, drag and edit pieces (V)"
+
+#: data/editor.json
+msgid "Pillar"
+msgstr "Pillar"
+
+#: core/editor_model.gd
+#: tests/unit/test_editor_model.gd
+msgid "Place a king, queen or knight to defeat."
+msgstr "Place a king, queen or knight to defeat."
+
+#: data/editor.json
+msgid "Plank"
+msgstr "Plank"
+
+#: scenes/editor/editor.gd
 #: scenes/menu/main_menu.gd
 #: scenes/menu/settings_menu.gd
 msgid "Play"
 msgstr "Play"
+
+#: scenes/editor/editor.gd
+msgid "Play your castle (F5)"
+msgstr "Play your castle (F5)"
 
 #: data/levels/saffron/saffron-01.json
 msgid "Powder Day"
@@ -450,6 +707,19 @@ msgstr "Queen"
 msgid "Quit"
 msgstr "Quit"
 
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Ready to test. Blocks: %d · People: %d"
+msgstr "Ready to test. Blocks: %d · People: %d"
+
+#: scenes/editor/editor.gd
+msgid "Redo"
+msgstr "Redo"
+
+#: scenes/editor/editor.gd
+msgid "Redo (Ctrl+Y)"
+msgstr "Redo (Ctrl+Y)"
+
 #: scenes/menu/settings_menu.gd
 msgid "Reduce flashing"
 msgstr "Reduce flashing"
@@ -479,9 +749,21 @@ msgstr "Resume"
 msgid "Retry"
 msgstr "Retry"
 
+#: scenes/editor/editor.gd
+msgid "Rock"
+msgstr "Rock"
+
+#: data/editor.json
+msgid "Roof"
+msgstr "Roof"
+
 #: data/realms/saffron.json
 msgid "Saffron Reach"
 msgstr "Saffron Reach"
+
+#: scenes/editor/editor.gd
+msgid "Sand"
+msgstr "Sand"
 
 #: data/levels/saffron/saffron-06.json
 msgid "Sandstone Steps"
@@ -491,6 +773,15 @@ msgstr "Sandstone Steps"
 msgid "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
 msgstr "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
 
+#: scenes/editor/editor.gd
+msgid "Save file…"
+msgstr "Save file…"
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Saved %s"
+msgstr "Saved %s"
+
 #: data/ammo.json
 msgid "Scatter-stones"
 msgstr "Scatter-stones"
@@ -498,6 +789,10 @@ msgstr "Scatter-stones"
 #: data/levels/greenmantle/greenmantle-04.json
 msgid "Scattered Thoughts"
 msgstr "Scattered Thoughts"
+
+#: scenes/editor/editor.gd
+msgid "Scenery"
+msgstr "Scenery"
 
 #: ui/hud.gd
 #, c-format
@@ -508,19 +803,35 @@ msgstr "Score %d"
 msgid "Screen shake"
 msgstr "Screen shake"
 
+#: scenes/editor/editor_palette.gd
+msgid "Select"
+msgstr "Select"
+
 #: scenes/menu/main_menu.gd
 #: scenes/menu/settings_menu.gd
 msgid "Settings"
 msgstr "Settings"
 
+#: scenes/editor/editor.gd
+msgid "Share"
+msgstr "Share"
+
 #: data/ammo.json
 msgid "Shatters into flames. Wood, thatch and cloth keep burning."
 msgstr "Shatters into flames. Wood, thatch and cloth keep burning."
+
+#: scenes/editor/editor.gd
+msgid "Shorter"
+msgstr "Shorter"
 
 #: ui/hud.gd
 #, c-format
 msgid "Shots: %d"
 msgstr "Shots: %d"
+
+#: scenes/editor/editor.gd
+msgid "Siegefall castle"
+msgstr "Siegefall castle"
 
 #: ui/hud.gd
 msgid "Silver"
@@ -539,6 +850,10 @@ msgstr "Sir Pellam's picnic was lovely. I wasn't invited. Scatter it."
 msgid "Sir Tobble's gatehouse has a portcullis. Mine has a curtain."
 msgstr "Sir Tobble's gatehouse has a portcullis. Mine has a curtain."
 
+#: scenes/editor/editor.gd
+msgid "Sky"
+msgstr "Sky"
+
 #: data/levels/frostfang/frostfang-02.json
 msgid "Slippery Slope"
 msgstr "Slippery Slope"
@@ -546,6 +861,22 @@ msgstr "Slippery Slope"
 #: scenes/menu/settings_menu.gd
 msgid "Slow motion on big hits"
 msgstr "Slow motion on big hits"
+
+#: scenes/editor/editor.gd
+msgid "Smaller"
+msgstr "Smaller"
+
+#: scenes/editor/editor.gd
+msgid "Snow"
+msgstr "Snow"
+
+#: core/editor_model.gd
+msgid "Some blocks overlap (red). They will jump apart when play starts."
+msgstr "Some blocks overlap (red). They will jump apart when play starts."
+
+#: core/editor_model.gd
+msgid "Something is past the edge of the world (dashed line)."
+msgstr "Something is past the edge of the world (dashed line)."
 
 #: scenes/menu/settings_menu.gd
 msgid "Sound"
@@ -571,13 +902,46 @@ msgstr "Swing gauge"
 msgid "Swing speed"
 msgstr "Swing speed"
 
+#: scenes/editor/editor.gd
+msgid "Taller"
+msgstr "Taller"
+
 #: scenes/level/level.gd
 msgid "Tap to swing, tap again to let go"
 msgstr "Tap to swing, tap again to let go"
 
+#: scenes/editor/editor.gd
+msgid "Test"
+msgstr "Test"
+
 #: scenes/menu/settings_menu.gd
 msgid "Text size"
 msgstr "Text size"
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "That castle can't be played yet: %s"
+msgstr "That castle can't be played yet: %s"
+
+#: core/share_code.gd
+msgid "That code is too long."
+msgstr "That code is too long."
+
+#: core/share_code.gd
+msgid "That doesn't look like a castle code (they start with SF1.)."
+msgstr "That doesn't look like a castle code (they start with SF1.)."
+
+#: core/custom_levels.gd
+msgid "That file can't be opened."
+msgstr "That file can't be opened."
+
+#: core/custom_levels.gd
+msgid "That file is too large to be a castle."
+msgstr "That file is too large to be a castle."
+
+#: core/custom_levels.gd
+msgid "That file isn't a Siegefall castle."
+msgstr "That file isn't a Siegefall castle."
 
 #: data/materials.json
 msgid "Thatch"
@@ -667,6 +1031,22 @@ msgstr "The Vizier's glass palace sparkles at me every morning. Rude."
 msgid "The Wider Moat"
 msgstr "The Wider Moat"
 
+#: core/share_code.gd
+msgid "The code is damaged or incomplete. Copy it again?"
+msgstr "The code is damaged or incomplete. Copy it again?"
+
+#: core/share_code.gd
+msgid "The code is damaged or too large."
+msgstr "The code is damaged or too large."
+
+#: core/share_code.gd
+msgid "The code is damaged."
+msgstr "The code is damaged."
+
+#: core/share_code.gd
+msgid "The code uses a newer format than this version of the game."
+msgstr "The code uses a newer format than this version of the game."
+
 #: data/levels/frostfang/frostfang-12.json
 msgid "The last of my rivals sits in the coldest castle of all. Warm him up. Then down."
 msgstr "The last of my rivals sits in the coldest castle of all. Warm him up. Then down."
@@ -679,6 +1059,28 @@ msgstr "The timber baron of Saffron sells wood to my enemies. Light up his life.
 msgid "Tin Cans"
 msgstr "Tin Cans"
 
+#: scenes/editor/editor.gd
+msgid "Tip: beat your castle in Test first, so friends get medals to aim for."
+msgstr "Tip: beat your castle in Test first, so friends get medals to aim for."
+
+#: core/editor_model.gd
+#, c-format
+msgid "Too many blocks: %d is the most a castle can have."
+msgstr "Too many blocks: %d is the most a castle can have."
+
+#: core/editor_model.gd
+#, c-format
+msgid "Too many people: %d is the most."
+msgstr "Too many people: %d is the most."
+
+#: scenes/editor/editor.gd
+msgid "Turn left (Q)"
+msgstr "Turn left (Q)"
+
+#: scenes/editor/editor.gd
+msgid "Turn right (E)"
+msgstr "Turn right (E)"
+
 #: data/levels/greenmantle/greenmantle-11.json
 msgid "Twin Keeps"
 msgstr "Twin Keeps"
@@ -690,6 +1092,14 @@ msgstr "Two Thrones"
 #: data/ammo.json
 msgid "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart."
 msgstr "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart."
+
+#: scenes/editor/editor.gd
+msgid "Undo"
+msgstr "Undo"
+
+#: scenes/editor/editor.gd
+msgid "Undo (Ctrl+Z)"
+msgstr "Undo (Ctrl+Z)"
 
 #: scenes/boot/boot.gd
 #, c-format
@@ -708,17 +1118,46 @@ msgstr "Video"
 msgid "Void flask"
 msgstr "Void flask"
 
+#: data/editor.json
+msgid "Wedge"
+msgstr "Wedge"
+
 #: data/realms/greenmantle.json
 msgid "Where King Grumbold's grudges grow greenest."
 msgstr "Where King Grumbold's grudges grow greenest."
+
+#: scenes/editor/editor.gd
+msgid "Why must this castle fall?"
+msgstr "Why must this castle fall?"
+
+#: scenes/editor/editor.gd
+msgid "Wider"
+msgstr "Wider"
+
+#: scenes/editor/editor.gd
+msgid "Width"
+msgstr "Width"
 
 #: data/materials.json
 msgid "Wood"
 msgstr "Wood"
 
+#: scenes/editor/editor.gd
+msgid "Your castles, and opening shared ones"
+msgstr "Your castles, and opening shared ones"
+
+#: scenes/editor/editor.gd
+msgid "open now"
+msgstr "open now"
+
 #: ui/hud.gd
 msgid "— King Grumbold the Petty"
 msgstr "— King Grumbold the Petty"
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "“%s” will be gone for good."
+msgstr "“%s” will be gone for good."
 
 #: scenes/menu/level_select.gd
 #: ui/hud.gd
@@ -727,3 +1166,10 @@ msgid "%d shot"
 msgid_plural "%d shots"
 msgstr[0] "%d shot"
 msgstr[1] "%d shots"
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Your record: %d shot"
+msgid_plural "Your record: %d shots"
+msgstr[0] "Your record: %d shot"
+msgstr[1] "Your record: %d shots"

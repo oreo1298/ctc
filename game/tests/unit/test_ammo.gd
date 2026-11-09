@@ -20,7 +20,7 @@ func test_every_ammo_has_a_look_and_valid_tap() -> void:
 	for a: Dictionary in Data.ammo:
 		assert_true(a.has("look"), str(a.get("id")))
 		assert_has(taps, str(a.get("tap_action", "none")), str(a.get("id")))
-		assert_not_null(Projectile.make_visual(a), "visual for %s" % a.get("id"))
+		assert_not_null(autofree(Projectile.make_visual(a)), "visual for %s" % a.get("id"))
 
 
 func test_boulder_is_always_available() -> void:

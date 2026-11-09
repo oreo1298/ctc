@@ -68,25 +68,40 @@ func setup(id: String, enemy_def: Dictionary, pos_m: Vector2, flip: bool) -> voi
 	cs.shape = cap
 	add_child(cs)
 
-	_body = Sprite2D.new()
-	_body.texture = load(str(def.get("art", ""))) as Texture2D
-	_body.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	_body.flip_h = flip
-	if _body.texture != null:
-		var s: float = h / (_body.texture.get_height() / ART_SCALE) / ART_SCALE
-		_body.scale = Vector2(s, s)
+	_body = body_sprite(def, flip)
 	add_child(_body)
-
-	var hg_path: Variant = def.get("headgear")
-	if hg_path is String and not (hg_path as String).is_empty():
-		_headgear = Sprite2D.new()
-		_headgear.texture = load(hg_path as String) as Texture2D
-		_headgear.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-		_headgear.scale = _body.scale
-		# Character art puts the top of the head at 8% of the body height.
-		_headgear.position = Vector2(0.0, -h * 0.5 + h * 0.06)
-		_headgear.flip_h = flip
+	_headgear = headgear_sprite(def, _body, flip)
+	if _headgear != null:
 		add_child(_headgear)
+
+
+## The character's body art, scaled to its height (also used by the editor).
+static func body_sprite(enemy_def: Dictionary, flip: bool) -> Sprite2D:
+	var h: float = float(enemy_def.get("height", 1.1)) * Units.PX_PER_M
+	var body := Sprite2D.new()
+	body.texture = load(str(enemy_def.get("art", ""))) as Texture2D
+	body.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	body.flip_h = flip
+	if body.texture != null:
+		var s: float = h / (body.texture.get_height() / ART_SCALE) / ART_SCALE
+		body.scale = Vector2(s, s)
+	return body
+
+
+## Crown, tiara or helmet sitting on `body`, or null.
+static func headgear_sprite(enemy_def: Dictionary, body: Sprite2D, flip: bool) -> Sprite2D:
+	var hg_path: Variant = enemy_def.get("headgear")
+	if not hg_path is String or (hg_path as String).is_empty():
+		return null
+	var h: float = float(enemy_def.get("height", 1.1)) * Units.PX_PER_M
+	var hg := Sprite2D.new()
+	hg.texture = load(hg_path as String) as Texture2D
+	hg.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	hg.scale = body.scale
+	# Character art puts the top of the head at 8% of the body height.
+	hg.position = Vector2(0.0, -h * 0.5 + h * 0.06)
+	hg.flip_h = flip
+	return hg
 
 
 func _physics_process(delta: float) -> void:

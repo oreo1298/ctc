@@ -12,6 +12,9 @@ signal menu_pressed
 signal next_pressed
 signal ammo_cycle(direction: int)
 
+## Text of the button that leaves the level ("Menu", or "Edit castle" when
+## test-playing from the editor).
+var menu_label: String = ""
 var _root: Control
 var _margin: MarginContainer
 var _shots: Label
@@ -161,6 +164,9 @@ func setup(level_name: String, par: Dictionary) -> void:
 	_par_chips[0].text = tr("Gold ≤ %d") % int(par.get("gold", 1))
 	_par_chips[1].text = tr("Silver ≤ %d") % int(par.get("silver", 2))
 	_par_chips[2].text = tr("Bronze ≤ %d") % int(par.get("bronze", 4))
+	# A new custom castle has no par until its author beats it.
+	for chip: Label in _par_chips:
+		chip.get_parent().visible = not par.is_empty()
 	set_shots(0)
 
 
@@ -255,7 +261,8 @@ func show_win(
 	score: int,
 	best: bool,
 	unlocked: PackedStringArray,
-	has_next: bool
+	has_next: bool,
+	note: String = ""
 ) -> void:
 	_gauge.visible = false
 	_win = _card()
@@ -276,7 +283,7 @@ func show_win(
 	line.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var shot_text: String = tr_n("%d shot", "%d shots", shots) % shots
 	var par_text: String = tr("%s (gold ≤ %d)") % [shot_text, int(par.get("gold", 1))]
-	line.text = "%s · %s" % [medal_names[medal], par_text]
+	line.text = "%s · %s" % [medal_names[medal], par_text] if not par.is_empty() else shot_text
 	box.add_child(line)
 	var pts := Label.new()
 	pts.theme_type_variation = "SmallLabel"
@@ -289,12 +296,20 @@ func show_win(
 		u.add_theme_color_override("font_color", UiTheme.ACCENT)
 		u.text = tr("New ammo unlocked: %s") % tr(str(Data.ammo_def(id).get("name", id)))
 		box.add_child(u)
+	if not note.is_empty():
+		var nl := Label.new()
+		nl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		nl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		nl.custom_minimum_size.x = 360.0 * Settings.text_scale
+		nl.add_theme_color_override("font_color", UiTheme.ACCENT)
+		nl.text = note
+		box.add_child(nl)
 	var row := HBoxContainer.new()
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_theme_constant_override("separation", 14)
 	box.add_child(row)
 	var menu := Button.new()
-	menu.text = tr("Menu")
+	menu.text = menu_label if not menu_label.is_empty() else tr("Menu")
 	menu.pressed.connect(menu_pressed.emit)
 	row.add_child(menu)
 	var retry := Button.new()
@@ -329,7 +344,9 @@ func show_pause() -> void:
 	head.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(head)
 	for pair: Array in [
-		[tr("Resume"), resume_pressed], [tr("Restart"), restart_pressed], [tr("Menu"), menu_pressed]
+		[tr("Resume"), resume_pressed],
+		[tr("Restart"), restart_pressed],
+		[menu_label if not menu_label.is_empty() else tr("Menu"), menu_pressed]
 	]:
 		var b := Button.new()
 		b.text = str(pair[0])

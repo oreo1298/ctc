@@ -1,0 +1,14 @@
+{
+  "$schema": "schemas/editor.schema.json",
+  "presets": [
+    {"id": "plank", "name": "Plank", "shape": "rect", "size": [2.0, 0.3]},
+    {"id": "pillar", "name": "Pillar", "shape": "rect", "size": [0.3, 1.6]},
+    {"id": "block", "name": "Block", "shape": "rect", "size": [1.0, 0.8]},
+    {"id": "cube", "name": "Cube", "shape": "rect", "size": [0.6, 0.6]},
+    {"id": "beam", "name": "Beam", "shape": "rect", "size": [3.6, 0.35]},
+    {"id": "roof", "name": "Roof", "shape": "tri", "size": [2.4, 0.9]},
+    {"id": "wedge", "name": "Wedge", "shape": "wedge", "size": [1.0, 0.8]},
+    {"id": "ball", "name": "Ball", "shape": "circle", "radius": 0.4}
+  ],
+  "people": ["king", "queen", "knight", "hostage"]
+}

@@ -5,7 +5,8 @@
 game/locale/en.po complete (English msgids, identity translations).
 
 Sources:
-  * tr("...") and tr_n("...", "...") literals in game/**/*.gd
+  * tr("...") and tr_n("...", "...") literals in game/**/*.gd, and
+    I18n.tr_noop("...") for messages built in static code
   * translatable fields of game/data/**/*.json (names, descriptions,
     grievances, taglines)
 
@@ -19,7 +20,7 @@ import re
 import sys
 from pathlib import Path
 
-TR_RE = re.compile(r'\btr\(\s*"((?:[^"\\]|\\.)*)"\s*[),]')
+TR_RE = re.compile(r'\b(?:tr|tr_noop)\(\s*"((?:[^"\\]|\\.)*)"\s*[),]')
 TRN_RE = re.compile(r'\btr_n\(\s*"((?:[^"\\]|\\.)*)"\s*,\s*"((?:[^"\\]|\\.)*)"')
 DATA_KEYS = {"name", "description", "grievance", "tagline"}
 HEADER = '''# SPDX-FileCopyrightText: 2026 Siegefall contributors

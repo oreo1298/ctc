@@ -38,6 +38,7 @@ also machine-readable through REUSE.
 | `game/icon.svg` | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
 | `game/art/characters/*.svg` (king, queen, knight, hostage, crown, tiara, helmet) | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
 | `game/art/ui/*.svg` (restart, pause, lock) | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
+| `game/art/ui/editor/*.svg` (turn, resize, anchor, copy, delete, flip) | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
 | `game/shaders/*` (blocks, terrain, sky, hills) | Siegefall contributors | MIT | procedural shaders |
 | `game/fonts/Fraunces.ttf` (headings) | The Fraunces Project Authors | OFL-1.1 | [google/fonts `ofl/fraunces`](https://github.com/google/fonts/tree/main/ofl/fraunces) @ `5bb2873`, licence in `Fraunces-OFL.txt` |
 | `game/fonts/Nunito.ttf` (body text) | The Nunito Project Authors | OFL-1.1 | [google/fonts `ofl/nunito`](https://github.com/google/fonts/tree/main/ofl/nunito) @ `5bb2873`, licence in `Nunito-OFL.txt` |

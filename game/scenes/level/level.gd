@@ -219,15 +219,21 @@ func _build() -> void:
 	hud = Hud.new()
 	hud.name = "Hud"
 	add_child(hud)
-	hud.setup(tr(data.name), data.par)
+	var custom: bool = not Game.custom_level.is_empty()
+	if Game.custom_from_editor and custom:
+		hud.menu_label = tr("Edit castle")
+	# Custom castles keep their own words: they are not in the translation
+	# catalogue, and a player-written name must never be looked up as a key.
+	var title: String = data.name if custom else tr(data.name)
+	hud.setup(title, _par())
 	hud.set_ammo(trebuchet.ammo, ammo_list.size())
 	hud.set_hint(tr("Tap to swing, tap again to let go"))
 	if not bot_mode and not Game.cli.has("autoplay"):
-		hud.show_intro(tr(data.name), tr(data.grievance))
+		hud.show_intro(title, data.grievance if custom else tr(data.grievance))
 	hud.restart_pressed.connect(Game.restart_level)
 	hud.pause_pressed.connect(toggle_pause)
 	hud.resume_pressed.connect(toggle_pause)
-	hud.menu_pressed.connect(Game.goto_levels)
+	hud.menu_pressed.connect(Game.leave_level)
 	hud.next_pressed.connect(_go_next)
 	hud.ammo_cycle.connect(cycle_ammo)
 
@@ -541,10 +547,20 @@ func _exit_tree() -> void:
 	Effects.reset_time()
 
 
+## Medal thresholds; empty for a custom castle nobody has beaten yet.
+func _par() -> Dictionary:
+	if not Game.custom_level.is_empty() and not Game.custom_level.has("par"):
+		return {}
+	return data.par
+
+
 func _win() -> void:
 	state = State.WON
 	if bot_mode:
 		_bot_report(true)
+		return
+	if not Game.custom_level.is_empty():
+		_win_custom()
 		return
 	var medal: Scoring.Medal = Scoring.medal_for(shots, data.par)
 	var score: int = Scoring.final_score(points, shots, data.par)
@@ -610,7 +626,35 @@ func state_hash() -> String:
 	return ctx.finish().hex_encode().left(16)
 
 
+## Custom castles never touch campaign progress. Beating your own castle in
+## the editor's test-play sets its par.
+func _win_custom() -> void:
+	var record: bool = Game.record_custom_win(shots)
+	var par: Dictionary = _par() if not record else (Game.custom_level["par"] as Dictionary)
+	var medal: Scoring.Medal = (
+		Scoring.medal_for(shots, par) if not par.is_empty() else Scoring.Medal.NONE
+	)
+	var score: int = Scoring.final_score(points, shots, par if not par.is_empty() else data.par)
+	var note: String = ""
+	if record:
+		note = (
+			tr_n(
+				"New record! Players need %d shot for gold.",
+				"New record! Players need %d shots for gold.",
+				shots
+			)
+			% shots
+		)
+	hud.show_win(medal, shots, par, score, false, PackedStringArray(), false, note)
+	won.emit(shots)
+	Game.last_level_won = true
+	print("[level] won custom castle in %d shot(s)" % shots)
+
+
 func _go_next() -> void:
+	if not Game.custom_level.is_empty():
+		Game.leave_level()
+		return
 	var nxt: String = Game.next_level_id(data.id)
 	if nxt.is_empty():
 		Game.goto_menu()

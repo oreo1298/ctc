@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "editor.schema.json",
+  "title": "Castle editor palette",
+  "type": "object",
+  "required": ["$schema", "presets", "people"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "presets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "shape"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "shape": {"enum": ["rect", "circle", "tri", "wedge"]},
+          "size": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0}, "minItems": 2, "maxItems": 2},
+          "radius": {"type": "number", "exclusiveMinimum": 0}
+        }
+      }
+    },
+    "people": {"type": "array", "items": {"type": "string"}}
+  }
+}

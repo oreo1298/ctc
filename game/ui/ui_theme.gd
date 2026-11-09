@@ -202,4 +202,22 @@ static func build(text_scale: float = 1.0) -> Theme:
 	t.set_stylebox("hover", "HudButton", hud_hover)
 	t.set_stylebox("pressed", "HudButton", hud_hover)
 	t.set_constant("icon_max_width", "HudButton", roundi(34 * text_scale))
+
+	# Compact toggle tiles (editor palette and piece bar): small margins so
+	# icons fill the button, and a gold face when chosen.
+	t.add_type("ToolButton")
+	t.set_type_variation("ToolButton", "Button")
+	t.set_font_size("font_size", "ToolButton", roundi(18 * text_scale))
+	var looks: Dictionary = {
+		"normal": button_style(PAPER_DEEP),
+		"hover": button_style(PAPER),
+		"pressed": button_style(GOLD.lerp(PAPER, 0.3)),
+		"hover_pressed": button_style(GOLD.lerp(PAPER, 0.15)),
+		"disabled": button_style(PAPER_DEEP.lerp(PAPER, 0.5), INK_SOFT),
+	}
+	for k: String in looks:
+		var sb: StyleBoxFlat = looks[k]
+		sb.set_content_margin_all(6)
+		sb.set_corner_radius_all(12)
+		t.set_stylebox(k, "ToolButton", sb)
 	return t

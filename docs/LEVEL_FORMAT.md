@@ -106,16 +106,26 @@ points if they are hit.
 
 ## 5. Share codes
 
-`SF1-<payload>-<check>`
+`SF1.<payload>.<check>` (dots, because base64url uses `-` and `_`)
 
-* *payload*: the level's canonical JSON (keys sorted, numbers rounded to
-  0.01 m / 0.1°, `par`, `solution` and `content_hash` stripped), compressed
-  with DEFLATE and encoded as base64url without padding.
+* *payload*: a compact JSON form of the level (integer arrays in
+  centimetres and tenths of a degree, indices for shapes, materials and
+  people), compressed with DEFLATE and encoded as base64url without padding.
+  The author's `par` (set by beating the castle in the editor's test-play)
+  is shared; the solutions are not.
 * *check*: the first 4 bytes of SHA-256(payload), in base64url. It catches
   typos and truncated pastes.
 * `SF1` is the format version. Future versions keep decoding old codes.
 
-## 5a. Campaign authoring
+## 5a. Your castles
+
+Castles built in the editor are ordinary level files in `user://levels/`
+(on Linux `~/.local/share/siegefall/levels/`). Their ids start with
+`custom-`. Codes and files you open are copied there under a new id, so
+they never replace a castle of your own. A custom castle's `par` is set by
+its author beating it in test-play.
+
+## 5b. Campaign authoring
 
 Campaign castles are written as short Python functions in
 `tools/levels/build_levels.py`. The building primitives place blocks so they

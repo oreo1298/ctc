@@ -12,6 +12,7 @@ var ammo_by_id: Dictionary = {}
 var enemies: Dictionary = {}
 var trebuchet: Dictionary = {}
 var time_of_day: Dictionary = {}
+var editor: Dictionary = {}
 ## Realms sorted by "order".
 var realms: Array[Dictionary] = []
 var realm_by_id: Dictionary = {}
@@ -30,6 +31,7 @@ func reload() -> void:
 	enemies = _dict(load_json("enemies.json").get("enemies", {}))
 	trebuchet = load_json("trebuchet.json")
 	time_of_day = _dict(load_json("time_of_day.json").get("grades", {}))
+	editor = load_json("editor.json")
 	ammo.clear()
 	ammo_by_id.clear()
 	var raw_ammo: Variant = load_json("ammo.json").get("ammo", [])

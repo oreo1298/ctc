@@ -30,6 +30,10 @@ Renders these scenes to DIR (default build/screenshots/):
   materials   every material, heavily cracked
   shatter     every material breaking at once
   fire        flammable materials burning (fire spread, charring)
+  editor      castle editor with a block selected
+  terrain     castle editor, ground tool
+  share       castle editor, share dialog
+  testplay    a castle won in the editor's test-play
 Needs Xvfb and Mesa (installed by scripts/bootstrap.sh).
   --update-docs  also copy the PNGs into docs/screenshots/
 EOF
@@ -122,6 +126,13 @@ M=(--level=dev-materials --camera=castle)
 shot materials 2.2 "${M[@]}" --debug-damage=0.7 --screenshots="2.0:${OUT}/materials.png"
 shot shatter 2.0 "${M[@]}" --debug-damage=1.0 --screenshots="1.25:${OUT}/shatter.png"
 shot fire 4.2 "${M[@]}" --debug-ignite --screenshots="4.0:${OUT}/fire.png"
+
+E=(--screen=editor --edit=greenmantle-06)
+shot editor 2.4 "${E[@]}" --edit-select=4 --screenshots="2.2:${OUT}/editor.png"
+shot terrain 2.4 "${E[@]}" --edit-tool=terrain --screenshots="2.2:${OUT}/terrain.png"
+shot share 2.4 "${E[@]}" --edit-dialog=share --screenshots="2.2:${OUT}/share.png"
+shot testplay 9.0 --screen=editor --edit=greenmantle-01 --edit-test --autoplay=0.65 \
+	--screenshots="8.4:${OUT}/testplay.png"
 
 if [[ "${UPDATE_DOCS}" == 1 ]]; then
 	run mkdir -p "${SF_ROOT}/docs/screenshots"

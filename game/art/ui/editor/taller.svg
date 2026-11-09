@@ -1,0 +1,7 @@
+<!-- SPDX-FileCopyrightText: 2026 Siegefall contributors -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#3b2f26" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<rect x="17" y="16" width="14" height="16" rx="2" fill="#e6d5b0"/>
+<path d="M24 4 V12 M19 8 L24 3 L29 8"/>
+<path d="M24 44 V36 M19 40 L24 45 L29 40"/>
+</svg>

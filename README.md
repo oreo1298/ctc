@@ -18,11 +18,12 @@ tap again to let go. The moment of release is your aim.
 * Made for Linux first, also on Windows and iOS
 * No ads, no in-app purchases, no tracking, no network. Ever.
 
-> **Status: early development.** Milestones 1–3 are done: the full campaign
+> **Status: early development.** Milestones 1–4 are done: the full campaign
 > (3 realms × 12 levels, each proven beatable by a bot that also sets par),
 > eight ammo types, seven materials that crack and break into real pieces,
 > fire and frost, procedural sound, level select, settings and accessibility
-> options. Next: the castle editor. See [docs/ROADMAP.md](docs/ROADMAP.md).
+> options, and a castle editor with offline share codes. Next: Linux and
+> Windows packaging. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 | | |
 |---|---|
@@ -31,6 +32,7 @@ tap again to let go. The moment of release is your aim.
 | ![Seven materials, cracked](docs/screenshots/materials.png) | ![Each material breaks its own way](docs/screenshots/shatter.png) |
 | ![Saffron Reach at night](docs/screenshots/saffron.png) | ![The Frostfang Citadel under the aurora](docs/screenshots/frostfang.png) |
 | ![Level select](docs/screenshots/levels.png) | ![The void flask](docs/screenshots/void.png) |
+| ![The castle editor](docs/screenshots/editor.png) | ![Sharing a castle as a code](docs/screenshots/share.png) |
 
 <sub>Rendered by `make screenshots` (software OpenGL, the low-quality tier).</sub>
 

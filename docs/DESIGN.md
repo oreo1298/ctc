@@ -305,15 +305,37 @@ beatable. A full re-search runs when a level's content hash changes.
 
 ## 7. Castle editor and sharing
 
-* Place, rotate, scale and delete blocks (any material and shape), enemies,
-  hostages and terrain control points. Snap to a 0.25 m grid, plus 15° rotation
-  snapping, toggleable. Undo/redo.
-* **Test-play** drops you straight into the level, and *Back to editor*
-  returns with the editor state intact.
-* Saved locally under `user://levels/*.json`. **Share code**: canonical,
-  quantised JSON → DEFLATE → base64url, wrapped as `SF1-<payload>-<check>`,
+* A palette of eight shapes (plank, pillar, block, cube, beam, roof, wedge,
+  ball, from `game/data/editor.json`), seven materials and four people. Pick
+  one and click to place it; it stays picked for the next click. Right-click
+  or Esc goes back to Select.
+* **Settling:** a placed or dropped piece comes to rest on the highest
+  surface under it whose top is below its centre, or whose middle is: so
+  dropping onto the upper half of a block stacks on it. Castles start at
+  rest, which is what keeps them standing when play begins. **Anchors**
+  (static blocks) stay exactly where they are put and never break.
+* Positions snap to 5 cm, rotation to 15°. Resize in 10 cm steps. Undo/redo
+  (100 steps) survives test-play. Overlapping blocks are tinted red and
+  pieces past the world's edge are flagged; a castle needs at least one
+  royal or knight before it can be played.
+* **Ground tool:** drag terrain points; click near the ground to add one.
+  Castle settings pick the name, grievance, sky (time of day), scenery
+  (realm backdrop), ground style and world width (24–120 m).
+* **Test-play** drops you straight into the level, and *Edit castle* returns
+  with the editor state, camera and undo history intact. Test-play never
+  touches campaign progress. Beating your own castle sets its **par**: your
+  fewest shots become gold (silver +1, bronze +3). Any change to the castle
+  itself (not its name or sky) clears the par.
+* Castles save themselves (0.8 s after each change, and on leaving) to
+  `user://levels/<id>.json` with atomic writes. **Share code**: canonical,
+  compact integer JSON → DEFLATE → base64url, wrapped as `SF1.<payload>.<check>`,
   where the check is 4 bytes of SHA-256. The prefix is versioned so the format
-  can evolve. Codes can also be exported and imported as `.json` files.
+  can evolve. The author's par travels with the code; solutions do not.
+  Castles can also be saved and opened as `.json` files (native file dialog).
+  Imports always get a new id, so they never overwrite your own castles.
+* Mouse, touch (tap, drag, two-finger pan and pinch), trackpad gestures and
+  keyboard shortcuts (Q/E turn, Del, Ctrl+D, F, A, arrows nudge, Ctrl+Z/Y,
+  Home frames the castle, F5 test-plays).
 
 ## 8. Technical choices
 
@@ -513,3 +535,4 @@ double-check before deciding):
 | 2026-11-09 | Trebuchet tuned: 2.1 s swing, 22 m/s peak launch. The useful release window spans about 0.3 s, from high lobs to flat shots. Launch speed is decoupled from the animation length. |
 | 2026-11-09 | Fracture: **runtime Voronoi** with impact-biased, spaced seeds; 3 fractures per tick, 320-body budget, settled debris retired. |
 | 2026-11-09 | Slow motion: `time_scale` and `physics_ticks_per_second` scale together, so the physics step stays 1/60 s. |
+| 2026-11-09 | Castle editor: settle-on-drop placement instead of a free grid (castles start at rest); par for custom castles comes from the author's own test-play win and travels in the share code. |

@@ -17,6 +17,11 @@ var save: SaveGame = SaveGame.new()
 var current_level_id: String = ""
 ## Level built from data outside the campaign (editor test-play, share code).
 var custom_level: Dictionary = {}
+## The castle editor's document and undo history; it outlives the editor
+## scene so test-play can return to exactly where the player left off.
+var editor: EditorModel = null
+## True while test-playing the castle open in the editor.
+var custom_from_editor: bool = false
 var selected_ammo: String = "boulder"
 ## Parsed command-line options (after `--`), e.g. --level=greenmantle-01.
 var cli: Dictionary = {}
@@ -124,10 +129,34 @@ func play_level(level_id: String) -> void:
 	_change_scene(LEVEL_SCENE)
 
 
-func play_custom(level_dict: Dictionary) -> void:
+func play_custom(level_dict: Dictionary, from_editor: bool = false) -> void:
 	current_level_id = ""
-	custom_level = level_dict
+	custom_level = level_dict.duplicate(true)
+	custom_from_editor = from_editor
+	if not is_ammo_unlocked(selected_ammo):
+		selected_ammo = "boulder"
 	_change_scene(LEVEL_SCENE)
+
+
+## Where "Menu" leads from a level: the editor after test-play, otherwise
+## the level list.
+func leave_level() -> void:
+	if not custom_level.is_empty() and custom_from_editor:
+		goto_editor()
+	else:
+		goto_levels()
+
+
+## A custom castle was won. From the editor, the fewest shots becomes the
+## castle's par (saved with it). Returns true for a new record.
+func record_custom_win(shots: int) -> bool:
+	if not custom_from_editor or editor == null:
+		return false
+	if not editor.record_par(shots):
+		return false
+	custom_level["par"] = editor.doc["par"]
+	CustomLevels.save_level(editor.doc)
+	return true
 
 
 ## Instant retry: no fade, no confirmation.

@@ -46,6 +46,15 @@ All notable changes are documented here. The format follows
   sequential unlocks and realm unlocks; settings (gameplay, accessibility,
   sound, video, remappable controls); one-button mode; grievance banner;
   progression and rebinding tests.
+- Milestone 4: castle editor. Palette of shapes, materials and people;
+  settle-on-drop placement and stacking; select, drag, turn, resize, copy,
+  delete, anchors; ground tool for terrain points; castle settings (name,
+  grievance, sky, scenery, ground, width); undo/redo; overlap and
+  world-edge warnings; mouse, touch, trackpad and keyboard controls.
+  Test-play with *Edit castle* to return; beating your castle sets its
+  par. Castles autosave to `user://levels`; share as an `SF1.` code
+  (author's par included) or a `.json` file; imports never overwrite.
+  Editor toolbar icons.
 
 ### Fixed
 - `make dev` exited silently on interactive runs (no `--yes`); optional
