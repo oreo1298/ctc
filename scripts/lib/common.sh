@@ -267,16 +267,18 @@ install_rapier_addon() {
 	fi
 	need_cmd unzip
 	tmp="${addons}/.rapier-unpack"
+	# Checked step by step: packagers call this without `set -e`.
+	run mkdir -p "${addons}" || die "cannot create ${addons}"
 	run rm -rf "${tmp}" "${dest}"
-	run unzip -q "${zip}" -d "${tmp}"
-	run mkdir -p "${addons}"
-	run mv "${tmp}/godot-rapier-2d-single/addons/godot-rapier2d" "${dest}"
+	run unzip -q "${zip}" -d "${tmp}" || die "cannot unpack ${zip}"
+	run mv "${tmp}/godot-rapier-2d-single/addons/godot-rapier2d" "${dest}" ||
+		die "unexpected layout in ${zip}"
 	run rm -rf "${tmp}"
 	if [[ "${DRY_RUN}" == 0 ]]; then
 		find "${dest}/bin" \( -name '*android*' -o -name '*.wasm' -o -name '*i686*' -o -name '*armv7*' \
 			-o -name '*aarch64-pc-windows*' -o -name '*ios.x86_64*' -o -name 'wasm-nothreads' \) \
-			-prune -exec rm -rf {} +
-		printf '%s' "${RAPIER_SHA256}" >"${dest}/.pinned-sha256"
+			-prune -exec rm -rf {} + || die "cannot prune ${dest}/bin"
+		printf '%s' "${RAPIER_SHA256}" >"${dest}/.pinned-sha256" || die "cannot write ${dest}"
 	fi
 	ok "godot-rapier ${RAPIER_VERSION} -> ${dest#"${SF_ROOT}"/}"
 }

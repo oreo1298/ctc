@@ -56,7 +56,7 @@ build() {
   bsdtar -xf "${srcdir}/godot-${_godot}-export-templates.tpz" -C "${srcdir}" \
     "templates/linux_release.${garch}"
   cd "${srcdir}/${pkgname}"
-  bash -c 'source scripts/lib/common.sh && load_identity && install_rapier_addon game/addons "$1"' \
+  bash -ec 'source scripts/lib/common.sh; load_identity; install_rapier_addon game/addons "$1"' \
     _ "${srcdir}/godot-rapier-@RAPIER_VERSION@.zip"
   ./scripts/build.sh --target "linux-${garch}" \
     --godot "${srcdir}/Godot_v${_godot}_linux.${garch}" --templates "${srcdir}/templates"
