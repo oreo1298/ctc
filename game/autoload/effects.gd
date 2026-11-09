@@ -15,6 +15,9 @@ var particle_scale: float = 1.0
 var _soft: Texture2D = null
 var _splinter: Texture2D = null
 var _shard: Texture2D = null
+var _tongue: Texture2D = null
+## Burning blocks with their own light (lights cost a pass per lit item).
+var _fire_lights: int = 0
 var _slowmo_until_usec: int = 0
 
 
@@ -59,6 +62,29 @@ func haptic(strength: float) -> void:
 
 
 # ------------------------------------------------------------- textures ---
+## A tongue of flame: round at the base, tapering to a point at the top,
+## soft-edged. 48 x 96 px (0.48 x 0.96 m at scale 1).
+func flame_tongue() -> Texture2D:
+	if _tongue != null:
+		return _tongue
+	var w: int = 48
+	var h: int = 96
+	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	for y: int in h:
+		var v: float = (y + 0.5) / h
+		var half: float
+		if v > 0.7:
+			half = sqrt(maxf(0.0, 1.0 - pow((v - 0.7) / 0.29, 2.0)))
+		else:
+			half = pow(v / 0.7, 1.5)
+		for x: int in w:
+			var u: float = absf((x + 0.5) / w * 2.0 - 1.0)
+			var a: float = clampf((half - u) / 0.3, 0.0, 1.0)
+			img.set_pixel(x, y, Color(1, 1, 1, a * a * (3.0 - 2.0 * a)))
+	_tongue = ImageTexture.create_from_image(img)
+	return _tongue
+
+
 func soft_circle() -> Texture2D:
 	if _soft == null:
 		var g := GradientTexture2D.new()
@@ -314,43 +340,47 @@ func flames(host: Node2D, size: float, extents: Vector2 = Vector2(30, 30)) -> No
 	# Body: opaque tongues of flame (readable against a bright sky).
 	var f := CPUParticles2D.new()
 	var area_m2: float = extents.x * extents.y * 4.0 / 10000.0
-	f.amount = maxi(8, roundi((10.0 + area_m2 * 14.0) * particle_scale))
-	f.lifetime = 0.8
+	f.amount = maxi(10, roundi((14.0 + area_m2 * 18.0) * particle_scale))
+	f.lifetime = 0.75
 	f.local_coords = false
-	f.texture = soft_circle()
+	f.texture = flame_tongue()
 	f.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
 	f.emission_rect_extents = extents * 0.8
 	f.direction = Vector2.UP
-	f.spread = 15.0
-	f.gravity = Vector2(0, -320)
+	f.spread = 10.0
+	f.gravity = Vector2(0, -360)
 	f.initial_velocity_min = 30.0
-	f.initial_velocity_max = 80.0
-	# The soft texture is 64 px (0.64 m): tongues of roughly 0.6-1.2 m.
-	f.scale_amount_min = 1.0
-	f.scale_amount_max = 1.9
+	f.initial_velocity_max = 90.0
+	# Sideways sway, so tongues lick rather than rise in lines.
+	f.tangential_accel_min = -60.0
+	f.tangential_accel_max = 60.0
+	# The tongue texture is 0.48 x 0.96 m: flames of roughly 1-2 m that
+	# overlap into one blaze.
+	f.scale_amount_min = 1.1
+	f.scale_amount_max = 2.1
 	var sc := Curve.new()
 	sc.add_point(Vector2(0, 1.0))
 	sc.add_point(Vector2(1, 0.2))
 	f.scale_amount_curve = sc
 	var ramp := Gradient.new()
-	ramp.set_color(0, Color(1.0, 0.85, 0.35, 0.95))
-	ramp.add_point(0.35, Color(1.0, 0.45, 0.12, 0.9))
-	ramp.add_point(0.7, Color(0.8, 0.18, 0.08, 0.6))
-	ramp.set_color(1, Color(0.4, 0.08, 0.05, 0.0))
+	ramp.set_color(0, Color(1.0, 0.9, 0.45, 0.95))
+	ramp.add_point(0.25, Color(1.0, 0.6, 0.15, 0.95))
+	ramp.add_point(0.6, Color(0.92, 0.25, 0.06, 0.75))
+	ramp.set_color(1, Color(0.45, 0.08, 0.04, 0.0))
 	f.color_ramp = ramp
 	root.add_child(f)
 	# Core: a small additive glow.
 	var core := CPUParticles2D.new()
 	core.amount = maxi(3, roundi(8 * size * particle_scale))
-	core.lifetime = 0.4
+	core.lifetime = 0.45
 	core.local_coords = false
-	core.texture = soft_circle()
+	core.texture = flame_tongue()
 	core.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
 	core.emission_rect_extents = extents * 0.6
 	core.direction = Vector2.UP
-	core.gravity = Vector2(0, -200)
-	core.scale_amount_min = 0.6
-	core.scale_amount_max = 1.0
+	core.gravity = Vector2(0, -260)
+	core.scale_amount_min = 0.8
+	core.scale_amount_max = 1.3
 	var add := CanvasItemMaterial.new()
 	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	core.material = add
@@ -367,18 +397,43 @@ func flames(host: Node2D, size: float, extents: Vector2 = Vector2(30, 30)) -> No
 	smoke.gravity = Vector2(10, -90)
 	smoke.scale_amount_min = 0.8 * size
 	smoke.scale_amount_max = 1.8 * size
-	smoke.color_ramp = _ramp(Color(0.3, 0.27, 0.25, 0.35), Color(0.5, 0.48, 0.45, 0.0))
+	smoke.color_ramp = _ramp(Color(0.24, 0.21, 0.2, 0.45), Color(0.45, 0.43, 0.41, 0.0))
 	root.add_child(smoke)
-	if particle_scale >= 1.0:
+	# Embers: tiny bright sparks drifting up out of the fire.
+	var embers := CPUParticles2D.new()
+	embers.amount = maxi(4, roundi(10 * size * particle_scale))
+	embers.lifetime = 1.6
+	embers.local_coords = false
+	embers.texture = soft_circle()
+	embers.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	embers.emission_rect_extents = extents * 0.7
+	embers.direction = Vector2.UP
+	embers.spread = 35.0
+	embers.gravity = Vector2(0, -70)
+	embers.initial_velocity_min = 40.0
+	embers.initial_velocity_max = 130.0
+	embers.tangential_accel_min = -40.0
+	embers.tangential_accel_max = 40.0
+	embers.scale_amount_min = 0.05
+	embers.scale_amount_max = 0.1
+	embers.material = add
+	embers.color_ramp = _ramp(Color(1.0, 0.75, 0.3, 1.0), Color(1.0, 0.3, 0.05, 0.0))
+	root.add_child(embers)
+	# Warm, flickering light on the surroundings, for the first few fires.
+	var max_lights: int = 8 if particle_scale >= 1.0 else 3
+	if _fire_lights < max_lights:
+		_fire_lights += 1
 		var light := PointLight2D.new()
 		light.texture = soft_circle()
-		light.texture_scale = 4.0 * size
-		light.color = Color(1.0, 0.6, 0.25)
+		light.texture_scale = 4.0 * maxf(size, 0.6)
+		light.color = Color(1.0, 0.58, 0.22)
 		light.energy = 0.8
 		root.add_child(light)
+		light.tree_exiting.connect(func() -> void: _fire_lights = maxi(0, _fire_lights - 1))
 		var tw := light.create_tween().set_loops()
 		tw.tween_property(light, "energy", 0.5, 0.12)
-		tw.tween_property(light, "energy", 0.9, 0.09)
+		tw.tween_property(light, "energy", 1.0, 0.09)
+		tw.tween_property(light, "energy", 0.75, 0.15)
 	return root
 
 

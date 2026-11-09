@@ -122,7 +122,7 @@ shot impact 4.0 "${L[@]}" --autoplay=0.65 --screenshots="3.45:${OUT}/impact.png"
 shot collapse 5.5 "${L[@]}" --autoplay=0.65 --screenshots="4.9:${OUT}/collapse.png"
 shot win 8.0 "${L[@]}" --autoplay=0.65 --screenshots="7.5:${OUT}/win.png"
 # Every material: cracked, then all breaking at once.
-M=(--level=dev-materials --camera=castle)
+M=(--level=dev-materials --camera=castle --no-intro)
 shot materials 2.2 "${M[@]}" --debug-damage=0.7 --screenshots="2.0:${OUT}/materials.png"
 shot shatter 2.0 "${M[@]}" --debug-damage=1.0 --screenshots="1.25:${OUT}/shatter.png"
 shot fire 4.2 "${M[@]}" --debug-ignite --screenshots="4.0:${OUT}/fire.png"

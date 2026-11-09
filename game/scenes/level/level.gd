@@ -228,7 +228,7 @@ func _build() -> void:
 	hud.setup(title, _par())
 	hud.set_ammo(trebuchet.ammo, ammo_list.size())
 	hud.set_hint(tr("Tap to swing, tap again to let go"))
-	if not bot_mode and not Game.cli.has("autoplay"):
+	if not bot_mode and not Game.cli.has("autoplay") and not Game.cli.has("no-intro"):
 		hud.show_intro(title, data.grievance if custom else tr(data.grievance))
 	hud.restart_pressed.connect(Game.restart_level)
 	hud.pause_pressed.connect(toggle_pause)
