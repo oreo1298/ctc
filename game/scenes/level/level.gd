@@ -19,6 +19,9 @@ enum State { INTRO, READY, SWINGING, FLYING, SETTLING, WON }
 const SETTLE_HOLD: float = 1.1
 const HOLD_STEP: float = 0.6
 const WIN_SETTLE_MAX: float = 2.5
+## A press this long after release goes back to the trebuchet (sooner, a
+## quick double tap at release would throw the shot away).
+const SKIP_AFTER: float = 0.5
 
 var data: LevelData
 var state: State = State.INTRO
@@ -58,6 +61,10 @@ var _hostages_hit: int = 0
 var _targets_total: int = 0
 var _hold_t: float = -1.0
 var _hold_cycled: bool = false
+var _flight_t: float = 0.0
+## The player pressed to stop watching this shot: keep the camera on the
+## trebuchet (unless the castle falls) until the next release.
+var _skipped: bool = false
 
 
 func _ready() -> void:
@@ -83,6 +90,8 @@ func _ready() -> void:
 	if Game.cli.has("debug-freeze"):
 		for n: Node in get_tree().get_nodes_in_group("blocks"):
 			(n as Block).freeze_solid()
+	if Game.cli.has("debug-pause"):
+		get_tree().create_timer(0.5).timeout.connect(toggle_pause)
 	if Game.cli.get("camera", "") == "castle":
 		camera.frame(castle_rect.grow(200.0))
 		camera.smoothing = 50.0
@@ -234,6 +243,7 @@ func _build() -> void:
 	hud.pause_pressed.connect(toggle_pause)
 	hud.resume_pressed.connect(toggle_pause)
 	hud.menu_pressed.connect(Game.leave_level)
+	hud.main_menu_pressed.connect(Game.goto_menu)
 	hud.next_pressed.connect(_go_next)
 	hud.ammo_cycle.connect(cycle_ammo)
 
@@ -261,6 +271,7 @@ func _shadows_enabled() -> bool:
 # ----------------------------------------------------------------- input ---
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		get_viewport().set_input_as_handled()
 		toggle_pause()
 	elif get_tree().paused:
 		return
@@ -330,7 +341,9 @@ func on_fire() -> void:
 		State.SWINGING:
 			trebuchet.release()
 		State.FLYING, State.SETTLING:
-			tap_projectile()
+			# The ammo's mid-air trick first; otherwise back to the trebuchet.
+			if not tap_projectile():
+				skip_to_trebuchet()
 		_:
 			pass
 
@@ -344,11 +357,34 @@ func tap_projectile() -> bool:
 	return false
 
 
+## Stop watching the shot and get the trebuchet ready for the next one. The
+## world keeps simulating; only the camera and the trebuchet move on, so this
+## never changes how a castle falls.
+func skip_to_trebuchet() -> void:
+	if state != State.FLYING and state != State.SETTLING:
+		return
+	if state == State.FLYING and _flight_t < SKIP_AFTER:
+		return
+	if _skipped:
+		return
+	_skipped = true
+	if state == State.FLYING:
+		_ghost.points = _ghost_points
+		_ghost.visible = Settings.show_ghost_trail
+	state = State.SETTLING
+	_settle_t = SETTLE_HOLD
+	if trebuchet.state == Trebuchet.State.FOLLOW_THROUGH:
+		trebuchet.reload()
+	camera.go_aim()
+	hud.fade_hint()
+
+
 func toggle_pause() -> void:
 	if state == State.WON:
 		return
 	var p: bool = not get_tree().paused
 	get_tree().paused = p
+	Sfx.pause_world(p)
 	if p:
 		hud.show_pause()
 	else:
@@ -396,6 +432,8 @@ func _on_released(phase: float, pos: Vector2, vel: Vector2) -> void:
 	_track(projectile)
 	camera.follow_node(projectile)
 	state = State.FLYING
+	_flight_t = 0.0
+	_skipped = false
 	_ghost_points = PackedVector2Array([pos])
 
 
@@ -416,7 +454,8 @@ func _on_projectile_split(parent: Projectile, children: Array[Projectile]) -> vo
 		_track(c)
 	if parent == projectile and not children.is_empty():
 		projectile = children[children.size() / 2]
-		camera.follow_node(projectile)
+		if not _skipped:
+			camera.follow_node(projectile)
 
 
 func _on_projectile_impacted(p: Projectile, speed_mps: float) -> void:
@@ -451,6 +490,8 @@ func _on_projectile_settled(p: Projectile) -> void:
 func _on_trebuchet_ready() -> void:
 	if state == State.SETTLING:
 		state = State.READY
+		if shots == 1 and not _skipped:
+			hud.set_hint(tr("Tip: tap while the castle settles to load the next shot sooner"))
 
 
 func _hook_block(b: Block) -> void:
@@ -486,6 +527,8 @@ func _on_enemy_eliminated(e: Enemy, pts: int) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if state == State.FLYING:
+		_flight_t += delta
 	if state == State.FLYING and is_instance_valid(projectile) and not projectile.has_impacted:
 		_ghost_points.append(projectile.global_position)
 	if (
@@ -519,6 +562,8 @@ func _process(delta: float) -> void:
 ## After impact, keep everything that is still moving in frame
 ## (docs/DESIGN.md §5: "pull back to frame the collapse").
 func _frame_collapse() -> void:
+	if _skipped and not _won_pending:
+		return
 	if not (
 		state == State.SETTLING
 		or (state == State.FLYING and is_instance_valid(projectile) and projectile.has_impacted)
@@ -555,6 +600,7 @@ func _world_asleep() -> bool:
 
 func _exit_tree() -> void:
 	Effects.reset_time()
+	Sfx.pause_world(false)
 
 
 ## Medal thresholds; empty for a custom castle nobody has beaten yet.

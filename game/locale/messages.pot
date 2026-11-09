@@ -187,6 +187,8 @@ msgid "Chain shot"
 msgstr ""
 
 #: scenes/menu/main_menu.gd
+#: tests/unit/test_level_flow.gd
+#: ui/hud.gd
 msgid "Choose level"
 msgstr ""
 
@@ -296,6 +298,10 @@ msgstr ""
 
 #: data/levels/saffron/saffron-04.json
 msgid "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries."
+msgstr ""
+
+#: ui/hud.gd
+msgid "Esc or Start resumes"
 msgstr ""
 
 #: data/levels/saffron/saffron-03.json
@@ -481,12 +487,21 @@ msgstr ""
 msgid "Lantern Row"
 msgstr ""
 
+#: ui/hud.gd
+msgid "Levels"
+msgstr ""
+
 #: data/levels/greenmantle/greenmantle-02.json
 msgid "Lord Ashby's tower is taller than mine. Shorten it. From the top."
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
 msgid "Low"
+msgstr ""
+
+#: tests/unit/test_level_flow.gd
+#: ui/hud.gd
+msgid "Main menu"
 msgstr ""
 
 #: data/levels/saffron/saffron-03.json
@@ -503,10 +518,6 @@ msgstr ""
 
 #: scenes/menu/settings_menu.gd
 msgid "Material patterns"
-msgstr ""
-
-#: ui/hud.gd
-msgid "Menu"
 msgstr ""
 
 #: data/levels/saffron/saffron-11.json
@@ -748,6 +759,7 @@ msgstr ""
 msgid "Reset controls"
 msgstr ""
 
+#: tests/unit/test_level_flow.gd
 #: ui/hud.gd
 msgid "Restart"
 msgstr ""
@@ -756,6 +768,7 @@ msgstr ""
 msgid "Restart level"
 msgstr ""
 
+#: tests/unit/test_level_flow.gd
 #: ui/hud.gd
 msgid "Resume"
 msgstr ""
@@ -1092,6 +1105,10 @@ msgstr ""
 
 #: scenes/editor/editor.gd
 msgid "Tip: beat your castle in Test first, so friends get medals to aim for."
+msgstr ""
+
+#: scenes/level/level.gd
+msgid "Tip: tap while the castle settles to load the next shot sooner"
 msgstr ""
 
 #: core/editor_model.gd

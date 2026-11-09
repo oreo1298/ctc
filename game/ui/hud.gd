@@ -10,10 +10,11 @@ signal pause_pressed
 signal resume_pressed
 signal menu_pressed
 signal next_pressed
+signal main_menu_pressed
 signal ammo_cycle(direction: int)
 
-## Text of the button that leaves the level ("Menu", or "Edit castle" when
-## test-playing from the editor).
+## Text of the button that leaves the level for the level list ("Edit
+## castle" when test-playing from the editor).
 var menu_label: String = ""
 var _root: Control
 var _margin: MarginContainer
@@ -299,7 +300,7 @@ func show_win(
 	row.add_theme_constant_override("separation", 14)
 	box.add_child(row)
 	var menu := Button.new()
-	menu.text = menu_label if not menu_label.is_empty() else tr("Menu")
+	menu.text = menu_label if not menu_label.is_empty() else tr("Levels")
 	menu.pressed.connect(menu_pressed.emit)
 	row.add_child(menu)
 	var retry := Button.new()
@@ -323,27 +324,49 @@ func show_win(
 	)
 
 
+## The pause menu. It keeps running while the game is paused (everything
+## else in the level is frozen), so its buttons, Esc / Start and one-button
+## scanning all work.
 func show_pause() -> void:
 	if _pause != null:
 		return
 	_pause = _card()
+	_pause.process_mode = Node.PROCESS_MODE_ALWAYS
 	var box: VBoxContainer = _pause.get_meta("box")
 	var head := Label.new()
 	head.theme_type_variation = "HeadingLabel"
 	head.text = tr("Paused")
 	head.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(head)
-	for pair: Array in [
-		[tr("Resume"), resume_pressed],
-		[tr("Restart"), restart_pressed],
-		[menu_label if not menu_label.is_empty() else tr("Menu"), menu_pressed]
+	var sub := Label.new()
+	sub.theme_type_variation = "SmallLabel"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.text = "%s  ·  %s" % [_title.text, _shots.text]
+	box.add_child(sub)
+	var buttons: Array[Button] = []
+	for item: Array in [
+		[tr("Resume"), resume_pressed, "BigButton"],
+		[tr("Restart"), restart_pressed, ""],
+		[menu_label if not menu_label.is_empty() else tr("Choose level"), menu_pressed, ""],
+		[tr("Main menu"), main_menu_pressed, ""],
 	]:
 		var b := Button.new()
-		b.text = str(pair[0])
-		var sig: Signal = pair[1]
+		b.text = str(item[0])
+		b.theme_type_variation = str(item[2])
+		var sig: Signal = item[1]
 		b.pressed.connect(sig.emit)
 		box.add_child(b)
-	(box.get_child(1) as Button).grab_focus.call_deferred()
+		buttons.append(b)
+	var keys_hint := Label.new()
+	keys_hint.theme_type_variation = "SmallLabel"
+	keys_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	keys_hint.text = tr("Esc or Start resumes")
+	box.add_child(keys_hint)
+	var keys := _PauseKeys.new()
+	keys.resume = resume_pressed
+	keys.buttons = buttons
+	_pause.add_child(keys)
+	buttons[0].grab_focus.call_deferred()
 	_wire_clicks(_pause)
 
 
@@ -381,7 +404,8 @@ func _card() -> Control:
 	box.add_theme_constant_override("separation", 14)
 	panel.add_child(box)
 	shade.set_meta("box", box)
-	var tw := create_tween()
+	# Animates while the game is paused, too (the pause menu).
+	var tw := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tw.tween_property(shade, "color:a", 0.35, 0.2)
 	panel.pivot_offset = Vector2(230, 200)
 	panel.scale = Vector2(0.92, 0.92)
@@ -395,6 +419,42 @@ func _card() -> Control:
 	)
 	tw.parallel().tween_property(panel, "modulate:a", 1.0, 0.18)
 	return shade
+
+
+## Input for the pause menu while the rest of the level is paused: Esc,
+## P or Start resume; in one-button mode focus steps through the buttons
+## and any press activates the focused one (as in the other menus).
+class _PauseKeys:
+	extends Node
+
+	const SCAN_INTERVAL: float = 1.3
+
+	var resume: Signal
+	var buttons: Array[Button] = []
+	var _t: float = 0.0
+
+	func _input(event: InputEvent) -> void:
+		if Settings.one_button and event.is_action_pressed("fire"):
+			var f: Control = get_viewport().gui_get_focus_owner()
+			if f is Button:
+				get_viewport().set_input_as_handled()
+				(f as Button).pressed.emit()
+
+	func _unhandled_input(event: InputEvent) -> void:
+		if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+			get_viewport().set_input_as_handled()
+			resume.emit()
+
+	func _process(delta: float) -> void:
+		if not Settings.one_button or buttons.is_empty():
+			return
+		_t += delta
+		if _t < SCAN_INTERVAL:
+			return
+		_t = 0.0
+		var f: Control = get_viewport().gui_get_focus_owner()
+		var i: int = buttons.find(f as Button) if f is Button else -1
+		buttons[(i + 1) % buttons.size()].grab_focus()
 
 
 ## Thin swing meter: track, live needle, and a notch at the last release.

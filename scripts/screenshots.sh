@@ -27,6 +27,7 @@ Renders these scenes to DIR (default build/screenshots/):
   impact      the moment of impact
   collapse    the collapse framed by the camera
   win         win card with medal
+  pause       the pause menu
   materials   every material, heavily cracked
   shatter     every material breaking at once
   fire        flammable materials burning (fire spread, charring)
@@ -121,6 +122,7 @@ shot flight 3.0 "${L[@]}" --autoplay=0.65 --screenshots="2.55:${OUT}/flight.png"
 shot impact 4.0 "${L[@]}" --autoplay=0.65 --screenshots="3.45:${OUT}/impact.png"
 shot collapse 5.5 "${L[@]}" --autoplay=0.65 --screenshots="4.9:${OUT}/collapse.png"
 shot win 8.0 "${L[@]}" --autoplay=0.65 --screenshots="7.5:${OUT}/win.png"
+shot pause 2.0 "${L[@]}" --no-intro --debug-pause --screenshots="1.6:${OUT}/pause.png"
 # Every material: cracked, then all breaking at once.
 M=(--level=dev-materials --camera=castle --no-intro)
 shot materials 2.2 "${M[@]}" --debug-damage=0.7 --screenshots="2.0:${OUT}/materials.png"

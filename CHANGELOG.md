@@ -11,6 +11,20 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Press again after a shot to go straight back to the trebuchet and load
+  the next one (the ammo's mid-air trick still comes first). A quick double
+  tap right after letting go is ignored, so a shot is never thrown away.
+  The first shot of a level ends with a tip about it.
+- A proper pause menu: Resume, Restart, Choose level (Edit castle in
+  test-play), Main menu; Esc, P or Start resume; works with a gamepad and
+  in one-button mode. In-world sounds pause with the game.
+
+### Fixed
+- Pausing froze the game with no way back: the pause card faded in with a
+  tween that stopped with the rest of the level, so it stayed invisible,
+  and neither its buttons nor Esc received input while paused.
+
 ## [1.0.0-rc.1] - 2026-11-09
 
 First release candidate: everything below, nothing published yet.

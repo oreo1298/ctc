@@ -188,6 +188,8 @@ msgid "Chain shot"
 msgstr "Chain shot"
 
 #: scenes/menu/main_menu.gd
+#: tests/unit/test_level_flow.gd
+#: ui/hud.gd
 msgid "Choose level"
 msgstr "Choose level"
 
@@ -298,6 +300,10 @@ msgstr "Effects volume"
 #: data/levels/saffron/saffron-04.json
 msgid "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries."
 msgstr "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries."
+
+#: ui/hud.gd
+msgid "Esc or Start resumes"
+msgstr "Esc or Start resumes"
 
 #: data/levels/saffron/saffron-03.json
 msgid "Every stall at the Saffron market sells my portrait. Upside down."
@@ -482,6 +488,10 @@ msgstr "Language"
 msgid "Lantern Row"
 msgstr "Lantern Row"
 
+#: ui/hud.gd
+msgid "Levels"
+msgstr "Levels"
+
 #: data/levels/greenmantle/greenmantle-02.json
 msgid "Lord Ashby's tower is taller than mine. Shorten it. From the top."
 msgstr "Lord Ashby's tower is taller than mine. Shorten it. From the top."
@@ -489,6 +499,11 @@ msgstr "Lord Ashby's tower is taller than mine. Shorten it. From the top."
 #: scenes/menu/settings_menu.gd
 msgid "Low"
 msgstr "Low"
+
+#: tests/unit/test_level_flow.gd
+#: ui/hud.gd
+msgid "Main menu"
+msgstr "Main menu"
 
 #: data/levels/saffron/saffron-03.json
 msgid "Market Day"
@@ -505,10 +520,6 @@ msgstr "Material"
 #: scenes/menu/settings_menu.gd
 msgid "Material patterns"
 msgstr "Material patterns"
-
-#: ui/hud.gd
-msgid "Menu"
-msgstr "Menu"
 
 #: data/levels/saffron/saffron-11.json
 msgid "Minarets"
@@ -749,6 +760,7 @@ msgstr "Renderer: %s"
 msgid "Reset controls"
 msgstr "Reset controls"
 
+#: tests/unit/test_level_flow.gd
 #: ui/hud.gd
 msgid "Restart"
 msgstr "Restart"
@@ -757,6 +769,7 @@ msgstr "Restart"
 msgid "Restart level"
 msgstr "Restart level"
 
+#: tests/unit/test_level_flow.gd
 #: ui/hud.gd
 msgid "Resume"
 msgstr "Resume"
@@ -1094,6 +1107,10 @@ msgstr "Tin Cans"
 #: scenes/editor/editor.gd
 msgid "Tip: beat your castle in Test first, so friends get medals to aim for."
 msgstr "Tip: beat your castle in Test first, so friends get medals to aim for."
+
+#: scenes/level/level.gd
+msgid "Tip: tap while the castle settles to load the next shot sooner"
+msgstr "Tip: tap while the castle settles to load the next shot sooner"
 
 #: core/editor_model.gd
 #, c-format

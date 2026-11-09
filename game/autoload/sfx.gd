@@ -105,6 +105,13 @@ func play_at(
 	return true
 
 
+## Freeze or resume every in-world sound (the pause menu). UI clicks keep
+## playing.
+func pause_world(paused: bool) -> void:
+	for p: AudioStreamPlayer2D in _pool:
+		p.stream_paused = paused
+
+
 func play_ui(name: String, volume_db: float = 0.0) -> void:
 	if not _enabled or not _streams.has(name):
 		return
