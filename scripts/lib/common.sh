@@ -193,7 +193,9 @@ download() {
 		err "download failed (curl exit ${code}): ${url}"
 		err "If you are behind a firewall or allow-list proxy, allow these hosts:"
 		err "  ${host}"
-		[[ "${host}" == github.com ]] && err "  release-assets.githubusercontent.com  objects.githubusercontent.com"
+		if [[ "${host}" == github.com ]]; then
+			err "  release-assets.githubusercontent.com  objects.githubusercontent.com"
+		fi
 		return 1
 	fi
 	mv -f "${tmp}" "${dest}"

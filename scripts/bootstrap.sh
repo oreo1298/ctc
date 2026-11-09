@@ -170,7 +170,7 @@ pkgs_optional() {
 	pacman) echo shellcheck dpkg rpm-tools appstream desktop-file-utils librsvg zip nsis flatpak-builder file \
 		wayland libdecor alsa-lib libpulse ;;
 	apt) echo shellcheck dpkg-dev rpm appstream desktop-file-utils librsvg2-bin zip nsis flatpak-builder file \
-		libwayland-client0 libwayland-cursor0 libwayland-egl1 libdecor-0-0 libasound2 libpulse0 ;;
+		libwayland-client0 libwayland-cursor0 libwayland-egl1 libdecor-0-0 libasound2t64 libasound2 libpulse0 ;;
 	dnf) echo ShellCheck dpkg rpm-build appstream desktop-file-utils librsvg2-tools zip mingw32-nsis \
 		flatpak-builder file libwayland-client libwayland-cursor libwayland-egl libdecor alsa-lib pulseaudio-libs ;;
 	zypper) echo ShellCheck dpkg rpm-build AppStream desktop-file-utils rsvg-convert zip mingw32-cross-nsis \
@@ -210,41 +210,63 @@ pick_sudo() {
 	fi
 }
 
-# install_cmd FAMILY -> sets INSTALL=(...) and REFRESH_CMD=(...)
+# set_install_cmd FAMILY -> sets INSTALL=(...) and REFRESH_CMD=(...)
+# (Uses if-statements, not `[[ ]] && ...`: under `set -e` a false test as the
+# last command would make the function fail.)
 INSTALL=() REFRESH_CMD=()
 set_install_cmd() {
+	local yes="${YES}"
 	case "$1" in
 	pacman)
 		REFRESH_CMD=(pacman -Sy)
 		INSTALL=(pacman -S --needed)
-		[[ "${YES}" == 1 ]] && INSTALL+=(--noconfirm)
+		if [[ "${yes}" == 1 ]]; then INSTALL+=(--noconfirm); fi
 		;;
 	apt)
 		REFRESH_CMD=(apt-get update)
 		INSTALL=(apt-get install --no-install-recommends)
-		[[ "${YES}" == 1 ]] && INSTALL+=(-y)
+		if [[ "${yes}" == 1 ]]; then INSTALL+=(-y); fi
 		;;
 	dnf)
 		REFRESH_CMD=(dnf makecache)
 		INSTALL=(dnf install --setopt=install_weak_deps=False)
-		[[ "${YES}" == 1 ]] && INSTALL+=(-y)
+		if [[ "${yes}" == 1 ]]; then INSTALL+=(-y); fi
 		;;
 	zypper)
 		REFRESH_CMD=(zypper --non-interactive refresh)
 		INSTALL=(zypper)
-		[[ "${YES}" == 1 ]] && INSTALL+=(--non-interactive)
+		if [[ "${yes}" == 1 ]]; then INSTALL+=(--non-interactive); fi
 		INSTALL+=(install --no-recommends)
 		;;
 	xbps)
 		REFRESH_CMD=(xbps-install -S)
 		INSTALL=(xbps-install)
-		[[ "${YES}" == 1 ]] && INSTALL+=(-y)
+		if [[ "${yes}" == 1 ]]; then INSTALL+=(-y); fi
 		;;
 	emerge)
 		REFRESH_CMD=(emerge --sync)
 		INSTALL=(emerge --noreplace --oneshot)
-		if [[ "${YES}" == 1 ]]; then INSTALL+=(--ask=n); else INSTALL+=(--ask); fi
+		if [[ "${yes}" == 1 ]]; then INSTALL+=(--ask=n); else INSTALL+=(--ask); fi
 		;;
+	*)
+		return 1
+		;;
+	esac
+	return 0
+}
+
+# pkg_available FAMILY PKG -> 0 if the distro's repositories offer PKG.
+# Read-only queries; none of them need root.
+pkg_available() {
+	local family="$1" pkg="$2"
+	case "${family}" in
+	pacman) pacman -Si "${pkg}" >/dev/null 2>&1 ;;
+	apt) apt-cache policy "${pkg}" 2>/dev/null | grep -q 'Candidate: [^(]' ;;
+	dnf) dnf -q list --available "${pkg}" >/dev/null 2>&1 || rpm -q "${pkg}" >/dev/null 2>&1 ;;
+	zypper) zypper --non-interactive --quiet search --match-exact "${pkg}" >/dev/null 2>&1 ;;
+	xbps) xbps-query -R "${pkg}" >/dev/null 2>&1 ;;
+	emerge) [[ -n "$(portageq best_visible / "${pkg}" 2>/dev/null)" ]] ;;
+	*) return 1 ;;
 	esac
 }
 
@@ -253,7 +275,7 @@ install_packages() {
 	local -a req opt
 	read -r -a req <<<"$(pkgs_required "${family}")"
 	read -r -a opt <<<"$(pkgs_optional "${family}")"
-	set_install_cmd "${family}"
+	set_install_cmd "${family}" || die "no install command for package family '${family}'"
 
 	if ! pick_sudo; then
 		warn "not root and neither sudo nor doas is available; cannot install system packages."
@@ -270,21 +292,33 @@ install_packages() {
 	if [[ "${family}" == emerge ]]; then
 		warn "Gentoo: Xvfb needs x11-base/xorg-server built with USE=xvfb."
 	fi
-	log "Installing required packages (${family}): ${req[*]}"
-	run "${SUDO[@]}" "${INSTALL[@]}" "${req[@]}" ||
-		die "installing required packages failed. Fix the error above and re-run (or use --skip-packages)."
 
-	log "Installing optional packages one by one (failures are not fatal)"
-	local p missing=()
-	for p in "${opt[@]}"; do
-		if [[ "${DRY_RUN}" == 1 ]]; then
-			run "${SUDO[@]}" "${INSTALL[@]}" "${p}"
-		elif ! "${SUDO[@]}" "${INSTALL[@]}" "${p}" >/dev/null 2>&1; then
-			missing+=("${p}")
-		fi
-	done
+	# Optional extras: keep only what this distro's repositories offer, so the
+	# single install call below cannot fail on a missing optional package.
+	local p
+	local -a avail=() missing=()
+	if [[ "${DRY_RUN}" == 1 ]]; then
+		avail=("${opt[@]}")
+	else
+		log "Checking which optional packages your repositories provide"
+		for p in "${opt[@]}"; do
+			if pkg_available "${family}" "${p}"; then
+				avail+=("${p}")
+			else
+				missing+=("${p}")
+			fi
+		done
+	fi
+
+	log "Installing packages (${family}): ${req[*]} ${avail[*]}"
+	if ! run "${SUDO[@]}" "${INSTALL[@]}" "${req[@]}" "${avail[@]}"; then
+		err "package installation failed (see the package manager's message above)."
+		err "Try again with --refresh (refreshes the package database first), or"
+		err "install the packages yourself and re-run with --skip-packages."
+		exit 1
+	fi
 	if [[ ${#missing[@]} -gt 0 ]]; then
-		warn "optional packages not installed: ${missing[*]}"
+		warn "not offered by your repositories (optional, skipped): ${missing[*]}"
 		warn "linting falls back to the pinned tools in .venv; packaging targets that need them will say so."
 	fi
 	ok "system packages"
@@ -499,7 +533,7 @@ EOF
 			;;
 		esac
 	fi
-	[[ "${PKGS_ONLY}" == 1 ]] && exit 0
+	if [[ "${PKGS_ONLY}" == 1 ]]; then exit 0; fi
 
 	fetch_godot_editor
 	[[ "${EDITOR_ONLY}" == 1 ]] || fetch_godot_templates

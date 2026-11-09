@@ -54,6 +54,7 @@ test-unit: ## GDScript unit tests (GUT, headless)
 .PHONY: test-scripts
 test-scripts: ## Tests for the shell scripts
 	tests/scripts/test_bootstrap_detect.sh
+	tests/scripts/test_bootstrap_dryrun.sh
 
 .PHONY: smoke
 smoke: ## Boot the game headlessly for a few frames
