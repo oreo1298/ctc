@@ -1,0 +1,186 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-02",
+  "name": "Glass Houses",
+  "grievance": "The Vizier's glass palace sparkles at me every morning. Rude.",
+  "time_of_day": "afternoon",
+  "realm": "saffron",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        25.65,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        28.35,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        27.0,
+        1.95
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        27.0,
+        2.55
+      ],
+      "size": [
+        3.2,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        30.15,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        32.85,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        31.5,
+        1.95
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        31.5,
+        2.55
+      ],
+      "size": [
+        3.2,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.5,
+        1.2
+      ],
+      "size": [
+        0.5,
+        2.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "queen",
+      "pos": [
+        27,
+        0.55
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        31.5,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        35.6,
+        0.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.653,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.653,
+      "tap": -1.0
+    }
+  ]
+}

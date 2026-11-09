@@ -1,0 +1,159 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-05",
+  "name": "Overhang",
+  "grievance": "The Cliff Earl's balcony hangs over the void. Like his debts.",
+  "time_of_day": "dusk",
+  "realm": "frostfang",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          25,
+          3.0
+        ],
+        [
+          33,
+          3.0
+        ],
+        [
+          33.5,
+          -6
+        ],
+        [
+          60,
+          -6
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28,
+        4.0
+      ],
+      "size": [
+        0.6,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.4,
+        4.0
+      ],
+      "size": [
+        0.6,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.25,
+        5.2
+      ],
+      "size": [
+        8.5,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.15,
+        6.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.25,
+        6.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.7,
+        7.15
+      ],
+      "size": [
+        3.4,
+        0.3
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        33.7,
+        5.95
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        30.2,
+        3.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.6345,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.6345,
+      "tap": -1.0
+    }
+  ]
+}

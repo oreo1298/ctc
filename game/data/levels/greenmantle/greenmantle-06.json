@@ -1,0 +1,174 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-06",
+  "name": "Thatch Me If You Can",
+  "grievance": "The Thane of Lowmoor thatched his roof in gold straw. Show-off.",
+  "time_of_day": "noon",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.15,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.85,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.5,
+        1.85
+      ],
+      "size": [
+        5,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        28.5,
+        2.7
+      ],
+      "size": [
+        5.4,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.7,
+        1.3
+      ],
+      "size": [
+        0.4,
+        2.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.3,
+        1.3
+      ],
+      "size": [
+        0.4,
+        2.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.0,
+        2.75
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        34.0,
+        3.5
+      ],
+      "size": [
+        3.2,
+        1.2
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        27.6,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        29.4,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        34,
+        0.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.657,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "boulder",
+      "phase": 0.6605,
+      "tap": -1.0
+    }
+  ]
+}

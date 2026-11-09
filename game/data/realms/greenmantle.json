@@ -5,7 +5,18 @@
   "tagline": "Where King Grumbold's grudges grow greenest.",
   "order": 1,
   "levels": [
-    "greenmantle-01"
+    "greenmantle-01",
+    "greenmantle-02",
+    "greenmantle-03",
+    "greenmantle-04",
+    "greenmantle-05",
+    "greenmantle-06",
+    "greenmantle-07",
+    "greenmantle-08",
+    "greenmantle-09",
+    "greenmantle-10",
+    "greenmantle-11",
+    "greenmantle-12"
   ],
   "palette": {
     "ink": "#3b2f26",

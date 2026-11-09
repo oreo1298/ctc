@@ -1,0 +1,313 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-11",
+  "name": "Minarets",
+  "grievance": "The Twin Minarets of Zahir are so tall they shade my garden. At noon.",
+  "time_of_day": "dusk",
+  "realm": "saffron",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        0.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        1.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        2.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        3.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        4.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.325,
+        5.7
+      ],
+      "size": [
+        0.25,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.675,
+        5.7
+      ],
+      "size": [
+        0.25,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.0,
+        6.525
+      ],
+      "size": [
+        1.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44,
+        0.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44,
+        1.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44,
+        2.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44,
+        3.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44,
+        4.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        43.325,
+        5.7
+      ],
+      "size": [
+        0.25,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        44.675,
+        5.7
+      ],
+      "size": [
+        0.25,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        44.0,
+        6.525
+      ],
+      "size": [
+        1.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.2,
+        0.85
+      ],
+      "size": [
+        0.4,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.8,
+        0.85
+      ],
+      "size": [
+        0.4,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        34.5,
+        1.8
+      ],
+      "size": [
+        3,
+        0.2
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        25,
+        5.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        44,
+        5.55
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        34.5,
+        0.5
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        34.5,
+        2.475
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "chain",
+      "phase": 0.6645,
+      "tap": 0.6
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "chain",
+      "phase": 0.6645,
+      "tap": 0.6
+    }
+  ]
+}

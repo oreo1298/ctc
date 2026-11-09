@@ -1,0 +1,150 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-03",
+  "name": "Brittle Bones",
+  "grievance": "Old Lord Rime boasts his stone never breaks. Ice it, then break it.",
+  "time_of_day": "noon",
+  "realm": "frostfang",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.85,
+        0.95
+      ],
+      "size": [
+        0.7,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.15,
+        0.95
+      ],
+      "size": [
+        0.7,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.5,
+        2.2
+      ],
+      "size": [
+        6.0,
+        0.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.675,
+        3.3
+      ],
+      "size": [
+        0.55,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.325,
+        3.3
+      ],
+      "size": [
+        0.55,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.5,
+        4.35
+      ],
+      "size": [
+        4.2,
+        0.5
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.2,
+        0.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        30.8,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        29.5,
+        3.05
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.6605,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.657,
+      "tap": -1.0
+    }
+  ]
+}

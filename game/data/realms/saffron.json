@@ -4,7 +4,20 @@
   "name": "Saffron Reach",
   "tagline": "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters.",
   "order": 2,
-  "levels": [],
+  "levels": [
+    "saffron-01",
+    "saffron-02",
+    "saffron-03",
+    "saffron-04",
+    "saffron-05",
+    "saffron-06",
+    "saffron-07",
+    "saffron-08",
+    "saffron-09",
+    "saffron-10",
+    "saffron-11",
+    "saffron-12"
+  ],
   "palette": {
     "ink": "#3b2f26",
     "paper": "#f6ecd6",

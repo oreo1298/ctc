@@ -1,0 +1,229 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-03",
+  "name": "Market Day",
+  "grievance": "Every stall at the Saffron market sells my portrait. Upside down.",
+  "time_of_day": "noon",
+  "realm": "saffron",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.3,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.7,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        25.5,
+        2.075
+      ],
+      "size": [
+        2.8,
+        0.15
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.7,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.1,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        28.9,
+        2.075
+      ],
+      "size": [
+        2.8,
+        0.15
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.1,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.5,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        32.3,
+        2.075
+      ],
+      "size": [
+        2.8,
+        0.15
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.5,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        36.9,
+        1.0
+      ],
+      "size": [
+        0.25,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        35.7,
+        2.075
+      ],
+      "size": [
+        2.8,
+        0.15
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        25.5,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        28.9,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        32.3,
+        0.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        35.7,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "chain",
+      "phase": 0.689,
+      "tap": 0.6
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.6645,
+      "tap": 0.85
+    }
+  ]
+}

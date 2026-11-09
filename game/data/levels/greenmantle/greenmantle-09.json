@@ -1,0 +1,227 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-09",
+  "name": "Heavy Heart",
+  "grievance": "Count Orlo's palisade is so thick, he says nothing gets through. We'll see.",
+  "time_of_day": "dusk",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.2,
+        1.7
+      ],
+      "size": [
+        0.5,
+        3.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.7,
+        1.7
+      ],
+      "size": [
+        0.5,
+        3.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.2,
+        1.7
+      ],
+      "size": [
+        0.5,
+        3.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.7,
+        1.7
+      ],
+      "size": [
+        0.5,
+        3.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.2,
+        1.7
+      ],
+      "size": [
+        0.5,
+        3.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.7,
+        1.7
+      ],
+      "size": [
+        0.5,
+        3.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.575,
+        0.9
+      ],
+      "size": [
+        0.35,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.425,
+        0.9
+      ],
+      "size": [
+        0.35,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.5,
+        1.95
+      ],
+      "size": [
+        4.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.95,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.05,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.5,
+        3.85
+      ],
+      "size": [
+        3.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        30.5,
+        4.45
+      ],
+      "size": [
+        3.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        30.5,
+        0.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        30.5,
+        2.65
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.5385,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.5385,
+      "tap": -1.0
+    }
+  ]
+}

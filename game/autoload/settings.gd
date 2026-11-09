@@ -22,6 +22,8 @@ const KEYS: Array[String] = [
 	"music_volume",
 	"haptics",
 	"quality",
+	"locale",
+	"bindings",
 ]
 
 var screen_shake: bool = true
@@ -38,6 +40,11 @@ var sfx_volume: float = 1.0
 var music_volume: float = 0.6
 var haptics: bool = true
 var quality: String = "auto"
+var locale: String = ""
+## action -> Array of [kind, code] (see Controls); empty = defaults.
+var bindings: Dictionary = {}
+## Tests point this at a scratch file so they never touch real settings.
+var path_override: String = ""
 
 
 func _ready() -> void:
@@ -45,6 +52,8 @@ func _ready() -> void:
 
 
 func config_path() -> String:
+	if not path_override.is_empty():
+		return path_override
 	if OS.has_feature("linuxbsd"):
 		var slug: String = str(
 			ProjectSettings.get_setting("application/config/custom_user_dir_name", "game")
@@ -64,6 +73,12 @@ func load_settings() -> void:
 				set(k, v)
 	swing_speed = clampf(swing_speed, 0.4, 1.0)
 	text_scale = clampf(text_scale, 0.8, 1.6)
+	apply_locale()
+
+
+func apply_locale() -> void:
+	if not locale.is_empty():
+		TranslationServer.set_locale(locale)
 
 
 func save_settings() -> void:

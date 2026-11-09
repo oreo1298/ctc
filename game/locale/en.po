@@ -18,6 +18,24 @@ msgstr ""
 msgid "%s (gold ≤ %d)"
 msgstr "%s (gold ≤ %d)"
 
+#: scenes/menu/settings_menu.gd
+#, c-format
+msgid "50%"
+msgstr "50%"
+
+#: scenes/menu/settings_menu.gd
+#, c-format
+msgid "75%"
+msgstr "75%"
+
+#: data/levels/greenmantle/greenmantle-02.json
+msgid "A Taller Tower"
+msgstr "A Taller Tower"
+
+#: scenes/menu/settings_menu.gd
+msgid "A meter showing the arm's position and your last release."
+msgstr "A meter showing the arm's position and your last release."
+
 #: scenes/menu/main_menu.gd
 msgid "A petty king. A trebuchet. Your timing."
 msgstr "A petty king. A trebuchet. Your timing."
@@ -30,13 +48,42 @@ msgstr "A sack of five stones. Tap in flight to fan them out; they burst on impa
 msgid "A trusty lump of rock. Goes where you send it."
 msgstr "A trusty lump of rock. Goes where you send it."
 
+#: scenes/menu/settings_menu.gd
+msgid "Access"
+msgstr "Access"
+
+#: scenes/menu/settings_menu.gd
+msgid "Automatic"
+msgstr "Automatic"
+
+#: data/levels/frostfang/frostfang-08.json
+msgid "Avalanche"
+msgstr "Avalanche"
+
+#: scenes/menu/level_select.gd
+#: scenes/menu/settings_menu.gd
+msgid "Back"
+msgstr "Back"
+
 #: data/levels/greenmantle/greenmantle-01.json
 msgid "Baron Fennick's moat is wider than mine. Make his keep smaller to compensate."
 msgstr "Baron Fennick's moat is wider than mine. Make his keep smaller to compensate."
 
+#: data/levels/greenmantle/greenmantle-05.json
+msgid "Baron Mudge hired knights. Real ones. With hats."
+msgstr "Baron Mudge hired knights. Real ones. With hats."
+
+#: data/levels/frostfang/frostfang-04.json
+msgid "Baroness Steelbrow wears iron underwear. Allegedly. Find out."
+msgstr "Baroness Steelbrow wears iron underwear. Allegedly. Find out."
+
 #: data/ammo.json
 msgid "Boulder"
 msgstr "Boulder"
+
+#: data/levels/frostfang/frostfang-03.json
+msgid "Brittle Bones"
+msgstr "Brittle Bones"
 
 #: ui/hud.gd
 msgid "Bronze"
@@ -47,25 +94,81 @@ msgstr "Bronze"
 msgid "Bronze ≤ %d"
 msgstr "Bronze ≤ %d"
 
+#: scenes/menu/main_menu.gd
+msgid "Castle editor"
+msgstr "Castle editor"
+
 #: ui/hud.gd
 msgid "Castle flattened!"
 msgstr "Castle flattened!"
+
+#: data/levels/saffron/saffron-09.json
+msgid "Chain Reaction"
+msgstr "Chain Reaction"
 
 #: data/ammo.json
 msgid "Chain shot"
 msgstr "Chain shot"
 
+#: scenes/menu/main_menu.gd
+msgid "Choose level"
+msgstr "Choose level"
+
 #: data/materials.json
 msgid "Cloth"
 msgstr "Cloth"
+
+#: data/levels/frostfang/frostfang-01.json
+msgid "Cold Reception"
+msgstr "Cold Reception"
 
 #: data/realms/frostfang.json
 msgid "Cold towers, colder hearts, and the coldest shoulder in the kingdom."
 msgstr "Cold towers, colder hearts, and the coldest shoulder in the kingdom."
 
+#: scenes/menu/main_menu.gd
+msgid "Continue"
+msgstr "Continue"
+
+#: scenes/menu/settings_menu.gd
+msgid "Controls"
+msgstr "Controls"
+
+#: data/levels/greenmantle/greenmantle-09.json
+msgid "Count Orlo's palisade is so thick, he says nothing gets through. We'll see."
+msgstr "Count Orlo's palisade is so thick, he says nothing gets through. We'll see."
+
+#: data/levels/frostfang/frostfang-09.json
+msgid "Countess Vey's castle uses every material. Every. Single. One."
+msgstr "Countess Vey's castle uses every material. Every. Single. One."
+
+#: data/levels/greenmantle/greenmantle-07.json
+msgid "Earl Brask built on a hill so he could look down on me. Literally."
+msgstr "Earl Brask built on a hill so he could look down on me. Literally."
+
+#: scenes/menu/settings_menu.gd
+msgid "Effects volume"
+msgstr "Effects volume"
+
+#: data/levels/saffron/saffron-04.json
+msgid "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries."
+msgstr "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries."
+
+#: data/levels/saffron/saffron-03.json
+msgid "Every stall at the Saffron market sells my portrait. Upside down."
+msgstr "Every stall at the Saffron market sells my portrait. Upside down."
+
+#: data/levels/saffron/saffron-05.json
+msgid "Fire Sale"
+msgstr "Fire Sale"
+
 #: data/ammo.json
 msgid "Firepot"
 msgstr "Firepot"
+
+#: data/levels/greenmantle/greenmantle-08.json
+msgid "Flying Colours"
+msgstr "Flying Colours"
 
 #: data/ammo.json
 msgid "Freezes everything nearby. Frozen blocks turn brittle and shatter like glass."
@@ -79,9 +182,21 @@ msgstr "Frost flask"
 msgid "Frostfang Peaks"
 msgstr "Frostfang Peaks"
 
+#: scenes/menu/settings_menu.gd
+msgid "Fullscreen"
+msgstr "Fullscreen"
+
+#: scenes/menu/settings_menu.gd
+msgid "Ghost of last shot"
+msgstr "Ghost of last shot"
+
 #: data/materials.json
 msgid "Glass"
 msgstr "Glass"
+
+#: data/levels/saffron/saffron-02.json
+msgid "Glass Houses"
+msgstr "Glass Houses"
 
 #: data/ammo.json
 msgid "Goes off a moment after it lands. Tap to light it early."
@@ -91,18 +206,42 @@ msgstr "Goes off a moment after it lands. Tap to light it early."
 msgid "Gold"
 msgstr "Gold"
 
+#: scenes/menu/level_select.gd
+msgid "Gold · Silver · Bronze medals"
+msgstr "Gold · Silver · Bronze medals"
+
 #: ui/hud.gd
 #, c-format
 msgid "Gold ≤ %d"
 msgstr "Gold ≤ %d"
 
+#: data/levels/frostfang/frostfang-07.json
+msgid "Grand Duke Varn's fortress is iron, stone and ego. Swallow it whole."
+msgstr "Grand Duke Varn's fortress is iron, stone and ego. Swallow it whole."
+
 #: data/realms/greenmantle.json
 msgid "Greenmantle Hills"
 msgstr "Greenmantle Hills"
 
+#: data/levels/greenmantle/greenmantle-12.json
+msgid "Greenmantle Keep"
+msgstr "Greenmantle Keep"
+
+#: data/levels/frostfang/frostfang-06.json
+msgid "Hall of Mirrors"
+msgstr "Hall of Mirrors"
+
+#: data/levels/greenmantle/greenmantle-09.json
+msgid "Heavy Heart"
+msgstr "Heavy Heart"
+
 #: data/ammo.json
 msgid "Heavy and dense. Punches straight through wood."
 msgstr "Heavy and dense. Punches straight through wood."
+
+#: scenes/menu/settings_menu.gd
+msgid "High"
+msgstr "High"
 
 #: data/enemies.json
 msgid "Hostage"
@@ -112,25 +251,97 @@ msgstr "Hostage"
 msgid "Ice"
 msgstr "Ice"
 
+#: data/levels/frostfang/frostfang-07.json
+msgid "Into the Void"
+msgstr "Into the Void"
+
 #: data/materials.json
 msgid "Iron"
 msgstr "Iron"
+
+#: data/levels/saffron/saffron-07.json
+msgid "Iron Gate"
+msgstr "Iron Gate"
+
+#: data/levels/frostfang/frostfang-04.json
+msgid "Iron Will"
+msgstr "Iron Will"
 
 #: data/ammo.json
 msgid "Iron ball"
 msgstr "Iron ball"
 
+#: data/levels/frostfang/frostfang-02.json
+msgid "Jarl Ingmar's hall is built on ice. On purpose. Help him slide."
+msgstr "Jarl Ingmar's hall is built on ice. On purpose. Help him slide."
+
 #: data/enemies.json
 msgid "King"
 msgstr "King"
+
+#: data/levels/greenmantle/greenmantle-07.json
+msgid "King of the Hill"
+msgstr "King of the Hill"
 
 #: data/enemies.json
 msgid "Knight"
 msgstr "Knight"
 
+#: data/levels/greenmantle/greenmantle-08.json
+msgid "Lady Vane's banners are brighter than mine. Make them flutter. Downwards."
+msgstr "Lady Vane's banners are brighter than mine. Make them flutter. Downwards."
+
+#: scenes/menu/settings_menu.gd
+msgid "Language"
+msgstr "Language"
+
+#: data/levels/saffron/saffron-08.json
+msgid "Lantern Row"
+msgstr "Lantern Row"
+
+#: data/levels/greenmantle/greenmantle-02.json
+msgid "Lord Ashby's tower is taller than mine. Shorten it. From the top."
+msgstr "Lord Ashby's tower is taller than mine. Shorten it. From the top."
+
+#: scenes/menu/settings_menu.gd
+msgid "Low"
+msgstr "Low"
+
+#: data/levels/saffron/saffron-03.json
+msgid "Market Day"
+msgstr "Market Day"
+
+#: scenes/menu/settings_menu.gd
+msgid "Master volume"
+msgstr "Master volume"
+
+#: scenes/menu/settings_menu.gd
+msgid "Material patterns"
+msgstr "Material patterns"
+
 #: ui/hud.gd
 msgid "Menu"
 msgstr "Menu"
+
+#: data/levels/saffron/saffron-11.json
+msgid "Minarets"
+msgstr "Minarets"
+
+#: data/levels/saffron/saffron-04.json
+msgid "Mind the Guests"
+msgstr "Mind the Guests"
+
+#: data/levels/frostfang/frostfang-09.json
+msgid "Mixed Blessings"
+msgstr "Mixed Blessings"
+
+#: scenes/menu/settings_menu.gd
+msgid "Music volume"
+msgstr "Music volume"
+
+#: data/levels/greenmantle/greenmantle-12.json
+msgid "My cousin Wendel claims the Greenmantle crown. My crown. Flatten his keep."
+msgstr "My cousin Wendel claims the Greenmantle crown. My crown. Flatten his keep."
 
 #: ui/hud.gd
 #, c-format
@@ -145,14 +356,43 @@ msgstr "New best!"
 msgid "Next"
 msgstr "Next"
 
+#: scenes/menu/settings_menu.gd
+msgid "Next ammo"
+msgstr "Next ammo"
+
 #: ui/hud.gd
 msgid "No medal"
 msgstr "No medal"
+
+#: scenes/menu/settings_menu.gd
+msgid "Normal"
+msgstr "Normal"
+
+#: data/levels/frostfang/frostfang-11.json
+msgid "Old Admiral Frost watches my kingdom from his tower. With a telescope."
+msgstr "Old Admiral Frost watches my kingdom from his tower. With a telescope."
+
+#: data/levels/frostfang/frostfang-03.json
+msgid "Old Lord Rime boasts his stone never breaks. Ice it, then break it."
+msgstr "Old Lord Rime boasts his stone never breaks. Ice it, then break it."
+
+#: scenes/menu/settings_menu.gd
+msgid "One button does everything: tap to shoot, hold to change ammo."
+msgstr "One button does everything: tap to shoot, hold to change ammo."
+
+#: scenes/menu/settings_menu.gd
+msgid "One-button mode"
+msgstr "One-button mode"
 
 #: data/ammo.json
 msgid "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
 msgstr "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
 
+#: data/levels/frostfang/frostfang-05.json
+msgid "Overhang"
+msgstr "Overhang"
+
+#: scenes/menu/settings_menu.gd
 #: ui/hud.gd
 msgid "Pause"
 msgstr "Pause"
@@ -161,13 +401,46 @@ msgstr "Pause"
 msgid "Paused"
 msgstr "Paused"
 
+#: data/levels/frostfang/frostfang-11.json
+msgid "Peak Watch"
+msgstr "Peak Watch"
+
+#: data/levels/saffron/saffron-06.json
+msgid "Pharaoh-ish Pteran built a pyramid. I didn't even know we had pyramids."
+msgstr "Pharaoh-ish Pteran built a pyramid. I didn't even know we had pyramids."
+
 #: scenes/menu/main_menu.gd
+#: scenes/menu/settings_menu.gd
 msgid "Play"
 msgstr "Play"
+
+#: data/levels/saffron/saffron-01.json
+msgid "Powder Day"
+msgstr "Powder Day"
 
 #: data/ammo.json
 msgid "Powder keg"
 msgstr "Powder keg"
+
+#: scenes/menu/settings_menu.gd
+msgid "Press a key…"
+msgstr "Press a key…"
+
+#: scenes/menu/settings_menu.gd
+msgid "Previous ammo"
+msgstr "Previous ammo"
+
+#: data/levels/saffron/saffron-08.json
+msgid "Prince Idris lights a thousand lanterns every night just to keep me awake."
+msgstr "Prince Idris lights a thousand lanterns every night just to keep me awake."
+
+#: data/levels/frostfang/frostfang-06.json
+msgid "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it."
+msgstr "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it."
+
+#: scenes/menu/settings_menu.gd
+msgid "Quality"
+msgstr "Quality"
 
 #: data/enemies.json
 msgid "Queen"
@@ -177,9 +450,26 @@ msgstr "Queen"
 msgid "Quit"
 msgstr "Quit"
 
+#: scenes/menu/settings_menu.gd
+msgid "Reduce flashing"
+msgstr "Reduce flashing"
+
+#: scenes/menu/settings_menu.gd
+#, c-format
+msgid "Renderer: %s"
+msgstr "Renderer: %s"
+
+#: scenes/menu/settings_menu.gd
+msgid "Reset controls"
+msgstr "Reset controls"
+
 #: ui/hud.gd
 msgid "Restart"
 msgstr "Restart"
+
+#: scenes/menu/settings_menu.gd
+msgid "Restart level"
+msgstr "Restart level"
 
 #: ui/hud.gd
 msgid "Resume"
@@ -193,6 +483,10 @@ msgstr "Retry"
 msgid "Saffron Reach"
 msgstr "Saffron Reach"
 
+#: data/levels/saffron/saffron-06.json
+msgid "Sandstone Steps"
+msgstr "Sandstone Steps"
+
 #: data/realms/saffron.json
 msgid "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
 msgstr "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters."
@@ -201,10 +495,23 @@ msgstr "Sandstone, silk awnings and a sultan who won't return King Grumbold's le
 msgid "Scatter-stones"
 msgstr "Scatter-stones"
 
+#: data/levels/greenmantle/greenmantle-04.json
+msgid "Scattered Thoughts"
+msgstr "Scattered Thoughts"
+
 #: ui/hud.gd
 #, c-format
 msgid "Score %d"
 msgstr "Score %d"
+
+#: scenes/menu/settings_menu.gd
+msgid "Screen shake"
+msgstr "Screen shake"
+
+#: scenes/menu/main_menu.gd
+#: scenes/menu/settings_menu.gd
+msgid "Settings"
+msgstr "Settings"
 
 #: data/ammo.json
 msgid "Shatters into flames. Wood, thatch and cloth keep burning."
@@ -224,21 +531,161 @@ msgstr "Silver"
 msgid "Silver ≤ %d"
 msgstr "Silver ≤ %d"
 
+#: data/levels/greenmantle/greenmantle-04.json
+msgid "Sir Pellam's picnic was lovely. I wasn't invited. Scatter it."
+msgstr "Sir Pellam's picnic was lovely. I wasn't invited. Scatter it."
+
+#: data/levels/greenmantle/greenmantle-10.json
+msgid "Sir Tobble's gatehouse has a portcullis. Mine has a curtain."
+msgstr "Sir Tobble's gatehouse has a portcullis. Mine has a curtain."
+
+#: data/levels/frostfang/frostfang-02.json
+msgid "Slippery Slope"
+msgstr "Slippery Slope"
+
+#: scenes/menu/settings_menu.gd
+msgid "Slow motion on big hits"
+msgstr "Slow motion on big hits"
+
+#: scenes/menu/settings_menu.gd
+msgid "Sound"
+msgstr "Sound"
+
+#: scenes/menu/settings_menu.gd
+msgid "Stamps a pattern on each material so they can be told apart without colour."
+msgstr "Stamps a pattern on each material so they can be told apart without colour."
+
 #: data/materials.json
 msgid "Stone"
 msgstr "Stone"
+
+#: scenes/menu/settings_menu.gd
+msgid "Swing / release / ability"
+msgstr "Swing / release / ability"
+
+#: scenes/menu/settings_menu.gd
+msgid "Swing gauge"
+msgstr "Swing gauge"
+
+#: scenes/menu/settings_menu.gd
+msgid "Swing speed"
+msgstr "Swing speed"
 
 #: scenes/level/level.gd
 msgid "Tap to swing, tap again to let go"
 msgstr "Tap to swing, tap again to let go"
 
+#: scenes/menu/settings_menu.gd
+msgid "Text size"
+msgstr "Text size"
+
 #: data/materials.json
 msgid "Thatch"
 msgstr "Thatch"
 
+#: data/levels/greenmantle/greenmantle-06.json
+msgid "Thatch Me If You Can"
+msgstr "Thatch Me If You Can"
+
+#: data/levels/frostfang/frostfang-10.json
+msgid "The Bridge"
+msgstr "The Bridge"
+
+#: data/levels/frostfang/frostfang-10.json
+msgid "The Bridge Lord charges me a toll. A toll! Me!"
+msgstr "The Bridge Lord charges me a toll. A toll! Me!"
+
+#: data/levels/greenmantle/greenmantle-11.json
+msgid "The Brothers Hale each built a keep. Two insults for the price of one."
+msgstr "The Brothers Hale each built a keep. Two insults for the price of one."
+
+#: data/levels/saffron/saffron-10.json
+msgid "The Caliph's oasis has fountains. My well has frogs."
+msgstr "The Caliph's oasis has fountains. My well has frogs."
+
+#: data/levels/frostfang/frostfang-05.json
+msgid "The Cliff Earl's balcony hangs over the void. Like his debts."
+msgstr "The Cliff Earl's balcony hangs over the void. Like his debts."
+
+#: data/levels/greenmantle/greenmantle-03.json
+msgid "The Duke and Duchess of Fennick sit on matching thrones. Matching!"
+msgstr "The Duke and Duchess of Fennick sit on matching thrones. Matching!"
+
+#: data/levels/frostfang/frostfang-12.json
+msgid "The Frostfang Citadel"
+msgstr "The Frostfang Citadel"
+
+#: data/levels/greenmantle/greenmantle-10.json
+msgid "The Gatehouse"
+msgstr "The Gatehouse"
+
+#: data/levels/saffron/saffron-07.json
+msgid "The Gatekeeper of Qal'at put iron on his gate. I put iron on my lunch."
+msgstr "The Gatekeeper of Qal'at put iron on his gate. I put iron on my lunch."
+
+#: data/levels/frostfang/frostfang-08.json
+msgid "The Hermit King lives atop an icy crag and refuses to come down. Assist."
+msgstr "The Hermit King lives atop an icy crag and refuses to come down. Assist."
+
+#: data/levels/frostfang/frostfang-01.json
+msgid "The Ice Margrave froze my envoy. Well, the envoy's soup. Same thing."
+msgstr "The Ice Margrave froze my envoy. Well, the envoy's soup. Same thing."
+
+#: data/levels/saffron/saffron-10.json
+msgid "The Oasis Palace"
+msgstr "The Oasis Palace"
+
+#: data/levels/saffron/saffron-09.json
+msgid "The Silk Merchant's tower is held up by sheer silk. And pride."
+msgstr "The Silk Merchant's tower is held up by sheer silk. And pride."
+
+#: data/levels/saffron/saffron-12.json
+msgid "The Sultan of Saffron returned my sand. Lightly used. This means war."
+msgstr "The Sultan of Saffron returned my sand. Lightly used. This means war."
+
+#: data/levels/saffron/saffron-01.json
+msgid "The Sultan of Saffron sent me sand in a box. Return the favour, with interest."
+msgstr "The Sultan of Saffron sent me sand in a box. Return the favour, with interest."
+
+#: data/levels/saffron/saffron-12.json
+msgid "The Sultan's Fortress"
+msgstr "The Sultan's Fortress"
+
+#: data/levels/greenmantle/greenmantle-06.json
+msgid "The Thane of Lowmoor thatched his roof in gold straw. Show-off."
+msgstr "The Thane of Lowmoor thatched his roof in gold straw. Show-off."
+
+#: data/levels/saffron/saffron-11.json
+msgid "The Twin Minarets of Zahir are so tall they shade my garden. At noon."
+msgstr "The Twin Minarets of Zahir are so tall they shade my garden. At noon."
+
+#: data/levels/saffron/saffron-02.json
+msgid "The Vizier's glass palace sparkles at me every morning. Rude."
+msgstr "The Vizier's glass palace sparkles at me every morning. Rude."
+
 #: data/levels/greenmantle/greenmantle-01.json
 msgid "The Wider Moat"
 msgstr "The Wider Moat"
+
+#: data/levels/frostfang/frostfang-12.json
+msgid "The last of my rivals sits in the coldest castle of all. Warm him up. Then down."
+msgstr "The last of my rivals sits in the coldest castle of all. Warm him up. Then down."
+
+#: data/levels/saffron/saffron-05.json
+msgid "The timber baron of Saffron sells wood to my enemies. Light up his life."
+msgstr "The timber baron of Saffron sells wood to my enemies. Light up his life."
+
+#: data/levels/greenmantle/greenmantle-05.json
+msgid "Tin Cans"
+msgstr "Tin Cans"
+
+#: data/levels/greenmantle/greenmantle-11.json
+msgid "Twin Keeps"
+msgstr "Twin Keeps"
+
+#: data/levels/greenmantle/greenmantle-03.json
+msgid "Two Thrones"
+msgstr "Two Thrones"
 
 #: data/ammo.json
 msgid "Two iron balls on a chain, spinning. Tap to snap the chain and send them apart."
@@ -248,6 +695,14 @@ msgstr "Two iron balls on a chain, spinning. Tap to snap the chain and send them
 #, c-format
 msgid "Version %s"
 msgstr "Version %s"
+
+#: scenes/menu/settings_menu.gd
+msgid "Vibration (phones)"
+msgstr "Vibration (phones)"
+
+#: scenes/menu/settings_menu.gd
+msgid "Video"
+msgstr "Video"
 
 #: data/ammo.json
 msgid "Void flask"
@@ -261,6 +716,11 @@ msgstr "Where King Grumbold's grudges grow greenest."
 msgid "Wood"
 msgstr "Wood"
 
+#: ui/hud.gd
+msgid "— King Grumbold the Petty"
+msgstr "— King Grumbold the Petty"
+
+#: scenes/menu/level_select.gd
 #: ui/hud.gd
 #, c-format
 msgid "%d shot"

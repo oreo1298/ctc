@@ -1,38 +1,17 @@
 # SPDX-FileCopyrightText: 2026 Siegefall contributors
 # SPDX-License-Identifier: MIT
-extends Node2D
-## Title screen over a living backdrop. Milestone 3 adds the realm map,
-## settings and the castle editor entry.
-
-var _cam: Camera2D
-var _t: float = 0.0
+extends MenuBase
+## Title screen over a living backdrop.
 
 
 func _ready() -> void:
-	var realm: Dictionary = Data.realms[0] if not Data.realms.is_empty() else {}
-	var backdrop := Backdrop.new()
-	add_child(backdrop)
-	backdrop.build(
-		realm.get("palette", {}), Data.grade("golden"), realm.get("backdrop", {}), 60.0, 7
-	)
-	_cam = Camera2D.new()
-	_cam.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
-	_cam.zoom = Vector2(0.5, 0.5)
-	add_child(_cam)
-	_cam.make_current()
-
-	var ui := CanvasLayer.new()
-	add_child(ui)
-	var root := Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
-	root.theme = UiTheme.build(Settings.text_scale)
-	ui.add_child(root)
+	build_frame("", "golden")
 	var center := CenterContainer.new()
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	root.add_child(center)
+	ui.add_child(center)
 	var box := VBoxContainer.new()
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	box.add_theme_constant_override("separation", 18)
+	box.add_theme_constant_override("separation", 14)
 	center.add_child(box)
 	var title := Label.new()
 	title.theme_type_variation = "TitleLabel"
@@ -45,40 +24,39 @@ func _ready() -> void:
 	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(tag)
 	var spacer := Control.new()
-	spacer.custom_minimum_size = Vector2(0, 24)
+	spacer.custom_minimum_size = Vector2(0, 18)
 	box.add_child(spacer)
-	var play := Button.new()
-	play.theme_type_variation = "BigButton"
-	play.text = tr("Play")
+	var started: bool = not Game.save.levels.is_empty()
+	var play := button(tr("Continue") if started else tr("Play"), _on_play, "BigButton")
 	play.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	play.pressed.connect(_on_play)
 	box.add_child(play)
+	for pair: Array in [
+		[tr("Choose level"), Game.goto_levels],
+		[tr("Castle editor"), Game.goto_editor],
+		[tr("Settings"), Game.goto_settings],
+	]:
+		var b := button(str(pair[0]), pair[1] as Callable)
+		b.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		b.custom_minimum_size = Vector2(260, 0) * Settings.text_scale
+		box.add_child(b)
 	if not OS.has_feature("ios") and not OS.has_feature("web"):
-		var quit := Button.new()
-		quit.text = tr("Quit")
+		var quit := button(tr("Quit"), func() -> void: get_tree().quit())
 		quit.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		quit.pressed.connect(func() -> void: get_tree().quit())
+		quit.custom_minimum_size = Vector2(260, 0) * Settings.text_scale
 		box.add_child(quit)
 	var ver := Label.new()
 	ver.theme_type_variation = "SmallLabel"
 	ver.text = "v%s" % str(ProjectSettings.get_setting("application/config/version"))
 	ver.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT, Control.PRESET_MODE_MINSIZE, 16)
-	root.add_child(ver)
+	ui.add_child(ver)
 	play.grab_focus.call_deferred()
 
 
 func _on_play() -> void:
-	var levels: PackedStringArray = Data.campaign_levels()
-	if levels.is_empty():
-		return
-	var target: String = levels[0]
-	for id: String in levels:
-		if not Game.save.is_completed(id):
-			target = id
-			break
-	Game.play_level(target)
+	var id: String = Game.next_unfinished_level()
+	if not id.is_empty():
+		Game.play_level(id)
 
 
-func _physics_process(delta: float) -> void:
-	_t += delta
-	_cam.position = Vector2(_t * 60.0, -300.0)
+func go_back() -> void:
+	pass

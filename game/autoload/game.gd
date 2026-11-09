@@ -8,6 +8,9 @@ signal save_changed
 const SAVE_PATH: String = "user://save.json"
 const MENU_SCENE: String = "res://scenes/menu/main_menu.tscn"
 const LEVEL_SCENE: String = "res://scenes/level/level.tscn"
+const LEVEL_SELECT_SCENE: String = "res://scenes/menu/level_select.tscn"
+const SETTINGS_SCENE: String = "res://scenes/menu/settings.tscn"
+const EDITOR_SCENE: String = "res://scenes/editor/editor.tscn"
 const FADE_TIME: float = 0.22
 
 var save: SaveGame = SaveGame.new()
@@ -99,6 +102,19 @@ func goto_menu() -> void:
 	_change_scene(MENU_SCENE)
 
 
+func goto_levels() -> void:
+	_change_scene(LEVEL_SELECT_SCENE)
+
+
+func goto_settings() -> void:
+	_change_scene(SETTINGS_SCENE)
+
+
+func goto_editor() -> void:
+	if ResourceLoader.exists(EDITOR_SCENE):
+		_change_scene(EDITOR_SCENE)
+
+
 func play_level(level_id: String) -> void:
 	current_level_id = level_id
 	custom_level = {}
@@ -146,6 +162,41 @@ func _change_scene(path: String) -> void:
 
 
 # ----------------------------------------------------------- progression ---
+## A level is open if it is the first of the campaign, its predecessor is
+## completed, or the player already completed it. Dev/custom levels: always.
+func is_level_unlocked(level_id: String) -> bool:
+	if cli.has("unlock-all"):
+		return true
+	var all: PackedStringArray = Data.campaign_levels()
+	var i: int = all.find(level_id)
+	if i <= 0:
+		return true
+	return save.is_completed(level_id) or save.is_completed(all[i - 1])
+
+
+func is_realm_unlocked(realm_id: String) -> bool:
+	var r: Dictionary = Data.realm(realm_id)
+	var levels: Array = r.get("levels", [])
+	return levels.is_empty() or is_level_unlocked(str(levels[0]))
+
+
+## First level the player has not completed yet (or the last level).
+func next_unfinished_level() -> String:
+	var all: PackedStringArray = Data.campaign_levels()
+	for id: String in all:
+		if not save.is_completed(id):
+			return id
+	return all[all.size() - 1] if not all.is_empty() else ""
+
+
+func medal_count(medal: Scoring.Medal) -> int:
+	var n: int = 0
+	for id: String in save.levels:
+		if save.medal(id) == medal:
+			n += 1
+	return n
+
+
 func is_ammo_unlocked(ammo_id: String) -> bool:
 	return save.unlocked_ammo.has(ammo_id)
 

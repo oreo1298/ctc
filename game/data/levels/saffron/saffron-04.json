@@ -1,0 +1,169 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-04",
+  "name": "Mind the Guests",
+  "grievance": "Emir Qadir keeps my favourite baker hostage. Careful: I want my pastries.",
+  "time_of_day": "afternoon",
+  "realm": "saffron",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.225,
+        0.85
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.775,
+        0.85
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.0,
+        1.85
+      ],
+      "size": [
+        4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        28.0,
+        2.45
+      ],
+      "size": [
+        4.2,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.225,
+        0.85
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.175,
+        0.85
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.7,
+        1.85
+      ],
+      "size": [
+        3.4,
+        0.3
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        27.2,
+        0.55
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        28.8,
+        0.5
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        33.7,
+        0.575
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        33.7,
+        2.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.657,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.657,
+      "tap": -1.0
+    }
+  ]
+}

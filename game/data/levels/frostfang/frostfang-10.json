@@ -1,0 +1,203 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-10",
+  "name": "The Bridge",
+  "grievance": "The Bridge Lord charges me a toll. A toll! Me!",
+  "time_of_day": "dusk",
+  "realm": "frostfang",
+  "world": {
+    "right": 58,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          24,
+          0
+        ],
+        [
+          26,
+          2.0
+        ],
+        [
+          28,
+          2.0
+        ],
+        [
+          28.2,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "snow"
+    },
+    {
+      "points": [
+        [
+          36.0,
+          -8
+        ],
+        [
+          36.2,
+          2.0
+        ],
+        [
+          50,
+          2.0
+        ],
+        [
+          52,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.1,
+        2.2
+      ],
+      "size": [
+        9.8,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.15,
+        3.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.85,
+        3.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        32.0,
+        4.15
+      ],
+      "size": [
+        4,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44.225,
+        2.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        47.275,
+        2.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.75,
+        4.0
+      ],
+      "size": [
+        3.5,
+        0.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        31,
+        2.975
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        33,
+        2.9
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        45.75,
+        2.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "scatter",
+      "phase": 0.64,
+      "tap": 0.55
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.64,
+      "tap": 0.55
+    }
+  ]
+}

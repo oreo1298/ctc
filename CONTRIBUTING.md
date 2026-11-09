@@ -65,7 +65,14 @@ Explain *why* in the body when it's not obvious. Work on a feature branch.
 
 ## Adding levels
 
-See [docs/LEVEL_FORMAT.md](docs/LEVEL_FORMAT.md). Build in the in-game castle
-editor, export the JSON, put it in `game/data/levels/<realm>/`, add it to
-the realm file, then run `make validate-levels` so the bot proves it can be
-beaten and sets its par.
+See [docs/LEVEL_FORMAT.md](docs/LEVEL_FORMAT.md).
+
+1. Write the castle as a function in `tools/levels/build_levels.py` (or build
+   it in the in-game castle editor and export the JSON into
+   `game/data/levels/<realm>/`), and list it in the realm file.
+2. `make levels` regenerates the JSON from the builder.
+3. `make check-levels` makes sure the castle stands still on its own.
+4. `make validate-levels` lets the bot find solutions and set par (all CPU
+   cores; a few minutes for the whole campaign).
+5. Play it. The bot proves a level is *possible*; only you can tell whether
+   it is *fun*.

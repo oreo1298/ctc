@@ -1,0 +1,184 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-02",
+  "name": "A Taller Tower",
+  "grievance": "Lord Ashby's tower is taller than mine. Shorten it. From the top.",
+  "time_of_day": "morning",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.975,
+        0.75
+      ],
+      "size": [
+        0.35,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.025,
+        0.75
+      ],
+      "size": [
+        0.35,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        1.65
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.975,
+        2.55
+      ],
+      "size": [
+        0.35,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.025,
+        2.55
+      ],
+      "size": [
+        0.35,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        3.45
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.975,
+        4.35
+      ],
+      "size": [
+        0.35,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.025,
+        4.35
+      ],
+      "size": [
+        0.35,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        5.25
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        30.0,
+        5.9
+      ],
+      "size": [
+        2.8,
+        1.0
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        30,
+        4.15
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.6625,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "boulder",
+      "phase": 0.5315,
+      "tap": -1.0
+    }
+  ]
+}

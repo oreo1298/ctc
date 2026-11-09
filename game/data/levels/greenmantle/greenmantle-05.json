@@ -1,0 +1,199 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-05",
+  "name": "Tin Cans",
+  "grievance": "Baron Mudge hired knights. Real ones. With hats.",
+  "time_of_day": "morning",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.4,
+        0.4
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.4,
+        1.2
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.2,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.8,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.0,
+        1.75
+      ],
+      "size": [
+        4,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.75,
+        2.65
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.25,
+        2.65
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.0,
+        3.55
+      ],
+      "size": [
+        2.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.6,
+        0.4
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.6,
+        1.2
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.2,
+        0.575
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        29.8,
+        0.575
+      ],
+      "flip": true
+    },
+    {
+      "type": "king",
+      "pos": [
+        29,
+        2.45
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.6605,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "boulder",
+      "phase": 0.6585,
+      "tap": -1.0
+    }
+  ]
+}

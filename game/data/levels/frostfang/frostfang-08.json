@@ -1,0 +1,171 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-08",
+  "name": "Avalanche",
+  "grievance": "The Hermit King lives atop an icy crag and refuses to come down. Assist.",
+  "time_of_day": "morning",
+  "realm": "frostfang",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          27,
+          4.0
+        ],
+        [
+          35,
+          4.0
+        ],
+        [
+          40,
+          0.0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        29,
+        4.45
+      ],
+      "size": [
+        2.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        29,
+        5.35
+      ],
+      "size": [
+        2.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        29,
+        6.25
+      ],
+      "size": [
+        2.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        28.15,
+        7.45
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        29.85,
+        7.45
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        29.0,
+        8.35
+      ],
+      "size": [
+        2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.5,
+        4.8
+      ],
+      "size": [
+        0.5,
+        1.6
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        29,
+        7.25
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        33.6,
+        4.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.6365,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.6365,
+      "tap": -1.0
+    }
+  ]
+}

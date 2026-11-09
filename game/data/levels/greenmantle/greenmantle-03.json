@@ -1,0 +1,179 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-03",
+  "name": "Two Thrones",
+  "grievance": "The Duke and Duchess of Fennick sit on matching thrones. Matching!",
+  "time_of_day": "noon",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.1,
+        0.85
+      ],
+      "size": [
+        0.4,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.9,
+        0.85
+      ],
+      "size": [
+        0.4,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.5,
+        1.85
+      ],
+      "size": [
+        3.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        27.5,
+        2.45
+      ],
+      "size": [
+        3.4,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.1,
+        0.85
+      ],
+      "size": [
+        0.4,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.9,
+        0.85
+      ],
+      "size": [
+        0.4,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.5,
+        1.85
+      ],
+      "size": [
+        3.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        33.5,
+        2.45
+      ],
+      "size": [
+        3.4,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.5,
+        0.5
+      ],
+      "size": [
+        0.6,
+        1.0
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        27.5,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        33.5,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.655,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "boulder",
+      "phase": 0.6625,
+      "tap": -1.0
+    }
+  ]
+}

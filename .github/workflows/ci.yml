@@ -58,6 +58,8 @@ jobs:
         run: |
           scripts/godot.sh --headless --fixed-fps 60 --path game -- \
             --level=greenmantle-01 --autoplay=0.65 --quit-after=14 --no-save
+      - name: Every castle stands still and every level is still beatable
+        run: make check-levels
       - name: Smoke test with a real GL context (Xvfb + llvmpipe + Compatibility)
         run: |
           xvfb-run -a -s "-screen 0 1280x720x24" \

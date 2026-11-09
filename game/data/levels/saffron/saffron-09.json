@@ -1,0 +1,222 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-09",
+  "name": "Chain Reaction",
+  "grievance": "The Silk Merchant's tower is held up by sheer silk. And pride.",
+  "time_of_day": "afternoon",
+  "realm": "saffron",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27,
+        1.5
+      ],
+      "size": [
+        0.25,
+        3.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.8,
+        1.5
+      ],
+      "size": [
+        0.25,
+        3.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.6,
+        1.5
+      ],
+      "size": [
+        0.25,
+        3.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.4,
+        1.5
+      ],
+      "size": [
+        0.25,
+        3.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.7,
+        3.15
+      ],
+      "size": [
+        5.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        27.9,
+        1.5
+      ],
+      "size": [
+        1.5,
+        2.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        29.7,
+        1.5
+      ],
+      "size": [
+        1.5,
+        2.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        31.5,
+        1.5
+      ],
+      "size": [
+        1.5,
+        2.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.65,
+        4.1
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.85,
+        4.1
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.75,
+        5.05
+      ],
+      "size": [
+        4.5,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        29.75,
+        5.65
+      ],
+      "size": [
+        4.7,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        29.7,
+        3.85
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30.9,
+        3.85
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        34.5,
+        0.5
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "scatter",
+      "phase": 0.629,
+      "tap": 0.55
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.629,
+      "tap": 0.55
+    }
+  ]
+}

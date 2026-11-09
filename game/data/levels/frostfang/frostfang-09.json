@@ -1,0 +1,263 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-09",
+  "name": "Mixed Blessings",
+  "grievance": "Countess Vey's castle uses every material. Every. Single. One.",
+  "time_of_day": "golden",
+  "realm": "frostfang",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.25,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.75,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        28.0,
+        1.975
+      ],
+      "size": [
+        6,
+        0.35
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.75,
+        2.95
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.25,
+        2.95
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.0,
+        3.9
+      ],
+      "size": [
+        4.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        26.55,
+        4.8
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        29.45,
+        4.8
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        28.0,
+        5.7
+      ],
+      "size": [
+        3.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        28.0,
+        6.3
+      ],
+      "size": [
+        3.4,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        42.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        45.3,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        43.75,
+        1.975
+      ],
+      "size": [
+        3.5,
+        0.35
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        43.75,
+        2.6
+      ],
+      "size": [
+        3.7,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        26.5,
+        0.575
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        29.5,
+        0.5
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        28,
+        4.6
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        43.75,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.6625,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6308,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "void",
+      "phase": 0.6625,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6308,
+      "tap": -1.0
+    }
+  ]
+}

@@ -17,6 +17,7 @@ signal bot_done(result: Dictionary)
 enum State { INTRO, READY, SWINGING, FLYING, SETTLING, WON }
 
 const SETTLE_HOLD: float = 1.1
+const HOLD_STEP: float = 0.6
 const WIN_SETTLE_MAX: float = 2.5
 
 var data: LevelData
@@ -55,6 +56,8 @@ var _bot_reported: bool = false
 var _broken_blocks: int = 0
 var _hostages_hit: int = 0
 var _targets_total: int = 0
+var _hold_t: float = -1.0
+var _hold_cycled: bool = false
 
 
 func _ready() -> void:
@@ -219,10 +222,12 @@ func _build() -> void:
 	hud.setup(tr(data.name), data.par)
 	hud.set_ammo(trebuchet.ammo, ammo_list.size())
 	hud.set_hint(tr("Tap to swing, tap again to let go"))
+	if not bot_mode and not Game.cli.has("autoplay"):
+		hud.show_intro(tr(data.name), tr(data.grievance))
 	hud.restart_pressed.connect(Game.restart_level)
 	hud.pause_pressed.connect(toggle_pause)
 	hud.resume_pressed.connect(toggle_pause)
-	hud.menu_pressed.connect(Game.goto_menu)
+	hud.menu_pressed.connect(Game.goto_levels)
 	hud.next_pressed.connect(_go_next)
 	hud.ammo_cycle.connect(cycle_ammo)
 
@@ -261,9 +266,42 @@ func _unhandled_input(event: InputEvent) -> void:
 		cycle_ammo(-1)
 	elif event.is_action_pressed("next_level") and state == State.WON:
 		_go_next()
+	elif Settings.one_button and state == State.READY and _one_button(event):
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("fire") or _is_touch_tap(event):
 		get_viewport().set_input_as_handled()
 		on_fire()
+
+
+## One-button mode while aiming: a short press swings; holding cycles the
+## ammo every HOLD_STEP seconds and releasing keeps the shown ammo.
+
+
+func _one_button(event: InputEvent) -> bool:
+	if event.is_action_pressed("fire"):
+		_hold_t = 0.0
+		_hold_cycled = false
+		return true
+	if event.is_action_released("fire") and _hold_t >= 0.0:
+		var was_hold: bool = _hold_cycled
+		_hold_t = -1.0
+		if not was_hold:
+			on_fire()
+		return true
+	return false
+
+
+func _tick_hold(delta: float) -> void:
+	if _hold_t < 0.0:
+		return
+	if not Input.is_action_pressed("fire") or state != State.READY:
+		_hold_t = -1.0
+		return
+	_hold_t += delta
+	if _hold_t >= HOLD_STEP:
+		_hold_t -= HOLD_STEP
+		_hold_cycled = true
+		cycle_ammo(1)
 
 
 static func _is_touch_tap(event: InputEvent) -> bool:
@@ -282,6 +320,7 @@ func on_fire() -> void:
 				trebuchet.start_swing()
 				state = State.SWINGING
 				hud.fade_hint()
+				hud.hide_intro()
 		State.SWINGING:
 			trebuchet.release()
 		State.FLYING, State.SETTLING:
@@ -449,6 +488,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
+	_tick_hold(delta)
 	if state == State.SETTLING:
 		_settle_t += delta
 		if _settle_t > SETTLE_HOLD and trebuchet.state == Trebuchet.State.FOLLOW_THROUGH:

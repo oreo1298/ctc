@@ -1,0 +1,419 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-12",
+  "name": "The Frostfang Citadel",
+  "grievance": "The last of my rivals sits in the coldest castle of all. Warm him up. Then down.",
+  "time_of_day": "night",
+  "realm": "frostfang",
+  "world": {
+    "right": 62,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          24,
+          1.5
+        ],
+        [
+          64,
+          1.5
+        ],
+        [
+          90,
+          1.5
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.0,
+        1.9
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.0,
+        2.7
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.0,
+        3.5
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.3,
+        2.45
+      ],
+      "size": [
+        0.6,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.7,
+        2.45
+      ],
+      "size": [
+        0.6,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        31.0,
+        3.625
+      ],
+      "size": [
+        8,
+        0.45
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.05,
+        4.7
+      ],
+      "size": [
+        0.5,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.95,
+        4.7
+      ],
+      "size": [
+        0.5,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.0,
+        5.775
+      ],
+      "size": [
+        6.4,
+        0.45
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        28.975,
+        6.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        33.025,
+        6.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.0,
+        7.75
+      ],
+      "size": [
+        4.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        31.0,
+        8.45
+      ],
+      "size": [
+        4.8,
+        1.1
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.225,
+        2.25
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        47.775,
+        2.25
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        47.0,
+        3.15
+      ],
+      "size": [
+        2.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.225,
+        4.05
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        47.775,
+        4.05
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        47.0,
+        4.95
+      ],
+      "size": [
+        2.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.225,
+        5.85
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        47.775,
+        5.85
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        47.0,
+        6.75
+      ],
+      "size": [
+        2.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        47.0,
+        7.35
+      ],
+      "size": [
+        2.2,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.3,
+        2.075
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        31,
+        2.0
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        33.7,
+        2.075
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30,
+        4.4
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        32,
+        4.4
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        31,
+        6.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        47,
+        2.075
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        47,
+        3.8
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        47,
+        5.65
+      ]
+    }
+  ],
+  "par": {
+    "gold": 3,
+    "silver": 4,
+    "bronze": 6
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.5275,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6062,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "void",
+      "phase": 0.5275,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6062,
+      "tap": -1.0
+    }
+  ]
+}

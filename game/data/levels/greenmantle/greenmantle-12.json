@@ -1,0 +1,355 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-12",
+  "name": "Greenmantle Keep",
+  "grievance": "My cousin Wendel claims the Greenmantle crown. My crown. Flatten his keep.",
+  "time_of_day": "dusk",
+  "realm": "greenmantle",
+  "world": {
+    "right": 58,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          23,
+          1.0
+        ],
+        [
+          62,
+          1.0
+        ],
+        [
+          90,
+          1.0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.0,
+        1.333
+      ],
+      "size": [
+        1.0,
+        0.667
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.0,
+        2.0
+      ],
+      "size": [
+        1.0,
+        0.667
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.0,
+        2.667
+      ],
+      "size": [
+        1.0,
+        0.667
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.25,
+        1.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.75,
+        1.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.0,
+        3.0
+      ],
+      "size": [
+        6,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.725,
+        4.05
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.275,
+        4.05
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        5.05
+      ],
+      "size": [
+        5.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.45,
+        5.95
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.55,
+        5.95
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        6.85
+      ],
+      "size": [
+        3.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        30.0,
+        7.55
+      ],
+      "size": [
+        4,
+        1.1
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44.1,
+        1.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.9,
+        1.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        45.0,
+        2.75
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44.1,
+        3.7
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.9,
+        3.7
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        45.0,
+        4.65
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        45.0,
+        5.3
+      ],
+      "size": [
+        2.4,
+        1.0
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.6,
+        1.575
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        31.4,
+        1.575
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30,
+        3.75
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        30,
+        5.75
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        45,
+        3.45
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.64,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6215,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.6435,
+      "tap": -1.0
+    },
+    {
+      "ammo": "scatter",
+      "phase": 0.5685,
+      "tap": 0.85
+    }
+  ]
+}

@@ -95,7 +95,7 @@ each type's material interactions give it a role. Unlocks are listed in
 |---|---|---|---|
 | **Boulder** | start | Reliable all-rounder. | none |
 | **Scatter-stones** | Greenmantle 4 | A bundle of 5 stones for wide, shallow damage, such as thatch roofs and exposed royals. | **Burst**: splits into a fan of stones. Bursts on impact if you don't tap. |
-| **Iron ball** | Greenmantle 9 | Heavy and dense. Punches straight through wood (×3 damage to wood), clangs off iron. | none |
+| **Iron ball** | Greenmantle 9 | Heavy and dense. Punches through wood (×2.2 damage to wood), clangs off iron. Flies about 15% shorter than a boulder. | none |
 | **Powder keg** | Saffron 1 | Radial blast that shoves and damages. | **Detonate** early. Otherwise it explodes 0.25 s after impact. |
 | **Firepot** | Saffron 5 | Sets wood, thatch and cloth burning. Burning blocks lose HP over time and spread fire to flammable blocks they touch. | none |
 | **Chain shot** | Saffron 9 | Two spinning balls joined by a chain. Sweeps through thin supports and cloth. | **Snap**: breaks the chain so the balls fly apart. |
@@ -162,9 +162,19 @@ and a sequence of times of day. A new mechanic or material arrives every
 Times of day go from dawn through morning, noon, afternoon, golden hour and
 dusk to night (aurora in Frostfang). The level data picks one per level.
 
+**Difficulty curve.** Early levels are single compact castles: one perfect
+shot wins. From Greenmantle 10, Saffron 7 and Frostfang 9, castles split into
+two **compounds** 15–20 m apart, each with protected targets, so gold
+usually takes two well-placed shots. The bot's par tracks this (gold 1 → 2).
+Royals stay fragile (playtest feedback), so the challenge is reaching them,
+not grinding them down. The first validator pass showed the iron ball and a
+wide scatter fan solving every level in one shot, so both were toned down.
+
 ### 3.8 Session flow
 
-Title → realm map → level card (grievance, medal pars, best) → play. The
+Title (Continue / Choose level / Castle editor / Settings) → level select
+(realm tabs, medal and best shots per level, padlocks on locked levels) →
+play, opening with the grievance banner. The
 **restart** key or button resets instantly with no confirmation. Pause pauses.
 The win card shows the medal stamp, shot count, points and *Next* /
 *Retry* / *Map*.
@@ -467,8 +477,9 @@ Decisions made without asking, which are cheap to revisit:
    Editor ammo is limited to what you have unlocked.
 10. **Text-scaling** range is 80%–160%. The UI reflows using containers.
 11. **One-button mode:** a single key/tap does fire, release and the mid-air
-    action. Holding it while idle opens an ammo wheel that auto-cycles and
-    selects on release. Menus get scanning focus.
+    action. Holding it while aiming cycles the ammo every 0.6 s, and releasing
+    keeps the ammo shown. Menus get scanning focus (it steps every 1.3 s;
+    pressing activates).
 12. **Points** are shown but don't affect medals.
 13. **Score/save data never leaves the device.** Share codes are copied
     to the clipboard by the player, never sent anywhere.

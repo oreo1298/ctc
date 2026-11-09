@@ -140,8 +140,17 @@ screenshots: ## Render key scenes to PNG (Xvfb + llvmpipe + Compatibility)
 	$(call dispatch,screenshots)
 
 .PHONY: validate-levels
-validate-levels: ## Prove every campaign level is beatable; refresh par
-	$(call dispatch,validate-levels)
+validate-levels: ## Search solutions + par for every level and write them
+	scripts/validate-levels.sh --mode search --write $(ARGS)
+
+.PHONY: check-levels
+check-levels: ## Every castle is stable and every stored proof still wins
+	scripts/validate-levels.sh --mode stability
+	scripts/validate-levels.sh --mode replay
+
+.PHONY: levels
+levels: ## Regenerate campaign level geometry from tools/levels/build_levels.py
+	python3 -I tools/levels/build_levels.py $(GAME)
 
 # ----------------------------------------------------------------- clean ---
 .PHONY: clean

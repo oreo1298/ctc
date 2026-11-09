@@ -1,0 +1,222 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-02",
+  "name": "Slippery Slope",
+  "grievance": "Jarl Ingmar's hall is built on ice. On purpose. Help him slide.",
+  "time_of_day": "morning",
+  "realm": "frostfang",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        24.9,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        27.1,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        26.0,
+        1.775
+      ],
+      "size": [
+        2.6,
+        0.35
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "ice",
+      "pos": [
+        26.0,
+        2.35
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        28.9,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        31.1,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        30.0,
+        1.775
+      ],
+      "size": [
+        2.6,
+        0.35
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "ice",
+      "pos": [
+        30.0,
+        2.35
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        32.9,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        35.1,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        34.0,
+        1.775
+      ],
+      "size": [
+        2.6,
+        0.35
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "ice",
+      "pos": [
+        34.0,
+        2.35
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        26,
+        0.55
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        30,
+        0.5
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        34,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "chain",
+      "phase": 0.6755,
+      "tap": 0.6
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "chain",
+      "phase": 0.6755,
+      "tap": 0.6
+    }
+  ]
+}

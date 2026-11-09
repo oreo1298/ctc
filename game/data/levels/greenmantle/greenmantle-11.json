@@ -1,0 +1,263 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-11",
+  "name": "Twin Keeps",
+  "grievance": "The Brothers Hale each built a keep. Two insults for the price of one.",
+  "time_of_day": "golden",
+  "realm": "greenmantle",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        23.425,
+        0.8
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.575,
+        0.8
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.5,
+        1.75
+      ],
+      "size": [
+        2.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        23.425,
+        2.7
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.575,
+        2.7
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.5,
+        3.65
+      ],
+      "size": [
+        2.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        24.5,
+        4.25
+      ],
+      "size": [
+        2.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.425,
+        0.8
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.575,
+        0.8
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        42.5,
+        1.75
+      ],
+      "size": [
+        2.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.425,
+        2.7
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.575,
+        2.7
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        42.5,
+        3.65
+      ],
+      "size": [
+        2.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        42.5,
+        4.25
+      ],
+      "size": [
+        2.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        24.5,
+        0.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        24.5,
+        2.45
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        42.5,
+        0.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        42.5,
+        2.45
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.518,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.548,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.614,
+      "tap": -1.0
+    },
+    {
+      "ammo": "iron",
+      "phase": 0.6665,
+      "tap": -1.0
+    }
+  ]
+}

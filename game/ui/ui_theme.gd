@@ -110,6 +110,44 @@ static func build(text_scale: float = 1.0) -> Theme:
 	t.set_stylebox("panel", "PanelContainer", panel_style())
 	t.set_stylebox("panel", "Panel", panel_style())
 
+	# Tabs: parchment pages with ink-edged tabs.
+	var page := panel_style(PAPER_DEEP.lerp(PAPER, 0.5), 3, 12)
+	page.shadow_size = 0
+	page.set_content_margin_all(16)
+	t.set_stylebox("panel", "TabContainer", page)
+	var tab_on := button_style(PAPER_DEEP.lerp(PAPER, 0.5))
+	tab_on.border_width_bottom = 0
+	tab_on.corner_radius_bottom_left = 0
+	tab_on.corner_radius_bottom_right = 0
+	var tab_off := button_style(PAPER_DEEP.darkened(0.06), INK_SOFT)
+	tab_off.border_width_bottom = 0
+	tab_off.corner_radius_bottom_left = 0
+	tab_off.corner_radius_bottom_right = 0
+	t.set_stylebox("tab_selected", "TabContainer", tab_on)
+	t.set_stylebox("tab_unselected", "TabContainer", tab_off)
+	t.set_stylebox("tab_hovered", "TabContainer", tab_on)
+	t.set_stylebox("tab_focus", "TabContainer", focus)
+	t.set_color("font_selected_color", "TabContainer", INK)
+	t.set_color("font_unselected_color", "TabContainer", INK_SOFT)
+	t.set_color("font_hovered_color", "TabContainer", INK)
+	t.set_color("font_color", "CheckButton", INK)
+	t.set_color("font_hover_color", "CheckButton", INK)
+	t.set_color("font_pressed_color", "CheckButton", INK)
+	var empty := StyleBoxEmpty.new()
+	t.set_stylebox("normal", "CheckButton", empty)
+	t.set_stylebox("hover", "CheckButton", empty)
+	t.set_stylebox("pressed", "CheckButton", empty)
+	var groove := StyleBoxFlat.new()
+	groove.bg_color = PAPER_DEEP.darkened(0.12)
+	groove.set_corner_radius_all(6)
+	groove.content_margin_top = 4
+	groove.content_margin_bottom = 4
+	t.set_stylebox("slider", "HSlider", groove)
+	var fill := groove.duplicate() as StyleBoxFlat
+	fill.bg_color = GOLD.darkened(0.1)
+	t.set_stylebox("grabber_area", "HSlider", fill)
+	t.set_stylebox("grabber_area_highlight", "HSlider", fill)
+
 	# Heading label variation: storybook serif.
 	t.add_type("HeadingLabel")
 	t.set_type_variation("HeadingLabel", "Label")

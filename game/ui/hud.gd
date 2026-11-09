@@ -23,6 +23,7 @@ var _gauge: SwingGauge
 var _win: Control = null
 var _pause: Control = null
 var _title: Label
+var _intro: Control = null
 
 
 func _ready() -> void:
@@ -161,6 +162,58 @@ func setup(level_name: String, par: Dictionary) -> void:
 	_par_chips[1].text = tr("Silver ≤ %d") % int(par.get("silver", 2))
 	_par_chips[2].text = tr("Bronze ≤ %d") % int(par.get("bronze", 4))
 	set_shots(0)
+
+
+## Level intro: name and King Grumbold's grievance on a parchment banner.
+func show_intro(title: String, grievance: String) -> void:
+	if grievance.is_empty():
+		return
+	var panel := PanelContainer.new()
+	var sb := UiTheme.panel_style(UiTheme.PAPER, 3, 16)
+	sb.set_content_margin_all(16)
+	panel.add_theme_stylebox_override("panel", sb)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	panel.custom_minimum_size = Vector2(620, 0) * minf(Settings.text_scale, 1.2)
+	panel.offset_left = -310 * minf(Settings.text_scale, 1.2)
+	panel.offset_top = 150
+	var v := VBoxContainer.new()
+	v.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(v)
+	var h := Label.new()
+	h.theme_type_variation = "HeadingLabel"
+	h.add_theme_font_size_override("font_size", roundi(30 * Settings.text_scale))
+	h.text = title
+	h.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	v.add_child(h)
+	var g := Label.new()
+	g.text = "“%s”" % grievance
+	g.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	g.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	g.add_theme_color_override("font_color", UiTheme.INK_SOFT)
+	v.add_child(g)
+	var sig := Label.new()
+	sig.theme_type_variation = "SmallLabel"
+	sig.text = tr("— King Grumbold the Petty")
+	sig.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	v.add_child(sig)
+	_root.add_child(panel)
+	_intro = panel
+	panel.modulate.a = 0.0
+	var tw := create_tween()
+	tw.tween_property(panel, "modulate:a", 1.0, 0.3)
+	tw.tween_interval(4.0)
+	tw.tween_callback(hide_intro)
+
+
+func hide_intro() -> void:
+	if _intro == null or not is_instance_valid(_intro):
+		return
+	var p: Control = _intro
+	_intro = null
+	var tw := create_tween()
+	tw.tween_property(p, "modulate:a", 0.0, 0.3)
+	tw.tween_callback(p.queue_free)
 
 
 func set_shots(n: int) -> void:

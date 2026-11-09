@@ -37,6 +37,16 @@ All notable changes are documented here. The format follows
   haptics, and 77 procedurally synthesised sound effects. Royals and
   knights are much easier to knock out and can be crushed.
 
+- Milestone 3: eight ammo types with mid-air actions (scatter-stones,
+  iron ball, powder keg, firepot, chain shot, frost flask, void flask);
+  Saffron Reach and Frostfang Peaks realms (mesas, cacti, sand; peaks,
+  snowy pines, snow, aurora); 36 campaign levels written with a level
+  builder; validator bot (search, replay, stability) that proves every
+  level beatable and sets par, with CI replay; level select with medals,
+  sequential unlocks and realm unlocks; settings (gameplay, accessibility,
+  sound, video, remappable controls); one-button mode; grievance banner;
+  progression and rebinding tests.
+
 ### Fixed
 - `make dev` exited silently on interactive runs (no `--yes`); optional
   packages are now filtered by availability and installed in one visible

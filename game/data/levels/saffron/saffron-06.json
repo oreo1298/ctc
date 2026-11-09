@@ -1,0 +1,270 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-06",
+  "name": "Sandstone Steps",
+  "grievance": "Pharaoh-ish Pteran built a pyramid. I didn't even know we had pyramids.",
+  "time_of_day": "golden",
+  "realm": "saffron",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.083,
+        0.4
+      ],
+      "size": [
+        1.167,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.25,
+        0.4
+      ],
+      "size": [
+        1.167,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.417,
+        0.4
+      ],
+      "size": [
+        1.167,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.583,
+        0.4
+      ],
+      "size": [
+        1.167,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.75,
+        0.4
+      ],
+      "size": [
+        1.167,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.917,
+        0.4
+      ],
+      "size": [
+        1.167,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.84,
+        1.2
+      ],
+      "size": [
+        1.08,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.92,
+        1.2
+      ],
+      "size": [
+        1.08,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.0,
+        1.2
+      ],
+      "size": [
+        1.08,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.08,
+        1.2
+      ],
+      "size": [
+        1.08,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.16,
+        1.2
+      ],
+      "size": [
+        1.08,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.733,
+        2.0
+      ],
+      "size": [
+        1.267,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.0,
+        2.0
+      ],
+      "size": [
+        1.267,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.267,
+        2.0
+      ],
+      "size": [
+        1.267,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.45,
+        2.8
+      ],
+      "size": [
+        1.1,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.55,
+        2.8
+      ],
+      "size": [
+        1.1,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        29.0,
+        2.175
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        31,
+        3.75
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        32.7,
+        2.1
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "scatter",
+      "phase": 0.655,
+      "tap": 0.55
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.655,
+      "tap": 0.55
+    }
+  ]
+}

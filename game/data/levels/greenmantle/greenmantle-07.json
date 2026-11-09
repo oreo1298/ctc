@@ -1,0 +1,190 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-07",
+  "name": "King of the Hill",
+  "grievance": "Earl Brask built on a hill so he could look down on me. Literally.",
+  "time_of_day": "afternoon",
+  "realm": "greenmantle",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          26,
+          3.0
+        ],
+        [
+          40,
+          3.0
+        ],
+        [
+          46,
+          0.5
+        ],
+        [
+          90,
+          0.5
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.725,
+        3.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.275,
+        3.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.0,
+        5.0
+      ],
+      "size": [
+        5.0,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.35,
+        6.0
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.65,
+        6.0
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.0,
+        6.95
+      ],
+      "size": [
+        3.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "wood",
+      "pos": [
+        31.0,
+        7.6
+      ],
+      "size": [
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        36.5,
+        3.7
+      ],
+      "size": [
+        0.6,
+        1.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        30.2,
+        5.75
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        31,
+        3.575
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        38,
+        3.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "scatter",
+      "phase": 0.64,
+      "tap": 0.85
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.64,
+      "tap": 0.85
+    }
+  ]
+}

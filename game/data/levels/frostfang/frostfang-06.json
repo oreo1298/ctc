@@ -1,0 +1,222 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-06",
+  "name": "Hall of Mirrors",
+  "grievance": "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it.",
+  "time_of_day": "night",
+  "realm": "frostfang",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        24.75,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        27.25,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        26.0,
+        1.85
+      ],
+      "size": [
+        2.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        26.0,
+        2.4
+      ],
+      "size": [
+        3.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        28.75,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        31.25,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        30.0,
+        1.85
+      ],
+      "size": [
+        2.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        30.0,
+        2.4
+      ],
+      "size": [
+        3.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        32.75,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        35.25,
+        0.85
+      ],
+      "size": [
+        0.3,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        34.0,
+        1.85
+      ],
+      "size": [
+        2.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "glass",
+      "pos": [
+        34.0,
+        2.4
+      ],
+      "size": [
+        3.0,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "queen",
+      "pos": [
+        26,
+        0.55
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        30,
+        0.5
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        34,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.6755,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.6755,
+      "tap": -1.0
+    }
+  ]
+}

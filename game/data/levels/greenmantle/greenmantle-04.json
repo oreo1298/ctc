@@ -1,0 +1,222 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-04",
+  "name": "Scattered Thoughts",
+  "grievance": "Sir Pellam's picnic was lovely. I wasn't invited. Scatter it.",
+  "time_of_day": "afternoon",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.825,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.175,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.0,
+        1.725
+      ],
+      "size": [
+        2.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        26.0,
+        2.25
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.025,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.375,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.2,
+        1.725
+      ],
+      "size": [
+        2.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        30.2,
+        2.25
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.225,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.575,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.4,
+        1.725
+      ],
+      "size": [
+        2.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        34.4,
+        2.25
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        26.0,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30.2,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        34.4,
+        0.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.657,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.67,
+      "tap": 0.85
+    }
+  ]
+}

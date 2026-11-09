@@ -1,0 +1,335 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-11",
+  "name": "Peak Watch",
+  "grievance": "Old Admiral Frost watches my kingdom from his tower. With a telescope.",
+  "time_of_day": "night",
+  "realm": "frostfang",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.1,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.9,
+        0.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.0,
+        1.75
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.1,
+        2.7
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.9,
+        2.7
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.0,
+        3.65
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.1,
+        4.6
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.9,
+        4.6
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.0,
+        5.55
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.1,
+        6.5
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.9,
+        6.5
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.0,
+        7.45
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        25.95,
+        8.35
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        28.05,
+        8.35
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "ice",
+      "pos": [
+        27.0,
+        9.25
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "iron",
+      "pos": [
+        27.0,
+        9.9
+      ],
+      "size": [
+        2.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.225,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.775,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44.5,
+        2.0
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "iron",
+      "pos": [
+        44.5,
+        2.65
+      ],
+      "size": [
+        3.2,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        27,
+        0.575
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        27,
+        2.4
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        27,
+        8.15
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        44.5,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.666,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6308,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "void",
+      "phase": 0.666,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.6308,
+      "tap": -1.0
+    }
+  ]
+}

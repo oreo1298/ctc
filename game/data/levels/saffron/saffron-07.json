@@ -1,0 +1,234 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-07",
+  "name": "Iron Gate",
+  "grievance": "The Gatekeeper of Qal'at put iron on his gate. I put iron on my lunch.",
+  "time_of_day": "noon",
+  "realm": "saffron",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25,
+        1.1
+      ],
+      "size": [
+        0.5,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        26.2,
+        1.1
+      ],
+      "size": [
+        0.5,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.6,
+        2.4
+      ],
+      "size": [
+        1.7,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.225,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.775,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        1.95
+      ],
+      "size": [
+        4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        30.0,
+        2.55
+      ],
+      "size": [
+        4.2,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.5,
+        0.4
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.5,
+        1.2
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.5,
+        2.0
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.225,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.775,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        44.5,
+        2.0
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        29.2,
+        0.575
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        30.8,
+        0.5
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        44.5,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.653,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.653,
+      "tap": -1.0
+    }
+  ]
+}

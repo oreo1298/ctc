@@ -62,7 +62,9 @@ func _ready() -> void:
 		var t0: int = Time.get_ticks_msec()
 		_trials = 0
 		var entry: Dictionary
-		if mode == "search":
+		if mode == "stability":
+			entry = await _stability(id)
+		elif mode == "search":
 			entry = await _search_level(id)
 		else:
 			entry = await _replay_level(id)
@@ -105,6 +107,17 @@ func trial(level_id: String, shots: Array[Dictionary]) -> Dictionary:
 
 static func shot(ammo: String, phase: float, tap: float = -1.0) -> Dictionary:
 	return {"ammo": ammo, "phase": snappedf(phase, 0.0001), "tap": tap}
+
+
+## The castle must stand still on its own: a shot that lands next to the
+## trebuchet must leave every block whole and every royal untouched.
+func _stability(id: String) -> Dictionary:
+	# Three harmless shots (~10 s of game time) also catch slow slides on ice.
+	var miss: Dictionary = shot("boulder", 0.97)
+	var r: Dictionary = await trial(id, [miss, miss, miss])
+	# Idle royals tilt a hair; anything real scores far above 1.
+	var ok: bool = float(r["score"]) < 1.0 and not bool(r["won"])
+	return {"ok": ok, "score": r["score"], "targets_left": r["targets_left"]}
 
 
 # ---------------------------------------------------------------- replay ---
@@ -302,13 +315,18 @@ func _search_level(id: String) -> Dictionary:
 		basic = await _find(id, lv, basic_ammo)
 	if int(basic.get("shots", 0)) == 0:
 		return {"ok": false, "error": "no winning sequence with first-visit ammo %s" % [basic_ammo]}
-	var gold: int = int(best["shots"]) if int(best.get("shots", 0)) > 0 else int(basic["shots"])
-	var silver: int = maxi(gold + 1, int(basic["shots"]))
+	# Par must be fair to humans: a knife-edge solution (neighbouring
+	# releases lose) proves the level is winnable, but par allows one more.
+	var best_n: int = int(best["shots"]) if int(best.get("shots", 0)) > 0 else int(basic["shots"])
+	var gold: int = best_n + (0 if bool(best.get("robust", basic.get("robust", false))) else 1)
+	var basic_n: int = int(basic["shots"]) + (0 if bool(basic.get("robust", false)) else 1)
+	var silver: int = maxi(gold + 1, basic_n)
 	return {
 		"ok": true,
 		"par": {"gold": gold, "silver": silver, "bronze": silver + 2},
 		"solution": best.get("solution", basic["solution"]),
 		"solution_basic": basic["solution"],
 		"robust": bool(best.get("robust", false)),
+		"robust_basic": bool(basic.get("robust", false)),
 		"basic_ammo": Array(basic_ammo),
 	}

@@ -1,0 +1,325 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-08",
+  "name": "Lantern Row",
+  "grievance": "Prince Idris lights a thousand lanterns every night just to keep me awake.",
+  "time_of_day": "night",
+  "realm": "saffron",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.825,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.175,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.0,
+        2.3
+      ],
+      "size": [
+        2.6,
+        0.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        25.3,
+        2.65
+      ],
+      "size": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        26.55,
+        2.7
+      ],
+      "size": [
+        1.5,
+        0.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.025,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.375,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.2,
+        2.3
+      ],
+      "size": [
+        2.6,
+        0.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        28.5,
+        2.65
+      ],
+      "size": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        29.75,
+        2.7
+      ],
+      "size": [
+        1.5,
+        0.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.225,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.575,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.4,
+        2.3
+      ],
+      "size": [
+        2.6,
+        0.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        31.7,
+        2.65
+      ],
+      "size": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        32.95,
+        2.7
+      ],
+      "size": [
+        1.5,
+        0.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.425,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        36.775,
+        1.1
+      ],
+      "size": [
+        0.25,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.6,
+        2.3
+      ],
+      "size": [
+        2.6,
+        0.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        34.9,
+        2.65
+      ],
+      "size": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        36.15,
+        2.7
+      ],
+      "size": [
+        1.5,
+        0.6
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        26.0,
+        0.55
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        29.2,
+        0.5
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        32.4,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        35.6,
+        0.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.653,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.653,
+      "tap": -1.0
+    }
+  ]
+}

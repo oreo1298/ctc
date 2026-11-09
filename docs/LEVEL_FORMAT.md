@@ -5,8 +5,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Level format (v1)
 
-> Status: **draft**. The loader lands in milestone 1. Fields marked *(M3)*
-> arrive with the full campaign. The machine-readable source of truth is
+> The machine-readable source of truth is
 > `game/data/schemas/level.schema.json`, and CI validates every level against it.
 
 Levels are plain JSON. The same format is used by the campaign, the castle
@@ -41,10 +40,28 @@ compressed JSON, see §5).
   "enemies": [ /* §4 */ ],
   "par": { "gold": 1, "silver": 2, "bronze": 4 },   // written by the validator bot
   "par_override": null,                              // or {gold,silver,bronze}
-  "solution": [ { "ammo": "boulder", "phase": 0.5123 } ],  // bot's proof
-  "content_hash": "sha256:…"          // of everything except par/solution/hash
+  "solution":       [ { "ammo": "iron", "phase": 0.6475, "tap": -1 } ],  // fewest shots, any ammo
+  "solution_basic": [ { "ammo": "boulder", "phase": 0.65, "tap": -1 } ]  // first-visit ammo only
 }
 ```
+
+`phase` is the trebuchet release phase (0–1). `tap` is the delay in seconds
+from release to the mid-air action (`-1` = none), applied on an exact
+physics tick, so proofs replay identically.
+
+## 2a. Par and proofs (the validator bot)
+
+`make validate-levels` searches each campaign level headlessly:
+
+* **gold** = the fewest shots that win with *any* ammo (players may come back
+  with later ammo to chase gold), stored as `solution`;
+* **silver** = max(gold + 1, fewest shots with the ammo available on the first
+  visit), with that proof stored as `solution_basic`;
+* **bronze** = silver + 2.
+
+The bot prefers *robust* solutions, where releasing ±0.0025 earlier or later
+still wins. `make check-levels` (run by CI) checks that every castle stands
+still on its own and replays both proofs. If a proof stops winning, CI fails.
 
 `world.right` is the playable extent in metres. Anything that falls below
 `kill_y` or leaves `[-20, right + 20]` is removed (and an enemy counts as
@@ -97,6 +114,15 @@ points if they are hit.
 * *check*: the first 4 bytes of SHA-256(payload), in base64url. It catches
   typos and truncated pastes.
 * `SF1` is the format version. Future versions keep decoding old codes.
+
+## 5a. Campaign authoring
+
+Campaign castles are written as short Python functions in
+`tools/levels/build_levels.py`. The building primitives place blocks so they
+touch exactly, which keeps castles from shifting on load. Run
+`make levels && make validate-levels`. Regenerating keeps the existing par and
+proofs until the bot replaces them. Levels in `game/data/levels/dev/` are
+developer test scenes and never appear in the campaign.
 
 ## 6. Realms
 

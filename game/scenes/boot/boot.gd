@@ -55,5 +55,11 @@ func _route() -> void:
 	set_process(false)
 	if Game.cli.has("level"):
 		Game.play_level(str(Game.cli["level"]))
+	elif Game.cli.get("screen", "") == "levels":
+		Game.goto_levels()
+	elif Game.cli.get("screen", "") == "settings":
+		Game.goto_settings()
+	elif Game.cli.get("screen", "") == "editor":
+		Game.goto_editor()
 	else:
 		Game.goto_menu()

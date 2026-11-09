@@ -1,0 +1,214 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-10",
+  "name": "The Oasis Palace",
+  "grievance": "The Caliph's oasis has fountains. My well has frogs.",
+  "time_of_day": "golden",
+  "realm": "saffron",
+  "world": {
+    "right": 58,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          24,
+          2.5
+        ],
+        [
+          36,
+          2.5
+        ],
+        [
+          39,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.25,
+        3.4
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.75,
+        3.4
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.0,
+        4.5
+      ],
+      "size": [
+        6,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        26.75,
+        5.5
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        31.25,
+        5.5
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.0,
+        6.45
+      ],
+      "size": [
+        4.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        43,
+        1.0
+      ],
+      "size": [
+        0.3,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        46,
+        1.0
+      ],
+      "size": [
+        0.3,
+        2.0
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        44.5,
+        2.5
+      ],
+      "size": [
+        3.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.5,
+        0.8
+      ],
+      "size": [
+        0.6,
+        1.6
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        27.6,
+        5.25
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        29,
+        3.0
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        44.5,
+        0.55
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.625,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.625,
+      "tap": -1.0
+    }
+  ]
+}

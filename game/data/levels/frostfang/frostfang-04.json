@@ -1,0 +1,170 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "frostfang-04",
+  "name": "Iron Will",
+  "grievance": "Baroness Steelbrow wears iron underwear. Allegedly. Find out.",
+  "time_of_day": "afternoon",
+  "realm": "frostfang",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "snow"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.5,
+        1.0
+      ],
+      "size": [
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        27.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        31.3,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        29.25,
+        1.975
+      ],
+      "size": [
+        4.5,
+        0.35
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.75,
+        2.95
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.75,
+        2.95
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.25,
+        3.9
+      ],
+      "size": [
+        3.3,
+        0.3
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.4,
+        0.575
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        30.1,
+        0.575
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        29.25,
+        2.7
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        33.5,
+        0.5
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "iron",
+      "phase": 0.659,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "iron",
+      "phase": 0.659,
+      "tap": -1.0
+    }
+  ]
+}

@@ -37,9 +37,9 @@ also machine-readable through REUSE.
 |---|---|---|---|
 | `game/icon.svg` | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
 | `game/art/characters/*.svg` (king, queen, knight, hostage, crown, tiara, helmet) | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
-| `game/art/ui/*.svg` (restart, pause) | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
+| `game/art/ui/*.svg` (restart, pause, lock) | Siegefall contributors | CC-BY-SA-4.0 | hand-written SVG |
 | `game/shaders/*` (blocks, terrain, sky, hills) | Siegefall contributors | MIT | procedural shaders |
 | `game/fonts/Fraunces.ttf` (headings) | The Fraunces Project Authors | OFL-1.1 | [google/fonts `ofl/fraunces`](https://github.com/google/fonts/tree/main/ofl/fraunces) @ `5bb2873`, licence in `Fraunces-OFL.txt` |
 | `game/fonts/Nunito.ttf` (body text) | The Nunito Project Authors | OFL-1.1 | [google/fonts `ofl/nunito`](https://github.com/google/fonts/tree/main/ofl/nunito) @ `5bb2873`, licence in `Nunito-OFL.txt` |
 
-| `game/audio/sfx/*.wav` (77 files: impacts, breaks, trebuchet, royals, UI, jingles) | Siegefall contributors | CC-BY-SA-4.0 | synthesised by `tools/sfx/generate.py` (noise, filters, inharmonic partials, Karplus-Strong strings); regenerate with `make sfx` |
+| `game/audio/sfx/*.wav` (89 files: impacts, breaks, trebuchet, royals, UI, jingles) | Siegefall contributors | CC-BY-SA-4.0 | synthesised by `tools/sfx/generate.py` (noise, filters, inharmonic partials, Karplus-Strong strings); regenerate with `make sfx` |

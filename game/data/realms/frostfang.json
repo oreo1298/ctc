@@ -4,7 +4,20 @@
   "name": "Frostfang Peaks",
   "tagline": "Cold towers, colder hearts, and the coldest shoulder in the kingdom.",
   "order": 3,
-  "levels": [],
+  "levels": [
+    "frostfang-01",
+    "frostfang-02",
+    "frostfang-03",
+    "frostfang-04",
+    "frostfang-05",
+    "frostfang-06",
+    "frostfang-07",
+    "frostfang-08",
+    "frostfang-09",
+    "frostfang-10",
+    "frostfang-11",
+    "frostfang-12"
+  ],
   "palette": {
     "ink": "#2c2f3b",
     "paper": "#eef3f8",

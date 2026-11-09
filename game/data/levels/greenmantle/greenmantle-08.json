@@ -1,0 +1,186 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "greenmantle-08",
+  "name": "Flying Colours",
+  "grievance": "Lady Vane's banners are brighter than mine. Make them flutter. Downwards.",
+  "time_of_day": "golden",
+  "realm": "greenmantle",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.5,
+        1.8
+      ],
+      "size": [
+        0.3,
+        3.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        27.05,
+        2.9
+      ],
+      "size": [
+        0.8,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.5,
+        1.8
+      ],
+      "size": [
+        0.3,
+        3.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        30.05,
+        2.9
+      ],
+      "size": [
+        0.8,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.5,
+        1.8
+      ],
+      "size": [
+        0.3,
+        3.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        33.05,
+        2.9
+      ],
+      "size": [
+        0.8,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.5,
+        3.75
+      ],
+      "size": [
+        6.3,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        29.5,
+        4.4
+      ],
+      "size": [
+        6.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.5,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        28,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        31,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        34.5,
+        0.575
+      ]
+    }
+  ],
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "chain",
+      "phase": 0.6795,
+      "tap": 0.6
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.6585,
+      "tap": 0.85
+    }
+  ]
+}

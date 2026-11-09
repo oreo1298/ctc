@@ -19,6 +19,8 @@ Usage: scripts/screenshots.sh [--out DIR] [--size WxH] [--only NAME] [--dry-run]
 
 Renders these scenes to DIR (default build/screenshots/):
   menu        title screen
+  levels      level select (all unlocked)
+  settings    settings screen
   aim         level 1 at rest, aiming
   swing       mid-swing
   flight      projectile in the air (camera following)
@@ -106,6 +108,8 @@ shot() {
 start_xvfb
 L=(--level=greenmantle-01)
 shot menu 2.0 --screenshots="1.8:${OUT}/menu.png"
+shot levels 2.0 --screen=levels --unlock-all --screenshots="1.8:${OUT}/levels.png"
+shot settings 2.0 --screen=settings --screenshots="1.8:${OUT}/settings.png"
 shot aim 3.0 "${L[@]}" --no-intro --screenshots="2.6:${OUT}/aim.png"
 # The level-1 gold shot is a flat release at phase 0.65.
 shot swing 2.0 "${L[@]}" --autoplay=0.99 --screenshots="1.45:${OUT}/swing.png"

@@ -1,0 +1,345 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "saffron-12",
+  "name": "The Sultan's Fortress",
+  "grievance": "The Sultan of Saffron returned my sand. Lightly used. This means war.",
+  "time_of_day": "night",
+  "realm": "saffron",
+  "world": {
+    "right": 60,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          24,
+          1.2
+        ],
+        [
+          64,
+          1.2
+        ],
+        [
+          90,
+          1.2
+        ]
+      ],
+      "style": "sand"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25,
+        2.3
+      ],
+      "size": [
+        0.6,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.275,
+        2.1
+      ],
+      "size": [
+        0.55,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.725,
+        2.1
+      ],
+      "size": [
+        0.55,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.5,
+        3.225
+      ],
+      "size": [
+        7,
+        0.45
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.025,
+        4.3
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.975,
+        4.3
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.5,
+        5.3
+      ],
+      "size": [
+        5.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        28.75,
+        6.2
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        32.25,
+        6.2
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.5,
+        7.1
+      ],
+      "size": [
+        3.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        30.5,
+        7.75
+      ],
+      "size": [
+        4.2,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.225,
+        2.0
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.775,
+        2.0
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        46.0,
+        2.95
+      ],
+      "size": [
+        2.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.225,
+        3.9
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.775,
+        3.9
+      ],
+      "size": [
+        0.45,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        46.0,
+        4.85
+      ],
+      "size": [
+        2.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        46.0,
+        5.45
+      ],
+      "size": [
+        2.2,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.2,
+        1.775
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        30.5,
+        1.7
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        32.8,
+        1.775
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30.5,
+        4.0
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        30.5,
+        6.0
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        46,
+        1.775
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        46,
+        3.65
+      ]
+    }
+  ],
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.64,
+      "tap": -1.0
+    },
+    {
+      "ammo": "void",
+      "phase": 0.5592,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "chain",
+      "phase": 0.6795,
+      "tap": 0.6
+    },
+    {
+      "ammo": "boulder",
+      "phase": 0.5878,
+      "tap": -1.0
+    }
+  ]
+}
