@@ -65,8 +65,18 @@ All notable changes are documented here. The format follows
   icons rendered by Godot, third-party notices generated from the engine.
   Tested by installing and starting each package on Arch, Ubuntu, Debian,
   Fedora, Tumbleweed, Void, Linux arm64, Flatpak, Nix and Windows in CI.
+- Milestone 6: iOS. The Xcode project exports on Linux (`make build
+  ARGS=--target ios`); CI archives it on macOS without signing and keeps
+  an unsigned `.ipa`. Landscape, iOS 16+, saves and castles visible in
+  the Files app. Safe areas now apply to menus and the editor as well as
+  the HUD; levels pause when the app goes to the background; the editor
+  shows touch tips on touch screens. docs/IOS.md explains signing with a
+  free Apple account.
 
 ### Fixed
+- Translatable strings split over several lines (or built from pieces)
+  were missing from the catalogue; the extractor now reads whole files and
+  the editor tips are one sentence per string.
 - Installing godot-rapier into a fresh clone (the addons folder did not
   exist yet) now works, and any failure stops instead of reporting success.
 - `make dev` exited silently on interactive runs (no `--yes`); optional

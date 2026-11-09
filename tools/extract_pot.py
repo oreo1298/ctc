@@ -55,14 +55,14 @@ def collect(game: Path) -> tuple[dict[str, set[str]], dict[str, tuple[str, set[s
             continue
         text = gd.read_text(encoding="utf-8")
         # File-only references: line numbers would make every code edit
-        # invalidate the catalogue.
-        for line in text.splitlines():
-            ref = str(rel)
-            for m in TRN_RE.finditer(line):
-                one, many = unesc(m.group(1)), unesc(m.group(2))
-                plurals.setdefault(one, (many, set()))[1].add(ref)
-            for m in TR_RE.finditer(line):
-                singles.setdefault(unesc(m.group(1)), set()).add(ref)
+        # invalidate the catalogue. The whole file is scanned at once so a
+        # call split over lines (tr(\n "...")) is still found.
+        ref = str(rel)
+        for m in TRN_RE.finditer(text):
+            one, many = unesc(m.group(1)), unesc(m.group(2))
+            plurals.setdefault(one, (many, set()))[1].add(ref)
+        for m in TR_RE.finditer(text):
+            singles.setdefault(unesc(m.group(1)), set()).add(ref)
     for js in sorted((game / "data").rglob("*.json")):
         rel = js.relative_to(game)
         # Schemas and developer test levels are not player-facing text.

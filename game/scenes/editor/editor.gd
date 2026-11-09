@@ -145,6 +145,7 @@ func _build_ui() -> void:
 	ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.theme = UiTheme.build(Settings.text_scale)
 	layer.add_child(ui)
+	UiTheme.fit_safe_area(ui)
 
 	var top_margin := MarginContainer.new()
 	top_margin.set_anchors_preset(Control.PRESET_TOP_WIDE)

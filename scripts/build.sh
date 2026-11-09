@@ -18,6 +18,7 @@ Exports ${APP_NAME} ${APP_VERSION} into build/export/<target>/:
   linux-x86_64     ${APP_SLUG} (pck embedded) + Rapier .so
   linux-arm64      same, for 64-bit ARM (e.g. Asahi on Apple silicon)
   windows-x86_64   ${APP_NAME}.exe (pck embedded) + Rapier .dll
+  ios              Xcode project (build it on a Mac: see docs/IOS.md)
 Also renders the icons (build/icons) and writes THIRD-PARTY-NOTICES.txt.
 
   --target T       one of the above, 'linux' (both Linux), or 'all'.
@@ -29,6 +30,9 @@ Also renders the icons (build/icons) and writes THIRD-PARTY-NOTICES.txt.
                    $(godot_templates_dir))
   -n, --dry-run    print what would run
   -h, --help       this text
+
+Environment: SF_IOS_TEAM_ID  your Apple Developer team (10 characters) for
+the iOS project; without it the project is unsigned (see docs/IOS.md).
 EOF
 }
 
@@ -73,9 +77,9 @@ fi
 expanded=()
 for t in "${TARGETS[@]}"; do
 	case "${t}" in
-	all) expanded+=(linux-x86_64 linux-arm64 windows-x86_64) ;;
+	all) expanded+=(linux-x86_64 linux-arm64 windows-x86_64 ios) ;;
 	linux) expanded+=(linux-x86_64 linux-arm64) ;;
-	linux-x86_64 | linux-arm64 | windows-x86_64) expanded+=("${t}") ;;
+	linux-x86_64 | linux-arm64 | windows-x86_64 | ios) expanded+=("${t}") ;;
 	*) die "unknown target '${t}' (see --help)" ;;
 	esac
 done
@@ -91,6 +95,7 @@ preset_of() {
 	linux-x86_64) echo "Linux x86_64" ;;
 	linux-arm64) echo "Linux arm64" ;;
 	windows-x86_64) echo "Windows x86_64" ;;
+	ios) echo "iOS" ;;
 	esac
 }
 template_of() {
@@ -98,12 +103,14 @@ template_of() {
 	linux-x86_64) echo "linux_${MODE}.x86_64" ;;
 	linux-arm64) echo "linux_${MODE}.arm64" ;;
 	windows-x86_64) echo "windows_${MODE}_x86_64.exe" ;;
+	ios) echo "ios.zip" ;;
 	esac
 }
 binary_of() {
 	case "$1" in
 	linux-*) echo "${APP_SLUG}" ;;
 	windows-*) echo "${APP_NAME}.exe" ;;
+	ios) echo "${APP_NAME}.ipa" ;;
 	esac
 }
 
@@ -139,7 +146,7 @@ run mkdir -p "${SF_BUILD}/logs" "${SF_BUILD}/icons" "${SF_EXPORT}"
 log "Rendering icons"
 godot_run "${SF_BUILD}/logs/icons.log" --headless --path "${SF_GAME_DIR}" \
 	-s res://tools/render_icon.gd -- "${SF_GAME_DIR}/icon.svg" "${SF_BUILD}/icons" \
-	"${ICON_SIZES[@]}"
+	"${ICON_SIZES[@]}" "${APP_ICON_EXTRA[@]}"
 ico_pngs=()
 for s in 16 24 32 48 64 128 256; do
 	ico_pngs+=("${SF_BUILD}/icons/${s}.png")
@@ -147,9 +154,13 @@ done
 run python3 -I "${SF_ROOT}/tools/make_ico.py" "${SF_BUILD}/icons/${APP_SLUG}.ico" "${ico_pngs[@]}"
 
 # --------------------------------------------------------------- presets ---
+# iOS: Godot wants an Apple team even for an unsigned Xcode project. Without
+# SF_IOS_TEAM_ID a placeholder is used; pick your own team in Xcode.
+IOS_TEAM_ID="${SF_IOS_TEAM_ID:-UNSIGNED00}"
 render_template "${SF_PACKAGING}/godot/export_presets.cfg.in" \
 	"${SF_GAME_DIR}/export_presets.cfg" \
-	"TEMPLATES=${TEMPLATES}" "EMBED_PCK=${EMBED}" "ICON_ICO=${SF_BUILD}/icons/${APP_SLUG}.ico"
+	"TEMPLATES=${TEMPLATES}" "EMBED_PCK=${EMBED}" "ICON_ICO=${SF_BUILD}/icons/${APP_SLUG}.ico" \
+	"ICON_1024=${SF_BUILD}/icons/1024.png" "IOS_TEAM_ID=${IOS_TEAM_ID}"
 
 log "Importing project"
 godot_run "${SF_BUILD}/logs/import.log" --headless --path "${SF_GAME_DIR}" --import
@@ -180,7 +191,14 @@ for t in "${TARGETS[@]}"; do
 	run mkdir -p "${out}"
 	godot_run "${SF_BUILD}/logs/export-${t}.log" --headless --path "${SF_GAME_DIR}" \
 		"--export-${MODE}" "$(preset_of "${t}")" "${out}/${bin}"
-	if [[ "${DRY_RUN}" == 0 ]]; then
+	if [[ "${DRY_RUN}" == 0 && "${t}" == ios ]]; then
+		[[ -d "${out}/${APP_NAME}.xcodeproj" ]] ||
+			die "export produced no Xcode project (see build/logs/export-ios.log)"
+		[[ -n "$(find "${out}" -name 'libgodot_rapier.ios*' -print -quit)" ]] ||
+			die "the iOS project is missing the Rapier framework (see build/logs/export-ios.log)"
+		cp "${notices}" "${out}/THIRD-PARTY-NOTICES.txt"
+		ok "ios: ${out#"${SF_ROOT}"/}/${APP_NAME}.xcodeproj (build it on a Mac, see docs/IOS.md)"
+	elif [[ "${DRY_RUN}" == 0 ]]; then
 		[[ -s "${out}/${bin}" ]] || die "export produced no ${bin} (see build/logs/export-${t}.log)"
 		have_rapier=0
 		for lib in "${out}"/libgodot_rapier*; do

@@ -268,6 +268,10 @@ msgid "Drag a point to shape the ground. Click the ground to add a point."
 msgstr "Drag a point to shape the ground. Click the ground to add a point."
 
 #: scenes/editor/editor_palette.gd
+msgid "Drag empty space to move around; pinch to zoom."
+msgstr "Drag empty space to move around; pinch to zoom."
+
+#: scenes/editor/editor_palette.gd
 msgid "Drag the ground's points; click the ground to add one (G)"
 msgstr "Drag the ground's points; click the ground to add one (G)"
 
@@ -413,6 +417,10 @@ msgstr "Heavy and dense. Punches straight through wood."
 #: scenes/menu/settings_menu.gd
 msgid "High"
 msgstr "High"
+
+#: scenes/editor/editor_palette.gd
+msgid "Home: frame the castle."
+msgstr "Home: frame the castle."
 
 #: data/enemies.json
 msgid "Hostage"
@@ -684,6 +692,10 @@ msgid "Press a key…"
 msgstr "Press a key…"
 
 #: scenes/menu/settings_menu.gd
+msgid "Press, then press the new key or gamepad button (replaces the binding of that device type)."
+msgstr "Press, then press the new key or gamepad button (replaces the binding of that device type)."
+
+#: scenes/menu/settings_menu.gd
 msgid "Previous ammo"
 msgstr "Previous ammo"
 
@@ -694,6 +706,10 @@ msgstr "Prince Idris lights a thousand lanterns every night just to keep me awak
 #: data/levels/frostfang/frostfang-06.json
 msgid "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it."
 msgstr "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it."
+
+#: scenes/editor/editor_palette.gd
+msgid "Q/E: turn. Del: delete. Ctrl+Z: undo."
+msgstr "Q/E: turn. Del: delete. Ctrl+Z: undo."
 
 #: scenes/menu/settings_menu.gd
 msgid "Quality"
@@ -748,6 +764,10 @@ msgstr "Resume"
 #: ui/hud.gd
 msgid "Retry"
 msgstr "Retry"
+
+#: scenes/editor/editor_palette.gd
+msgid "Right-click or Esc: back to Select."
+msgstr "Right-click or Esc: back to Select."
 
 #: scenes/editor/editor.gd
 msgid "Rock"
@@ -806,6 +826,10 @@ msgstr "Screen shake"
 #: scenes/editor/editor_palette.gd
 msgid "Select"
 msgstr "Select"
+
+#: scenes/editor/editor.gd
+msgid "Send this code to a friend. They open it with Castles, then Open code. No internet needed."
+msgstr "Send this code to a friend. They open it with Castles, then Open code. No internet needed."
 
 #: scenes/menu/main_menu.gd
 #: scenes/menu/settings_menu.gd
@@ -905,6 +929,14 @@ msgstr "Swing speed"
 #: scenes/editor/editor.gd
 msgid "Taller"
 msgstr "Taller"
+
+#: scenes/editor/editor_palette.gd
+msgid "Tap Select to pick up and drag pieces."
+msgstr "Tap Select to pick up and drag pieces."
+
+#: scenes/editor/editor_palette.gd
+msgid "Tap a piece, then tap to place it."
+msgstr "Tap a piece, then tap to place it."
 
 #: scenes/level/level.gd
 msgid "Tap to swing, tap again to let go"
@@ -1122,6 +1154,10 @@ msgstr "Void flask"
 msgid "Wedge"
 msgstr "Wedge"
 
+#: scenes/editor/editor_palette.gd
+msgid "Wheel: zoom. Right-drag: pan."
+msgstr "Wheel: zoom. Right-drag: pan."
+
 #: data/realms/greenmantle.json
 msgid "Where King Grumbold's grudges grow greenest."
 msgstr "Where King Grumbold's grudges grow greenest."
@@ -1166,6 +1202,20 @@ msgid "%d shot"
 msgid_plural "%d shots"
 msgstr[0] "%d shot"
 msgstr[1] "%d shots"
+
+#: scenes/level/level.gd
+#, c-format
+msgid "New record! Players need %d shot for gold."
+msgid_plural "New record! Players need %d shots for gold."
+msgstr[0] "New record! Players need %d shot for gold."
+msgstr[1] "New record! Players need %d shots for gold."
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Your record goes with it: gold in %d shot."
+msgid_plural "Your record goes with it: gold in %d shots."
+msgstr[0] "Your record goes with it: gold in %d shot."
+msgstr[1] "Your record goes with it: gold in %d shots."
 
 #: scenes/editor/editor.gd
 #, c-format

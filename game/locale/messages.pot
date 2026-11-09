@@ -267,6 +267,10 @@ msgid "Drag a point to shape the ground. Click the ground to add a point."
 msgstr ""
 
 #: scenes/editor/editor_palette.gd
+msgid "Drag empty space to move around; pinch to zoom."
+msgstr ""
+
+#: scenes/editor/editor_palette.gd
 msgid "Drag the ground's points; click the ground to add one (G)"
 msgstr ""
 
@@ -411,6 +415,10 @@ msgstr ""
 
 #: scenes/menu/settings_menu.gd
 msgid "High"
+msgstr ""
+
+#: scenes/editor/editor_palette.gd
+msgid "Home: frame the castle."
 msgstr ""
 
 #: data/enemies.json
@@ -683,6 +691,10 @@ msgid "Press a key…"
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
+msgid "Press, then press the new key or gamepad button (replaces the binding of that device type)."
+msgstr ""
+
+#: scenes/menu/settings_menu.gd
 msgid "Previous ammo"
 msgstr ""
 
@@ -692,6 +704,10 @@ msgstr ""
 
 #: data/levels/frostfang/frostfang-06.json
 msgid "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it."
+msgstr ""
+
+#: scenes/editor/editor_palette.gd
+msgid "Q/E: turn. Del: delete. Ctrl+Z: undo."
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
@@ -746,6 +762,10 @@ msgstr ""
 
 #: ui/hud.gd
 msgid "Retry"
+msgstr ""
+
+#: scenes/editor/editor_palette.gd
+msgid "Right-click or Esc: back to Select."
 msgstr ""
 
 #: scenes/editor/editor.gd
@@ -804,6 +824,10 @@ msgstr ""
 
 #: scenes/editor/editor_palette.gd
 msgid "Select"
+msgstr ""
+
+#: scenes/editor/editor.gd
+msgid "Send this code to a friend. They open it with Castles, then Open code. No internet needed."
 msgstr ""
 
 #: scenes/menu/main_menu.gd
@@ -903,6 +927,14 @@ msgstr ""
 
 #: scenes/editor/editor.gd
 msgid "Taller"
+msgstr ""
+
+#: scenes/editor/editor_palette.gd
+msgid "Tap Select to pick up and drag pieces."
+msgstr ""
+
+#: scenes/editor/editor_palette.gd
+msgid "Tap a piece, then tap to place it."
 msgstr ""
 
 #: scenes/level/level.gd
@@ -1121,6 +1153,10 @@ msgstr ""
 msgid "Wedge"
 msgstr ""
 
+#: scenes/editor/editor_palette.gd
+msgid "Wheel: zoom. Right-drag: pan."
+msgstr ""
+
 #: data/realms/greenmantle.json
 msgid "Where King Grumbold's grudges grow greenest."
 msgstr ""
@@ -1163,6 +1199,20 @@ msgstr ""
 #, c-format
 msgid "%d shot"
 msgid_plural "%d shots"
+msgstr[0] ""
+msgstr[1] ""
+
+#: scenes/level/level.gd
+#, c-format
+msgid "New record! Players need %d shot for gold."
+msgid_plural "New record! Players need %d shots for gold."
+msgstr[0] ""
+msgstr[1] ""
+
+#: scenes/editor/editor.gd
+#, c-format
+msgid "Your record goes with it: gold in %d shot."
+msgid_plural "Your record goes with it: gold in %d shots."
 msgstr[0] ""
 msgstr[1] ""
 

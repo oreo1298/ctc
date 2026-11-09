@@ -112,12 +112,22 @@ func _ready() -> void:
 	tips.theme_type_variation = "SmallLabel"
 	tips.add_theme_font_size_override("font_size", roundi(15 * s))
 	tips.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	tips.text = tr(
-		(
-			"Right-click or Esc: back to Select. Wheel: zoom. Right-drag: pan. Q/E: turn. "
-			+ "Del: delete. Ctrl+Z: undo. Home: frame the castle."
-		)
-	)
+	# One tr() per sentence: the catalogue extractor needs whole literals.
+	var lines: PackedStringArray = []
+	if OS.has_feature("mobile") or DisplayServer.is_touchscreen_available():
+		lines = [
+			tr("Tap a piece, then tap to place it."),
+			tr("Drag empty space to move around; pinch to zoom."),
+			tr("Tap Select to pick up and drag pieces."),
+		]
+	else:
+		lines = [
+			tr("Right-click or Esc: back to Select."),
+			tr("Wheel: zoom. Right-drag: pan."),
+			tr("Q/E: turn. Del: delete. Ctrl+Z: undo."),
+			tr("Home: frame the castle."),
+		]
+	tips.text = " ".join(lines)
 	col.add_child(tips)
 
 	show_material(current_material)

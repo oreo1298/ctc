@@ -137,21 +137,11 @@ func _icon_button(icon_path: String, tooltip: String, cb: Callable) -> Button:
 
 func _apply_safe_area() -> void:
 	var m: float = 20.0
-	var left: float = m
-	var top: float = m
-	var right: float = m
-	var bottom: float = m
-	if OS.has_feature("mobile"):
-		var safe: Rect2i = DisplayServer.get_display_safe_area()
-		var screen: Vector2i = DisplayServer.screen_get_size()
-		var vp: Vector2 = _root.get_viewport_rect().size
-		if screen.x > 0 and screen.y > 0:
-			var sx: float = vp.x / screen.x
-			var sy: float = vp.y / screen.y
-			left += safe.position.x * sx
-			top += safe.position.y * sy
-			right += (screen.x - safe.end.x) * sx
-			bottom += (screen.y - safe.end.y) * sy
+	var inset: Vector4 = UiTheme.safe_insets(_root.get_viewport_rect().size)
+	var left: float = m + inset.x
+	var top: float = m + inset.y
+	var right: float = m + inset.z
+	var bottom: float = m + inset.w
 	_margin.add_theme_constant_override("margin_left", roundi(left))
 	_margin.add_theme_constant_override("margin_top", roundi(top))
 	_margin.add_theme_constant_override("margin_right", roundi(right))

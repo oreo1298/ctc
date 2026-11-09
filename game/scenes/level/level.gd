@@ -355,6 +355,16 @@ func toggle_pause() -> void:
 		hud.hide_pause()
 
 
+## Phones and tablets: a call, the home button or locking the screen pauses
+## the level, so coming back never finds a shot already flying.
+func _notification(what: int) -> void:
+	if not OS.has_feature("mobile") or bot_mode or hud == null:
+		return
+	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if not get_tree().paused and state != State.WON:
+			toggle_pause()
+
+
 func cycle_ammo(direction: int) -> void:
 	if ammo_list.size() <= 1 or state != State.READY:
 		return

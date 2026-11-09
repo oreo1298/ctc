@@ -18,12 +18,13 @@ tap again to let go. The moment of release is your aim.
 * Made for Linux first, also on Windows and iOS
 * No ads, no in-app purchases, no tracking, no network. Ever.
 
-> **Status: early development.** Milestones 1–4 are done: the full campaign
+> **Status: early development.** Milestones 1–6 are done: the full campaign
 > (3 realms × 12 levels, each proven beatable by a bot that also sets par),
 > eight ammo types, seven materials that crack and break into real pieces,
 > fire and frost, procedural sound, level select, settings and accessibility
-> options, and a castle editor with offline share codes. Next: Linux and
-> Windows packaging. See [docs/ROADMAP.md](docs/ROADMAP.md).
+> options, a castle editor with offline share codes, and packages for
+> Linux, Windows and iOS. Next: performance, polish and a release candidate.
+> See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 | | |
 |---|---|
@@ -65,6 +66,7 @@ every package below in `dist/`; CI builds them on each push as well.
 | Flatpak | `Siegefall-<ver>.flatpak` | `flatpak install ./Siegefall-*.flatpak` |
 | NixOS / Nix | `flake.nix` | `nix run github:oreo1298/ctc` |
 | Windows 10/11 | `siegefall-<ver>-windows-x86_64-setup.exe` or `.zip` | run the installer (no admin rights), or unzip and play |
+| iPhone, iPad | Xcode project / unsigned `.ipa` | build and sign it yourself: [docs/IOS.md](docs/IOS.md) |
 
 From a clone, `make install` installs your own build into `~/.local` (or
 `make install ARGS=--system` for `/usr/local`). Remove it with

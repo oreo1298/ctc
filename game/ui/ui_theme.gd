@@ -19,6 +19,38 @@ const BODY_FONT: FontFile = preload("res://fonts/Nunito.ttf")
 const HEADING_FONT: FontFile = preload("res://fonts/Fraunces.ttf")
 
 
+## Insets (x = left, y = top, z = right, w = bottom) in canvas units that
+## keep interface clear of notches, rounded corners and the home indicator.
+## Zero on desktop.
+static func safe_insets(vp_size: Vector2) -> Vector4:
+	if not OS.has_feature("mobile"):
+		return Vector4.ZERO
+	var safe: Rect2i = DisplayServer.get_display_safe_area()
+	var screen: Vector2i = DisplayServer.screen_get_size()
+	if screen.x <= 0 or screen.y <= 0 or safe.size.x <= 0:
+		return Vector4.ZERO
+	var sx: float = vp_size.x / screen.x
+	var sy: float = vp_size.y / screen.y
+	return Vector4(
+		safe.position.x * sx,
+		safe.position.y * sy,
+		(screen.x - safe.end.x) * sx,
+		(screen.y - safe.end.y) * sy
+	)
+
+
+## Keep a full-rect Control inside the safe area (and re-fit on resize).
+static func fit_safe_area(c: Control) -> void:
+	var refit := func() -> void:
+		var inset: Vector4 = safe_insets(c.get_viewport_rect().size)
+		c.offset_left = inset.x
+		c.offset_top = inset.y
+		c.offset_right = -inset.z
+		c.offset_bottom = -inset.w
+	refit.call()
+	c.get_viewport().size_changed.connect(refit)
+
+
 static func medal_color(m: Scoring.Medal) -> Color:
 	match m:
 		Scoring.Medal.GOLD:

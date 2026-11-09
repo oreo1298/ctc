@@ -11,6 +11,9 @@ SF_PACKAGING="${SF_ROOT}/packaging"
 SF_BUILD="${SF_BUILD:-${SF_ROOT}/build}"
 SF_EXPORT="${SF_EXPORT:-${SF_BUILD}/export}"
 ICON_SIZES=(16 24 32 48 64 128 256 512)
+# Rendered too, for the iOS app icon (used by build.sh).
+# shellcheck disable=SC2034
+APP_ICON_EXTRA=(1024)
 
 # The build's architecture names: x86_64 / arm64 (Godot), and the packaging
 # names other tools want.
