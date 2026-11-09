@@ -11,7 +11,9 @@ const MAX_PER_SOUND: int = 4
 
 var _streams: Dictionary = {}  # name -> Array[AudioStream]
 var _pool: Array[AudioStreamPlayer2D] = []
-var _ui: AudioStreamPlayer
+## A few UI players, so a jingle and a click can overlap.
+var _ui: Array[AudioStreamPlayer] = []
+var _ui_next: int = 0
 var _next: int = 0
 var _playing: Dictionary = {}  # name -> count this frame window
 var _rng := RandomNumberGenerator.new()
@@ -32,9 +34,11 @@ func _ready() -> void:
 		p.attenuation = 0.6
 		add_child(p)
 		_pool.append(p)
-	_ui = AudioStreamPlayer.new()
-	_ui.bus = "UI"
-	add_child(_ui)
+	for i: int in 3:
+		var u := AudioStreamPlayer.new()
+		u.bus = "UI"
+		add_child(u)
+		_ui.append(u)
 	apply_volumes()
 	Settings.changed.connect(apply_volumes)
 
@@ -116,9 +120,11 @@ func play_ui(name: String, volume_db: float = 0.0) -> void:
 	if not _enabled or not _streams.has(name):
 		return
 	var list: Array = _streams[name]
-	_ui.stream = list[_rng.randi() % list.size()]
-	_ui.volume_db = volume_db
-	_ui.play()
+	var u: AudioStreamPlayer = _ui[_ui_next]
+	_ui_next = (_ui_next + 1) % _ui.size()
+	u.stream = list[_rng.randi() % list.size()]
+	u.volume_db = volume_db
+	u.play()
 
 
 ## Layered impact: a material "body" layer plus, for harder hits, a
@@ -140,6 +146,7 @@ func _exit_tree() -> void:
 	for p: AudioStreamPlayer2D in _pool:
 		p.stop()
 		p.stream = null
-	_ui.stop()
-	_ui.stream = null
+	for u: AudioStreamPlayer in _ui:
+		u.stop()
+		u.stream = null
 	_streams.clear()

@@ -46,3 +46,4 @@ also machine-readable through REUSE.
 | `game/fonts/Nunito.ttf` (body text) | The Nunito Project Authors | OFL-1.1 | [google/fonts `ofl/nunito`](https://github.com/google/fonts/tree/main/ofl/nunito) @ `5bb2873`, licence in `Nunito-OFL.txt` |
 
 | `game/audio/sfx/*.wav` (89 files: impacts, breaks, trebuchet, royals, UI, jingles) | Siegefall contributors | CC-BY-SA-4.0 | synthesised by `tools/sfx/generate.py` (noise, filters, inharmonic partials, Karplus-Strong strings); regenerate with `make sfx` |
+| `game/audio/music/*.wav` (menu, Greenmantle, Saffron, Frostfang loops) | Siegefall contributors | CC-BY-SA-4.0 | composed and synthesised by `tools/music/compose.py` (seeded, standard-library Python); regenerate with `make music` |

@@ -256,6 +256,9 @@ func show_win(
 	note: String = ""
 ) -> void:
 	_gauge.visible = false
+	# The jingle over the music, then the wax seal lands with a thump.
+	Music.duck(3.5)
+	Sfx.play_ui("win_jingle", -3.0)
 	_win = _card()
 	var box: VBoxContainer = _win.get_meta("box")
 	var head := Label.new()
@@ -322,6 +325,10 @@ func show_win(
 	tw.tween_property(stamp, "stamp", 1.0, 0.35).set_trans(Tween.TRANS_BACK).set_ease(
 		Tween.EASE_OUT
 	)
+	if medal != Scoring.Medal.NONE:
+		tw.tween_callback(Sfx.play_ui.bind("ui_stamp", -4.0))
+	if medal == Scoring.Medal.GOLD:
+		tw.tween_callback(Sfx.play_ui.bind("medal_gold", -6.0)).set_delay(0.15)
 
 
 ## The pause menu. It keeps running while the game is paused (everything

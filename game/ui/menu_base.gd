@@ -36,6 +36,7 @@ func build_frame(realm_id: String = "", time: String = "golden") -> Control:
 	ui.theme = UiTheme.build(Settings.text_scale)
 	layer.add_child(ui)
 	UiTheme.fit_safe_area(ui)
+	Music.play("menu")
 	return ui
 
 

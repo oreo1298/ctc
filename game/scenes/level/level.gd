@@ -136,6 +136,7 @@ func _build() -> void:
 	var grade: Dictionary = Data.grade(data.time_of_day)
 
 	if not bot_mode:
+		Music.play(data.realm)
 		var backdrop := Backdrop.new()
 		backdrop.name = "Backdrop"
 		add_child(backdrop)
@@ -395,6 +396,7 @@ func toggle_pause() -> void:
 	var p: bool = not get_tree().paused
 	get_tree().paused = p
 	Sfx.pause_world(p)
+	Music.dim(p)
 	if p:
 		hud.show_pause()
 	else:
@@ -615,6 +617,7 @@ func _world_asleep() -> bool:
 func _exit_tree() -> void:
 	Effects.reset_time()
 	Sfx.pause_world(false)
+	Music.dim(false)
 
 
 ## Medal thresholds; empty for a custom castle nobody has beaten yet.

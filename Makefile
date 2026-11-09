@@ -103,6 +103,10 @@ pot: ## Regenerate locale/messages.pot and en.po from code and data
 sfx: ## Regenerate the procedural sound effects (game/audio/sfx)
 	python3 -I tools/sfx/generate.py $(GAME)/audio/sfx
 
+.PHONY: music
+music: ## Recompose the music loops (game/audio/music), about 15 s
+	python3 -I tools/music/compose.py $(GAME)/audio/music
+
 .PHONY: fmt
 fmt: ## Auto-format GDScript
 	$(VENV)/bin/gdformat $(GD_SOURCES)

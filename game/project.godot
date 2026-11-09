@@ -28,6 +28,7 @@ Data="*res://autoload/data.gd"
 Controls="*res://autoload/controls.gd"
 Effects="*res://autoload/effects.gd"
 Sfx="*res://autoload/sfx.gd"
+Music="*res://autoload/music.gd"
 Game="*res://autoload/game.gd"
 
 [debug]

@@ -491,8 +491,12 @@ Decisions made without asking, which are cheap to revisit:
 5. **Hostages** first appear in Saffron Reach (realm 2), as the brief asks
    for "later realms".
 6. **Par is bot-computed** (§6.4); designers may pin `par_override`.
-7. **Music:** gentle procedural ambient loops per realm are a stretch goal for
-   v1.0. SFX are required.
+7. **Music:** gentle loops per realm plus a menu theme, composed and rendered
+   by `tools/music/compose.py` (seeded, so `make music` is reproducible):
+   chord progressions with pad, bass, plucked arpeggio and a lead (flute,
+   oud-like pluck or bells), a frame drum in Saffron and wind in Frostfang.
+   Mono 22 kHz, about 40 s each, levelled to the same loudness; the reverb
+   tail wraps onto the start so loops are seamless. QOA-compressed on import.
 8. **Fonts** are fetched from the official `google/fonts` repository (OFL),
    vendored with their licence, and listed in CREDITS.md.
 9. **The castle editor** is available from the main menu from the start.

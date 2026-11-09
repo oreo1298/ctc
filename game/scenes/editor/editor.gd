@@ -69,6 +69,7 @@ func _ready() -> void:
 		Game.editor.load_doc(doc if not doc.is_empty() else EditorModel.new_level())
 	model = Game.editor
 	Game.custom_from_editor = false
+	Music.play("menu")
 	if Game.cli.has("edit") and not Game.cli.has("_edit_loaded"):
 		# Dev/screenshot hook: open a campaign level as a new castle.
 		Game.cli["_edit_loaded"] = true

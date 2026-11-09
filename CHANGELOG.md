@@ -11,6 +11,16 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added (music)
+- Music: a theme for the menus and a loop for each realm (pastoral
+  Greenmantle, a drone-and-frame-drum Saffron, bells and wind for
+  Frostfang), composed by `tools/music/compose.py` (`make music`). The
+  `Music` player crossfades between them, dims while paused and dips under
+  the win jingle; Settings → Sound → Music volume controls it.
+- The win card now plays its jingle, a thump when the seal lands and a
+  chime for gold (the sounds existed but were never played). UI sounds
+  can overlap.
+
 ### Changed
 - iOS: the minimum is now iOS 15 (was 16). Every library the app links
   (Godot, MoltenVK, godot-rapier) is built for iOS 14 or older.
