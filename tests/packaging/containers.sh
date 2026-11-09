@@ -29,6 +29,10 @@ is left behind.
   --distro NAME   run only this one (repeatable; default: all)
   --engine E      docker or podman (default: whichever is installed)
   --arch A        x86_64 (default) or arm64 (needs an arm64 host)
+  --engine-arg A  extra argument for '<engine> run' (repeatable), e.g. a CA
+                  bundle mount when a proxy intercepts TLS
+  --setup CMD     shell commands run first in every container, e.g. to
+                  switch package mirrors to https
   -n, --dry-run   print the commands
   -h, --help      this text
 EOF
@@ -36,6 +40,8 @@ EOF
 
 DISTROS=()
 ENGINE=""
+EXTRA=()
+SETUP=":"
 ARCH="x86_64"
 while [[ $# -gt 0 ]]; do
 	case "$1" in
@@ -53,6 +59,16 @@ while [[ $# -gt 0 ]]; do
 	--arch)
 		[[ $# -ge 2 ]] || die "--arch needs a value"
 		ARCH="$2"
+		shift
+		;;
+	--engine-arg)
+		[[ $# -ge 2 ]] || die "--engine-arg needs a value"
+		EXTRA+=("$2")
+		shift
+		;;
+	--setup)
+		[[ $# -ge 2 ]] || die "--setup needs commands"
+		SETUP="$2"
 		shift
 		;;
 	-n | --dry-run) DRY_RUN=1 ;;
@@ -108,7 +124,7 @@ script_for() {
 		cat <<EOF
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
-apt-get install -y -qq /dist/${DEB} >/dev/null
+apt-get install -y -qq --no-install-recommends /dist/${DEB} >/dev/null
 installed /usr
 smoke ${APP_SLUG}
 smoke /usr/games/${APP_SLUG}
@@ -118,7 +134,9 @@ EOF
 		;;
 	fedora)
 		cat <<EOF
-dnf install -y -q /dist/${RPM}
+# Weak dependencies (sound servers, Vulkan) are what a desktop already has;
+# skipping them keeps the container small.
+dnf install -y -q --setopt=install_weak_deps=False /dist/${RPM}
 installed /usr
 smoke ${APP_SLUG}
 dnf remove -y -q ${APP_SLUG}
@@ -127,7 +145,7 @@ EOF
 		;;
 	tumbleweed)
 		cat <<EOF
-zypper --non-interactive --quiet install --allow-unsigned-rpm /dist/${RPM}
+zypper --non-interactive --quiet install --no-recommends --allow-unsigned-rpm /dist/${RPM}
 installed /usr
 smoke ${APP_SLUG}
 zypper --non-interactive --quiet remove ${APP_SLUG}
@@ -143,7 +161,8 @@ cp /dist/aur/${APP_SLUG}-bin/PKGBUILD /dist/${TARBALL} /home/builder/pkg/
 # Build from the local tarball instead of the (not yet published) release.
 sed -i 's|^source_x86_64=.*|source_x86_64=("${TARBALL}")|; s|^source_aarch64=.*|source_aarch64=("${TARBALL}")|' /home/builder/pkg/PKGBUILD
 chown -R builder /home/builder/pkg
-su builder -c 'cd ~/pkg && makepkg --printsrcinfo > .SRCINFO && makepkg -f --noconfirm' >/dev/null
+# --nodeps: pacman -U below installs the runtime dependencies from the repos.
+su builder -c 'cd ~/pkg && makepkg --printsrcinfo > .SRCINFO && makepkg -f --noconfirm --nodeps' >/dev/null
 pacman -U --noconfirm /home/builder/pkg/${APP_SLUG}-bin-*.pkg.tar.zst >/dev/null
 installed /usr
 smoke ${APP_SLUG}
@@ -153,8 +172,8 @@ EOF
 		;;
 	void)
 		cat <<EOF
-xbps-install -Syu xbps >/dev/null 2>&1 || true
-xbps-install -y bash tar gzip shadow >/dev/null
+xbps-install -Syu xbps >/dev/null
+xbps-install -Sy bash tar gzip shadow >/dev/null
 useradd -m player
 su player -s /bin/bash -c '
 set -e
@@ -165,6 +184,9 @@ cd ${APP_SLUG}-${APP_VERSION}-linux-${ARCH}
 '
 installed /home/player/.local
 smoke /home/player/.local/bin/${APP_SLUG}
+# Run once as the player too, so there is player data for --purge to remove.
+su player -s /bin/bash -c '~/.local/bin/${APP_SLUG} --headless -- --smoke-test' | grep -q '^\[smoke\] ok'
+test -d /home/player/.local/share/${APP_SLUG}
 su player -s /bin/bash -c '~/.local/lib/${APP_SLUG}/uninstall.sh --purge --yes'
 gone /home/player/.local
 test ! -e /home/player/.local/share/${APP_SLUG} || { echo "player data left"; exit 1; }
@@ -206,8 +228,10 @@ for d in "${DISTROS[@]}"; do
 		[[ "${DRY_RUN}" == 1 || -f "${DIST}/${f}" ]] || die "dist/${f} is missing; run 'make build && make package'"
 	done
 	log "${d}: $(image_for "${d}")"
-	if run "${ENGINE}" run --rm --network=host "${env_args[@]}" -v "${DIST}:/dist:ro" "$(image_for "${d}")" \
+	if run "${ENGINE}" run --rm --network=host "${env_args[@]}" "${EXTRA[@]}" \
+		-v "${DIST}:/dist:ro" "$(image_for "${d}")" \
 		sh -euc "${CHECKS}
+${SETUP}
 $(script_for "${d}")"; then
 		ok "${d}"
 	else
