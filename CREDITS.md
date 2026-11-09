@@ -23,6 +23,8 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 | godot-rapier 2D v0.36.1 (physics, shipped) | MIT | <https://github.com/appsinacup/godot-rapier-physics> |
 | Rapier physics engine (inside godot-rapier) | Apache-2.0 | <https://rapier.rs> |
 | godot-rust (inside godot-rapier) | MPL-2.0 | <https://godot-rust.github.io> |
+| AppImage type2 runtime 20251108 (inside the AppImage) | MIT | <https://github.com/AppImage/type2-runtime> |
+| NSIS (stub inside the Windows installer) | zlib/libpng | <https://nsis.sourceforge.io> |
 | GUT 9.7.1 (dev only, not shipped) | MIT | <https://github.com/bitwes/Gut> |
 | gdtoolkit (dev only) | MIT | <https://github.com/Scony/godot-gdscript-toolkit> |
 | reuse (dev only) | Apache-2.0 / GPL-3.0+ | <https://reuse.software> |

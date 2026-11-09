@@ -55,8 +55,20 @@ All notable changes are documented here. The format follows
   par. Castles autosave to `user://levels`; share as an `SF1.` code
   (author's par included) or a `.json` file; imports never overwrite.
   Editor toolbar icons.
+- Milestone 5: headless exports for Linux x86_64/arm64 and Windows
+  (`make build`); packages from one staged layout (`make package`):
+  portable tarball, AppImage (pinned type2 runtime), deb, rpm, Flatpak
+  manifest and bundle, AUR `siegefall-bin` and `siegefall` (from source),
+  Nix flake package (from source), Windows zip and per-user NSIS
+  installer. `scripts/install.sh` / `uninstall.sh` (per-user or system,
+  manifest-tracked, safe to re-run, `--purge` asks first), man page,
+  icons rendered by Godot, third-party notices generated from the engine.
+  Tested by installing and starting each package on Arch, Ubuntu, Debian,
+  Fedora, Tumbleweed, Void, Linux arm64, Flatpak, Nix and Windows in CI.
 
 ### Fixed
+- Installing godot-rapier into a fresh clone (the addons folder did not
+  exist yet) now works, and any failure stops instead of reporting success.
 - `make dev` exited silently on interactive runs (no `--yes`); optional
   packages are now filtered by availability and installed in one visible
   call.

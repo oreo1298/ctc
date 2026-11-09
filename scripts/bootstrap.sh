@@ -167,18 +167,18 @@ pkgs_required() {
 
 pkgs_optional() {
 	case "$1" in
-	pacman) echo shellcheck dpkg rpm-tools appstream desktop-file-utils librsvg zip nsis flatpak-builder file \
+	pacman) echo shellcheck dpkg rpm-tools appstream desktop-file-utils squashfs-tools zip nsis flatpak-builder file \
 		wayland libdecor alsa-lib libpulse ;;
-	apt) echo shellcheck dpkg-dev rpm appstream desktop-file-utils librsvg2-bin zip nsis flatpak-builder file \
+	apt) echo shellcheck dpkg-dev rpm appstream desktop-file-utils squashfs-tools zip nsis flatpak-builder file lintian \
 		libwayland-client0 libwayland-cursor0 libwayland-egl1 libdecor-0-0 libasound2t64 libasound2 libpulse0 ;;
-	dnf) echo ShellCheck dpkg rpm-build appstream desktop-file-utils librsvg2-tools zip mingw32-nsis \
+	dnf) echo ShellCheck dpkg rpm-build appstream desktop-file-utils squashfs-tools zip mingw32-nsis \
 		flatpak-builder file libwayland-client libwayland-cursor libwayland-egl libdecor alsa-lib pulseaudio-libs ;;
-	zypper) echo ShellCheck dpkg rpm-build AppStream desktop-file-utils rsvg-convert zip mingw32-cross-nsis \
+	zypper) echo ShellCheck dpkg rpm-build AppStream desktop-file-utils squashfs zip mingw32-cross-nsis \
 		flatpak-builder file libwayland-client0 libwayland-cursor0 libwayland-egl1 libdecor-0-0 alsa libpulse0 ;;
-	xbps) echo shellcheck dpkg rpm AppStream desktop-file-utils librsvg-utils zip nsis flatpak-builder file \
+	xbps) echo shellcheck dpkg rpm AppStream desktop-file-utils squashfs-tools zip nsis flatpak-builder file \
 		wayland libdecor alsa-lib libpulseaudio ;;
 	emerge) echo dev-util/shellcheck-bin app-arch/dpkg app-arch/rpm dev-libs/appstream \
-		dev-util/desktop-file-utils gnome-base/librsvg app-arch/zip dev-util/nsis dev-util/flatpak-builder \
+		dev-util/desktop-file-utils sys-fs/squashfs-tools app-arch/zip dev-util/nsis dev-util/flatpak-builder \
 		sys-apps/file dev-libs/wayland gui-libs/libdecor media-libs/alsa-lib media-libs/libpulse ;;
 	esac
 }
@@ -191,7 +191,7 @@ Needed on any distro (names vary):
              fontconfig, libX11, libXcursor, libXinerama, libXrandr, libXi,
              libXext, libXrender, libxkbcommon
   optional : shellcheck, dpkg-deb, rpmbuild, appstreamcli, desktop-file-validate,
-             rsvg-convert, zip, makensis (NSIS), flatpak-builder, file,
+             mksquashfs, zip, makensis (NSIS), flatpak-builder, file,
              Wayland client libs + libdecor, ALSA, PulseAudio/PipeWire-pulse
 EOF
 }

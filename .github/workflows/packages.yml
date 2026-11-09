@@ -1,0 +1,167 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+#
+# Exports and packages the game, then installs and runs every package on the
+# systems it is for. Nothing is published: tagged runs keep the packages as
+# workflow artifacts for a person to attach to a release.
+name: Packages
+
+on:
+  push:
+    branches: [main, "claude/**"]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: packages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Export + package (Linux x86_64/arm64, Windows)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Cache pinned Godot, export templates and tools
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/siegefall-dev
+          key: export-toolchain-${{ hashFiles('toolchain.lock') }}
+      - name: Bootstrap (packages, Godot, export templates, godot-rapier)
+        run: scripts/bootstrap.sh --yes --no-venv --no-gut
+      - name: Packaging tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq squashfs-tools rpm nsis zip lintian appstream desktop-file-utils
+      - run: make build ARGS="--target all"
+      - run: make package
+      - name: Validate metadata and the deb
+        run: |
+          stage=build/pkg/stage-x86_64-deb/usr/share
+          desktop-file-validate "$stage"/applications/*.desktop
+          appstreamcli validate --no-net "$stage"/metainfo/*.xml
+          lintian --fail-on error dist/*_amd64.deb
+      - name: AppImage starts
+        run: |
+          APPIMAGE_EXTRACT_AND_RUN=1 dist/*-x86_64.AppImage --headless -- --smoke-test | tee smoke.log
+          grep -q '^\[smoke\] ok' smoke.log
+      - name: install.sh / uninstall.sh
+        run: make test-install
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
+
+  distros:
+    name: Install on ${{ matrix.distro }}
+    needs: build
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: [arch, ubuntu, debian, fedora, tumbleweed, void]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist
+      - run: tests/packaging/containers.sh --distro ${{ matrix.distro }}
+
+  arm64:
+    name: Linux arm64 (AppImage, tarball, deb, rpm)
+    needs: build
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist
+      - name: AppImage starts
+        run: |
+          chmod +x dist/*-aarch64.AppImage
+          APPIMAGE_EXTRACT_AND_RUN=1 dist/*-aarch64.AppImage --headless -- --smoke-test | tee smoke.log
+          grep -q '^\[smoke\] ok' smoke.log
+      - run: tests/packaging/containers.sh --arch arm64 --distro ubuntu --distro fedora --distro void
+
+  flatpak:
+    name: Flatpak bundle
+    needs: build
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:freedesktop-25.08
+      options: --privileged
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist
+      - name: Point the manifest at the tarballs from this run
+        run: |
+          manifest=$(ls dist/*.yml)
+          for t in dist/*-linux-*.tar.gz; do
+            sed -i "s|url: .*/$(basename "$t")|path: $(pwd)/$t|" "$manifest"
+          done
+          cp "$manifest" app.yml
+          cat app.yml
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: siegefall.flatpak
+          manifest-path: app.yml
+          cache-key: flatpak-${{ hashFiles('app.yml') }}
+      - name: The installed app starts
+        run: |
+          flatpak --user install -y --noninteractive siegefall.flatpak || flatpak install -y --noninteractive siegefall.flatpak
+          app_id=$(sed -n 's/^app-id: //p' app.yml)
+          flatpak run "$app_id" --headless -- --smoke-test | tee smoke.log
+          grep -q '^\[smoke\] ok' smoke.log
+
+  nix:
+    name: Nix (build from source)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: nix build -L .#siegefall
+      - name: The package starts
+        run: |
+          ./result/bin/siegefall --headless -- --smoke-test | tee smoke.log
+          grep -q '^\[smoke\] ok' smoke.log
+
+  windows:
+    name: Windows (zip and installer)
+    needs: build
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist
+      - name: Portable zip starts
+        run: |
+          Expand-Archive (Get-ChildItem dist/*-windows-x86_64.zip).FullName -DestinationPath portable
+          $exe = (Get-ChildItem portable/*/*.exe).FullName
+          $p = Start-Process $exe -ArgumentList '--headless','--log-file',"$PWD/zip.log",'--','--smoke-test' -Wait -PassThru -NoNewWindow
+          Get-Content zip.log | Select-Object -Last 5
+          if (-not (Select-String -Path zip.log -Pattern '^\[smoke\] ok' -Quiet)) { exit 1 }
+      - name: Installer installs, starts and uninstalls
+        run: |
+          $setup = (Get-ChildItem dist/*-setup.exe).FullName
+          Start-Process $setup -ArgumentList '/S' -Wait
+          $dir = Join-Path $env:LOCALAPPDATA 'Programs\Siegefall'
+          if (-not (Test-Path "$dir\Siegefall.exe")) { Write-Error "not installed in $dir"; exit 1 }
+          if (-not (Test-Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Siegefall.lnk")) { Write-Error 'no Start menu shortcut'; exit 1 }
+          Start-Process "$dir\Siegefall.exe" -ArgumentList '--headless','--log-file',"$PWD/inst.log",'--','--smoke-test' -Wait -NoNewWindow
+          if (-not (Select-String -Path inst.log -Pattern '^\[smoke\] ok' -Quiet)) { Get-Content inst.log; exit 1 }
+          Start-Process "$dir\Uninstall.exe" -ArgumentList '/S',"_?=$dir" -Wait
+          if (Test-Path "$dir\Siegefall.exe") { Write-Error 'uninstall left the game behind'; exit 1 }

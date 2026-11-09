@@ -27,3 +27,7 @@ game/addons/.rapier-unpack/
 
 # Rendered by scripts/build.sh from packaging/godot/export_presets.cfg.in
 game/export_presets.cfg
+
+# nix build output
+/result
+/result-*

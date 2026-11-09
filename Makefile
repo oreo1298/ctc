@@ -135,6 +135,14 @@ install: ## Install for this user under ~/.local (ARGS=--system for /usr/local)
 uninstall: ## Remove what install added (ARGS=--purge also removes saves)
 	$(call dispatch,uninstall)
 
+.PHONY: test-install
+test-install: ## install.sh/uninstall.sh in a temporary HOME (after build/package)
+	tests/packaging/test_install.sh
+
+.PHONY: test-containers
+test-containers: ## Install + smoke-test dist/ packages in distro containers (docker/podman)
+	tests/packaging/containers.sh $(ARGS)
+
 .PHONY: screenshots
 screenshots: ## Render key scenes to PNG (Xvfb + llvmpipe + Compatibility)
 	$(call dispatch,screenshots)

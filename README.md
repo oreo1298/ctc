@@ -52,8 +52,27 @@ tap again to let go. The moment of release is your aim.
 
 ## Install
 
-Packages (AppImage, Flatpak, .deb, .rpm, AUR, Nix, Windows zip and installer)
-arrive in milestone 5. Until then, build from source:
+No release has been published yet. `make build && make package` produces
+every package below in `dist/`; CI builds them on each push as well.
+
+| System | Package | Install |
+|---|---|---|
+| Any Linux (x86_64, arm64) | `Siegefall-<ver>-<arch>.AppImage` | `chmod +x` it and run it |
+| Any Linux | `siegefall-<ver>-linux-<arch>.tar.gz` | unpack, then `./install.sh` (to `~/.local`, no root) |
+| Arch, CachyOS, Manjaro | AUR `siegefall-bin` or `siegefall` (from source) | `paru -S siegefall-bin` |
+| Debian, Ubuntu, Mint | `siegefall_<ver>-1_<arch>.deb` | `sudo apt install ./siegefall_*.deb` |
+| Fedora, openSUSE | `siegefall-<ver>-1.<arch>.rpm` | `sudo dnf install ./siegefall-*.rpm` / `sudo zypper install ./siegefall-*.rpm` |
+| Flatpak | `Siegefall-<ver>.flatpak` | `flatpak install ./Siegefall-*.flatpak` |
+| NixOS / Nix | `flake.nix` | `nix run github:oreo1298/ctc` |
+| Windows 10/11 | `siegefall-<ver>-windows-x86_64-setup.exe` or `.zip` | run the installer (no admin rights), or unzip and play |
+
+From a clone, `make install` installs your own build into `~/.local` (or
+`make install ARGS=--system` for `/usr/local`). Remove it with
+`make uninstall`, or `~/.local/lib/siegefall/uninstall.sh`. Saves are kept
+unless you add `--purge`. Packaging details are in
+[docs/PACKAGING.md](docs/PACKAGING.md).
+
+To build from source:
 
 ## Build from source
 
@@ -91,10 +110,11 @@ The Godot editor (4.7.2-stable, pinned in [`toolchain.lock`](toolchain.lock)) is
 downloaded into `~/.cache/siegefall-dev/` and checked against its official
 SHA-512. Export templates go into `~/.local/share/godot/export_templates/`.
 
-### Where your data lives (Linux)
+### Where your data lives
 
-* Saves and custom levels: `~/.local/share/siegefall/`
-* Settings: `~/.config/siegefall/`
+* Linux: saves and your castles in `~/.local/share/siegefall/`, settings in
+  `~/.config/siegefall/` (Flatpak: under `~/.var/app/io.github.oreo1298.Siegefall/`)
+* Windows: `%APPDATA%\siegefall\`
 
 ## Contributing
 

@@ -182,7 +182,11 @@ for t in "${TARGETS[@]}"; do
 		"--export-${MODE}" "$(preset_of "${t}")" "${out}/${bin}"
 	if [[ "${DRY_RUN}" == 0 ]]; then
 		[[ -s "${out}/${bin}" ]] || die "export produced no ${bin} (see build/logs/export-${t}.log)"
-		compgen -G "${out}/libgodot_rapier*" >/dev/null ||
+		have_rapier=0
+		for lib in "${out}"/libgodot_rapier*; do
+			[[ -e "${lib}" ]] && have_rapier=1
+		done
+		[[ "${have_rapier}" == 1 ]] ||
 			die "export of ${t} is missing the Rapier library (see build/logs/export-${t}.log)"
 		[[ "${t}" == windows-* ]] || chmod 0755 "${out}/${bin}"
 		cp "${notices}" "${out}/THIRD-PARTY-NOTICES.txt"

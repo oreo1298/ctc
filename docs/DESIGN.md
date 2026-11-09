@@ -535,4 +535,5 @@ double-check before deciding):
 | 2026-11-09 | Trebuchet tuned: 2.1 s swing, 22 m/s peak launch. The useful release window spans about 0.3 s, from high lobs to flat shots. Launch speed is decoupled from the animation length. |
 | 2026-11-09 | Fracture: **runtime Voronoi** with impact-biased, spaced seeds; 3 fractures per tick, 320-body budget, settled debris retired. |
 | 2026-11-09 | Slow motion: `time_scale` and `physics_ticks_per_second` scale together, so the physics step stays 1/60 s. |
+| 2026-11-09 | Packaging: one staged layout for every format, rendered from `app.env`; executables are never stripped (the pck is appended); AppImage from the pinned type2 runtime + mksquashfs; Nix and the AUR source package build with the same pinned Godot; nothing is published automatically. |
 | 2026-11-09 | Castle editor: settle-on-drop placement instead of a free grid (castles start at rest); par for custom castles comes from the author's own test-play win and travels in the share code. |

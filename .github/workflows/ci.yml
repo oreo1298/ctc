@@ -1,9 +1,9 @@
 # SPDX-FileCopyrightText: 2026 Siegefall contributors
 # SPDX-License-Identifier: MIT
 #
-# Runs on every push and pull request. Later milestones add: distro container
-# matrix (bootstrap + install + smoke test), export builds, packaging, the
-# level-validator bot, iOS (macOS runner) and tagged releases.
+# Runs on every push and pull request: lint, unit tests, level proofs and
+# smoke tests. Exports, packages and per-distro installs are in
+# packages.yml; iOS comes with milestone 6.
 name: CI
 
 on:
