@@ -1,0 +1,111 @@
+; SPDX-FileCopyrightText: 2026 Siegefall contributors
+; SPDX-License-Identifier: MIT
+;
+; Template for game/export_presets.cfg, rendered by scripts/build.sh from
+; app.env and toolchain.lock (the rendered file is not committed). Templates
+; are given as absolute custom_template paths, so exports never depend on
+; where the Godot editor keeps its own template folder.
+
+[preset.0]
+
+name="Linux x86_64"
+platform="Linux"
+runnable=true
+advanced_options=false
+dedicated_server=false
+custom_features=""
+export_filter="all_resources"
+include_filter=""
+exclude_filter="tests/*, tools/*, addons/gut/*, data/levels/dev/*"
+export_path=""
+patches=PackedStringArray()
+encryption_include_filters=""
+encryption_exclude_filters=""
+seed=0
+encrypt_pck=false
+encrypt_directory=false
+script_export_mode=2
+
+[preset.0.options]
+
+custom_template/debug="@TEMPLATES@/linux_debug.x86_64"
+custom_template/release="@TEMPLATES@/linux_release.x86_64"
+debug/export_console_wrapper=0
+binary_format/embed_pck=@EMBED_PCK@
+texture_format/s3tc_bptc=true
+texture_format/etc2_astc=false
+binary_format/architecture="x86_64"
+
+[preset.1]
+
+name="Linux arm64"
+platform="Linux"
+runnable=false
+advanced_options=false
+dedicated_server=false
+custom_features=""
+export_filter="all_resources"
+include_filter=""
+exclude_filter="tests/*, tools/*, addons/gut/*, data/levels/dev/*"
+export_path=""
+patches=PackedStringArray()
+encryption_include_filters=""
+encryption_exclude_filters=""
+seed=0
+encrypt_pck=false
+encrypt_directory=false
+script_export_mode=2
+
+[preset.1.options]
+
+custom_template/debug="@TEMPLATES@/linux_debug.arm64"
+custom_template/release="@TEMPLATES@/linux_release.arm64"
+debug/export_console_wrapper=0
+binary_format/embed_pck=@EMBED_PCK@
+texture_format/s3tc_bptc=false
+texture_format/etc2_astc=true
+binary_format/architecture="arm64"
+
+[preset.2]
+
+name="Windows x86_64"
+platform="Windows Desktop"
+runnable=false
+advanced_options=false
+dedicated_server=false
+custom_features=""
+export_filter="all_resources"
+include_filter=""
+exclude_filter="tests/*, tools/*, addons/gut/*, data/levels/dev/*"
+export_path=""
+patches=PackedStringArray()
+encryption_include_filters=""
+encryption_exclude_filters=""
+seed=0
+encrypt_pck=false
+encrypt_directory=false
+script_export_mode=2
+
+[preset.2.options]
+
+custom_template/debug="@TEMPLATES@/windows_debug_x86_64.exe"
+custom_template/release="@TEMPLATES@/windows_release_x86_64.exe"
+debug/export_console_wrapper=0
+binary_format/embed_pck=@EMBED_PCK@
+texture_format/s3tc_bptc=true
+texture_format/etc2_astc=false
+binary_format/architecture="x86_64"
+codesign/enable=false
+application/modify_resources=true
+application/icon="@ICON_ICO@"
+application/console_wrapper_icon=""
+application/icon_interpolation=4
+application/file_version="@APP_VERSION@.0"
+application/product_version="@APP_VERSION@.0"
+application/company_name="@APP_DEVELOPER@"
+application/product_name="@APP_NAME@"
+application/file_description="@APP_NAME@"
+application/copyright="© @YEAR@ @APP_DEVELOPER@ (MIT code, CC BY-SA 4.0 art)"
+application/trademarks=""
+application/export_angle=0
+application/export_d3d12=0

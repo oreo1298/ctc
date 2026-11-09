@@ -175,6 +175,41 @@ verify_sha512() {
 	fi
 }
 
+sha256_of() {
+	if have_cmd sha256sum; then
+		sha256sum "$1" | cut -d' ' -f1
+	elif have_cmd shasum; then
+		shasum -a 256 "$1" | cut -d' ' -f1
+	else
+		die "neither sha256sum nor shasum is available"
+	fi
+}
+
+# verify_sha256 FILE EXPECTED
+verify_sha256() {
+	local file="$1" expected="$2" actual
+	[[ -n "${expected}" ]] || die "no pinned checksum for $(basename "${file}"); refusing to trust it. See toolchain.lock."
+	actual="$(sha256_of "${file}")"
+	if [[ "${actual}" != "${expected}" ]]; then
+		err "checksum mismatch for ${file}"
+		err "  expected ${expected}"
+		err "  actual   ${actual}"
+		return 1
+	fi
+}
+
+# fetch_pinned URL DEST SHA256 -- download once into the cache, verify every
+# time; a file that fails verification is deleted.
+fetch_pinned() {
+	local url="$1" dest="$2" sum="$3"
+	[[ -f "${dest}" ]] || download "${url}" "${dest}"
+	[[ "${DRY_RUN}" == 1 ]] && return 0
+	if ! verify_sha256 "${dest}" "${sum}"; then
+		rm -f "${dest}"
+		die "$(basename "${dest}") did not match its pinned SHA-256 (deleted). Re-run to retry."
+	fi
+}
+
 # download URL DEST -- resumable, fails loudly, explains proxy/firewall blocks.
 download() {
 	local url="$1" dest="$2"
@@ -201,13 +236,14 @@ download() {
 	mv -f "${tmp}" "${dest}"
 }
 
-# install_rapier_addon DEST_ADDONS_DIR
-# Fetch the pinned godot-rapier 2D release (SHA-256 checked) and install its
-# addon into DEST_ADDONS_DIR/godot-rapier2d. Only libraries for platforms we
-# ship (Linux x86_64/arm64, Windows x86_64, macOS, iOS arm64) are kept.
+# install_rapier_addon DEST_ADDONS_DIR [ZIP]
+# Fetch the pinned godot-rapier 2D release (SHA-256 checked), or use ZIP
+# (packagers that download sources themselves), and install its addon into
+# DEST_ADDONS_DIR/godot-rapier2d. Only libraries for platforms we ship
+# (Linux x86_64/arm64, Windows x86_64, macOS, iOS arm64) are kept.
 install_rapier_addon() {
-	local addons="$1" zip dest tmp
-	zip="$(sf_cache_dir)/rapier/godot-rapier-2d-${RAPIER_VERSION}.zip"
+	local addons="$1" zip="${2:-}" dest tmp
+	[[ -n "${zip}" ]] || zip="$(sf_cache_dir)/rapier/godot-rapier-2d-${RAPIER_VERSION}.zip"
 	dest="${addons}/godot-rapier2d"
 	if [[ -f "${dest}/.pinned-sha256" && "$(cat "${dest}/.pinned-sha256")" == "${RAPIER_SHA256}" ]]; then
 		ok "godot-rapier ${RAPIER_VERSION} already present in ${dest#"${SF_ROOT}"/}"

@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+[Desktop Entry]
+Type=Application
+Name=@APP_NAME@
+GenericName=Trebuchet Physics Game
+Comment=@APP_SUMMARY@
+Exec=@APP_SLUG@
+Icon=@APP_ID@
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=trebuchet;catapult;castle;siege;physics;
+SingleMainWindow=true

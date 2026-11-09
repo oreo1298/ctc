@@ -1,0 +1,28 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: @APP_NAME@
+Upstream-Contact: @APP_DEVELOPER@ <@APP_CONTACT@>
+Source: @APP_HOMEPAGE@
+Comment: Full licence texts are in /usr/share/licenses/@APP_SLUG@/, including
+ THIRD-PARTY-NOTICES.txt for the Godot Engine and godot-rapier.
+
+Files: *
+Copyright: @YEAR@ @APP_DEVELOPER@
+License: MIT AND CC-BY-SA-4.0
+Comment: Code is MIT; art, audio, levels and text are CC BY-SA 4.0.
+
+Files: usr/lib/@APP_SLUG@/@APP_SLUG@
+Copyright: 2014-present Godot Engine contributors, 2007-2014 Juan Linietsky, Ariel Manzur
+License: MIT
+Comment: Godot Engine export template with the game data embedded. The game's
+ fonts (Fraunces, Nunito) are OFL-1.1.
+
+Files: usr/lib/@APP_SLUG@/libgodot_rapier.*
+Copyright: appsinacup and godot-rapier contributors
+License: MIT
+Comment: Includes Rapier (Apache-2.0) and godot-rust (MPL-2.0).
+
+License: MIT
+ See /usr/share/licenses/@APP_SLUG@/MIT.txt.
+
+License: CC-BY-SA-4.0
+ See /usr/share/licenses/@APP_SLUG@/CC-BY-SA-4.0.txt.

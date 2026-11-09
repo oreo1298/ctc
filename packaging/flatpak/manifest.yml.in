@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+#
+# Rendered by scripts/package.sh flatpak. The module repackages the release
+# tarball (Godot exports carry the game data inside the binary, which must
+# not be stripped). dist/ gets a copy that downloads the release assets (for
+# Flathub); build/pkg/flatpak/ has one that uses the local tarballs.
+app-id: @APP_ID@
+runtime: org.freedesktop.Platform
+runtime-version: '@FLATPAK_RUNTIME@'
+sdk: org.freedesktop.Sdk
+command: @APP_SLUG@
+finish-args:
+  # Display: Wayland first, X11 only when Wayland is not available.
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --socket=pulseaudio
+  # Gamepads.
+  - --device=input
+  # No --share=network: the game never goes online. Files are opened and
+  # saved through the desktop portal's file chooser.
+modules:
+  - name: @APP_SLUG@
+    buildsystem: simple
+    build-options:
+      no-debuginfo: true
+      strip: false
+    build-commands:
+      - cp -a files/. /app/
+      - rm -f /app/lib/@APP_SLUG@/BUILD_INFO
+    sources:
+@FLATPAK_SOURCES@

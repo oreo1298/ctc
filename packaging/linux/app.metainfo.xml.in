@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 Siegefall contributors -->
+<!-- SPDX-License-Identifier: MIT -->
+<component type="desktop-application">
+  <id>@APP_ID@</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT AND CC-BY-SA-4.0 AND OFL-1.1</project_license>
+  <name>@APP_NAME@</name>
+  <summary>@APP_SUMMARY@</summary>
+  <developer id="@APP_DEVELOPER_ID@">
+    <name>@APP_DEVELOPER@</name>
+  </developer>
+  <description>
+    <p>
+      King Grumbold the Petty has grievances. His neighbours' moats are wider, their
+      banners are brighter and one of them laughed at his hat. Swing the trebuchet,
+      let go at just the right moment, and bring their castles down.
+    </p>
+    <ul>
+      <li>36 hand-built castles across three realms, each proven beatable by a bot that also sets the medals</li>
+      <li>Seven materials that crack and break into real pieces; fire spreads and frost shatters</li>
+      <li>Eight kinds of ammo, most with a mid-air trick</li>
+      <li>A castle editor with test-play and short share codes that work offline</li>
+      <li>One-button mode, reduced shake and flash, text scaling and remappable controls</li>
+    </ul>
+    <p>
+      No ads, no in-app purchases, no tracking and no network, ever.
+    </p>
+  </description>
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+  <url type="homepage">@APP_HOMEPAGE@</url>
+  <url type="bugtracker">@APP_HOMEPAGE@/issues</url>
+  <url type="vcs-browser">@APP_HOMEPAGE@</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Aiming at a castle in the Greenmantle hills</caption>
+      <image>@SCREENSHOT_BASE@/aim.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The collapse</caption>
+      <image>@SCREENSHOT_BASE@/impact.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Every material breaks its own way</caption>
+      <image>@SCREENSHOT_BASE@/shatter.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The castle editor</caption>
+      <image>@SCREENSHOT_BASE@/editor.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">mild</content_attribute>
+  </content_rating>
+  <categories>
+    <category>Game</category>
+    <category>ActionGame</category>
+  </categories>
+  <keywords>
+    <keyword>trebuchet</keyword>
+    <keyword>catapult</keyword>
+    <keyword>castle</keyword>
+    <keyword>physics</keyword>
+  </keywords>
+  <provides>
+    <binary>@APP_SLUG@</binary>
+  </provides>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+    <control>gamepad</control>
+  </supports>
+  <branding>
+    <color type="primary" scheme_preference="light">#f3ead5</color>
+    <color type="primary" scheme_preference="dark">#3b2f26</color>
+  </branding>
+  <releases>
+    <release version="@APP_VERSION@" date="@RELEASE_DATE@"/>
+  </releases>
+</component>

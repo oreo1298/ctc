@@ -1,0 +1,8 @@
+# Godot links these libraries statically; that is how the engine ships.
+@APP_SLUG@: embedded-library *
+@APP_SLUG@: hardening-no-pie [usr/lib/@APP_SLUG@/@APP_SLUG@]
+# Not uploaded to Debian; there are no bugs to close.
+@APP_SLUG@: initial-upload-closes-no-bugs *
+# The same layout as every other package: /usr/bin, plus /usr/games for Debian.
+@APP_SLUG@: package-section-games-but-has-usr-bin *
+@APP_SLUG@: wrong-name-for-upstream-changelog *

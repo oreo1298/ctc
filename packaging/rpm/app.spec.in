@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+#
+# Binary RPM from a prebuilt, staged tree (scripts/package.sh rpm passes
+# --target for the architecture, so one host can build both). Godot
+# binaries carry the game data appended to the executable, so nothing here
+# may strip or rewrite them.
+%global debug_package %{nil}
+%global __os_install_post %{nil}
+%global __strip /bin/true
+%define _build_id_links none
+# The Rapier library is private to the game; don't advertise it.
+%global __provides_exclude_from ^%{_prefix}/lib/@APP_SLUG@/.*$
+%global __requires_exclude ^libgodot_rapier.*$
+
+Name:           @APP_SLUG@
+Version:        @APP_VERSION@
+Release:        1
+Summary:        @APP_SUMMARY@
+License:        MIT AND CC-BY-SA-4.0 AND OFL-1.1
+URL:            @APP_HOMEPAGE@
+# Godot loads these at run time (dlopen), so they are not found automatically.
+Requires:       libGL.so.1()(64bit)
+Requires:       libasound.so.2()(64bit)
+Requires:       libxkbcommon.so.0()(64bit)
+Requires:       (libX11.so.6()(64bit) or libwayland-client.so.0()(64bit))
+Recommends:     libpulse.so.0()(64bit)
+Recommends:     libvulkan.so.1()(64bit)
+Recommends:     libwayland-client.so.0()(64bit)
+Recommends:     libwayland-cursor.so.0()(64bit)
+Recommends:     libwayland-egl.so.1()(64bit)
+Recommends:     libdecor-0.so.0()(64bit)
+Recommends:     libXcursor.so.1()(64bit)
+Recommends:     libXinerama.so.1()(64bit)
+Recommends:     libXrandr.so.2()(64bit)
+Recommends:     libXi.so.6()(64bit)
+Recommends:     libfontconfig.so.1()(64bit)
+Recommends:     libdbus-1.so.3()(64bit)
+Recommends:     libudev.so.1()(64bit)
+
+%description
+King Grumbold the Petty has grievances. Swing the trebuchet, let go at just
+the right moment, and bring his neighbours' castles down: 36 castles in three
+realms, seven breakable materials, eight kinds of ammo, and a castle editor
+with offline share codes.
+
+No ads, no in-app purchases, no tracking and no network.
+
+%install
+cp -a %{sf_stage}/. %{buildroot}/
+
+%files
+%{_bindir}/@APP_SLUG@
+%{_prefix}/lib/@APP_SLUG@/
+%{_datadir}/applications/@APP_ID@.desktop
+%{_datadir}/metainfo/@APP_ID@.metainfo.xml
+%{_datadir}/icons/hicolor/*/apps/@APP_ID@.*
+%doc %{_datadir}/doc/@APP_SLUG@/
+%license %{_datadir}/licenses/@APP_SLUG@/
+
+%changelog
+* @RPM_DATE@ @APP_DEVELOPER@ <@APP_CONTACT@> - @APP_VERSION@-1
+- Release @APP_VERSION@

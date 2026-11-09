@@ -24,6 +24,14 @@ precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Siegefall contributors"
 SPDX-License-Identifier = "MIT"
 
+# Packaging templates whose formats have no comment syntax (deb control,
+# copyright, PKGBUILD inputs, Windows readme).
+[[annotations]]
+path = ["packaging/**/*.in"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Siegefall contributors"
+SPDX-License-Identifier = "MIT"
+
 # Game data (levels, realms, ammo, materials, schemas) and translations.
 [[annotations]]
 path = ["game/data/**", "game/locale/**"]

@@ -1,0 +1,59 @@
+.\" SPDX-FileCopyrightText: 2026 Siegefall contributors
+.\" SPDX-License-Identifier: MIT
+.TH @APP_SLUG_UPPER@ 6 "@RELEASE_DATE@" "@APP_NAME@ @APP_VERSION@" "Games"
+.SH NAME
+@APP_SLUG@ \- @APP_SUMMARY@
+.SH SYNOPSIS
+.B @APP_SLUG@
+[\fIGODOT-OPTIONS\fR] [\fB\-\-\fR \fIGAME-OPTIONS\fR]
+.SH DESCRIPTION
+King Grumbold the Petty has grievances. Swing the trebuchet, let go at just
+the right moment, and bring his neighbours' castles down. There are 36
+castles in three realms, seven breakable materials, eight kinds of ammo, and
+a castle editor whose castles can be shared as short text codes.
+.PP
+Tap (or press Space) to start the swing and again to let go; tap once more
+in flight for the ammo's trick. Esc pauses, R restarts, Q and E change ammo.
+Everything can be rebound under Settings.
+.PP
+The game never uses the network.
+.SH OPTIONS
+Options for the game itself go after
+.BR \-\- .
+.TP
+.BI \-\-level= ID
+Start straight in the level \fIID\fR, for example \fBgreenmantle-01\fR (it
+must be unlocked).
+.TP
+.BR \-\-screen= levels | settings | editor
+Open the level list, the settings or the castle editor.
+.PP
+Useful engine options go before
+.BR \-\- :
+.TP
+.BR \-f ", " \-\-fullscreen
+Start in fullscreen.
+.TP
+.BR \-w ", " \-\-windowed
+Start in a window.
+.TP
+.BI \-\-display\-driver " x11|wayland"
+Choose the display server (Wayland is preferred when available).
+.TP
+.BI \-\-rendering\-method " mobile|gl_compatibility"
+Use the OpenGL renderer on hardware without Vulkan.
+.SH FILES
+.TP
+.I ~/.local/share/@APP_SLUG@/
+Progress (save.json), your castles (levels/) and logs.
+.TP
+.I ~/.config/@APP_SLUG@/settings.cfg
+Settings and controls.
+.PP
+Both follow \fBXDG_DATA_HOME\fR and \fBXDG_CONFIG_HOME\fR when set.
+.SH SEE ALSO
+@APP_HOMEPAGE@
+.SH LICENSE
+Code MIT; art, audio, levels and text CC BY-SA 4.0; fonts OFL 1.1. See
+/usr/share/licenses/@APP_SLUG@/ (or the same folder under your install
+prefix).

@@ -22,8 +22,16 @@ GUT_REPO="https://github.com/bitwes/Gut"
 GUT_TAG="v9.7.1"
 GUT_COMMIT="aeb5d4f3f7f0a6c9b5e178876d6c99b791fda605"
 
-# godot-rapier 2D (MIT). Used by the physics benchmark (benchmarks/physics2d);
-# see docs/DESIGN.md §8.2 for whether the game ships it.
+# godot-rapier 2D (MIT). The game's physics engine (docs/DESIGN.md §8.2):
+# installed into game/addons by bootstrap and shipped with every export.
 RAPIER_VERSION="v0.36.1"
 RAPIER_URL="https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.36.1/godot-rapier-2d-single.zip"
 RAPIER_SHA256="64b56b1843b0f7f0b95b2d820835a5d421929262631d54772c2f1e6e2b72d6e6"
+
+# AppImage type2 runtime (MIT, static). scripts/package.sh appends the
+# squashfs payload to it; no appimagetool needed. Tagged build, SHA-256 of
+# the files at that tag.
+APPIMAGE_RUNTIME_VERSION="20251108"
+APPIMAGE_RUNTIME_URL="https://github.com/AppImage/type2-runtime/releases/download/20251108"
+APPIMAGE_RUNTIME_SHA256_X86_64="2fca8b443c92510f1483a883f60061ad09b46b978b2631c807cd873a47ec260d"
+APPIMAGE_RUNTIME_SHA256_ARM64="00cbdfcf917cc6c0ff6d3347d59e0ca1f7f45a6df1a428a0d6d8a78664d87444"

@@ -1,0 +1,13 @@
+@APP_NAME@ @APP_VERSION@
+@APP_SUMMARY@
+
+Double-click @APP_NAME@.exe to play. Nothing needs installing: keep the
+.exe and the .dll file together in this folder.
+
+Your saves, castles and settings live in %APPDATA%\@APP_SLUG@
+(delete that folder to start over).
+
+No ads, no in-app purchases, no tracking and no network.
+
+Code: MIT. Art, audio, levels and text: CC BY-SA 4.0. Fonts: OFL 1.1.
+See LICENSE.txt and THIRD-PARTY-NOTICES.txt. Source: @APP_HOMEPAGE@

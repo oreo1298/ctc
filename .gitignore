@@ -24,3 +24,6 @@ benchmarks/physics2d/.godot/
 benchmarks/physics2d/override.cfg
 game/addons/godot-rapier2d/
 game/addons/.rapier-unpack/
+
+# Rendered by scripts/build.sh from packaging/godot/export_presets.cfg.in
+game/export_presets.cfg
