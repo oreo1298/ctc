@@ -28,6 +28,7 @@ Renders these scenes to DIR (default build/screenshots/):
   collapse    the collapse framed by the camera
   win         win card with medal
   pause       the pause menu
+  keg         a powder keg going off (and just after)
   materials   every material, heavily cracked
   shatter     every material breaking at once
   fire        flammable materials burning (fire spread, charring)
@@ -123,6 +124,8 @@ shot impact 4.0 "${L[@]}" --autoplay=0.65 --screenshots="3.45:${OUT}/impact.png"
 shot collapse 5.5 "${L[@]}" --autoplay=0.65 --screenshots="4.9:${OUT}/collapse.png"
 shot win 8.0 "${L[@]}" --autoplay=0.65 --screenshots="7.5:${OUT}/win.png"
 shot pause 2.0 "${L[@]}" --no-intro --debug-pause --screenshots="1.6:${OUT}/pause.png"
+shot keg 4.0 "${L[@]}" --unlock-all --autoplay=keg:0.65 \
+	--screenshots="3.4:${OUT}/keg.png,3.85:${OUT}/keg-after.png"
 # Every material: cracked, then all breaking at once.
 M=(--level=dev-materials --camera=castle --no-intro)
 shot materials 2.2 "${M[@]}" --debug-damage=0.7 --screenshots="2.0:${OUT}/materials.png"

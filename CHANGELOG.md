@@ -19,8 +19,18 @@ All notable changes are documented here. The format follows
 - A proper pause menu: Resume, Restart, Choose level (Edit castle in
   test-play), Main menu; Esc, P or Start resume; works with a gamepad and
   in one-button mode. In-world sounds pause with the game.
+- A bigger powder keg: blast radius 4.3 m (was 3.6), more push and damage,
+  and a louder show: brighter flash, shockwave ring, rolling fireball, a
+  moment of orange light, a smoke column, more debris, a heavier rumble.
+  Par was re-checked on every multi-shot level where the keg is available;
+  none changed.
 
 ### Fixed
+- The camera sometimes stayed on the castle after a shot: once a shot
+  settled on its own, the collapse framing kept pulling the camera back
+  to the castle while the trebuchet reloaded, and nothing re-aimed it when
+  the trebuchet was ready. Now the camera always comes home (unless the
+  castle falls to a win). The double-tap guard after letting go is 0.35 s.
 - Pausing froze the game with no way back: the pause card faded in with a
   tween that stopped with the rest of the level, so it stayed invisible,
   and neither its buttons nor Esc received input while paused.

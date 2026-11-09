@@ -21,7 +21,7 @@ const HOLD_STEP: float = 0.6
 const WIN_SETTLE_MAX: float = 2.5
 ## A press this long after release goes back to the trebuchet (sooner, a
 ## quick double tap at release would throw the shot away).
-const SKIP_AFTER: float = 0.5
+const SKIP_AFTER: float = 0.35
 
 var data: LevelData
 var state: State = State.INTRO
@@ -62,9 +62,12 @@ var _targets_total: int = 0
 var _hold_t: float = -1.0
 var _hold_cycled: bool = false
 var _flight_t: float = 0.0
-## The player pressed to stop watching this shot: keep the camera on the
-## trebuchet (unless the castle falls) until the next release.
+## The player pressed to stop watching this shot.
 var _skipped: bool = false
+## The camera is on its way back to the trebuchet (after a press, or once the
+## shot settled): nothing may frame the castle again until the next release,
+## unless the castle falls (the win).
+var _going_home: bool = false
 
 
 func _ready() -> void:
@@ -373,10 +376,17 @@ func skip_to_trebuchet() -> void:
 		_ghost.visible = Settings.show_ghost_trail
 	state = State.SETTLING
 	_settle_t = SETTLE_HOLD
+	_go_home()
+	hud.fade_hint()
+
+
+## Reload and point the camera back at the trebuchet, for good.
+func _go_home() -> void:
+	_going_home = true
 	if trebuchet.state == Trebuchet.State.FOLLOW_THROUGH:
 		trebuchet.reload()
-	camera.go_aim()
-	hud.fade_hint()
+	if not _won_pending:
+		camera.go_aim()
 
 
 func toggle_pause() -> void:
@@ -434,6 +444,7 @@ func _on_released(phase: float, pos: Vector2, vel: Vector2) -> void:
 	state = State.FLYING
 	_flight_t = 0.0
 	_skipped = false
+	_going_home = false
 	_ghost_points = PackedVector2Array([pos])
 
 
@@ -454,7 +465,7 @@ func _on_projectile_split(parent: Projectile, children: Array[Projectile]) -> vo
 		_track(c)
 	if parent == projectile and not children.is_empty():
 		projectile = children[children.size() / 2]
-		if not _skipped:
+		if not _going_home:
 			camera.follow_node(projectile)
 
 
@@ -490,6 +501,8 @@ func _on_projectile_settled(p: Projectile) -> void:
 func _on_trebuchet_ready() -> void:
 	if state == State.SETTLING:
 		state = State.READY
+		if not _won_pending:
+			camera.go_aim()
 		if shots == 1 and not _skipped:
 			hud.set_hint(tr("Tip: tap while the castle settles to load the next shot sooner"))
 
@@ -550,9 +563,10 @@ func _process(delta: float) -> void:
 	_tick_hold(delta)
 	if state == State.SETTLING:
 		_settle_t += delta
-		if _settle_t > SETTLE_HOLD and trebuchet.state == Trebuchet.State.FOLLOW_THROUGH:
+		if _settle_t > SETTLE_HOLD and not _going_home:
+			_go_home()
+		elif _going_home and trebuchet.state == Trebuchet.State.FOLLOW_THROUGH:
 			trebuchet.reload()
-			camera.go_aim()
 	hud.update_gauge(
 		trebuchet.phase, trebuchet.last_release_phase, trebuchet.state == Trebuchet.State.SWINGING
 	)
@@ -562,7 +576,7 @@ func _process(delta: float) -> void:
 ## After impact, keep everything that is still moving in frame
 ## (docs/DESIGN.md §5: "pull back to frame the collapse").
 func _frame_collapse() -> void:
-	if _skipped and not _won_pending:
+	if _going_home and not _won_pending:
 		return
 	if not (
 		state == State.SETTLING

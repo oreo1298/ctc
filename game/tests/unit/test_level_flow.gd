@@ -78,3 +78,29 @@ func test_press_after_a_shot_goes_back_to_the_trebuchet() -> void:
 	await wait_until(func() -> bool: return lv.state == Level.State.READY, 6.0)
 	assert_eq(lv.state, Level.State.READY, "ready for the next shot")
 	assert_eq(lv.shots, 1)
+
+
+func _shoot(phase: float) -> void:
+	lv.on_fire()  # skip the intro
+	await wait_physics_frames(2)
+	lv.on_fire()  # swing
+	await wait_until(func() -> bool: return lv.trebuchet.current_phase() >= phase, 5.0)
+	lv.on_fire()  # let go
+
+
+func test_camera_comes_back_on_its_own() -> void:
+	await _shoot(0.32)
+	await wait_until(func() -> bool: return lv.state == Level.State.READY, 12.0)
+	assert_eq(lv.state, Level.State.READY, "the shot settled and the trebuchet reloaded")
+	await wait_physics_frames(30)
+	assert_eq(lv.camera.mode, CameraRig.Mode.AIM, "the camera aims at the trebuchet again")
+	assert_almost_eq(lv.camera.target_center, lv.camera.aim_center, Vector2.ONE)
+
+
+func test_camera_stays_home_after_a_skip() -> void:
+	await _shoot(0.32)
+	await wait_seconds(0.7)
+	lv.on_fire()
+	for i: int in 8:
+		await wait_physics_frames(15)
+		assert_eq(lv.camera.mode, CameraRig.Mode.AIM, "nothing pulls the camera away (%d)" % i)

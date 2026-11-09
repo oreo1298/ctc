@@ -80,9 +80,9 @@
       "tap_action": "detonate",
       "effect": {
         "fuse": 0.25,
-        "radius": 3.6,
-        "impulse": 5200,
-        "damage": 130
+        "radius": 4.3,
+        "impulse": 6400,
+        "damage": 155
       },
       "look": {
         "pattern": "wood",

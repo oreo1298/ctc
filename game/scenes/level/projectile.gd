@@ -413,10 +413,11 @@ func _explode() -> void:
 				damage * f * f * 0.6 * float((b as Enemy).def.get("damage_taken", 1.0))
 			)
 	Effects.explosion(get_parent(), center, radius)
-	Effects.shake(0.75)
+	Effects.shake(0.95)
 	Effects.haptic(1.0)
-	Effects.slow_motion(0.3, 0.3)
-	Sfx.play_at("boom", center, 0.0)
+	Effects.slow_motion(0.3, 0.35)
+	Sfx.play_at("boom", center, 2.0)
+	Sfx.play_at("rumble", center, -3.0)
 	_finish(true)
 
 

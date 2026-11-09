@@ -16,6 +16,7 @@ var _soft: Texture2D = null
 var _splinter: Texture2D = null
 var _shard: Texture2D = null
 var _tongue: Texture2D = null
+var _ring: Texture2D = null
 ## Burning blocks with their own light (lights cost a pass per lit item).
 var _fire_lights: int = 0
 var _slowmo_until_usec: int = 0
@@ -437,46 +438,128 @@ func flames(host: Node2D, size: float, extents: Vector2 = Vector2(30, 30)) -> No
 	return root
 
 
-## Powder keg: flash, fireball, smoke and flying grit.
+## Powder keg: a white-hot flash and a moment of orange light, a shockwave
+## ring, a fireball that rolls upwards, a smoke column and flying grit.
 func explosion(parent: Node, pos: Vector2, radius_px: float) -> void:
 	if parent == null:
 		return
+	var add := CanvasItemMaterial.new()
+	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	var bright: bool = not Settings.reduce_flashing
 	var flash := Sprite2D.new()
 	flash.texture = soft_circle()
 	flash.position = pos
 	flash.z_index = 9
-	var add := CanvasItemMaterial.new()
-	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	flash.material = add
-	flash.scale = Vector2.ONE * radius_px / 32.0 * 0.6
-	flash.modulate = Color(1.0, 0.85, 0.5, 0.0 if Settings.reduce_flashing else 0.9)
+	flash.scale = Vector2.ONE * radius_px / 32.0 * 0.95
+	flash.modulate = Color(1.0, 0.88, 0.55, 0.95 if bright else 0.0)
 	parent.add_child(flash)
 	var tw := flash.create_tween()
-	tw.tween_property(flash, "modulate:a", 0.0, 0.35)
-	tw.parallel().tween_property(flash, "scale", flash.scale * 1.6, 0.35)
+	tw.tween_property(flash, "modulate:a", 0.0, 0.4)
+	tw.parallel().tween_property(flash, "scale", flash.scale * 1.5, 0.4)
 	tw.tween_callback(flash.queue_free)
-	var fire := _burst(parent, pos, 26, 0.6)
+	if bright:
+		var light := PointLight2D.new()
+		light.texture = soft_circle()
+		light.texture_scale = radius_px / 32.0 * 1.8
+		light.color = Color(1.0, 0.62, 0.28)
+		light.energy = 1.5
+		light.position = pos
+		parent.add_child(light)
+		var lt := light.create_tween()
+		lt.tween_property(light, "energy", 0.0, 0.7).set_ease(Tween.EASE_OUT)
+		lt.tween_callback(light.queue_free)
+	# Shockwave: a thin bright ring racing out past the blast radius.
+	var ring := Sprite2D.new()
+	ring.texture = ring_texture()
+	ring.position = pos
+	ring.z_index = 9
+	ring.material = add
+	ring.scale = Vector2.ONE * radius_px / 64.0 * 0.25
+	ring.modulate = Color(1.0, 0.9, 0.7, 0.75)
+	parent.add_child(ring)
+	var rt := ring.create_tween()
+	(
+		rt
+		. tween_property(ring, "scale", Vector2.ONE * radius_px / 64.0 * 1.35, 0.35)
+		. set_ease(Tween.EASE_OUT)
+		. set_trans(Tween.TRANS_CUBIC)
+	)
+	rt.parallel().tween_property(ring, "modulate:a", 0.0, 0.35)
+	rt.tween_callback(ring.queue_free)
+	# Fireball: a fast burst...
+	var fire := _burst(parent, pos, 40, 0.65)
 	fire.texture = soft_circle()
 	fire.z_index = 8
 	fire.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
 	fire.emission_sphere_radius = radius_px * 0.2
 	fire.direction = Vector2.UP
 	fire.spread = 180.0
-	fire.initial_velocity_min = 200.0
-	fire.initial_velocity_max = 520.0
-	fire.damping_min = 300.0
-	fire.damping_max = 500.0
-	fire.scale_amount_min = 1.2
-	fire.scale_amount_max = 2.6
+	fire.initial_velocity_min = 260.0
+	fire.initial_velocity_max = 680.0
+	fire.damping_min = 320.0
+	fire.damping_max = 560.0
+	fire.scale_amount_min = 1.6
+	fire.scale_amount_max = 3.4
 	var ramp := Gradient.new()
-	ramp.set_color(0, Color(1.0, 0.95, 0.6, 1.0))
-	ramp.add_point(0.3, Color(1.0, 0.5, 0.15, 0.9))
+	ramp.set_color(0, Color(1.0, 0.96, 0.65, 1.0))
+	ramp.add_point(0.3, Color(1.0, 0.52, 0.14, 0.95))
 	ramp.set_color(1, Color(0.3, 0.25, 0.22, 0.0))
 	fire.color_ramp = ramp
-	dust(parent, pos, radius_px / 160.0, Color(0.35, 0.32, 0.3))
+	# ...then flames that roll upwards and darken into smoke.
+	var roll := _burst(parent, pos, 18, 1.2)
+	roll.texture = soft_circle()
+	roll.z_index = 8
+	roll.explosiveness = 0.8
+	roll.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
+	roll.emission_sphere_radius = radius_px * 0.3
+	roll.direction = Vector2.UP
+	roll.spread = 50.0
+	roll.gravity = Vector2(0, -260)
+	roll.initial_velocity_min = 60.0
+	roll.initial_velocity_max = 200.0
+	roll.scale_amount_min = 2.2
+	roll.scale_amount_max = 4.2
+	var rr := Gradient.new()
+	rr.set_color(0, Color(1.0, 0.75, 0.3, 0.95))
+	rr.add_point(0.35, Color(0.95, 0.35, 0.1, 0.8))
+	rr.add_point(0.7, Color(0.25, 0.2, 0.18, 0.55))
+	rr.set_color(1, Color(0.3, 0.28, 0.26, 0.0))
+	roll.color_ramp = rr
+	# Smoke column that lingers over the ruin.
+	var smoke := _burst(parent, pos + Vector2(0, -radius_px * 0.2), 14, 2.8)
+	smoke.texture = soft_circle()
+	smoke.z_index = 7
+	smoke.explosiveness = 0.6
+	smoke.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
+	smoke.emission_sphere_radius = radius_px * 0.25
+	smoke.direction = Vector2.UP
+	smoke.spread = 25.0
+	smoke.gravity = Vector2(14, -110)
+	smoke.initial_velocity_min = 40.0
+	smoke.initial_velocity_max = 120.0
+	smoke.scale_amount_min = 3.0
+	smoke.scale_amount_max = 5.5
+	smoke.color_ramp = _ramp(Color(0.22, 0.2, 0.19, 0.5), Color(0.45, 0.43, 0.41, 0.0))
+	dust(parent, pos, radius_px / 120.0, Color(0.35, 0.32, 0.3))
 	_flying(
-		parent, pos, 24, shard_texture(), [Color(0.4, 0.3, 0.2), Color(0.2, 0.15, 0.1)], 1.0, false
+		parent, pos, 36, shard_texture(), [Color(0.4, 0.3, 0.2), Color(0.2, 0.15, 0.1)], 1.2, false
 	)
+
+
+## A soft ring (for shockwaves): 128 px, bright band at the edge.
+func ring_texture() -> Texture2D:
+	if _ring != null:
+		return _ring
+	var n: int = 128
+	var img := Image.create(n, n, false, Image.FORMAT_RGBA8)
+	for y: int in n:
+		for x: int in n:
+			var r: float = Vector2(x + 0.5 - n * 0.5, y + 0.5 - n * 0.5).length() / (n * 0.5)
+			var a: float = clampf(1.0 - absf(r - 0.86) / 0.12, 0.0, 1.0)
+			img.set_pixel(x, y, Color(1, 1, 1, a * a))
+	_ring = ImageTexture.create_from_image(img)
+	return _ring
 
 
 ## Firepot: a splash of flame.
