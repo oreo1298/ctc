@@ -55,6 +55,7 @@ cp -a %{sf_stage}/. %{buildroot}/
 %{_datadir}/applications/@APP_ID@.desktop
 %{_datadir}/metainfo/@APP_ID@.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/@APP_ID@.*
+%{_mandir}/man6/@APP_SLUG@.6*
 %doc %{_datadir}/doc/@APP_SLUG@/
 %license %{_datadir}/licenses/@APP_SLUG@/
 

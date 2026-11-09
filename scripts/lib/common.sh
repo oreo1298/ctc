@@ -220,7 +220,11 @@ download() {
 	need_cmd curl
 	mkdir -p "$(dirname "${dest}")"
 	local tmp="${dest}.part" code=0
-	curl -fL --retry 3 --retry-delay 2 --connect-timeout 20 -C - -o "${tmp}" "${url}" || code=$?
+	# A progress bar on a terminal; quiet (errors only) in CI logs.
+	local progress=(-sS)
+	[[ -t 2 ]] && progress=(--progress-bar)
+	curl -fL "${progress[@]}" --retry 3 --retry-delay 2 --connect-timeout 20 -C - -o "${tmp}" "${url}" ||
+		code=$?
 	if [[ "${code}" != 0 ]]; then
 		rm -f "${tmp}"
 		local host
