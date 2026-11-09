@@ -1,0 +1,388 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: MIT
+class_name Level
+extends Node2D
+## Builds a level from LevelData and runs the shot loop:
+## READY -tap-> SWINGING -tap-> FLYING -> SETTLING -> READY ... -> WON.
+##
+## Dev/test options (after `--` on the command line):
+##   --level=<id>            start in this level (handled by boot)
+##   --autoplay=p1,p2,...    release at these swing phases, one per shot
+## (--screenshots and --quit-after are handled by the Game autoload.)
+
+signal won(shots: int)
+
+enum State { INTRO, READY, SWINGING, FLYING, SETTLING, WON }
+
+const SETTLE_HOLD: float = 1.1
+const WIN_SETTLE_MAX: float = 2.5
+
+var data: LevelData
+var state: State = State.INTRO
+var shots: int = 0
+var points: int = 0
+var targets_left: int = 0
+var ammo_index: int = 0
+var ammo_list: Array[Dictionary] = []
+
+var world: Node2D
+var camera: CameraRig
+var trebuchet: Trebuchet
+var hud: Hud
+var projectile: Projectile = null
+var castle_rect: Rect2 = Rect2()
+
+var _blocks: Array[Block] = []
+var _enemies: Array[Enemy] = []
+var _settle_t: float = 0.0
+var _win_t: float = 0.0
+var _won_pending: bool = false
+var _time: float = 0.0
+var _autoplay: PackedFloat32Array = PackedFloat32Array()
+var _ghost: Line2D
+var _ghost_points: PackedVector2Array = PackedVector2Array()
+
+
+func _ready() -> void:
+	Block.clear_shared()
+	if not Game.custom_level.is_empty():
+		data = Data.parse_level(Game.custom_level)
+	else:
+		data = Data.load_level(Game.current_level_id)
+	if not data.is_valid():
+		push_error("level failed to load: %s" % "; ".join(data.errors))
+		Game.goto_menu()
+		return
+	_parse_dev_options()
+	_build()
+	if _autoplay.is_empty() and not Game.cli.has("no-intro"):
+		camera.start_intro()
+	else:
+		camera.go_aim(true)
+		state = State.READY
+
+
+func _parse_dev_options() -> void:
+	if Game.cli.has("autoplay"):
+		for s: String in str(Game.cli["autoplay"]).split(",", false):
+			_autoplay.append(s.to_float())
+
+
+# ----------------------------------------------------------------- build ---
+func _build() -> void:
+	var realm: Dictionary = Data.realm(data.realm)
+	var palette: Dictionary = realm.get("palette", {})
+	var grade: Dictionary = Data.grade(data.time_of_day)
+
+	var backdrop := Backdrop.new()
+	backdrop.name = "Backdrop"
+	add_child(backdrop)
+	backdrop.build(palette, grade, realm.get("backdrop", {}), data.world_right, data.id.hash())
+
+	var ambient := CanvasModulate.new()
+	ambient.color = Units.color(grade.get("ambient"), Color(0.85, 0.85, 0.85))
+	add_child(ambient)
+	var sun := DirectionalLight2D.new()
+	sun.color = Units.color(grade.get("sun_color"), Color.WHITE)
+	sun.energy = float(grade.get("sun_energy", 0.8))
+	sun.rotation_degrees = float(grade.get("sun_angle_deg", 30.0)) - 90.0
+	sun.height = 0.45
+	sun.max_distance = 2600.0
+	sun.shadow_enabled = _shadows_enabled()
+	sun.shadow_filter = Light2D.SHADOW_FILTER_PCF13
+	sun.shadow_filter_smooth = 6.0
+	sun.shadow_color = Color(0.1, 0.07, 0.12, 0.45)
+	add_child(sun)
+
+	world = Node2D.new()
+	world.name = "World"
+	add_child(world)
+	var terrain := Terrain.new()
+	terrain.name = "Terrain"
+	world.add_child(terrain)
+	terrain.build(data.terrain, data.kill_y, palette)
+
+	var rect_init: bool = false
+	for i: int in data.blocks.size():
+		var spec: Dictionary = data.blocks[i]
+		var b := Block.new()
+		b.setup(spec, Data.material(str(spec["material"])), i)
+		world.add_child(b)
+		b.broken.connect(_on_block_broken)
+		b.hit.connect(
+			func(x: Block, imp: float) -> void:
+				_log("%s hit %.0f N*s (hp %.0f/%.0f)" % [x.material_id, imp, x.hp, x.max_hp])
+		)
+		_blocks.append(b)
+		castle_rect = (
+			Rect2(b.position, Vector2.ZERO) if not rect_init else castle_rect.expand(b.position)
+		)
+		rect_init = true
+	for e: Dictionary in data.enemies:
+		var en := Enemy.new()
+		en.setup(str(e["type"]), Data.enemy(str(e["type"])), e["pos"], bool(e.get("flip", false)))
+		en.kill_y_px = Units.to_px(Vector2(0, data.kill_y)).y
+		world.add_child(en)
+		en.eliminated.connect(_on_enemy_eliminated)
+		en.hurt.connect(
+			func(x: Enemy, a: float) -> void: _log("%s hurt %.1f (hp %.1f)" % [x.type_id, a, x.hp])
+		)
+		_enemies.append(en)
+		if en.is_target:
+			targets_left += 1
+		castle_rect = (
+			Rect2(en.position, Vector2.ZERO) if not rect_init else castle_rect.expand(en.position)
+		)
+		rect_init = true
+	castle_rect = castle_rect.grow(150.0)
+
+	_ghost = Line2D.new()
+	_ghost.width = 6.0
+	_ghost.default_color = Color(1.0, 0.98, 0.9, 0.55)
+	_ghost.texture_mode = Line2D.LINE_TEXTURE_TILE
+	_ghost.z_index = -1
+	world.add_child(_ghost)
+
+	trebuchet = Trebuchet.new()
+	trebuchet.name = "Trebuchet"
+	trebuchet.position = Units.to_px(data.trebuchet_pos)
+	world.add_child(trebuchet)
+	trebuchet.setup(TrebuchetModel.from_dict(Data.trebuchet))
+	trebuchet.released.connect(_on_released)
+	trebuchet.ready_to_fire.connect(_on_trebuchet_ready)
+
+	ammo_list = Game.unlocked_ammo_list()
+	ammo_index = maxi(0, ammo_list.find(Data.ammo_def(Game.selected_ammo)))
+	trebuchet.set_ammo(ammo_list[ammo_index] if not ammo_list.is_empty() else {})
+
+	camera = CameraRig.new()
+	camera.name = "Camera"
+	add_child(camera)
+	camera.make_current()
+	camera.setup(trebuchet.position, castle_rect)
+
+	hud = Hud.new()
+	hud.name = "Hud"
+	add_child(hud)
+	hud.setup(tr(data.name), data.par)
+	hud.set_ammo(trebuchet.ammo, ammo_list.size())
+	hud.set_hint(tr("Tap to swing, tap again to let go"))
+	hud.restart_pressed.connect(Game.restart_level)
+	hud.pause_pressed.connect(toggle_pause)
+	hud.resume_pressed.connect(toggle_pause)
+	hud.menu_pressed.connect(Game.goto_menu)
+	hud.next_pressed.connect(_go_next)
+	hud.ammo_cycle.connect(cycle_ammo)
+
+
+func _shadows_enabled() -> bool:
+	if Settings.quality == "low":
+		return false
+	return (
+		Settings.quality == "high"
+		or RenderingServer.get_current_rendering_method() != "gl_compatibility"
+	)
+
+
+# ----------------------------------------------------------------- input ---
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		toggle_pause()
+	elif get_tree().paused:
+		return
+	elif event.is_action_pressed("restart"):
+		Game.restart_level()
+	elif event.is_action_pressed("ammo_next"):
+		cycle_ammo(1)
+	elif event.is_action_pressed("ammo_prev"):
+		cycle_ammo(-1)
+	elif event.is_action_pressed("next_level") and state == State.WON:
+		_go_next()
+	elif event.is_action_pressed("fire") or _is_touch_tap(event):
+		get_viewport().set_input_as_handled()
+		on_fire()
+
+
+static func _is_touch_tap(event: InputEvent) -> bool:
+	# Real touch events only arrive when mouse emulation is off (it is on by
+	# default, in which case the emulated click maps to "fire").
+	return event is InputEventScreenTouch and (event as InputEventScreenTouch).pressed
+
+
+func on_fire() -> void:
+	match state:
+		State.INTRO:
+			camera.go_aim()
+			state = State.READY
+		State.READY:
+			if trebuchet.can_fire():
+				trebuchet.start_swing()
+				state = State.SWINGING
+				hud.fade_hint()
+		State.SWINGING:
+			trebuchet.release()
+		_:
+			pass
+
+
+func toggle_pause() -> void:
+	if state == State.WON:
+		return
+	var p: bool = not get_tree().paused
+	get_tree().paused = p
+	if p:
+		hud.show_pause()
+	else:
+		hud.hide_pause()
+
+
+func cycle_ammo(direction: int) -> void:
+	if ammo_list.size() <= 1 or state != State.READY:
+		return
+	ammo_index = posmod(ammo_index + direction, ammo_list.size())
+	Game.selected_ammo = str(ammo_list[ammo_index].get("id", "boulder"))
+	trebuchet.set_ammo(ammo_list[ammo_index])
+	hud.set_ammo(trebuchet.ammo, ammo_list.size())
+
+
+# ------------------------------------------------------------- shot loop ---
+func _on_released(phase: float, pos: Vector2, vel: Vector2) -> void:
+	shots += 1
+	_log(
+		(
+			"shot %d: phase %.3f, v=%s m/s"
+			% [shots, phase, (Units.to_m(vel)).snapped(Vector2(0.1, 0.1))]
+		)
+	)
+	hud.set_shots(shots)
+	projectile = Projectile.new()
+	world.add_child(projectile)
+	projectile.setup(trebuchet.ammo, pos, vel)
+	var right: float = Units.to_px(Vector2(data.world_right + 25.0, 0)).x
+	projectile.world_rect_px = Rect2(
+		Vector2(-3000.0, -8000.0),
+		Vector2(right + 3000.0, 8000.0 + Units.to_px(Vector2(0, data.kill_y)).y)
+	)
+	projectile.settled.connect(_on_projectile_settled)
+	projectile.impacted.connect(_on_projectile_impacted)
+	camera.follow_node(projectile)
+	state = State.FLYING
+	_ghost_points = PackedVector2Array([pos])
+
+
+func _log(msg: String) -> void:
+	if Game.cli.has("verbose"):
+		print("[t=%.2f] %s" % [_time, msg])
+
+
+func _on_projectile_impacted(_p: Projectile, speed_mps: float) -> void:
+	_log(
+		(
+			"impact at %s m, %.1f m/s"
+			% [Units.to_m(projectile.global_position).snapped(Vector2(0.1, 0.1)), speed_mps]
+		)
+	)
+	Effects.shake(clampf(speed_mps / 40.0, 0.1, 0.6))
+	if state == State.FLYING:
+		var r := castle_rect.grow(120.0)
+		if castle_rect.grow(600.0).has_point(projectile.global_position):
+			r = r.expand(projectile.global_position)
+		camera.frame(r)
+
+
+func _on_projectile_settled(_p: Projectile) -> void:
+	if state != State.FLYING:
+		return
+	state = State.SETTLING
+	_settle_t = 0.0
+	_ghost.points = _ghost_points
+	_ghost.visible = Settings.show_ghost_trail
+
+
+func _on_trebuchet_ready() -> void:
+	if state == State.SETTLING:
+		state = State.READY
+
+
+func _on_block_broken(b: Block, pts: int) -> void:
+	points += pts
+	_log("broke %s block (+%d)" % [b.material_id, pts])
+
+
+func _on_enemy_eliminated(e: Enemy, pts: int) -> void:
+	points += pts
+	_log("eliminated %s (+%d)" % [e.type_id, pts])
+	if e.is_target:
+		targets_left -= 1
+		Effects.shake(0.35)
+		if targets_left <= 0 and not _won_pending:
+			_won_pending = true
+			_win_t = 0.0
+
+
+func _physics_process(delta: float) -> void:
+	if state == State.FLYING and is_instance_valid(projectile) and not projectile.has_impacted:
+		_ghost_points.append(projectile.global_position)
+	if _won_pending and state != State.WON:
+		_win_t += delta
+		if _win_t > 0.6 and (_world_asleep() or _win_t > WIN_SETTLE_MAX):
+			_win()
+
+
+func _process(delta: float) -> void:
+	_time += delta
+	if state == State.SETTLING:
+		_settle_t += delta
+		if _settle_t > SETTLE_HOLD and trebuchet.state == Trebuchet.State.FOLLOW_THROUGH:
+			trebuchet.reload()
+			camera.go_aim()
+	hud.update_gauge(
+		trebuchet.phase, trebuchet.last_release_phase, trebuchet.state == Trebuchet.State.SWINGING
+	)
+	_run_autoplay()
+
+
+func _world_asleep() -> bool:
+	for b: Block in _blocks:
+		if is_instance_valid(b) and not b.sleeping and b.linear_velocity.length() > 15.0:
+			return false
+	return true
+
+
+func _win() -> void:
+	state = State.WON
+	var medal: Scoring.Medal = Scoring.medal_for(shots, data.par)
+	var score: int = Scoring.final_score(points, shots, data.par)
+	var prev_best: int = int(Game.save.levels.get(data.id, {}).get("best_score", 0))
+	var unlocked: PackedStringArray = Game.record_win(data.id, shots, medal, score)
+	var has_next: bool = not Game.next_level_id(data.id).is_empty()
+	hud.show_win(medal, shots, data.par, score, score > prev_best, unlocked, has_next)
+	won.emit(shots)
+	Game.last_level_won = true
+	print(
+		(
+			"[level] won %s in %d shot(s), medal=%s score=%d"
+			% [data.id, shots, Scoring.medal_key(medal), score]
+		)
+	)
+
+
+func _go_next() -> void:
+	var nxt: String = Game.next_level_id(data.id)
+	if nxt.is_empty():
+		Game.goto_menu()
+	else:
+		Game.play_level(nxt)
+
+
+# ------------------------------------------------------------ dev tools ---
+func _run_autoplay() -> void:
+	if _autoplay.is_empty():
+		return
+	if state == State.READY and trebuchet.can_fire():
+		trebuchet.start_swing()
+		state = State.SWINGING
+		hud.fade_hint()
+	elif state == State.SWINGING and trebuchet.current_phase() >= _autoplay[0]:
+		trebuchet.release_at(_autoplay[0])
+		_autoplay.remove_at(0)

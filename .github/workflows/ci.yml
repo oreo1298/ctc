@@ -36,6 +36,7 @@ jobs:
       - run: make lint-data
       - run: make lint-reuse
       - run: make lint-identity
+      - run: make lint-pot
       - run: make test-scripts
 
   test:
@@ -43,14 +44,20 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Cache pinned Godot
+      - name: Cache pinned Godot and godot-rapier
         uses: actions/cache@v4
         with:
-          path: ~/.cache/siegefall-dev/godot
-          key: godot-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('toolchain.lock') }}
-      - name: Bootstrap (packages, pinned Godot, GUT)
+          path: |
+            ~/.cache/siegefall-dev/godot
+            ~/.cache/siegefall-dev/rapier
+          key: toolchain-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('toolchain.lock') }}
+      - name: Bootstrap (packages, pinned Godot, GUT, godot-rapier)
         run: scripts/bootstrap.sh --yes --refresh --editor-only --no-venv
       - run: make test
+      - name: Level 1 is winnable (scripted gold shot)
+        run: |
+          scripts/godot.sh --headless --fixed-fps 60 --path game -- \
+            --level=greenmantle-01 --autoplay=0.65 --quit-after=14 --no-save
       - name: Smoke test with a real GL context (Xvfb + llvmpipe + Compatibility)
         run: |
           xvfb-run -a -s "-screen 0 1280x720x24" \

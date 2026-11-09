@@ -1,0 +1,10 @@
+{
+  "$schema": "schemas/ammo.schema.json",
+  "ammo": [
+    {
+      "id": "boulder", "name": "Boulder", "description": "A trusty lump of rock. Goes where you send it.",
+      "shape": "circle", "radius": 0.42, "density": 2400, "material": "stone",
+      "unlock_after": null, "speed_scale": 1.0, "linear_damp": 0.0, "tap_action": "none"
+    }
+  ]
+}

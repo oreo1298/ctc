@@ -61,7 +61,7 @@ smoke: ## Boot the game headlessly for a few frames
 
 # ------------------------------------------------------------------ lint ---
 .PHONY: lint
-lint: lint-shell lint-gd lint-data lint-reuse lint-identity ## Run every linter
+lint: lint-shell lint-gd lint-data lint-reuse lint-identity lint-pot ## Run every linter
 
 .PHONY: lint-shell
 lint-shell: ## shellcheck all bash scripts
@@ -85,6 +85,14 @@ lint-reuse: ## REUSE licensing compliance
 .PHONY: lint-identity
 lint-identity: ## Check name/ID/version agree with app.env
 	scripts/sync-identity.sh --check
+
+.PHONY: lint-pot
+lint-pot: ## Check translation catalogues are up to date
+	$(PY) -I tools/extract_pot.py $(GAME) --check
+
+.PHONY: pot
+pot: ## Regenerate locale/messages.pot and en.po from code and data
+	$(PY) -I tools/extract_pot.py $(GAME)
 
 .PHONY: fmt
 fmt: ## Auto-format GDScript

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "trebuchet.schema.json",
+  "title": "Trebuchet rig and swing curve",
+  "type": "object",
+  "required": [
+    "$schema",
+    "pivot_height",
+    "arm_long",
+    "arm_short",
+    "sling_length",
+    "swing_duration",
+    "arm_start_deg",
+    "arm_end_deg",
+    "sling_start_deg",
+    "sling_end_deg",
+    "sling_lag",
+    "arm_ease",
+    "auto_release_phase",
+    "sling_ease",
+    "launch_speed"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "pivot_height": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "arm_long": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "arm_short": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "sling_length": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "counterweight_size": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "swing_duration": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Seconds of animation for p: 0 -> 1 at normal speed. Does not affect shots."
+    },
+    "arm_start_deg": {
+      "type": "number"
+    },
+    "arm_end_deg": {
+      "type": "number"
+    },
+    "sling_start_deg": {
+      "type": "number",
+      "description": "Sling angle relative to the arm at p = 0."
+    },
+    "sling_end_deg": {
+      "type": "number"
+    },
+    "sling_lag": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.9
+    },
+    "arm_ease": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "auto_release_phase": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "sling_ease": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "launch_speed": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Peak launch speed (m/s) over the whole swing."
+    }
+  }
+}

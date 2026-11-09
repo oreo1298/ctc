@@ -198,3 +198,47 @@ download() {
 	fi
 	mv -f "${tmp}" "${dest}"
 }
+
+# install_rapier_addon DEST_ADDONS_DIR
+# Fetch the pinned godot-rapier 2D release (SHA-256 checked) and install its
+# addon into DEST_ADDONS_DIR/godot-rapier2d. Only libraries for platforms we
+# ship (Linux x86_64/arm64, Windows x86_64, macOS, iOS arm64) are kept.
+install_rapier_addon() {
+	local addons="$1" zip dest tmp
+	zip="$(sf_cache_dir)/rapier/godot-rapier-2d-${RAPIER_VERSION}.zip"
+	dest="${addons}/godot-rapier2d"
+	if [[ -f "${dest}/.pinned-sha256" && "$(cat "${dest}/.pinned-sha256")" == "${RAPIER_SHA256}" ]]; then
+		ok "godot-rapier ${RAPIER_VERSION} already present in ${dest#"${SF_ROOT}"/}"
+		return 0
+	fi
+	if [[ ! -f "${zip}" ]]; then
+		log "Fetching godot-rapier ${RAPIER_VERSION}"
+		download "${RAPIER_URL}" "${zip}"
+	fi
+	if [[ "${DRY_RUN}" == 0 ]]; then
+		local actual
+		if have_cmd sha256sum; then
+			actual="$(sha256sum "${zip}" | cut -d' ' -f1)"
+		else
+			actual="$(shasum -a 256 "${zip}" | cut -d' ' -f1)"
+		fi
+		if [[ "${actual}" != "${RAPIER_SHA256}" ]]; then
+			rm -f "${zip}"
+			die "godot-rapier zip does not match the pinned SHA-256 (deleted). Re-run to retry."
+		fi
+	fi
+	need_cmd unzip
+	tmp="${addons}/.rapier-unpack"
+	run rm -rf "${tmp}" "${dest}"
+	run unzip -q "${zip}" -d "${tmp}"
+	run mkdir -p "${addons}"
+	run mv "${tmp}/godot-rapier-2d-single/addons/godot-rapier2d" "${dest}"
+	run rm -rf "${tmp}"
+	if [[ "${DRY_RUN}" == 0 ]]; then
+		find "${dest}/bin" \( -name '*android*' -o -name '*.wasm' -o -name '*i686*' -o -name '*armv7*' \
+			-o -name '*aarch64-pc-windows*' -o -name '*ios.x86_64*' -o -name 'wasm-nothreads' \) \
+			-prune -exec rm -rf {} +
+		printf '%s' "${RAPIER_SHA256}" >"${dest}/.pinned-sha256"
+	fi
+	ok "godot-rapier ${RAPIER_VERSION} -> ${dest#"${SF_ROOT}"/}"
+}

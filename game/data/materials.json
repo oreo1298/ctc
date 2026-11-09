@@ -1,0 +1,47 @@
+{
+  "$schema": "schemas/materials.schema.json",
+  "materials": {
+    "wood": {
+      "name": "Wood", "density": 600, "hp_per_m2": 160, "impact_speed": 1.6, "damage_scale": 1.0,
+      "friction": 0.65, "bounce": 0.08, "flammable": true, "fracture": "splinter", "pattern": "wood",
+      "colors": {"base": "#b9824f", "dark": "#7c4f2c", "light": "#e0b07a"}, "points": 60,
+      "sounds": {"hit": "wood_hit", "break": "wood_break"}
+    },
+    "stone": {
+      "name": "Stone", "density": 2400, "hp_per_m2": 420, "impact_speed": 2.2, "damage_scale": 0.8,
+      "friction": 0.75, "bounce": 0.03, "fracture": "chunks", "pattern": "stone",
+      "colors": {"base": "#a8a196", "dark": "#6f685e", "light": "#d6d0c4"}, "points": 120,
+      "sounds": {"hit": "stone_hit", "break": "stone_break"}
+    },
+    "glass": {
+      "name": "Glass", "density": 2500, "hp_per_m2": 45, "impact_speed": 0.8, "damage_scale": 1.6,
+      "friction": 0.35, "bounce": 0.15, "fracture": "shards", "pattern": "glass",
+      "colors": {"base": "#9fd4e0", "dark": "#5c9bb0", "light": "#e9fbff"}, "points": 90,
+      "sounds": {"hit": "glass_hit", "break": "glass_break"}
+    },
+    "ice": {
+      "name": "Ice", "density": 900, "hp_per_m2": 90, "impact_speed": 1.0, "damage_scale": 1.3,
+      "friction": 0.08, "bounce": 0.1, "fracture": "shards", "pattern": "ice",
+      "colors": {"base": "#bfe6f2", "dark": "#7ab3cf", "light": "#f2fcff"}, "points": 80,
+      "sounds": {"hit": "ice_hit", "break": "ice_break"}
+    },
+    "iron": {
+      "name": "Iron", "density": 7800, "hp_per_m2": 1400, "impact_speed": 3.5, "damage_scale": 0.5,
+      "friction": 0.5, "bounce": 0.05, "fracture": "dent", "pattern": "iron",
+      "colors": {"base": "#6f7480", "dark": "#40444d", "light": "#a9b0bd"}, "points": 200,
+      "sounds": {"hit": "iron_hit", "break": "iron_break"}
+    },
+    "thatch": {
+      "name": "Thatch", "density": 200, "hp_per_m2": 40, "impact_speed": 0.8, "damage_scale": 1.4,
+      "friction": 0.9, "bounce": 0.02, "flammable": true, "fracture": "tufts", "pattern": "thatch",
+      "colors": {"base": "#d8b45a", "dark": "#a07c2c", "light": "#f0d688"}, "points": 30,
+      "sounds": {"hit": "thatch_hit", "break": "thatch_break"}
+    },
+    "cloth": {
+      "name": "Cloth", "density": 150, "hp_per_m2": 25, "impact_speed": 0.6, "damage_scale": 1.5,
+      "friction": 0.8, "bounce": 0.0, "flammable": true, "fracture": "tear", "pattern": "cloth",
+      "colors": {"base": "#c2453b", "dark": "#842b26", "light": "#e8796c"}, "points": 20,
+      "sounds": {"hit": "cloth_hit", "break": "cloth_break"}
+    }
+  }
+}

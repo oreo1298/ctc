@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 Siegefall contributors -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" viewBox="0 0 100 60">
+  <path d="M22 44 L18 12 L34 26 L46 4 L58 26 L74 12 L70 44 Z" fill="#f4c542" stroke="#3b2f26" stroke-width="4.5" stroke-linejoin="round"/>
+  <rect x="20" y="38" width="52" height="10" rx="3" fill="#e2a92c" stroke="#3b2f26" stroke-width="4.5"/>
+  <circle cx="46" cy="30" r="4.5" fill="#d9483b" stroke="#3b2f26" stroke-width="2.5"/>
+  <circle cx="18" cy="11" r="3.5" fill="#fbf7ee" stroke="#3b2f26" stroke-width="2"/>
+  <circle cx="46" cy="4" r="3.5" fill="#fbf7ee" stroke="#3b2f26" stroke-width="2"/>
+  <circle cx="74" cy="11" r="3.5" fill="#fbf7ee" stroke="#3b2f26" stroke-width="2"/>
+</svg>

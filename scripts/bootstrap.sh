@@ -25,7 +25,8 @@ Steps:
   3. Download + verify the export templates and install them into
      $(godot_templates_dir)
   4. Create .venv/ with pinned gdtoolkit, reuse, jsonschema, shellcheck.
-  5. Fetch the pinned GUT test framework into game/addons/gut.
+  5. Fetch the pinned GUT test framework into game/addons/gut and the
+     pinned godot-rapier 2D physics extension into game/addons/godot-rapier2d.
 Steps 2-5 never need root.
 
 Options:
@@ -504,6 +505,7 @@ EOF
 	[[ "${EDITOR_ONLY}" == 1 ]] || fetch_godot_templates
 	[[ "${NO_VENV}" == 1 ]] || setup_venv
 	[[ "${NO_GUT}" == 1 ]] || fetch_gut
+	install_rapier_addon "${SF_GAME_DIR}/addons"
 
 	echo >&2
 	ok "bootstrap complete. Next: make run   (or: make test, make build)"

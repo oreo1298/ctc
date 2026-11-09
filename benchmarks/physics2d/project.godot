@@ -1,0 +1,20 @@
+; Physics benchmark project (not shipped). See benchmarks/physics2d/README.md.
+config_version=5
+
+[application]
+
+config/name="physics2d-benchmark"
+run/main_scene="res://bench.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="siegefall-physics-bench"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+
+[physics]
+
+common/physics_ticks_per_second=60
+common/physics_interpolation=true
+common/physics_jitter_fix=0.0
+2d/default_gravity=980.0

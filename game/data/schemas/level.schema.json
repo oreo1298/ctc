@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "level.schema.json",
+  "title": "Level (v1). See docs/LEVEL_FORMAT.md.",
+  "type": "object",
+  "required": ["format", "version", "id", "name", "time_of_day", "realm", "world", "trebuchet", "terrain", "blocks", "enemies"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "format": {"const": "level"},
+    "version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "name": {"type": "string", "minLength": 1, "maxLength": 60},
+    "grievance": {"type": "string", "maxLength": 200},
+    "time_of_day": {"enum": ["dawn", "morning", "noon", "afternoon", "golden", "dusk", "night"]},
+    "realm": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "world": {
+      "type": "object",
+      "required": ["right", "kill_y"],
+      "additionalProperties": false,
+      "properties": {"right": {"type": "number", "minimum": 10, "maximum": 200}, "kill_y": {"type": "number", "maximum": 0}}
+    },
+    "trebuchet": {
+      "type": "object",
+      "required": ["x", "y"],
+      "additionalProperties": false,
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}}
+    },
+    "terrain": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/terrain"}},
+    "blocks": {"type": "array", "maxItems": 400, "items": {"$ref": "#/$defs/block"}},
+    "enemies": {"type": "array", "minItems": 1, "maxItems": 40, "items": {"$ref": "#/$defs/enemy"}},
+    "par": {"$ref": "#/$defs/par"},
+    "par_override": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/par"}]},
+    "solution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ammo", "phase"],
+        "additionalProperties": false,
+        "properties": {"ammo": {"type": "string"}, "phase": {"type": "number", "minimum": 0, "maximum": 1}, "tap_at": {"type": ["number", "null"]}}
+      }
+    },
+    "content_hash": {"type": "string"}
+  },
+  "$defs": {
+    "vec2": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+    "par": {
+      "type": "object",
+      "required": ["gold", "silver", "bronze"],
+      "additionalProperties": false,
+      "properties": {"gold": {"type": "integer", "minimum": 1}, "silver": {"type": "integer", "minimum": 1}, "bronze": {"type": "integer", "minimum": 1}}
+    },
+    "terrain": {
+      "type": "object",
+      "required": ["points"],
+      "additionalProperties": false,
+      "properties": {
+        "points": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/vec2"}},
+        "style": {"enum": ["grass", "sand", "snow", "rock"]}
+      }
+    },
+    "block": {
+      "type": "object",
+      "required": ["shape", "material", "pos"],
+      "additionalProperties": false,
+      "properties": {
+        "shape": {"enum": ["rect", "circle", "tri", "wedge", "poly"]},
+        "material": {"type": "string"},
+        "pos": {"$ref": "#/$defs/vec2"},
+        "size": {"$ref": "#/$defs/vec2"},
+        "radius": {"type": "number", "exclusiveMinimum": 0},
+        "points": {"type": "array", "minItems": 3, "maxItems": 8, "items": {"$ref": "#/$defs/vec2"}},
+        "rot": {"type": "number"},
+        "static": {"type": "boolean"}
+      },
+      "allOf": [
+        {"if": {"properties": {"shape": {"enum": ["rect", "tri", "wedge"]}}}, "then": {"required": ["size"]}},
+        {"if": {"properties": {"shape": {"const": "circle"}}}, "then": {"required": ["radius"]}},
+        {"if": {"properties": {"shape": {"const": "poly"}}}, "then": {"required": ["points"]}}
+      ]
+    },
+    "enemy": {
+      "type": "object",
+      "required": ["type", "pos"],
+      "additionalProperties": false,
+      "properties": {"type": {"type": "string"}, "pos": {"$ref": "#/$defs/vec2"}, "flip": {"type": "boolean"}}
+    }
+  }
+}

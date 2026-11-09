@@ -311,17 +311,24 @@ beatable. A full re-search runs when a level's content hash changes.
 
 ### 8.2 Physics
 
-* **Fixed 60 Hz tick** with **physics interpolation** on, so motion is smooth
+* **Fixed 60 Hz tick** with **physics interpolation** on (the camera runs in
+  the physics tick, as interpolation requires), so motion is smooth
   on 90/120/144/165/240 Hz displays and the simulation is identical
   everywhere.
 * Slow motion is implemented by **running fewer fixed steps per real second**,
   never by changing the step size, so slow-mo never changes outcomes. A
   unit test checks this.
-* Engine choice: **Godot Physics 2D vs. godot-rapier 2D**. Benchmark in
-  milestone 1 (`game/benchmarks/stacking/`): tall-stack stability, sleeping
-  behaviour, and frame time with ~300 bodies. Rapier ships binaries for Linux
-  x86_64/arm64, Windows x86_64 and iOS arm64, so it is eligible. The result
-  and the reasons are recorded in §11.
+* Engine choice: **godot-rapier 2D**, after a benchmark against Godot
+  Physics 2D (`benchmarks/physics2d/`, results in
+  [benchmarks/physics2d.md](benchmarks/physics2d.md)). Godot Physics could
+  not hold a 20-box tower or a 300-body castle even when tuned. Rapier held
+  both, put them to sleep, and ran about 8× faster. Its solver runs on one
+  thread (`physics/rapier/solver/num_threads=1`) for determinism. 1 m =
+  100 px matches Rapier's default `length_unit_2d`.
+* **Damage needs approach speed, not just impulse:** Rapier reports
+  contact impulses (`get_contact_impulse`), but resting contacts carry their
+  static load too. A contact only damages when the two bodies were closing
+  faster than the material's `impact_speed` at the start of the step.
 * Body budget: ~300 dynamic bodies. Small debris below an area threshold
   becomes particles. Settled debris sleeps, then fades out after a while.
 
@@ -476,5 +483,6 @@ double-check before deciding):
 | Date | Decision |
 |---|---|
 | 2026-11-09 | Godot 4.7.2-stable pinned; project in `game/`; animated trebuchet rig (§8.3); GUT for tests; English-msgid gettext. |
-| 2026-11-09 | Physics engine: *pending the milestone-1 benchmark.* |
+| 2026-11-09 | Physics engine: **godot-rapier 2D v0.36.1** (benchmark: stable tall stacks, sleeps, ~8× faster at 300 bodies). |
+| 2026-11-09 | Trebuchet tuned: 2.1 s swing, 22 m/s peak launch. The useful release window spans about 0.3 s, from high lobs to flat shots. Launch speed is decoupled from the animation length. |
 | 2026-11-09 | Fracture technique: *pending the milestone-2 benchmark.* |

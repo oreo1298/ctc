@@ -1,0 +1,18 @@
+{
+  "$schema": "schemas/trebuchet.schema.json",
+  "pivot_height": 3.0,
+  "arm_long": 3.4,
+  "arm_short": 1.0,
+  "sling_length": 2.0,
+  "counterweight_size": [1.3, 1.1],
+  "swing_duration": 2.1,
+  "arm_start_deg": 215,
+  "arm_end_deg": 45,
+  "sling_start_deg": 330,
+  "sling_end_deg": -70,
+  "sling_lag": 0.22,
+  "arm_ease": 1.7,
+  "sling_ease": 1.25,
+  "launch_speed": 22.0,
+  "auto_release_phase": 0.98
+}

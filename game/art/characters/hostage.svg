@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 Siegefall contributors -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140" viewBox="0 0 100 140">
+  <g stroke="#3b2f26" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="38" cy="134" rx="9" ry="5" fill="#6b4f3a"/>
+    <ellipse cx="62" cy="134" rx="9" ry="5" fill="#6b4f3a"/>
+    <path d="M28 74 Q50 66 72 74 L78 128 Q50 136 22 128 Z" fill="#b99a6b"/>
+    <rect x="58" y="96" width="12" height="10" rx="2" fill="#8f7550" stroke-width="3"/>
+    <path d="M30 98 Q50 106 70 98" fill="none" stroke="#7a5a32" stroke-width="5"/>
+    <circle cx="44" cy="100" r="7" fill="#f2c7a0"/>
+    <circle cx="56" cy="100" r="7" fill="#f2c7a0"/>
+    <circle cx="48" cy="46" r="28" fill="#f2c7a0"/>
+    <path d="M22 40 Q24 16 48 18 Q72 18 74 38 Q60 28 48 30 Q34 30 22 40 Z" fill="#d8a64a"/>
+  </g>
+  <g fill="#3b2f26">
+    <circle cx="38" cy="48" r="6.5" fill="#ffffff" stroke="#3b2f26" stroke-width="3"/>
+    <circle cx="58" cy="48" r="6.5" fill="#ffffff" stroke="#3b2f26" stroke-width="3"/>
+    <circle cx="38" cy="47" r="3"/>
+    <circle cx="58" cy="47" r="3"/>
+    <path d="M30 38 Q36 34 42 39" fill="none" stroke="#3b2f26" stroke-width="3"/>
+    <path d="M54 39 Q60 34 66 38" fill="none" stroke="#3b2f26" stroke-width="3"/>
+    <ellipse cx="48" cy="64" rx="5" ry="6" fill="#7a3a32"/>
+  </g>
+  <ellipse cx="48" cy="56" rx="4" ry="3.5" fill="#e8a882" stroke="#3b2f26" stroke-width="2.5"/>
+</svg>

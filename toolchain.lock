@@ -21,3 +21,9 @@ GODOT_SHA512_TEMPLATES="ca4d71c4d7b81dfc15d1a98baa07534aa95b03fdda78a0075b06672e
 GUT_REPO="https://github.com/bitwes/Gut"
 GUT_TAG="v9.7.1"
 GUT_COMMIT="aeb5d4f3f7f0a6c9b5e178876d6c99b791fda605"
+
+# godot-rapier 2D (MIT). Used by the physics benchmark (benchmarks/physics2d);
+# see docs/DESIGN.md §8.2 for whether the game ships it.
+RAPIER_VERSION="v0.36.1"
+RAPIER_URL="https://github.com/appsinacup/godot-rapier-physics/releases/download/v0.36.1/godot-rapier-2d-single.zip"
+RAPIER_SHA256="64b56b1843b0f7f0b95b2d820835a5d421929262631d54772c2f1e6e2b72d6e6"

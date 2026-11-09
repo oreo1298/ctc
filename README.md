@@ -18,10 +18,25 @@ tap again to let go. The moment of release is your aim.
 * Made for Linux first, also on Windows and iOS
 * No ads, no in-app purchases, no tracking, no network. Ever.
 
-> **Status: early development.** Milestone 0 (foundations) is done. See
-> [docs/ROADMAP.md](docs/ROADMAP.md) for what works today.
+> **Status: early development.** Milestone 1 (vertical slice) is playable:
+> one level, the two-tap trebuchet, boulders, wood and stone, a king and a
+> knight, and medals. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
-<!-- Screenshots are added from milestone 1 (make screenshots). -->
+| | |
+|---|---|
+| ![Aiming](docs/screenshots/aim.png) | ![The swing](docs/screenshots/swing.png) |
+| ![Impact](docs/screenshots/impact.png) | ![Gold medal](docs/screenshots/win.png) |
+
+<sub>Rendered by `make screenshots` (software OpenGL, the low-quality tier).</sub>
+
+## How to play
+
+* **Tap / click / Space / gamepad A** once to start the swing and again to let
+  go. Let go early for a high lob, later for a flat fast shot, and too late
+  sends it into the dirt.
+* Knock out every royal and knight. Fewer shots earn better medals.
+* **R** restarts instantly, **Esc** pauses, and **Q / E** (or the shoulder
+  buttons, or the mouse wheel) switch ammo once you have more than one.
 
 ## Install
 

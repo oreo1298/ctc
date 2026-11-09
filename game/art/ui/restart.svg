@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 Siegefall contributors -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <path d="M38 24a14 14 0 1 1-4.1-9.9" fill="none" stroke="#3b2f26" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M36.5 6.5 L37 16.5 L27 16" fill="none" stroke="#3b2f26" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

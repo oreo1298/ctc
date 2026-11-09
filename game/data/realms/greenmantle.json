@@ -1,0 +1,26 @@
+{
+  "$schema": "../schemas/realm.schema.json",
+  "id": "greenmantle",
+  "name": "Greenmantle Hills",
+  "tagline": "Where King Grumbold's grudges grow greenest.",
+  "order": 1,
+  "levels": [
+    "greenmantle-01"
+  ],
+  "palette": {
+    "ink": "#3b2f26",
+    "paper": "#f3ead5",
+    "ground_top": "#8cc265",
+    "ground": "#6e9e4c",
+    "ground_deep": "#4c6e3a",
+    "far": "#8fa3c8",
+    "mid": "#86b86a",
+    "near": "#5c9a4a",
+    "accent": "#d9483b"
+  },
+  "backdrop": {
+    "layers": 4,
+    "roughness": 1.0,
+    "props": "trees"
+  }
+}

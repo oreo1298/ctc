@@ -17,3 +17,10 @@ __pycache__/
 /build/
 /dist/
 /screenshots-tmp/
+
+# Physics benchmark (fetched by benchmarks/physics2d/run.sh)
+benchmarks/physics2d/addons/
+benchmarks/physics2d/.godot/
+benchmarks/physics2d/override.cfg
+game/addons/godot-rapier2d/
+game/addons/.rapier-unpack/

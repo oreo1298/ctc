@@ -19,3 +19,13 @@ All notable changes are documented here. The format follows
   REUSE-compliant licensing (MIT code, CC BY-SA 4.0 assets).
 - Boot scene with a `--smoke-test` mode, first GUT unit tests guarding
   engine settings.
+- Milestone 1: physics benchmark (Godot Physics 2D vs godot-rapier 2D);
+  Rapier chosen and pinned. Vertical slice: data-driven level loading
+  (JSON + schemas), analytic two-tap trebuchet with swing gauge and ghost
+  trail, boulder ammo, wood and stone blocks with impact damage and cracks,
+  king and knight with slapstick eliminations and flying headgear, camera
+  intro/follow/collapse framing, medals with a wax-seal win card, versioned
+  atomic saves, storybook backdrop (painted sky, parallax hills and trees),
+  normal-mapped procedural block shading, OFL fonts, screenshot harness,
+  gettext catalogue extraction, unit tests for trebuchet determinism,
+  scoring, level parsing, saves and geometry.

@@ -1,0 +1,198 @@
+# SPDX-FileCopyrightText: 2026 Siegefall contributors
+# SPDX-License-Identifier: CC-BY-SA-4.0
+#
+# Translation template.
+# Regenerate with `make pot`; do not edit messages.pot by hand.
+msgid ""
+msgstr ""
+"Project-Id-Version: Siegefall\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+#: ui/hud.gd:224
+#, c-format
+msgid "%s (gold ≤ %d)"
+msgstr ""
+
+#: scenes/menu/main_menu.gd:43
+msgid "A petty king. A trebuchet. Your timing."
+msgstr ""
+
+#: data/ammo.json:/ammo/0/description
+msgid "A trusty lump of rock. Goes where you send it."
+msgstr ""
+
+#: data/levels/greenmantle/greenmantle-01.json:/grievance
+msgid "Baron Fennick's moat is wider than mine. Make his keep smaller to compensate."
+msgstr ""
+
+#: data/ammo.json:/ammo/0/name
+msgid "Boulder"
+msgstr ""
+
+#: ui/hud.gd:220
+msgid "Bronze"
+msgstr ""
+
+#: ui/hud.gd:161
+#, c-format
+msgid "Bronze ≤ %d"
+msgstr ""
+
+#: ui/hud.gd:211
+msgid "Castle flattened!"
+msgstr ""
+
+#: data/materials.json:/materials/cloth/name
+msgid "Cloth"
+msgstr ""
+
+#: data/materials.json:/materials/glass/name
+msgid "Glass"
+msgstr ""
+
+#: ui/hud.gd:220
+msgid "Gold"
+msgstr ""
+
+#: ui/hud.gd:159
+#, c-format
+msgid "Gold ≤ %d"
+msgstr ""
+
+#: data/realms/greenmantle.json:/name
+msgid "Greenmantle Hills"
+msgstr ""
+
+#: data/enemies.json:/enemies/hostage/name
+msgid "Hostage"
+msgstr ""
+
+#: data/materials.json:/materials/ice/name
+msgid "Ice"
+msgstr ""
+
+#: data/materials.json:/materials/iron/name
+msgid "Iron"
+msgstr ""
+
+#: data/enemies.json:/enemies/king/name
+msgid "King"
+msgstr ""
+
+#: data/enemies.json:/enemies/knight/name
+msgid "Knight"
+msgstr ""
+
+#: ui/hud.gd:243
+#: ui/hud.gd:277
+msgid "Menu"
+msgstr ""
+
+#: ui/hud.gd:236
+#, c-format
+msgid "New ammo unlocked: %s"
+msgstr ""
+
+#: ui/hud.gd:230
+msgid "New best!"
+msgstr ""
+
+#: ui/hud.gd:254
+msgid "Next"
+msgstr ""
+
+#: ui/hud.gd:220
+msgid "No medal"
+msgstr ""
+
+#: ui/hud.gd:89
+msgid "Pause"
+msgstr ""
+
+#: ui/hud.gd:273
+msgid "Paused"
+msgstr ""
+
+#: scenes/menu/main_menu.gd:51
+msgid "Play"
+msgstr ""
+
+#: data/enemies.json:/enemies/queen/name
+msgid "Queen"
+msgstr ""
+
+#: scenes/menu/main_menu.gd:57
+msgid "Quit"
+msgstr ""
+
+#: ui/hud.gd:277
+#: ui/hud.gd:88
+msgid "Restart"
+msgstr ""
+
+#: ui/hud.gd:277
+msgid "Resume"
+msgstr ""
+
+#: ui/hud.gd:247
+msgid "Retry"
+msgstr ""
+
+#: ui/hud.gd:230
+#, c-format
+msgid "Score %d"
+msgstr ""
+
+#: ui/hud.gd:166
+#, c-format
+msgid "Shots: %d"
+msgstr ""
+
+#: ui/hud.gd:220
+msgid "Silver"
+msgstr ""
+
+#: ui/hud.gd:160
+#, c-format
+msgid "Silver ≤ %d"
+msgstr ""
+
+#: data/materials.json:/materials/stone/name
+msgid "Stone"
+msgstr ""
+
+#: scenes/level/level.gd:169
+msgid "Tap to swing, tap again to let go"
+msgstr ""
+
+#: data/materials.json:/materials/thatch/name
+msgid "Thatch"
+msgstr ""
+
+#: data/levels/greenmantle/greenmantle-01.json:/name
+msgid "The Wider Moat"
+msgstr ""
+
+#: scenes/boot/boot.gd:21
+#, c-format
+msgid "Version %s"
+msgstr ""
+
+#: data/realms/greenmantle.json:/tagline
+msgid "Where King Grumbold's grudges grow greenest."
+msgstr ""
+
+#: data/materials.json:/materials/wood/name
+msgid "Wood"
+msgstr ""
+
+#: ui/hud.gd:223
+#, c-format
+msgid "%d shot"
+msgid_plural "%d shots"
+msgstr[0] ""
+msgstr[1] ""

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "enemies.schema.json",
+  "title": "Enemy and hostage types",
+  "type": "object",
+  "required": ["$schema", "enemies"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "enemies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "hp", "damage_taken", "radius", "height", "mass", "target", "points", "art", "headgear"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {"type": "string"},
+          "hp": {"type": "number", "exclusiveMinimum": 0},
+          "damage_taken": {"type": "number", "minimum": 0, "description": "Multiplier on incoming damage (armour < 1)."},
+          "impact_speed": {"type": "number", "minimum": 0, "default": 1.0},
+          "radius": {"type": "number", "exclusiveMinimum": 0},
+          "height": {"type": "number", "exclusiveMinimum": 0},
+          "mass": {"type": "number", "exclusiveMinimum": 0},
+          "target": {"type": "boolean", "description": "Must be eliminated to win."},
+          "points": {"type": "integer", "description": "Score when eliminated (negative = penalty)."},
+          "art": {"type": "string"},
+          "headgear": {"type": ["string", "null"], "description": "res:// SVG of the prop that flies off."},
+          "headgear_at_hp": {"type": "number", "minimum": 0, "maximum": 1, "default": 0}
+        }
+      }
+    }
+  }
+}

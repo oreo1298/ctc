@@ -42,8 +42,18 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if not _smoke:
+		_route()
 		return
 	_frames += 1
 	if _frames >= SMOKE_FRAMES:
 		print("[smoke] ok after %d frames" % _frames)
 		get_tree().quit(0)
+
+
+## Leave the boot card for the real game (or a level picked on the CLI).
+func _route() -> void:
+	set_process(false)
+	if Game.cli.has("level"):
+		Game.play_level(str(Game.cli["level"]))
+	else:
+		Game.goto_menu()

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "time_of_day.schema.json",
+  "title": "Time-of-day lighting grades",
+  "type": "object",
+  "required": ["$schema", "grades"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "grades": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["sky_top", "sky_horizon", "haze", "sun_color", "sun_energy", "sun_angle_deg", "ambient", "cloud", "stars"],
+        "additionalProperties": false,
+        "properties": {
+          "sky_top": {"type": "string"}, "sky_horizon": {"type": "string"}, "haze": {"type": "string"},
+          "sun_color": {"type": "string"}, "sun_energy": {"type": "number"}, "sun_angle_deg": {"type": "number"},
+          "ambient": {"type": "string"}, "cloud": {"type": "string"}, "stars": {"type": "number", "minimum": 0, "maximum": 1},
+          "moon": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

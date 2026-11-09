@@ -1,0 +1,83 @@
+{
+  "$schema": "schemas/time_of_day.schema.json",
+  "grades": {
+    "dawn": {
+      "sky_top": "#6c7fb8",
+      "sky_horizon": "#f6b7a0",
+      "haze": "#e9c1b4",
+      "sun_color": "#ffc9a3",
+      "sun_energy": 0.46,
+      "sun_angle_deg": 12,
+      "ambient": "#908a9c",
+      "cloud": "#ffe3d6",
+      "stars": 0.15
+    },
+    "morning": {
+      "sky_top": "#78b4e0",
+      "sky_horizon": "#dff0f4",
+      "haze": "#d5e6ea",
+      "sun_color": "#fff1d6",
+      "sun_energy": 0.53,
+      "sun_angle_deg": 32,
+      "ambient": "#9ca4a8",
+      "cloud": "#ffffff",
+      "stars": 0.0
+    },
+    "noon": {
+      "sky_top": "#5aa6e6",
+      "sky_horizon": "#cfe9f7",
+      "haze": "#cfe2ea",
+      "sun_color": "#fffaf0",
+      "sun_energy": 0.56,
+      "sun_angle_deg": 70,
+      "ambient": "#a4a9ab",
+      "cloud": "#ffffff",
+      "stars": 0.0
+    },
+    "afternoon": {
+      "sky_top": "#6aa5d8",
+      "sky_horizon": "#f3e3c3",
+      "haze": "#e8dcc5",
+      "sun_color": "#ffe7bf",
+      "sun_energy": 0.53,
+      "sun_angle_deg": 40,
+      "ambient": "#a19e98",
+      "cloud": "#fff7ea",
+      "stars": 0.0
+    },
+    "golden": {
+      "sky_top": "#7c8fc4",
+      "sky_horizon": "#ffc178",
+      "haze": "#f2c08f",
+      "sun_color": "#ffc27a",
+      "sun_energy": 0.59,
+      "sun_angle_deg": 14,
+      "ambient": "#988b81",
+      "cloud": "#ffd9b0",
+      "stars": 0.0
+    },
+    "dusk": {
+      "sky_top": "#3d4a85",
+      "sky_horizon": "#e98a7a",
+      "haze": "#b98a96",
+      "sun_color": "#ff9a7a",
+      "sun_energy": 0.37,
+      "sun_angle_deg": 5,
+      "ambient": "#6e687f",
+      "cloud": "#f2a39a",
+      "stars": 0.35
+    },
+    "night": {
+      "sky_top": "#141c3d",
+      "sky_horizon": "#36457a",
+      "haze": "#3a4672",
+      "sun_color": "#b9cbff",
+      "sun_energy": 0.28,
+      "sun_angle_deg": 50,
+      "ambient": "#464e6a",
+      "cloud": "#5d6a9a",
+      "stars": 1.0,
+      "moon": true
+    }
+  }
+}
