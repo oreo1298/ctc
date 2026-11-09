@@ -370,11 +370,16 @@ chain.
 * Blocks and enemies enable contact monitoring and read impulses in
   `_integrate_forces`. `damage = max(0, impulse − threshold) × material
   sensitivity × ammo multiplier`. Crack stages are shader uniforms.
-* **Fracture:** milestone 2 benchmarks **runtime Voronoi** (seeds biased
-  toward the impact point, cells clipped with `Geometry2D`) against
-  **pre-broken shard sets** (generated at level load per shape and material,
-  then cached). Measured on spawn cost, visual variety and stability (no
-  slivers). The winner is recorded in §11.
+* **Fracture: runtime Voronoi** (benchmark in
+  [benchmarks/fracture.md](benchmarks/fracture.md)). Cells come from our own
+  half-plane clipping (about 2× faster than `Geometry2D`), with seeds biased
+  toward the impact point and minimum spacing against slivers. Each material
+  has its own style: wood **splinters** along its grain (anisotropic metric),
+  stone breaks into **chunks**, glass and ice into **shards**, iron **dents**
+  into 2–3 heavy pieces, thatch into **tufts**, and cloth **tears** in two.
+  Pieces keep the parent's motion and surface pattern (a continued UV
+  transform). Splitting costs 70–250 µs against 650–1300 µs for spawning
+  the bodies, so pre-broken shards would save little and repeat visibly.
 * Fire and frost are per-block status effects driven by the materials data.
 
 ### 8.6 Input
@@ -485,4 +490,5 @@ double-check before deciding):
 | 2026-11-09 | Godot 4.7.2-stable pinned; project in `game/`; animated trebuchet rig (§8.3); GUT for tests; English-msgid gettext. |
 | 2026-11-09 | Physics engine: **godot-rapier 2D v0.36.1** (benchmark: stable tall stacks, sleeps, ~8× faster at 300 bodies). |
 | 2026-11-09 | Trebuchet tuned: 2.1 s swing, 22 m/s peak launch. The useful release window spans about 0.3 s, from high lobs to flat shots. Launch speed is decoupled from the animation length. |
-| 2026-11-09 | Fracture technique: *pending the milestone-2 benchmark.* |
+| 2026-11-09 | Fracture: **runtime Voronoi** with impact-biased, spaced seeds; 3 fractures per tick, 320-body budget, settled debris retired. |
+| 2026-11-09 | Slow motion: `time_scale` and `physics_ticks_per_second` scale together, so the physics step stays 1/60 s. |

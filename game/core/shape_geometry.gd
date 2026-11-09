@@ -103,9 +103,24 @@ static func collision_shape_for(spec: Dictionary) -> Shape2D:
 	return poly
 
 
+## Default mapping from local px to pattern metres: y flipped, offset for
+## per-block variety, and rotated so the pattern's x axis (wood grain) runs
+## along the longer side of rectangles.
+static func default_uv_xform(spec: Dictionary, uv_offset: Vector2 = Vector2.ZERO) -> Transform2D:
+	var size: Vector2 = spec.get("size", Vector2.ONE)
+	var k: float = 1.0 / Units.PX_PER_M
+	var xf := Transform2D(Vector2(k, 0.0), Vector2(0.0, -k), uv_offset)
+	if spec.get("shape", "") == "rect" and size.y > size.x:
+		# (x, y) -> (y, -x) after the flip: grain follows the tall axis.
+		xf = Transform2D(Vector2(0.0, -k), Vector2(-k, 0.0), uv_offset)
+	return xf
+
+
 ## Bevel mesh for a spec. `uv_offset` shifts the pattern (per-block variety);
-## the pattern's x axis follows the longer side so wood grain runs along beams.
-static func bevel_mesh_for(spec: Dictionary, uv_offset: Vector2 = Vector2.ZERO) -> ArrayMesh:
+## pass `uv_xform` instead to continue a parent's pattern (fracture pieces).
+static func bevel_mesh_for(
+	spec: Dictionary, uv_offset: Vector2 = Vector2.ZERO, uv_xform: Variant = null
+) -> ArrayMesh:
 	var shape: String = spec.get("shape", "rect")
 	var verts := PackedVector2Array()
 	var cols := PackedColorArray()
@@ -115,14 +130,10 @@ static func bevel_mesh_for(spec: Dictionary, uv_offset: Vector2 = Vector2.ZERO) 
 		_circle_fan(float(spec.get("radius", 0.5)) * Units.PX_PER_M, verts, cols)
 	else:
 		_convex_fan(polygon_for(spec), verts, cols)
-	var size: Vector2 = spec.get("size", Vector2.ONE)
-	var vertical: bool = shape == "rect" and size.y > size.x
+	var xf: Transform2D = uv_xform if uv_xform is Transform2D else default_uv_xform(spec, uv_offset)
 	var uvs := PackedVector2Array()
 	for v: Vector2 in verts:
-		var m: Vector2 = Vector2(v.x, -v.y) / Units.PX_PER_M
-		if vertical:
-			m = Vector2(m.y, -m.x)
-		uvs.append(m + uv_offset)
+		uvs.append(xf * v)
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = verts

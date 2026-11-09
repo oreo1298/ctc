@@ -27,6 +27,7 @@ Settings="*res://autoload/settings.gd"
 Data="*res://autoload/data.gd"
 Controls="*res://autoload/controls.gd"
 Effects="*res://autoload/effects.gd"
+Sfx="*res://autoload/sfx.gd"
 Game="*res://autoload/game.gd"
 
 [debug]

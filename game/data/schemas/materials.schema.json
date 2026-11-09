@@ -3,43 +3,145 @@
   "$id": "materials.schema.json",
   "title": "Block materials",
   "type": "object",
-  "required": ["$schema", "materials"],
+  "required": [
+    "$schema",
+    "materials"
+  ],
   "properties": {
-    "$schema": {"type": "string"},
+    "$schema": {
+      "type": "string"
+    },
     "materials": {
       "type": "object",
       "minProperties": 1,
-      "additionalProperties": {"$ref": "#/$defs/material"}
+      "additionalProperties": {
+        "$ref": "#/$defs/material"
+      }
     }
   },
   "additionalProperties": false,
   "$defs": {
-    "color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
     "material": {
       "type": "object",
-      "required": ["name", "density", "hp_per_m2", "impact_speed", "damage_scale", "friction", "bounce", "colors", "pattern", "points"],
+      "required": [
+        "name",
+        "density",
+        "hp_per_m2",
+        "impact_speed",
+        "damage_scale",
+        "friction",
+        "bounce",
+        "colors",
+        "pattern",
+        "points"
+      ],
       "additionalProperties": false,
       "properties": {
-        "name": {"type": "string", "description": "English display name (translated via tr)."},
-        "density": {"type": "number", "exclusiveMinimum": 0, "description": "kg per m² of block area."},
-        "hp_per_m2": {"type": "number", "exclusiveMinimum": 0},
-        "impact_speed": {"type": "number", "minimum": 0, "description": "Approach speed (m/s) below which contacts do no damage."},
-        "damage_scale": {"type": "number", "minimum": 0, "description": "Damage per 100 N·s of impulse."},
-        "friction": {"type": "number", "minimum": 0},
-        "bounce": {"type": "number", "minimum": 0, "maximum": 1},
-        "flammable": {"type": "boolean", "default": false},
-        "fracture": {"enum": ["splinter", "chunks", "shards", "dent", "tufts", "tear"], "default": "chunks"},
-        "pattern": {"enum": ["wood", "stone", "glass", "ice", "iron", "thatch", "cloth"]},
+        "name": {
+          "type": "string",
+          "description": "English display name (translated via tr)."
+        },
+        "density": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "kg per m\u00b2 of block area."
+        },
+        "hp_per_m2": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "impact_speed": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Approach speed (m/s) below which contacts do no damage."
+        },
+        "damage_scale": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Damage per 100 N\u00b7s of impulse."
+        },
+        "friction": {
+          "type": "number",
+          "minimum": 0
+        },
+        "bounce": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "flammable": {
+          "type": "boolean",
+          "default": false
+        },
+        "fracture": {
+          "enum": [
+            "splinter",
+            "chunks",
+            "shards",
+            "dent",
+            "tufts",
+            "tear"
+          ],
+          "default": "chunks"
+        },
+        "pattern": {
+          "enum": [
+            "wood",
+            "stone",
+            "glass",
+            "ice",
+            "iron",
+            "thatch",
+            "cloth"
+          ]
+        },
         "colors": {
           "type": "object",
-          "required": ["base", "dark", "light"],
+          "required": [
+            "base",
+            "dark",
+            "light"
+          ],
           "additionalProperties": false,
-          "properties": {"base": {"$ref": "#/$defs/color"}, "dark": {"$ref": "#/$defs/color"}, "light": {"$ref": "#/$defs/color"}}
+          "properties": {
+            "base": {
+              "$ref": "#/$defs/color"
+            },
+            "dark": {
+              "$ref": "#/$defs/color"
+            },
+            "light": {
+              "$ref": "#/$defs/color"
+            }
+          }
         },
-        "points": {"type": "integer", "minimum": 0, "description": "Score for destroying 1 m² of this material."},
-        "sounds": {"type": "object", "additionalProperties": {"type": "string"}},
-        "albedo": {"type": "string", "description": "Optional res:// texture overriding the procedural pattern."},
-        "normal": {"type": "string"}
+        "points": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Score for destroying 1 m\u00b2 of this material."
+        },
+        "sounds": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "albedo": {
+          "type": "string",
+          "description": "Optional res:// texture overriding the procedural pattern."
+        },
+        "normal": {
+          "type": "string"
+        },
+        "burn_rate": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Fraction of max HP lost per second while burning."
+        }
       }
     }
   }

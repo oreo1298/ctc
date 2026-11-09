@@ -73,6 +73,13 @@ func damage_multiplier(material_id: String) -> float:
 	return 1.0
 
 
+## Called by a block this projectile touches (ammo effects hook in here).
+func on_hit_block(block: Block, _point: Vector2) -> void:
+	var fx: Variant = ammo.get("effect", {})
+	if fx is Dictionary and bool((fx as Dictionary).get("ignite", false)):
+		block.ignite.call_deferred()
+
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if not has_impacted and state.get_contact_count() > 0:
 		has_impacted = true

@@ -26,6 +26,8 @@ uniform float frozen : hint_range(0.0, 1.0) = 0.0;
 uniform float charred : hint_range(0.0, 1.0) = 0.0;
 uniform float flash : hint_range(0.0, 1.0) = 0.0;
 uniform float rim_strength = 0.55;
+// Up to 4 impact marks: xy = pattern-space centre (m), z = radius, w = strength.
+uniform vec4 marks[4];
 // Non-colour material cue (accessibility): stamps a small glyph pattern.
 uniform float glyphs : hint_range(0.0, 1.0) = 0.0;
 
@@ -151,6 +153,18 @@ void fragment() {
 	albedo = mix(albedo, vec3(0.78, 0.92, 1.0), frozen * 0.55);
 	albedo = mix(albedo, vec3(0.16, 0.12, 0.1), charred * 0.8);
 
+	// Impact marks: a scuffed, darker dimple with a lighter lip.
+	float dent = 0.0;
+	for (int i = 0; i < 4; i++) {
+		vec4 m = marks[i];
+		if (m.z > 0.0) {
+			float r = length(p - m.xy) / m.z;
+			float jag = 0.85 + 0.3 * vnoise((p - m.xy) * 18.0);
+			dent = max(dent, (1.0 - smoothstep(0.0, jag, r)) * m.w);
+		}
+	}
+	albedo = mix(albedo, col_dark.rgb * 0.7, dent * 0.55);
+
 	float cr = cracks(p);
 	albedo = mix(albedo, ink.rgb * 0.9, cr * 0.85);
 
@@ -171,6 +185,7 @@ void fragment() {
 	vec2 nxy = n2 * tilt;
 	// Mortar grooves and cracks also catch the light.
 	nxy *= 1.0 - cr * 0.5;
+	nxy += vec2(0.0, -dent * 0.35);
 	// Godot's canvas NORMAL is y-up; our edge normals are y-down screen space.
 	NORMAL = normalize(vec3(nxy.x, -nxy.y, 1.0 - tilt * 0.55 + mortar * 0.2));
 

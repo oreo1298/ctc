@@ -117,6 +117,7 @@ func play_custom(level_dict: Dictionary) -> void:
 ## Instant retry: no fade, no confirmation.
 func restart_level() -> void:
 	get_tree().paused = false
+	Effects.reset_time()
 	get_tree().reload_current_scene()
 
 
@@ -133,6 +134,7 @@ func _change_scene(path: String) -> void:
 		return
 	_changing = true
 	get_tree().paused = false
+	Effects.reset_time()
 	var tw := create_tween()
 	tw.tween_property(_fade, "color:a", 1.0, FADE_TIME)
 	await tw.finished

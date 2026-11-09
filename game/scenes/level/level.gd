@@ -32,7 +32,7 @@ var hud: Hud
 var projectile: Projectile = null
 var castle_rect: Rect2 = Rect2()
 
-var _blocks: Array[Block] = []
+var debris: DebrisManager
 var _enemies: Array[Enemy] = []
 var _settle_t: float = 0.0
 var _win_t: float = 0.0
@@ -102,18 +102,20 @@ func _build() -> void:
 	world.add_child(terrain)
 	terrain.build(data.terrain, data.kill_y, palette)
 
+	debris = DebrisManager.new()
+	debris.name = "Debris"
+	debris.world = world
+	add_child(debris)
+	debris.piece_spawned.connect(_hook_block)
+
 	var rect_init: bool = false
 	for i: int in data.blocks.size():
 		var spec: Dictionary = data.blocks[i]
 		var b := Block.new()
 		b.setup(spec, Data.material(str(spec["material"])), i)
 		world.add_child(b)
-		b.broken.connect(_on_block_broken)
-		b.hit.connect(
-			func(x: Block, imp: float) -> void:
-				_log("%s hit %.0f N*s (hp %.0f/%.0f)" % [x.material_id, imp, x.hp, x.max_hp])
-		)
-		_blocks.append(b)
+		debris.register(b)
+		_hook_block(b)
 		castle_rect = (
 			Rect2(b.position, Vector2.ZERO) if not rect_init else castle_rect.expand(b.position)
 		)
@@ -283,6 +285,9 @@ func _on_projectile_impacted(_p: Projectile, speed_mps: float) -> void:
 		)
 	)
 	Effects.shake(clampf(speed_mps / 40.0, 0.1, 0.6))
+	Effects.haptic(clampf(speed_mps / 30.0, 0.1, 0.8))
+	Effects.ground_puff(world, projectile.global_position + Vector2(0, 30), speed_mps)
+	Sfx.play_at("thud", projectile.global_position, clampf(speed_mps - 24.0, -12.0, 0.0))
 	if state == State.FLYING:
 		var r := castle_rect.grow(120.0)
 		if castle_rect.grow(600.0).has_point(projectile.global_position):
@@ -304,6 +309,14 @@ func _on_trebuchet_ready() -> void:
 		state = State.READY
 
 
+func _hook_block(b: Block) -> void:
+	b.broken.connect(_on_block_broken)
+	b.hit.connect(
+		func(x: Block, imp: float) -> void:
+			_log("%s hit %.0f N*s (hp %.0f/%.0f)" % [x.material_id, imp, x.hp, x.max_hp])
+	)
+
+
 func _on_block_broken(b: Block, pts: int) -> void:
 	points += pts
 	_log("broke %s block (+%d)" % [b.material_id, pts])
@@ -315,6 +328,11 @@ func _on_enemy_eliminated(e: Enemy, pts: int) -> void:
 	if e.is_target:
 		targets_left -= 1
 		Effects.shake(0.35)
+		Effects.haptic(0.5)
+		# A beat of slow motion on every royal/knight down (cosmetic only:
+		# the physics step size is unchanged, see Effects.slow_motion).
+		Effects.slow_motion(0.3, 0.45 if targets_left <= 0 else 0.25)
+		Sfx.play_at("poof", e.global_position)
 		if targets_left <= 0 and not _won_pending:
 			_won_pending = true
 			_win_t = 0.0
@@ -343,10 +361,15 @@ func _process(delta: float) -> void:
 
 
 func _world_asleep() -> bool:
-	for b: Block in _blocks:
-		if is_instance_valid(b) and not b.sleeping and b.linear_velocity.length() > 15.0:
+	for n: Node in get_tree().get_nodes_in_group("blocks"):
+		var b: Block = n as Block
+		if b != null and not b.is_broken and not b.sleeping and b.linear_velocity.length() > 15.0:
 			return false
 	return true
+
+
+func _exit_tree() -> void:
+	Effects.reset_time()
 
 
 func _win() -> void:
