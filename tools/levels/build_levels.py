@@ -645,14 +645,19 @@ def m02() -> L:
     l = L("mirefen-02", "mirefen", "On Stilts",
           "The Fen Reeve built his house on stilts so the frogs can't reach him. Neither can I. Yet.",
           "morning", wind=1.5)
-    l.ground((-24, 0), (22, 0), (23, -2.5), (41, -2.5), (42, 0), (90, 0))
-    for x, who in [(26, "king"), (32, "queen"), (38, "knight")]:
+    # Two bog pits with a dry mound between, so one hut cannot take down the next.
+    l.ground((-24, 0), (22, 0), (23, -2.5), (28.5, -2.5), (29.5, 1.5), (34, 1.5), (35, -2.5), (42, -2.5),
+             (43, 0), (90, 0))
+    for x, who in [(25.75, "king"), (38.5, "knight")]:
         l.col(x - 1.0, -2.5, 0.25, 3.5, "wood")
         l.col(x + 1.0, -2.5, 0.25, 3.5, "wood")
         t = l.beam(x - 1.2, x + 1.2, 1.0, 0.25, "wood")
         top = l.room(x - 1.1, x + 1.1, t, 1.5, "wood", "wood", 0.25, 0.25)
         l.roof(x - 1.2, x + 1.2, top, 0.8, "thatch")
         l.put(who, x, t)
+    top = l.room(30, 33.5, 1.5, 1.7, "stone", "stone", 0.45, 0.4)
+    l.roof(29.9, 33.6, top, 0.9, "thatch")
+    l.put("queen", 31.75, 1.5)
     return l
 
 
@@ -677,12 +682,19 @@ def m03() -> L:
 def m04() -> L:
     l = L("mirefen-04", "mirefen", "Reed Roofs",
           "The Reed Barons thatch everything. Roofs, boats, hats. Burn the lot, but spare the miller.",
-          "afternoon", wind=-2.0).flat()
-    for i, who in enumerate(["king", "knight", "hostage", "queen", "knight"]):
-        x = 25 + i * 3.5
-        top = l.room(x - 1.4, x + 1.4, 0, 1.6, "wood", "wood", 0.25, 0.25)
-        l.roof(x - 1.5, x + 1.5, top, 0.9, "thatch")
-        l.put(who, x, 0)
+          "afternoon", wind=-2.0)
+    # A village on terraces: a flat shot runs into the next step.
+    l.ground((-24, 0), (26.8, 0), (27, 1.8), (31.8, 1.8), (32, 3.6), (36.8, 3.6), (37, 1.8), (42, 1.8),
+             (43, 0), (90, 0))
+    for x0, b, who in [(23.6, 0.0, ["king"]), (28.0, 1.8, ["knight"]), (33.0, 3.6, ["hostage", "queen"]),
+                       (38.0, 1.8, ["knight"])]:
+        top = l.room(x0, x0 + 2.8, b, 1.6, "wood", "wood", 0.25, 0.25)
+        l.roof(x0 - 0.1, x0 + 2.9, top, 0.9, "thatch")
+        if len(who) == 1:
+            l.put(who[0], x0 + 1.4, b)
+        else:
+            l.put(who[0], x0 + 0.8, b)
+            l.put(who[1], x0 + 2.0, b)
     return l
 
 
@@ -690,8 +702,8 @@ def m05() -> L:
     l = L("mirefen-05", "mirefen", "Bog Standard",
           "The Marsh Warden's fort stands on the only dry hill for miles. He charges rent for standing near it.",
           "dawn", wind=3.0)
-    l.ground((-24, 0), (21, 0), (22, -2.5), (25, -2.5), (26, 1.5), (36, 1.5), (37, -2.5), (40, -2.5),
-             (41, 0), (90, 0))
+    l.ground((-24, 0), (21, 0), (22, -2.5), (25, -2.5), (26, 1.5), (34, 1.5), (35, -2.5), (39, -2.5),
+             (40, 1.0), (47, 1.0), (48, 0), (90, 0))
     b = 1.5
     l.wall(26.5, 27.3, b, 2.0, "stone", rows=2)
     t1 = l.room(28, 33, b, 1.8, "stone", "stone", 0.5, 0.4)
@@ -700,8 +712,11 @@ def m05() -> L:
     l.put("knight", 29.3, b)
     l.put("knight", 31.7, b, True)
     l.put("king", 30.5, t1)
-    l.casks(33.2, b, 2)
-    l.put("queen", 35.4, b)
+    # The Warden's powder shed sits on the next hummock over.
+    l.casks(41.0, 1.0, 2)
+    top = l.room(43, 46, 1.0, 1.6, "wood", "wood", 0.3)
+    l.roof(42.9, 46.1, top, 0.9, "thatch")
+    l.put("queen", 44.5, 1.0)
     return l
 
 
@@ -812,7 +827,7 @@ def m12() -> L:
     l = L("mirefen-12", "mirefen", "Mirefen Hall",
           "The Bog King says Mirefen Hall is unsinkable. It is built on a swamp. Test that.",
           "night", 58, wind=-2.0)
-    l.ground((-24, 0), (21, 0), (22, 1.0), (34, 1.0), (35, -2.5), (39, -2.5), (40, 1.0), (90, 1.0))
+    l.ground((-24, 0), (21, 0), (22, 1.0), (33, 1.0), (34, -2.5), (41, -2.5), (42, 1.0), (90, 1.0))
     b = 1.0
     l.wall(23.0, 23.8, b, 2.4, "stone", rows=3)
     t1 = l.room(25, 32, b, 1.9, "stone", "stone", 0.55, 0.45)
@@ -825,10 +840,17 @@ def m12() -> L:
     t3 = l.room(26.6, 30.4, t2, 1.5, "wood", "wood", 0.3)
     l.roof(26.4, 30.6, t3, 1.0, "thatch")
     l.put("knight", 28.5, t2)
-    t = l.tower(44, b, 2.2, 2, "stone", "wood", 1.6, 0.4)
-    l.roof(42.8, 45.2, t, 1.0, "thatch")
-    l.put("knight", 44, b)
-    l.put("king", 44, b + 1.6 + 0.3)
+    # The Bog King's watch-hut on stilts in the moat.
+    l.col(36.5, -2.5, 0.3, 4.0, "wood")
+    l.col(38.5, -2.5, 0.3, 4.0, "wood")
+    t = l.beam(36.2, 38.8, 1.5, 0.3, "wood")
+    top = l.room(36.4, 38.6, t, 1.6, "wood", "wood", 0.3)
+    l.roof(36.3, 38.7, top, 0.8, "thatch")
+    l.put("king", 37.5, t)
+    t = l.tower(46.5, b, 2.2, 2, "stone", "wood", 1.6, 0.4)
+    l.roof(45.3, 47.7, t, 1.0, "thatch")
+    l.put("knight", 46.5, b)
+    l.put("queen", 46.5, b + 1.6 + 0.3)
     return l
 
 
@@ -874,18 +896,20 @@ def c02() -> L:
 def c03() -> L:
     l = L("cinderreach-03", "cinderreach", "The Forge",
           "The Iron Duke forged himself a suit of armour. With my iron. Which I paid for. Collect.",
-          "night", wind=3.0).flat()
+          "night", wind=3.0)
+    l.ground((-24, 0), (34, 0), (34.3, -8), (38.7, -8), (39, 0), (90, 0))
     l.col(25.5, 0, 0.5, 2.2, "iron")
     t = l.room(27, 32, 0, 2.0, "iron", "iron", 0.4, 0.35)
     l.casks(27.6, 0, 2)
     l.put("king", 30.0, 0)
     l.put("knight", 31.1, 0, True)
-    top = l.room(27.2, 29.8, t, 1.5, "wood", "wood", 0.3)
-    l.roof(27.1, 29.9, top, 0.8, "stone")
-    l.put("queen", 28.5, t)
     l.stack(30.8, t, 0.8, 0.8, 3, "stone")
-    l.put("hostage", 33.5, 0)
-    l.col(34.3, 0, 0.6, 0.5, "iron")
+    l.put("hostage", 33.0, 0)
+    l.col(33.6, 0, 0.5, 0.5, "iron")
+    # The Duchess keeps her own house across the gorge, well away from the sparks.
+    top = l.room(42, 45, 0, 1.7, "stone", "stone", 0.45, 0.4)
+    l.roof(41.9, 45.1, top, 0.9, "stone")
+    l.put("queen", 43.5, 0)
     return l
 
 
@@ -1042,7 +1066,7 @@ def c11() -> L:
 def c12() -> L:
     l = L("cinderreach-12", "cinderreach", "Cinderreach Citadel",
           "The Ember Emperor's citadel has iron walls, stone towers and a magazine the size of a barn. "
-          "One of those is a weakness.", "night", 62, wind=4.0)
+          "One of those is a weakness.", "night", 64, wind=4.0)
     l.ground((-24, 0), (21, 0), (24, 1.5), (36, 1.5), (36.3, -8), (40.7, -8), (41, 1.5), (90, 1.5))
     b = 1.5
     l.wall(24.5, 25.5, b, 2.4, "iron", rows=3)
@@ -1062,6 +1086,9 @@ def c12() -> L:
     l.put("knight", 46, b)
     l.put("hostage", 46, b + 1.8)
     l.put("king", 46, b + 3.6)
+    # The Emperor's strongroom, out past the tower.
+    l.room(54, 57, b, 1.8, "iron", "iron", 0.4, 0.35)
+    l.put("queen", 55.5, b)
     return l
 
 
@@ -1087,13 +1114,16 @@ def k02() -> L:
           "Lord Perch built his house hanging off a cliff. He calls it bold. I call it a head start.",
           "noon", wind=-4.0)
     l.ground((-24, 0), (22, 0), (22.3, -8), (29.7, -8), (30, 6.0), (40, 6.0), (40.3, -8), (90, -8))
-    t = l.ledge(26.0, 29.95, 3.0)
+    # The shelf hangs well below the clifftop: what lands up there stays up there.
+    t = l.ledge(25.8, 29.9, 0.0)
     top = l.room(26.4, 29.4, t, 1.6, "wood", "wood", 0.3)
     l.roof(26.3, 29.5, top, 0.8, "thatch")
     l.put("king", 27.9, t)
-    l.room(32, 36, 6.0, 1.8, "stone", "stone", 0.45, 0.4)
-    l.put("knight", 33.2, 6.0)
-    l.put("queen", 34.8, 6.0, True)
+    l.room(31, 34, 6.0, 1.8, "stone", "stone", 0.45, 0.4)
+    l.put("knight", 32.5, 6.0)
+    top = l.room(36.5, 39.5, 6.0, 1.8, "stone", "stone", 0.45, 0.4)
+    l.roof(36.4, 39.6, top, 0.9, "thatch")
+    l.put("queen", 38, 6.0)
     return l
 
 
@@ -1233,9 +1263,14 @@ def k10() -> L:
     l.put("knight", 33.6, b, True)
     t2 = l.room(29.8, 34.2, t1, 1.7, "stone", "stone", 0.45, 0.4)
     l.roof(29.6, 34.4, t2, 1.0, "iron")
-    l.put("queen", 32, t1)
+    l.put("knight", 32, t1)
     l.put("hostage", 36.2, b)
     l.col(37.2, b, 0.6, 1.4, "stone")
+    # The Baroness's bower, bolted to the cliff below the keep.
+    t = l.ledge(23.6, 27.85, -1.5)
+    top = l.room(24, 27, t, 1.6, "wood", "wood", 0.3)
+    l.roof(23.9, 27.1, top, 0.8, "thatch")
+    l.put("queen", 25.5, t)
     return l
 
 
@@ -1257,9 +1292,9 @@ def k11() -> L:
 def k12() -> L:
     l = L("skyreach-12", "skyreach", "The Skyreach Throne",
           "The High King of Skyreach sits on the roof of the world and says everything is beneath him. "
-          "Correct him.", "dusk", 56, wind=-2.5)
+          "Correct him.", "dusk", 64, wind=6.0)
     l.ground((-24, 0), (22, 0), (22.3, -8), (24.7, -8), (25, 2.0), (32, 2.0), (32.3, -8), (35.7, -8),
-             (36, 4.0), (44, 4.0), (44.3, -8), (90, -8))
+             (36, 4.0), (44, 4.0), (44.3, -8), (47.7, -8), (48, 6.0), (55, 6.0), (55.3, -8), (90, -8))
     b = 2.0
     l.wall(25.5, 26.5, b, 2.4, "stone", rows=3)
     t1 = l.room(27.5, 31.5, b, 1.8, "stone", "stone", 0.45, 0.4)
@@ -1271,16 +1306,21 @@ def k12() -> L:
     t = l.ledge(33.0, 36.05, 3.0)
     l.casks(33.4, t, 2)
     b = 4.0
-    t1 = l.room(36.5, 43.5, b, 1.9, "stone", "iron", 0.55, 0.45)
-    t2 = l.room(37.3, 42.7, t1, 1.7, "iron", "stone", 0.45, 0.45)
-    t3 = l.room(38.3, 41.7, t2, 1.6, "stone", "wood", 0.4)
-    l.roof(38.1, 41.9, t3, 1.2, "iron")
-    l.put("knight", 37.6, b)
+    t1 = l.room(37, 43, b, 1.9, "stone", "iron", 0.55, 0.45)
+    t2 = l.room(37.8, 42.2, t1, 1.7, "iron", "stone", 0.45, 0.45)
+    l.roof(37.6, 42.4, t2, 1.0, "iron")
+    l.put("knight", 38.2, b)
     l.put("king", 40, b)
-    l.put("knight", 42.4, b, True)
-    l.put("queen", 38.8, t1)
-    l.put("king", 41.2, t1)
-    l.put("king", 40, t2)
+    l.put("knight", 41.8, b, True)
+    l.put("queen", 40, t1)
+    # The throne itself, on the highest peak.
+    b = 6.0
+    t1 = l.room(48.8, 54.2, b, 1.9, "stone", "stone", 0.55, 0.45)
+    t2 = l.room(49.6, 53.4, t1, 1.7, "iron", "wood", 0.4)
+    l.roof(49.4, 53.6, t2, 1.2, "iron")
+    l.put("knight", 50.0, b)
+    l.put("queen", 53.0, b, True)
+    l.put("king", 51.5, t1)
     return l
 
 

@@ -31,11 +31,27 @@
           -2.5
         ],
         [
-          41,
+          28.5,
+          -2.5
+        ],
+        [
+          29.5,
+          1.5
+        ],
+        [
+          34,
+          1.5
+        ],
+        [
+          35,
           -2.5
         ],
         [
           42,
+          -2.5
+        ],
+        [
+          43,
           0
         ],
         [
@@ -51,7 +67,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        25.0,
+        24.75,
         -0.75
       ],
       "size": [
@@ -63,7 +79,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        27.0,
+        26.75,
         -0.75
       ],
       "size": [
@@ -75,7 +91,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        26.0,
+        25.75,
         1.125
       ],
       "size": [
@@ -87,7 +103,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        25.025,
+        24.775,
         2.0
       ],
       "size": [
@@ -99,7 +115,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        26.975,
+        26.725,
         2.0
       ],
       "size": [
@@ -111,7 +127,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        26.0,
+        25.75,
         2.875
       ],
       "size": [
@@ -123,7 +139,7 @@
       "shape": "tri",
       "material": "thatch",
       "pos": [
-        26.0,
+        25.75,
         3.4
       ],
       "size": [
@@ -135,7 +151,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        31.0,
+        37.5,
         -0.75
       ],
       "size": [
@@ -147,7 +163,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        33.0,
+        39.5,
         -0.75
       ],
       "size": [
@@ -159,7 +175,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        32.0,
+        38.5,
         1.125
       ],
       "size": [
@@ -171,7 +187,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        31.025,
+        37.525,
         2.0
       ],
       "size": [
@@ -183,7 +199,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        32.975,
+        39.475,
         2.0
       ],
       "size": [
@@ -195,7 +211,7 @@
       "shape": "rect",
       "material": "wood",
       "pos": [
-        32.0,
+        38.5,
         2.875
       ],
       "size": [
@@ -207,7 +223,7 @@
       "shape": "tri",
       "material": "thatch",
       "pos": [
-        32.0,
+        38.5,
         3.4
       ],
       "size": [
@@ -217,86 +233,50 @@
     },
     {
       "shape": "rect",
-      "material": "wood",
+      "material": "stone",
       "pos": [
-        37.0,
-        -0.75
+        30.225,
+        2.35
       ],
       "size": [
-        0.25,
-        3.5
+        0.45,
+        1.7
       ]
     },
     {
       "shape": "rect",
-      "material": "wood",
+      "material": "stone",
       "pos": [
-        39.0,
-        -0.75
+        33.275,
+        2.35
       ],
       "size": [
-        0.25,
-        3.5
+        0.45,
+        1.7
       ]
     },
     {
       "shape": "rect",
-      "material": "wood",
+      "material": "stone",
       "pos": [
-        38.0,
-        1.125
+        31.75,
+        3.4
       ],
       "size": [
-        2.4,
-        0.25
-      ]
-    },
-    {
-      "shape": "rect",
-      "material": "wood",
-      "pos": [
-        37.025,
-        2.0
-      ],
-      "size": [
-        0.25,
-        1.5
-      ]
-    },
-    {
-      "shape": "rect",
-      "material": "wood",
-      "pos": [
-        38.975,
-        2.0
-      ],
-      "size": [
-        0.25,
-        1.5
-      ]
-    },
-    {
-      "shape": "rect",
-      "material": "wood",
-      "pos": [
-        38.0,
-        2.875
-      ],
-      "size": [
-        2.2,
-        0.25
+        3.5,
+        0.4
       ]
     },
     {
       "shape": "tri",
       "material": "thatch",
       "pos": [
-        38.0,
-        3.4
+        31.75,
+        4.05
       ],
       "size": [
-        2.4,
-        0.8
+        3.7,
+        0.9
       ]
     }
   ],
@@ -304,22 +284,22 @@
     {
       "type": "king",
       "pos": [
-        26,
-        1.8
-      ]
-    },
-    {
-      "type": "queen",
-      "pos": [
-        32,
+        25.75,
         1.8
       ]
     },
     {
       "type": "knight",
       "pos": [
-        38,
+        38.5,
         1.825
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        31.75,
+        2.05
       ]
     }
   ],

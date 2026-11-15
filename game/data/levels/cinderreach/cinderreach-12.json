@@ -8,7 +8,7 @@
   "time_of_day": "night",
   "realm": "cinderreach",
   "world": {
-    "right": 62,
+    "right": 64,
     "kill_y": -10
   },
   "trebuchet": {
@@ -366,6 +366,42 @@
         2.4,
         0.9
       ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        54.2,
+        2.4
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        56.8,
+        2.4
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        55.5,
+        3.475
+      ],
+      "size": [
+        3,
+        0.35
+      ]
     }
   ],
   "enemies": [
@@ -430,6 +466,13 @@
       "pos": [
         46,
         5.65
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        55.5,
+        2.05
       ]
     }
   ],
