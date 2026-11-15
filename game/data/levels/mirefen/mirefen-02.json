@@ -323,5 +323,25 @@
       ]
     }
   ],
-  "wind": 1.5
+  "wind": 1.5,
+  "par": {
+    "gold": 1,
+    "silver": 2,
+    "bronze": 4
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "boulder",
+      "phase": 0.659,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "boulder",
+      "phase": 0.659,
+      "tap": -1.0
+    }
+  ]
 }

@@ -351,5 +351,25 @@
       ]
     }
   ],
-  "wind": 2.0
+  "wind": 2.0,
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "scatter",
+      "phase": 0.6495,
+      "tap": 0.55
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "scatter",
+      "phase": 0.6495,
+      "tap": 0.55
+    }
+  ]
 }

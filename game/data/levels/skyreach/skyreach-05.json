@@ -280,5 +280,35 @@
       ]
     }
   ],
-  "wind": 4.0
+  "wind": 4.0,
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "keg",
+      "phase": 0.636,
+      "tap": -1.0
+    },
+    {
+      "ammo": "boulder",
+      "phase": 0.5572,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "keg",
+      "phase": 0.636,
+      "tap": -1.0
+    },
+    {
+      "ammo": "boulder",
+      "phase": 0.5572,
+      "tap": -1.0
+    }
+  ]
 }

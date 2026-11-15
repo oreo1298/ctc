@@ -222,5 +222,25 @@
       ]
     }
   ],
-  "wind": 2.0
+  "wind": 2.0,
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "chain",
+      "phase": 0.6605,
+      "tap": 0.6
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "chain",
+      "phase": 0.6605,
+      "tap": 0.6
+    }
+  ]
 }

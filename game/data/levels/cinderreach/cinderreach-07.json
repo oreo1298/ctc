@@ -243,5 +243,25 @@
       ]
     }
   ],
-  "wind": -4.0
+  "wind": -4.0,
+  "par": {
+    "gold": 2,
+    "silver": 3,
+    "bronze": 5
+  },
+  "par_override": null,
+  "solution": [
+    {
+      "ammo": "void",
+      "phase": 0.55,
+      "tap": -1.0
+    }
+  ],
+  "solution_basic": [
+    {
+      "ammo": "void",
+      "phase": 0.55,
+      "tap": -1.0
+    }
+  ]
 }
