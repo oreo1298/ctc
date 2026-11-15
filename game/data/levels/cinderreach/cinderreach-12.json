@@ -1,0 +1,437 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-12",
+  "name": "Cinderreach Citadel",
+  "grievance": "The Ember Emperor's citadel has iron walls, stone towers and a magazine the size of a barn. One of those is a weakness.",
+  "time_of_day": "night",
+  "realm": "cinderreach",
+  "world": {
+    "right": 62,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          24,
+          1.5
+        ],
+        [
+          36,
+          1.5
+        ],
+        [
+          36.3,
+          -8
+        ],
+        [
+          40.7,
+          -8
+        ],
+        [
+          41,
+          1.5
+        ],
+        [
+          90,
+          1.5
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.0,
+        1.9
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.0,
+        2.7
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.0,
+        3.5
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.3,
+        2.45
+      ],
+      "size": [
+        0.6,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.7,
+        2.45
+      ],
+      "size": [
+        0.6,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        31.0,
+        3.625
+      ],
+      "size": [
+        8,
+        0.45
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.05,
+        4.7
+      ],
+      "size": [
+        0.5,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.95,
+        4.7
+      ],
+      "size": [
+        0.5,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.0,
+        5.775
+      ],
+      "size": [
+        6.4,
+        0.45
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        28.975,
+        6.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        33.025,
+        6.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.0,
+        7.75
+      ],
+      "size": [
+        4.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "iron",
+      "pos": [
+        31.0,
+        8.45
+      ],
+      "size": [
+        4.8,
+        1.1
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        32.0,
+        1.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        32.8,
+        1.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        33.6,
+        1.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.125,
+        2.25
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.875,
+        2.25
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        46.0,
+        3.15
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.125,
+        4.05
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.875,
+        4.05
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        46.0,
+        4.95
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.125,
+        5.85
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.875,
+        5.85
+      ],
+      "size": [
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        46.0,
+        6.75
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "stone",
+      "pos": [
+        46.0,
+        7.35
+      ],
+      "size": [
+        2.4,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.3,
+        2.075
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        29.6,
+        2.0
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        30.9,
+        2.075
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30,
+        4.4
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        32,
+        4.4
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        31,
+        6.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        46,
+        2.075
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        46,
+        3.8
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        46,
+        5.65
+      ]
+    }
+  ],
+  "wind": 4.0
+}

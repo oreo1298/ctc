@@ -1,0 +1,314 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-02",
+  "name": "Ash Steps",
+  "grievance": "The Ash Pharaoh's steps lead up to his throne. Rearrange them so they lead down.",
+  "time_of_day": "afternoon",
+  "realm": "cinderreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.062,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.188,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.312,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.438,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.562,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.688,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.812,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        35.938,
+        0.45
+      ],
+      "size": [
+        1.125,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.25,
+        1.35
+      ],
+      "size": [
+        1.1,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.35,
+        1.35
+      ],
+      "size": [
+        1.1,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.45,
+        1.35
+      ],
+      "size": [
+        1.1,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.55,
+        1.35
+      ],
+      "size": [
+        1.1,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.65,
+        1.35
+      ],
+      "size": [
+        1.1,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.75,
+        1.35
+      ],
+      "size": [
+        1.1,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.425,
+        2.25
+      ],
+      "size": [
+        1.05,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.475,
+        2.25
+      ],
+      "size": [
+        1.05,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.525,
+        2.25
+      ],
+      "size": [
+        1.05,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.575,
+        2.25
+      ],
+      "size": [
+        1.05,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        31.55,
+        3.15
+      ],
+      "size": [
+        0.9,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        32.45,
+        3.15
+      ],
+      "size": [
+        0.9,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        28.1,
+        1.475
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        35.9,
+        1.475
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        29.3,
+        2.35
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        34.7,
+        2.3
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        32,
+        4.15
+      ]
+    }
+  ],
+  "wind": -3.0
+}

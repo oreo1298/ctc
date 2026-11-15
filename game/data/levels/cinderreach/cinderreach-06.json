@@ -1,0 +1,224 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-06",
+  "name": "Pillar of Fire",
+  "grievance": "The Fire Hermit lives on a pillar above the lava and throws pebbles at passing kings. I pass.",
+  "time_of_day": "dusk",
+  "realm": "cinderreach",
+  "world": {
+    "right": 58,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          27.7,
+          -8
+        ],
+        [
+          28,
+          4.0
+        ],
+        [
+          32,
+          4.0
+        ],
+        [
+          32.3,
+          -8
+        ],
+        [
+          39.7,
+          -8
+        ],
+        [
+          40,
+          0.5
+        ],
+        [
+          90,
+          0.5
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.8,
+        4.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.2,
+        4.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.0,
+        5.75
+      ],
+      "size": [
+        2.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "stone",
+      "pos": [
+        30.0,
+        6.35
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.4,
+        1.0
+      ],
+      "size": [
+        0.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.4,
+        2.0
+      ],
+      "size": [
+        0.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.225,
+        1.4
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.775,
+        1.4
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.0,
+        2.5
+      ],
+      "size": [
+        4,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        47.6,
+        0.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        48.4,
+        0.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        30,
+        4.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        44.1,
+        1.075
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        45.9,
+        1.05
+      ],
+      "flip": true
+    }
+  ],
+  "wind": 3.0
+}

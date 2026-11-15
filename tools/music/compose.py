@@ -455,6 +455,22 @@ PIECES = [
     Piece("frostfang", 66, 69, MINOR,
           [triad(0), triad(5), triad(2), triad(6)] * 3, seed=41, lead="bell", arp="bell",
           pad=0.5, wind=0.05, arp_density=0.45, lead_rest=0.35),
+    # Mirefen Marsh: E Dorian, slow and misty, a reedy pipe over plucks and a soft pad.
+    Piece("mirefen", 72, 64, [0, 2, 3, 5, 7, 9, 10],
+          [triad(0), triad(6), triad(0), triad(3), triad(0), triad(6), triad(4), triad(0),
+           triad(3), triad(6), triad(0), triad(0)],
+          seed=53, lead="flute", arp="pluck", pad=0.4, wind=0.03, arp_density=0.5,
+          lead_rest=0.3),
+    # Cinderreach: C Phrygian over a low drone, heavy frame drum, bell accents.
+    Piece("cinderreach", 76, 60, [0, 1, 3, 5, 7, 8, 10],
+          [triad(0), triad(1), triad(0), triad(6), triad(0), triad(1), triad(5), triad(0)] * 2,
+          seed=67, lead="bell", arp="pluck", pad=0.35, drums=True, drone=True,
+          arp_density=0.5, lead_rest=0.3, layers={"bass": 0.3, "perc": 0.6}),
+    # The Skyreach: F Lydian, bright and soaring, flute over bells, a high wind.
+    Piece("skyreach", 100, 65, [0, 2, 4, 6, 7, 9, 11],
+          [triad(0), triad(1), triad(0), triad(4), triad(5), triad(1), triad(3), triad(4)] * 2,
+          seed=79, lead="flute", arp="bell", pad=0.45, wind=0.06, arp_density=0.6,
+          lead_rest=0.2),
 ]
 
 

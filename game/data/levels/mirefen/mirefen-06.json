@@ -1,0 +1,383 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-06",
+  "name": "Powder Monkeys",
+  "grievance": "Three powder huts, three royals, and not one fire bucket between them. I'm only helping.",
+  "time_of_day": "golden",
+  "realm": "mirefen",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        24.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.8,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.5,
+        1.95
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        25.1,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        25.9,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.45,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.55,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.5,
+        3.85
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        25.5,
+        4.4
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.7,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.3,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.0,
+        1.95
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        32.6,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        33.4,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.95,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.05,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.0,
+        3.85
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        33.0,
+        4.4
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.8,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        40.5,
+        1.95
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        40.1,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        40.9,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        39.45,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        41.55,
+        2.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        40.5,
+        3.85
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        40.5,
+        4.4
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        25.5,
+        2.65
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        33,
+        2.65
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        40.5,
+        2.65
+      ]
+    }
+  ],
+  "wind": -1.0
+}

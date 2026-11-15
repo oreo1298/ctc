@@ -1,0 +1,355 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-08",
+  "name": "Cinder Bridge",
+  "grievance": "Baron Clinker's stone bridge crosses the lava river. He is very proud of it. Unduly.",
+  "time_of_day": "golden",
+  "realm": "cinderreach",
+  "world": {
+    "right": 58,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          23,
+          1.0
+        ],
+        [
+          27,
+          1.0
+        ],
+        [
+          27.3,
+          -8
+        ],
+        [
+          40.7,
+          -8
+        ],
+        [
+          41,
+          1.0
+        ],
+        [
+          90,
+          1.0
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31,
+        -7.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31,
+        -5.75
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31,
+        -4.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31,
+        -2.75
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31,
+        -1.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31,
+        0.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37,
+        -7.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37,
+        -5.75
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37,
+        -4.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37,
+        -2.75
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37,
+        -1.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37,
+        0.25
+      ],
+      "size": [
+        1.0,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.25,
+        1.2
+      ],
+      "size": [
+        5.5,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.0,
+        1.2
+      ],
+      "size": [
+        6.0,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.75,
+        1.2
+      ],
+      "size": [
+        5.5,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.15,
+        2.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.85,
+        2.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.0,
+        3.15
+      ],
+      "size": [
+        4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        34.0,
+        3.75
+      ],
+      "size": [
+        4.2,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        46.225,
+        1.85
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.775,
+        1.85
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        47.5,
+        2.9
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        34,
+        1.95
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        28.5,
+        1.975
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        39.5,
+        1.975
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        47.5,
+        1.55
+      ]
+    }
+  ],
+  "wind": 2.0
+}

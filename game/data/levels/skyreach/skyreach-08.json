@@ -1,0 +1,219 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-08",
+  "name": "Kite Fort",
+  "grievance": "Prince Zephyr built his fort of glass and silk because it 'catches the light'. Catch this.",
+  "time_of_day": "noon",
+  "realm": "skyreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          25.7,
+          -8
+        ],
+        [
+          26,
+          1.0
+        ],
+        [
+          38,
+          1.0
+        ],
+        [
+          38.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        27.15,
+        1.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        31.85,
+        1.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        29.5,
+        2.95
+      ],
+      "size": [
+        5,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        27.75,
+        3.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        31.25,
+        3.9
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        29.5,
+        4.8
+      ],
+      "size": [
+        3.8,
+        0.2
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        29.5,
+        5.4
+      ],
+      "size": [
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        33.65,
+        1.8
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        36.35,
+        1.8
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "glass",
+      "pos": [
+        35.0,
+        2.75
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "queen",
+      "pos": [
+        28.2,
+        1.55
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        30.8,
+        1.55
+      ],
+      "flip": true
+    },
+    {
+      "type": "knight",
+      "pos": [
+        29.5,
+        3.675
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        34.4,
+        1.5
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        35.5,
+        1.55
+      ],
+      "flip": true
+    }
+  ],
+  "wind": -7.0
+}

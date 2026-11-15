@@ -82,6 +82,10 @@ msgstr ""
 msgid "Anchor: never moves or breaks (A)"
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-02.json
+msgid "Ash Steps"
+msgstr ""
+
 #: scenes/menu/settings_menu.gd
 msgid "Automatic"
 msgstr ""
@@ -102,6 +106,14 @@ msgstr ""
 
 #: data/editor.json
 msgid "Ball"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-01.json
+msgid "Baron Bogg keeps his gunpowder under his throne. Someone should tell him why that's a bad idea."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-08.json
+msgid "Baron Clinker's stone bridge crosses the lava river. He is very proud of it. Unduly."
 msgstr ""
 
 #: data/levels/greenmantle/greenmantle-01.json
@@ -128,6 +140,10 @@ msgstr ""
 msgid "Bigger"
 msgstr ""
 
+#: data/realms/cinderreach.json
+msgid "Black stone, red skies and powder magazines. Everything here is one spark from going up."
+msgstr ""
+
 #: data/editor.json
 msgid "Block"
 msgstr ""
@@ -139,6 +155,14 @@ msgstr ""
 #: scenes/editor/editor.gd
 #, c-format
 msgid "Blocks: %d · People: %d"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-05.json
+msgid "Bog Standard"
+msgstr ""
+
+#: data/realms/mirefen.json
+msgid "Bog-towns on stilts, reed roofs, and barons who keep their gunpowder in the cellar. Of course they do."
 msgstr ""
 
 #: data/ammo.json
@@ -186,6 +210,10 @@ msgstr ""
 msgid "Castles"
 msgstr ""
 
+#: data/levels/mirefen/mirefen-03.json
+msgid "Cellar Door"
+msgstr ""
+
 #: data/levels/saffron/saffron-09.json
 msgid "Chain Reaction"
 msgstr ""
@@ -198,6 +226,22 @@ msgstr ""
 #: tests/unit/test_level_flow.gd
 #: ui/hud.gd
 msgid "Choose level"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-08.json
+msgid "Cinder Bridge"
+msgstr ""
+
+#: data/realms/cinderreach.json
+msgid "Cinderreach"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-12.json
+msgid "Cinderreach Citadel"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-02.json
+msgid "Cliffhanger"
 msgstr ""
 
 #: data/materials.json
@@ -236,6 +280,10 @@ msgstr ""
 msgid "Couldn't save there. Try another folder?"
 msgstr ""
 
+#: data/levels/mirefen/mirefen-07.json
+msgid "Count Heron perches on stilts and looks down his beak at everyone. Bring him down to earth."
+msgstr ""
+
 #: data/levels/greenmantle/greenmantle-09.json
 msgid "Count Orlo's palisade is so thick, he says nothing gets through. We'll see."
 msgstr ""
@@ -246,6 +294,10 @@ msgstr ""
 
 #: data/editor.json
 msgid "Cube"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-01.json
+msgid "Damp Squib"
 msgstr ""
 
 #: scenes/editor/editor.gd
@@ -316,8 +368,16 @@ msgstr ""
 msgid "Every stall at the Saffron market sells my portrait. Upside down."
 msgstr ""
 
+#: data/levels/skyreach/skyreach-04.json
+msgid "Eyrie"
+msgstr ""
+
 #: scenes/editor/editor.gd
 msgid "Face the other way (F)"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-09.json
+msgid "Fen Fort"
 msgstr ""
 
 #: core/custom_levels.gd
@@ -345,11 +405,19 @@ msgid "Frost flask"
 msgstr ""
 
 #: data/realms/frostfang.json
+msgid "Frostfang"
+msgstr ""
+
+#: data/realms/frostfang.json
 msgid "Frostfang Peaks"
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
 msgid "Fullscreen"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-03.json
+msgid "Gale Force"
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
@@ -399,6 +467,10 @@ msgid "Grass"
 msgstr ""
 
 #: data/realms/greenmantle.json
+msgid "Greenmantle"
+msgstr ""
+
+#: data/realms/greenmantle.json
 msgid "Greenmantle Hills"
 msgstr ""
 
@@ -419,6 +491,10 @@ msgstr ""
 msgid "Hall of Mirrors"
 msgstr ""
 
+#: data/levels/skyreach/skyreach-05.json
+msgid "Hanging Gardens"
+msgstr ""
+
 #: scenes/editor/editor.gd
 #: ui/hud.gd
 #, c-format
@@ -433,6 +509,10 @@ msgstr ""
 msgid "Heavy and dense. Punches straight through wood."
 msgstr ""
 
+#: data/levels/mirefen/mirefen-07.json
+msgid "Heron's Nest"
+msgstr ""
+
 #: scenes/menu/settings_menu.gd
 msgid "High"
 msgstr ""
@@ -445,6 +525,10 @@ msgstr ""
 msgid "Hostage"
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-01.json
+msgid "Hot Welcome"
+msgstr ""
+
 #: data/materials.json
 msgid "Ice"
 msgstr ""
@@ -455,6 +539,10 @@ msgstr ""
 
 #: data/materials.json
 msgid "Iron"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-07.json
+msgid "Iron Curtain"
 msgstr ""
 
 #: data/levels/saffron/saffron-07.json
@@ -477,6 +565,10 @@ msgstr ""
 msgid "Keep it"
 msgstr ""
 
+#: data/realms/skyreach.json
+msgid "Keeps on pillars above the clouds, where the wind never stops and the drop never ends."
+msgstr ""
+
 #: data/enemies.json
 msgid "King"
 msgstr ""
@@ -485,8 +577,16 @@ msgstr ""
 msgid "King of the Hill"
 msgstr ""
 
+#: data/levels/skyreach/skyreach-08.json
+msgid "Kite Fort"
+msgstr ""
+
 #: data/enemies.json
 msgid "Knight"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-04.json
+msgid "Lady Smoulder built her palace across a lava gorge to avoid my visits. Visit."
 msgstr ""
 
 #: data/levels/greenmantle/greenmantle-08.json
@@ -509,13 +609,33 @@ msgstr ""
 msgid "Lord Ashby's tower is taller than mine. Shorten it. From the top."
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-10.json
+msgid "Lord Cauldron lives in the crater of his own volcano. Who does that? He does. For now."
+msgstr ""
+
+#: data/levels/mirefen/mirefen-03.json
+msgid "Lord Mossgrave keeps powder in his cellar and his mother-in-law in the attic. Mind the attic."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-02.json
+msgid "Lord Perch built his house hanging off a cliff. He calls it bold. I call it a head start."
+msgstr ""
+
 #: scenes/menu/settings_menu.gd
 msgid "Low"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-05.json
+msgid "Magazine Row"
 msgstr ""
 
 #: tests/unit/test_level_flow.gd
 #: ui/hud.gd
 msgid "Main menu"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-07.json
+msgid "Margrave Kettle hid behind an iron wall and said I'd never see him again. Promises, promises."
 msgstr ""
 
 #: data/levels/saffron/saffron-03.json
@@ -540,6 +660,18 @@ msgstr ""
 
 #: data/levels/saffron/saffron-04.json
 msgid "Mind the Guests"
+msgstr ""
+
+#: data/realms/mirefen.json
+msgid "Mirefen"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-12.json
+msgid "Mirefen Hall"
+msgstr ""
+
+#: data/realms/mirefen.json
+msgid "Mirefen Marsh"
 msgstr ""
 
 #: data/levels/frostfang/frostfang-09.json
@@ -619,6 +751,10 @@ msgstr ""
 msgid "Old Lord Rime boasts his stone never breaks. Ice it, then break it."
 msgstr ""
 
+#: data/levels/mirefen/mirefen-02.json
+msgid "On Stilts"
+msgstr ""
+
 #: scenes/menu/settings_menu.gd
 msgid "One button does everything: tap to shoot, hold to change ammo."
 msgstr ""
@@ -637,6 +773,10 @@ msgstr ""
 
 #: data/ammo.json
 msgid "Opens a tiny black hole that drags everything in, then pops. Tap to open it early."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-04.json
+msgid "Over the Edge"
 msgstr ""
 
 #: data/levels/frostfang/frostfang-05.json
@@ -684,6 +824,10 @@ msgstr ""
 msgid "Pillar"
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-06.json
+msgid "Pillar of Fire"
+msgstr ""
+
 #: core/editor_model.gd
 #: tests/unit/test_editor_model.gd
 msgid "Place a king, queen or knight to defeat."
@@ -691,6 +835,10 @@ msgstr ""
 
 #: data/editor.json
 msgid "Plank"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-10.json
+msgid "Plank Walk"
 msgstr ""
 
 #: scenes/editor/editor.gd
@@ -705,6 +853,10 @@ msgstr ""
 
 #: data/levels/saffron/saffron-01.json
 msgid "Powder Day"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-06.json
+msgid "Powder Monkeys"
 msgstr ""
 
 #: data/ammo.json
@@ -731,6 +883,10 @@ msgstr ""
 msgid "Prince Idris lights a thousand lanterns every night just to keep me awake."
 msgstr ""
 
+#: data/levels/skyreach/skyreach-08.json
+msgid "Prince Zephyr built his fort of glass and silk because it 'catches the light'. Catch this."
+msgstr ""
+
 #: data/levels/frostfang/frostfang-06.json
 msgid "Princess Glimm's hall of mirrors reflects my face. Repeatedly. Stop it."
 msgstr ""
@@ -745,6 +901,10 @@ msgstr ""
 
 #: data/enemies.json
 msgid "Queen"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-05.json
+msgid "Queen Trellis grows roses on shelves up a cliff. She threw one at me. Thorns first."
 msgstr ""
 
 #: scenes/menu/main_menu.gd
@@ -766,6 +926,10 @@ msgstr ""
 
 #: scenes/menu/settings_menu.gd
 msgid "Reduce flashing"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-04.json
+msgid "Reed Roofs"
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
@@ -805,6 +969,14 @@ msgstr ""
 
 #: data/editor.json
 msgid "Roof"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-06.json
+msgid "Rope Bridge"
+msgstr ""
+
+#: data/realms/saffron.json
+msgid "Saffron"
 msgstr ""
 
 #: data/realms/saffron.json
@@ -900,12 +1072,24 @@ msgstr ""
 msgid "Sir Pellam's picnic was lovely. I wasn't invited. Scatter it."
 msgstr ""
 
+#: data/levels/mirefen/mirefen-09.json
+msgid "Sir Squelch's fort is mostly mud. The good parts are stone. The best parts are gunpowder."
+msgstr ""
+
 #: data/levels/greenmantle/greenmantle-10.json
 msgid "Sir Tobble's gatehouse has a portcullis. Mine has a curtain."
 msgstr ""
 
 #: scenes/editor/editor.gd
 msgid "Sky"
+msgstr ""
+
+#: data/realms/skyreach.json
+msgid "Skyreach"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-09.json
+msgid "Slag Heap"
 msgstr ""
 
 #: data/levels/frostfang/frostfang-02.json
@@ -942,6 +1126,14 @@ msgstr ""
 
 #: data/materials.json
 msgid "Stone"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-07.json
+msgid "Storm Wall"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-08.json
+msgid "Sunken Chapel"
 msgstr ""
 
 #: scenes/menu/settings_menu.gd
@@ -1019,12 +1211,32 @@ msgstr ""
 msgid "Thatch Me If You Can"
 msgstr ""
 
+#: data/levels/skyreach/skyreach-09.json
+msgid "The Abbess of the Steps counts every stair on her way to bed. Help her count. Quickly."
+msgstr ""
+
+#: data/levels/mirefen/mirefen-08.json
+msgid "The Abbot built his chapel in a sinkhole to be nearer the frogs. Help him get nearer still."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-02.json
+msgid "The Ash Pharaoh's steps lead up to his throne. Rearrange them so they lead down."
+msgstr ""
+
+#: data/levels/mirefen/mirefen-12.json
+msgid "The Bog King says Mirefen Hall is unsinkable. It is built on a swamp. Test that."
+msgstr ""
+
 #: data/levels/frostfang/frostfang-10.json
 msgid "The Bridge"
 msgstr ""
 
 #: data/levels/frostfang/frostfang-10.json
 msgid "The Bridge Lord charges me a toll. A toll! Me!"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-11.json
+msgid "The Brothers Ashcroft live on two volcanoes and shout at each other across the lava. Settle it."
 msgstr ""
 
 #: data/levels/greenmantle/greenmantle-11.json
@@ -1039,8 +1251,40 @@ msgstr ""
 msgid "The Cliff Earl's balcony hangs over the void. Like his debts."
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-10.json
+msgid "The Crucible"
+msgstr ""
+
 #: data/levels/greenmantle/greenmantle-03.json
 msgid "The Duke and Duchess of Fennick sit on matching thrones. Matching!"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-10.json
+msgid "The Duke of Dampwick owns the only bridge over the bog and put a toll booth on it. My end."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-04.json
+msgid "The Eagle Duke's eyrie is the highest castle in the world. That's a lot of falling to do."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-12.json
+msgid "The Ember Emperor's citadel has iron walls, stone towers and a magazine the size of a barn. One of those is a weakness."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-01.json
+msgid "The Ember Margrave sent me a housewarming present. It was on fire. So was my house."
+msgstr ""
+
+#: data/levels/mirefen/mirefen-02.json
+msgid "The Fen Reeve built his house on stilts so the frogs can't reach him. Neither can I. Yet."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-06.json
+msgid "The Fire Hermit lives on a pillar above the lava and throws pebbles at passing kings. I pass."
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-03.json
+msgid "The Forge"
 msgstr ""
 
 #: data/levels/frostfang/frostfang-12.json
@@ -1055,20 +1299,80 @@ msgstr ""
 msgid "The Gatekeeper of Qal'at put iron on his gate. I put iron on my lunch."
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-05.json
+msgid "The Gunner General keeps his powder in a tidy row. Tidiness should be rewarded."
+msgstr ""
+
 #: data/levels/frostfang/frostfang-08.json
 msgid "The Hermit King lives atop an icy crag and refuses to come down. Assist."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-12.json
+msgid "The High King of Skyreach sits on the roof of the world and says everything is beneath him. Correct him."
 msgstr ""
 
 #: data/levels/frostfang/frostfang-01.json
 msgid "The Ice Margrave froze my envoy. Well, the envoy's soup. Same thing."
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-03.json
+msgid "The Iron Duke forged himself a suit of armour. With my iron. Which I paid for. Collect."
+msgstr ""
+
+#: data/levels/mirefen/mirefen-05.json
+msgid "The Marsh Warden's fort stands on the only dry hill for miles. He charges rent for standing near it."
+msgstr ""
+
+#: data/levels/mirefen/mirefen-11.json
+msgid "The Mill Lords grind their flour finer than mine. Grind their mills finer still."
+msgstr ""
+
 #: data/levels/saffron/saffron-10.json
 msgid "The Oasis Palace"
 msgstr ""
 
+#: data/levels/skyreach/skyreach-06.json
+msgid "The Pass Warden strung a bridge between two peaks and charges a toll both ways. Both!"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-04.json
+msgid "The Reed Barons thatch everything. Roofs, boats, hats. Burn the lot, but spare the miller."
+msgstr ""
+
 #: data/levels/saffron/saffron-09.json
 msgid "The Silk Merchant's tower is held up by sheer silk. And pride."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-01.json
+msgid "The Sky Margrave says the air is thinner up there. So is his patience. So is mine."
+msgstr ""
+
+#: data/realms/skyreach.json
+msgid "The Skyreach"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-12.json
+msgid "The Skyreach Throne"
+msgstr ""
+
+#: data/levels/cinderreach/cinderreach-09.json
+msgid "The Slag Count piled his rubbish into a hill and built a castle on it. Take out the rubbish."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-11.json
+msgid "The Spire Sisters built the two tallest towers in Skyreach to look down on each other. And me."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-09.json
+msgid "The Stair"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-10.json
+msgid "The Storm Baron keeps his powder dry in an iron keep on a mountain. Dry is relative."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-03.json
+msgid "The Storm Thanes live on three peaks and blow raspberries at me on the wind. I can hear them."
 msgstr ""
 
 #: data/levels/saffron/saffron-12.json
@@ -1099,6 +1403,10 @@ msgstr ""
 msgid "The Wider Moat"
 msgstr ""
 
+#: data/levels/skyreach/skyreach-07.json
+msgid "The Wind King built a wall to keep out the weather. And me. Mostly me."
+msgstr ""
+
 #: core/share_code.gd
 msgid "The code is damaged or incomplete. Copy it again?"
 msgstr ""
@@ -1121,6 +1429,18 @@ msgstr ""
 
 #: data/levels/saffron/saffron-05.json
 msgid "The timber baron of Saffron sells wood to my enemies. Light up his life."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-01.json
+msgid "Thin Air"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-06.json
+msgid "Three powder huts, three royals, and not one fire bucket between them. I'm only helping."
+msgstr ""
+
+#: data/levels/skyreach/skyreach-10.json
+msgid "Thunderhead"
 msgstr ""
 
 #: data/levels/greenmantle/greenmantle-05.json
@@ -1153,8 +1473,20 @@ msgstr ""
 msgid "Turn right (E)"
 msgstr ""
 
+#: data/levels/cinderreach/cinderreach-11.json
+msgid "Twin Calderas"
+msgstr ""
+
 #: data/levels/greenmantle/greenmantle-11.json
 msgid "Twin Keeps"
+msgstr ""
+
+#: data/levels/mirefen/mirefen-11.json
+msgid "Twin Mills"
+msgstr ""
+
+#: data/levels/skyreach/skyreach-11.json
+msgid "Twin Spires"
 msgstr ""
 
 #: data/levels/greenmantle/greenmantle-03.json

@@ -227,6 +227,10 @@ static func _add_props(
 			_add_cacti(layer, heights, width, mat, col, s, size)
 		"pines":
 			_add_pines(layer, heights, width, mat, col, s, size, nearest)
+		"reeds":
+			_add_reeds(layer, heights, width, mat, col, s, size)
+		"spires":
+			_add_spires(layer, heights, width, mat, col, s, size)
 		_:
 			_add_trees(layer, heights, width, mat, col, s, size, nearest)
 
@@ -283,6 +287,88 @@ static func _add_cacti(
 					elbow.reverse()
 				layer.add_child(_canopy_mesh(elbow, ay - ah, m))
 		x += rng.randf_range(300.0, 1100.0)
+
+
+## Marsh reeds: clumps of thin leaning blades, some topped with a cattail.
+static func _add_reeds(
+	layer: Node2D,
+	heights: PackedFloat32Array,
+	width: float,
+	mat: ShaderMaterial,
+	col: Color,
+	s: int,
+	size: float
+) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = s
+	var m := _prop_mat(mat, col)
+	var head := _prop_mat(mat, col.darkened(0.35))
+	var x: float = -3800.0 + rng.randf_range(0.0, 200.0)
+	while x < width - 4200.0:
+		var gy: float = _ground_at(heights, x)
+		for k: int in rng.randi_range(4, 8):
+			var bx: float = x + rng.randf_range(-40.0, 40.0) * size
+			var h: float = rng.randf_range(70.0, 150.0) * size
+			var lean: float = rng.randf_range(-22.0, 22.0) * size
+			var w: float = rng.randf_range(5.0, 8.0) * size
+			var blade := PackedVector2Array(
+				[
+					Vector2(bx - w, gy),
+					Vector2(bx + w, gy),
+					Vector2(bx + lean + w * 0.2, gy - h),
+					Vector2(bx + lean - w * 0.2, gy - h)
+				]
+			)
+			layer.add_child(_canopy_mesh(blade, gy - h, m))
+			if rng.randf() < 0.4:
+				var c := Vector2(bx + lean * 0.85, gy - h * 0.85)
+				layer.add_child(_canopy_mesh(_capsule(c, w * 2.2, h * 0.22), c.y, head))
+		x += rng.randf_range(160.0, 620.0)
+
+
+## Volcanic spires: tall, leaning, jagged rock needles in small groups.
+static func _add_spires(
+	layer: Node2D,
+	heights: PackedFloat32Array,
+	width: float,
+	mat: ShaderMaterial,
+	col: Color,
+	s: int,
+	size: float
+) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = s
+	var m := _prop_mat(mat, col)
+	var x: float = -3800.0 + rng.randf_range(0.0, 600.0)
+	while x < width - 4200.0:
+		var gy: float = _ground_at(heights, x) + 10.0
+		for k: int in rng.randi_range(1, 3):
+			var bx: float = x + k * rng.randf_range(50.0, 90.0) * size
+			var h: float = rng.randf_range(160.0, 340.0) * size
+			var w: float = rng.randf_range(34.0, 60.0) * size
+			var lean: float = rng.randf_range(-30.0, 30.0) * size
+			var pts := PackedVector2Array([Vector2(bx - w, gy)])
+			var steps: int = 5
+			for i: int in range(1, steps):
+				var t: float = float(i) / steps
+				pts.append(
+					Vector2(
+						bx - w * (1.0 - t) + lean * t + rng.randf_range(-6.0, 6.0) * size,
+						gy - h * t
+					)
+				)
+			pts.append(Vector2(bx + lean, gy - h))
+			for i: int in range(steps - 1, 0, -1):
+				var t: float = float(i) / steps
+				pts.append(
+					Vector2(
+						bx + w * (1.0 - t) + lean * t + rng.randf_range(-6.0, 6.0) * size,
+						gy - h * t
+					)
+				)
+			pts.append(Vector2(bx + w, gy))
+			layer.add_child(_canopy_mesh(pts, gy - h, m))
+		x += rng.randf_range(500.0, 1500.0)
 
 
 static func _capsule(center: Vector2, w: float, h: float) -> PackedVector2Array:

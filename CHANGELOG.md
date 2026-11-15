@@ -11,6 +11,25 @@ All notable changes are documented here. The format follows
 
 ## [Unreleased]
 
+### Added (content)
+- Three new realms with 12 levels each, harder than the first three: the
+  campaign is now 6 realms × 12 levels. **Mirefen Marsh** (stilt houses,
+  bog pits, powder cellars), **Cinderreach** (lava gorges, stone and iron,
+  powder magazines) and **Skyreach** (peaks over bottomless gorges, shelves
+  bolted to cliffs, strong wind). Each has its own music loop and backdrop
+  (reeds, ash spires, bare peaks). Every level is proven beatable by the
+  bot, which also set its par.
+- Powder stores: a new castle material. Casks don't break; they are lit,
+  and go off a moment later, setting off their neighbours and anything
+  flammable. Fire lights them too. In the editor as the "Powder" material
+  and a "Cask" block.
+- Wind: a level can have a steady crosswind (`"wind"` in m/s, +x is a
+  tailwind). It pushes shots in flight until they first hit something;
+  light ammo drifts more, the iron ball less. A pennant in the HUD shows
+  it. Editor: Settings → Wind; share codes keep it.
+- Level select: the realm tabs now have their own row and wrap on narrow
+  screens.
+
 ### Added (music)
 - Music: a theme for the menus and a loop for each realm (pastoral
   Greenmantle, a drone-and-frame-drum Saffron, bells and wind for

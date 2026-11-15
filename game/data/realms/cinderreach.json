@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/realm.schema.json",
+  "id": "cinderreach",
+  "name": "Cinderreach",
+  "short_name": "Cinderreach",
+  "tagline": "Black stone, red skies and powder magazines. Everything here is one spark from going up.",
+  "order": 5,
+  "levels": [
+    "cinderreach-01",
+    "cinderreach-02",
+    "cinderreach-03",
+    "cinderreach-04",
+    "cinderreach-05",
+    "cinderreach-06",
+    "cinderreach-07",
+    "cinderreach-08",
+    "cinderreach-09",
+    "cinderreach-10",
+    "cinderreach-11",
+    "cinderreach-12"
+  ],
+  "palette": {
+    "ink": "#2b2422",
+    "paper": "#f1e6dc",
+    "ground_top": "#6e605a",
+    "ground": "#4b403c",
+    "ground_deep": "#2b2322",
+    "far": "#8e726b",
+    "mid": "#6e5852",
+    "near": "#4a3b37",
+    "accent": "#e0632a"
+  },
+  "backdrop": {
+    "layers": 4,
+    "roughness": 1.6,
+    "props": "spires",
+    "ridge": "peaks"
+  }
+}

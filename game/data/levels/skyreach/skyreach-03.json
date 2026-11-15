@@ -1,0 +1,259 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-03",
+  "name": "Gale Force",
+  "grievance": "The Storm Thanes live on three peaks and blow raspberries at me on the wind. I can hear them.",
+  "time_of_day": "afternoon",
+  "realm": "skyreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          24.7,
+          -8
+        ],
+        [
+          25,
+          2.0
+        ],
+        [
+          28,
+          2.0
+        ],
+        [
+          28.3,
+          -8
+        ],
+        [
+          30.7,
+          -8
+        ],
+        [
+          31,
+          3.5
+        ],
+        [
+          34,
+          3.5
+        ],
+        [
+          34.3,
+          -8
+        ],
+        [
+          36.7,
+          -8
+        ],
+        [
+          37,
+          5.0
+        ],
+        [
+          40,
+          5.0
+        ],
+        [
+          40.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.475,
+        2.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.525,
+        2.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.5,
+        3.75
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        26.5,
+        4.3
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.475,
+        4.3
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.525,
+        4.3
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.5,
+        5.25
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        32.5,
+        5.8
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37.475,
+        5.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.525,
+        5.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        38.5,
+        6.75
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        38.5,
+        7.3
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        26.5,
+        2.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        32.5,
+        4.05
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        38.5,
+        5.55
+      ]
+    }
+  ],
+  "wind": -6.0
+}

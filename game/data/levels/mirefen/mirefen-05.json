@@ -1,0 +1,231 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-05",
+  "name": "Bog Standard",
+  "grievance": "The Marsh Warden's fort stands on the only dry hill for miles. He charges rent for standing near it.",
+  "time_of_day": "dawn",
+  "realm": "mirefen",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          22,
+          -2.5
+        ],
+        [
+          25,
+          -2.5
+        ],
+        [
+          26,
+          1.5
+        ],
+        [
+          36,
+          1.5
+        ],
+        [
+          37,
+          -2.5
+        ],
+        [
+          40,
+          -2.5
+        ],
+        [
+          41,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.9,
+        2.0
+      ],
+      "size": [
+        0.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.9,
+        3.0
+      ],
+      "size": [
+        0.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.25,
+        2.4
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.75,
+        2.4
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.5,
+        3.5
+      ],
+      "size": [
+        5,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.8,
+        4.5
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.2,
+        4.5
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.5,
+        5.45
+      ],
+      "size": [
+        3.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        30.5,
+        6.05
+      ],
+      "size": [
+        4.2,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        33.6,
+        1.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        34.4,
+        1.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        29.3,
+        2.075
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        31.7,
+        2.075
+      ],
+      "flip": true
+    },
+    {
+      "type": "king",
+      "pos": [
+        30.5,
+        4.25
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        35.4,
+        2.05
+      ]
+    }
+  ],
+  "wind": 3.0
+}

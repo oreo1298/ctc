@@ -1,0 +1,342 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-07",
+  "name": "Storm Wall",
+  "grievance": "The Wind King built a wall to keep out the weather. And me. Mostly me.",
+  "time_of_day": "dusk",
+  "realm": "skyreach",
+  "world": {
+    "right": 64,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          25.7,
+          -8
+        ],
+        [
+          26,
+          4.0
+        ],
+        [
+          29,
+          4.0
+        ],
+        [
+          29.3,
+          -8
+        ],
+        [
+          35.7,
+          -8
+        ],
+        [
+          36,
+          2.0
+        ],
+        [
+          50,
+          2.0
+        ],
+        [
+          50.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.0,
+        4.5
+      ],
+      "size": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.0,
+        4.5
+      ],
+      "size": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.75,
+        5.5
+      ],
+      "size": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.5,
+        5.5
+      ],
+      "size": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.25,
+        5.5
+      ],
+      "size": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.0,
+        6.5
+      ],
+      "size": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.0,
+        6.5
+      ],
+      "size": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.75,
+        7.5
+      ],
+      "size": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.5,
+        7.5
+      ],
+      "size": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.25,
+        7.5
+      ],
+      "size": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        38.25,
+        2.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.75,
+        2.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.0,
+        4.0
+      ],
+      "size": [
+        6,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.0,
+        5.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        43.0,
+        5.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        41.0,
+        5.95
+      ],
+      "size": [
+        4.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        41.0,
+        6.6
+      ],
+      "size": [
+        4.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        45.0,
+        2.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        45.8,
+        2.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        27.5,
+        8.575
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        39.2,
+        2.575
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        42.8,
+        2.55
+      ],
+      "flip": true
+    },
+    {
+      "type": "king",
+      "pos": [
+        41,
+        4.75
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        47.5,
+        2.5
+      ]
+    }
+  ],
+  "wind": 7.0
+}

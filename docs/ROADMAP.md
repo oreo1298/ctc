@@ -17,11 +17,12 @@ Milestones are worked in order. Each ends with a commit and a short summary.
 | 5 | Linux packaging (AppImage, Flatpak, deb, rpm, AUR ×2, Nix), install/uninstall, container CI; Windows zip + NSIS | **done** |
 | 6 | iOS CI (unsigned archive), docs/IOS.md, touch polish, haptics, safe areas | **done** |
 | 7 | Performance, polish, release candidate | **done**: 1.0.0-rc.1 (not published yet) |
+| + | Expansion: 3 more realms × 12 harder levels, powder stores, wind, music | **done** |
 
 ## After 1.0 (ideas, not promises)
 
 * More realms through community level packs (the realm format is already
   pluggable).
-* Weather (wind) as a level modifier.
+* More weather: gusts or wind that changes between shots.
 * Replays: share a code that reproduces your exact shots.
 * More languages.

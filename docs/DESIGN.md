@@ -149,7 +149,7 @@ no corpses.
 
 ### 3.7 Campaign
 
-Three realms with 12 levels each. Each realm has its own palette, music mood
+Six realms with 12 levels each. Each realm has its own palette, music mood
 and a sequence of times of day. A new mechanic or material arrives every
 2–4 levels:
 
@@ -158,6 +158,9 @@ and a sequence of times of day. A new mechanic or material arrives every
 | **Greenmantle Hills** | rolling meadows, timber and stone keeps | L1 wood · L2 stone · L3 king+queen · L4 scatter-stones · L5 knights · L6 thatch · L8 cloth · L9 iron ball · L12 boss keep |
 | **Saffron Reach** | sandstone desert fortress, awnings, glass lanterns | L1 powder keg · L2 glass · L4 hostages · L5 firepot · L7 iron gates · L9 chain shot · L12 boss |
 | **Frostfang Peaks** | icy cliffs, iron-bound towers | L1 ice + frost flask · L3 brittle combos · L5 hanging/cantilevered builds · L7 void flask · L9 mixed fortresses · L12 final citadel |
+| **Mirefen Marsh** | bog towns on stilts, reed roofs | L1 powder stores · L2 stilt houses over bog pits · L4 first headwind · L6 three magazines · L8 a chapel in a sinkhole · L12 boss hall |
+| **Cinderreach** | lava gorges, ash spires, forges | stone and iron throughout · L1 a gorge in front · L3 an iron forge with powder inside · L5 a magazine chain · L8 a bridge on tall piers · L12 citadel |
+| **Skyreach** | peaks over bottomless gorges | strong wind (4–8 m/s) · L2 shelves bolted to a cliff · L3 three peaks in a headwind · L5/L9 stacked shelves · L11 8 m/s tailwind · L12 throne |
 
 Times of day go from dawn through morning, noon, afternoon, golden hour and
 dusk to night (aurora in Frostfang). The level data picks one per level.
@@ -166,6 +169,10 @@ dusk to night (aurora in Frostfang). The level data picks one per level.
 shot wins. From Greenmantle 10, Saffron 7 and Frostfang 9, castles split into
 two **compounds** 15–20 m apart, each with protected targets, so gold
 usually takes two well-placed shots. The bot's par tracks this (gold 1 → 2).
+The three later realms (added after playtest feedback that the first 36
+levels took about half an hour) spread targets over several compounds,
+put them behind iron and stone, and add wind and gorges, so gold is
+mostly 2–4 shots. Powder stores give each castle a weak point to find.
 Royals stay fragile (playtest feedback), so the challenge is reaching them,
 not grinding them down. The first validator pass showed the iron ball and a
 wide scatter fan solving every level in one shot, so both were toned down.
@@ -494,7 +501,9 @@ Decisions made without asking, which are cheap to revisit:
 7. **Music:** gentle loops per realm plus a menu theme, composed and rendered
    by `tools/music/compose.py` (seeded, so `make music` is reproducible):
    chord progressions with pad, bass, plucked arpeggio and a lead (flute,
-   oud-like pluck or bells), a frame drum in Saffron and wind in Frostfang.
+   oud-like pluck or bells), a frame drum in Saffron, wind in Frostfang, a
+   breathy flute over E Dorian in Mirefen, a Phrygian drone and drums in
+   Cinderreach and bright Lydian bells in Skyreach.
    Mono 22 kHz, about 40 s each, levelled to the same loudness; the reverb
    tail wraps onto the start so loops are seamless. QOA-compressed on import.
 8. **Fonts** are fetched from the official `google/fonts` repository (OFL),
@@ -542,3 +551,4 @@ double-check before deciding):
 | 2026-11-09 | Versioning: SemVer in `app.env` (`1.0.0-rc.1`); each format gets its own spelling so pre-releases sort before the release (deb/rpm `~`, pacman `rc1`), and numeric versions where required (Windows, iOS). |
 | 2026-11-09 | Packaging: one staged layout for every format, rendered from `app.env`; executables are never stripped (the pck is appended); AppImage from the pinned type2 runtime + mksquashfs; Nix and the AUR source package build with the same pinned Godot; nothing is published automatically. |
 | 2026-11-09 | Castle editor: settle-on-drop placement instead of a free grid (castles start at rest); par for custom castles comes from the author's own test-play win and travels in the share code. |
+| 2026-11-15 | Expansion: three more realms (Mirefen, Cinderreach, Skyreach), powder stores as a castle material (lit, not broken; fuse counted in physics ticks so proofs replay exactly), and wind as a constant force on a shot until its first impact (scaled per ammo; the validator's arc filter includes it). |

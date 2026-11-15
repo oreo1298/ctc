@@ -2,6 +2,7 @@
   "$schema": "../schemas/realm.schema.json",
   "id": "frostfang",
   "name": "Frostfang Peaks",
+  "short_name": "Frostfang",
   "tagline": "Cold towers, colder hearts, and the coldest shoulder in the kingdom.",
   "order": 3,
   "levels": [

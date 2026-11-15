@@ -17,11 +17,22 @@ func after_each() -> void:
 	Settings.path_override = ""
 
 
-func test_campaign_has_three_realms_of_twelve() -> void:
-	assert_eq(Data.realms.size(), 3)
+func test_campaign_has_six_realms_of_twelve() -> void:
+	assert_eq(Data.realms.size(), 6)
 	for r: Dictionary in Data.realms:
 		assert_eq((r["levels"] as Array).size(), 12, str(r["id"]))
-	assert_eq(Data.campaign_levels().size(), 36)
+		assert_false(str(r.get("short_name", "")).is_empty(), "%s has a tab name" % r["id"])
+	assert_eq(Data.campaign_levels().size(), 72)
+	var order: Array[String] = []
+	for r: Dictionary in Data.realms:
+		order.append(str(r["id"]))
+	assert_eq(
+		order,
+		(
+			["greenmantle", "saffron", "frostfang", "mirefen", "cinderreach", "skyreach"]
+			as Array[String]
+		)
+	)
 
 
 func test_levels_unlock_in_order() -> void:

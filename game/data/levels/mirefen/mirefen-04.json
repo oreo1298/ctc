@@ -1,0 +1,313 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-04",
+  "name": "Reed Roofs",
+  "grievance": "The Reed Barons thatch everything. Roofs, boats, hats. Burn the lot, but spare the miller.",
+  "time_of_day": "afternoon",
+  "realm": "mirefen",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        23.725,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.275,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.0,
+        1.725
+      ],
+      "size": [
+        2.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        25.0,
+        2.3
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.225,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.775,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.5,
+        1.725
+      ],
+      "size": [
+        2.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        28.5,
+        2.3
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.725,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.275,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.0,
+        1.725
+      ],
+      "size": [
+        2.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        32.0,
+        2.3
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.225,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        36.775,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.5,
+        1.725
+      ],
+      "size": [
+        2.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        35.5,
+        2.3
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        37.725,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        40.275,
+        0.8
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        39.0,
+        1.725
+      ],
+      "size": [
+        2.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        39.0,
+        2.3
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        25.0,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        28.5,
+        0.575
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        32.0,
+        0.5
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        35.5,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        39.0,
+        0.575
+      ]
+    }
+  ],
+  "wind": -2.0
+}

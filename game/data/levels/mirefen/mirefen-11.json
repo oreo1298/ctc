@@ -1,0 +1,306 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-11",
+  "name": "Twin Mills",
+  "grievance": "The Mill Lords grind their flour finer than mine. Grind their mills finer still.",
+  "time_of_day": "afternoon",
+  "realm": "mirefen",
+  "world": {
+    "right": 58,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        0.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        1.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        2.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25,
+        3.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.225,
+        4.75
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.775,
+        4.75
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.0,
+        5.625
+      ],
+      "size": [
+        1.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        25.0,
+        6.2
+      ],
+      "size": [
+        2.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45,
+        0.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45,
+        1.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45,
+        2.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45,
+        3.5
+      ],
+      "size": [
+        1.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        44.225,
+        4.75
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        45.775,
+        4.75
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        45.0,
+        5.625
+      ],
+      "size": [
+        1.8,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        45.0,
+        6.2
+      ],
+      "size": [
+        2.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.65,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        36.85,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        35.25,
+        1.95
+      ],
+      "size": [
+        3.5,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        35.25,
+        2.6
+      ],
+      "size": [
+        3.7,
+        1.0
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        25,
+        4.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        45,
+        4.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        34.6,
+        0.575
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        36.0,
+        0.5
+      ]
+    }
+  ],
+  "wind": 3.0
+}

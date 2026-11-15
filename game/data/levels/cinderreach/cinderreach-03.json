@@ -1,0 +1,235 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-03",
+  "name": "The Forge",
+  "grievance": "The Iron Duke forged himself a suit of armour. With my iron. Which I paid for. Collect.",
+  "time_of_day": "night",
+  "realm": "cinderreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.5,
+        1.1
+      ],
+      "size": [
+        0.5,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        27.2,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        31.8,
+        1.0
+      ],
+      "size": [
+        0.4,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        29.5,
+        2.175
+      ],
+      "size": [
+        5,
+        0.35
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        28.0,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        28.8,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.35,
+        3.1
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.65,
+        3.1
+      ],
+      "size": [
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.5,
+        4.0
+      ],
+      "size": [
+        2.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "stone",
+      "pos": [
+        28.5,
+        4.55
+      ],
+      "size": [
+        2.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.8,
+        2.75
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.8,
+        3.55
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.8,
+        4.35
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        34.3,
+        0.25
+      ],
+      "size": [
+        0.6,
+        0.5
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        30.0,
+        0.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        31.1,
+        0.575
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        28.5,
+        2.9
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        33.5,
+        0.5
+      ]
+    }
+  ],
+  "wind": 3.0
+}

@@ -1,0 +1,315 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-11",
+  "name": "Twin Spires",
+  "grievance": "The Spire Sisters built the two tallest towers in Skyreach to look down on each other. And me.",
+  "time_of_day": "golden",
+  "realm": "skyreach",
+  "world": {
+    "right": 66,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          25.7,
+          -8
+        ],
+        [
+          26,
+          1.5
+        ],
+        [
+          30,
+          1.5
+        ],
+        [
+          30.3,
+          -8
+        ],
+        [
+          45.7,
+          -8
+        ],
+        [
+          46,
+          3.0
+        ],
+        [
+          51,
+          3.0
+        ],
+        [
+          51.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28,
+        2.0
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28,
+        3.0
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28,
+        4.0
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28,
+        5.0
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28,
+        6.0
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.325,
+        7.25
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.675,
+        7.25
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.0,
+        8.125
+      ],
+      "size": [
+        1.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        28.0,
+        8.7
+      ],
+      "size": [
+        1.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.5,
+        3.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.5,
+        4.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.5,
+        5.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.5,
+        6.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.5,
+        7.5
+      ],
+      "size": [
+        1.6,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        47.825,
+        8.75
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        49.175,
+        8.75
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        48.5,
+        9.625
+      ],
+      "size": [
+        1.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        48.5,
+        10.2
+      ],
+      "size": [
+        1.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "queen",
+      "pos": [
+        28,
+        7.05
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        48.5,
+        8.55
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        29.4,
+        2.075
+      ]
+    }
+  ],
+  "wind": 8.0
+}

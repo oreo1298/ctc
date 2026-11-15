@@ -11,6 +11,9 @@ const TRACKS: Dictionary = {
 	"greenmantle": "res://audio/music/greenmantle.wav",
 	"saffron": "res://audio/music/saffron.wav",
 	"frostfang": "res://audio/music/frostfang.wav",
+	"mirefen": "res://audio/music/mirefen.wav",
+	"cinderreach": "res://audio/music/cinderreach.wav",
+	"skyreach": "res://audio/music/skyreach.wav",
 }
 const FADE: float = 1.6
 const SILENT_DB: float = -40.0

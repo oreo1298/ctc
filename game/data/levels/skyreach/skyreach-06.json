@@ -1,0 +1,219 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-06",
+  "name": "Rope Bridge",
+  "grievance": "The Pass Warden strung a bridge between two peaks and charges a toll both ways. Both!",
+  "time_of_day": "afternoon",
+  "realm": "skyreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          24.7,
+          -8
+        ],
+        [
+          25,
+          3.0
+        ],
+        [
+          29,
+          3.0
+        ],
+        [
+          29.3,
+          -8
+        ],
+        [
+          36.7,
+          -8
+        ],
+        [
+          37,
+          3.0
+        ],
+        [
+          41,
+          3.0
+        ],
+        [
+          41.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.0,
+        3.125
+      ],
+      "size": [
+        11.0,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.925,
+        4.05
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.075,
+        4.05
+      ],
+      "size": [
+        0.25,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "cloth",
+      "pos": [
+        33.0,
+        4.95
+      ],
+      "size": [
+        2.4,
+        0.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.375,
+        3.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.225,
+        3.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.3,
+        4.75
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        38.775,
+        3.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        40.625,
+        3.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        39.7,
+        4.75
+      ],
+      "size": [
+        2.2,
+        0.3
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        33,
+        3.825
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        26.3,
+        3.55
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        39.7,
+        3.55
+      ]
+    }
+  ],
+  "wind": -5.0
+}

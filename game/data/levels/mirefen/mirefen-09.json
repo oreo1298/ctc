@@ -1,0 +1,270 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-09",
+  "name": "Fen Fort",
+  "grievance": "Sir Squelch's fort is mostly mud. The good parts are stone. The best parts are gunpowder.",
+  "time_of_day": "noon",
+  "realm": "mirefen",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        24.9,
+        0.4
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        24.9,
+        1.2
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        24.9,
+        2.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.3,
+        1.0
+      ],
+      "size": [
+        0.6,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.7,
+        1.0
+      ],
+      "size": [
+        0.6,
+        2.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        29.0,
+        2.2
+      ],
+      "size": [
+        4.0,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.35,
+        3.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.65,
+        3.2
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.0,
+        4.15
+      ],
+      "size": [
+        3.6,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        29.0,
+        4.75
+      ],
+      "size": [
+        3.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        33.4,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        34.2,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        35.0,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37.025,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.375,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        38.2,
+        2.0
+      ],
+      "size": [
+        2.8,
+        0.4
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        38.2,
+        2.65
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        29,
+        0.575
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        29,
+        2.95
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        36.2,
+        0.5
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        38.2,
+        0.55
+      ]
+    }
+  ],
+  "wind": -2.0
+}

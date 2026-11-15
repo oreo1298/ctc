@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/realm.schema.json",
+  "id": "skyreach",
+  "name": "The Skyreach",
+  "short_name": "Skyreach",
+  "tagline": "Keeps on pillars above the clouds, where the wind never stops and the drop never ends.",
+  "order": 6,
+  "levels": [
+    "skyreach-01",
+    "skyreach-02",
+    "skyreach-03",
+    "skyreach-04",
+    "skyreach-05",
+    "skyreach-06",
+    "skyreach-07",
+    "skyreach-08",
+    "skyreach-09",
+    "skyreach-10",
+    "skyreach-11",
+    "skyreach-12"
+  ],
+  "palette": {
+    "ink": "#2b3040",
+    "paper": "#f3f6fb",
+    "ground_top": "#ccd1da",
+    "ground": "#9ca3b4",
+    "ground_deep": "#6b7286",
+    "far": "#b9c9e6",
+    "mid": "#a5b5d3",
+    "near": "#7c8ba7",
+    "accent": "#3d7fd0"
+  },
+  "backdrop": {
+    "layers": 5,
+    "roughness": 2.2,
+    "props": "none",
+    "ridge": "peaks"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/realm.schema.json",
+  "id": "mirefen",
+  "name": "Mirefen Marsh",
+  "short_name": "Mirefen",
+  "tagline": "Bog-towns on stilts, reed roofs, and barons who keep their gunpowder in the cellar. Of course they do.",
+  "order": 4,
+  "levels": [
+    "mirefen-01",
+    "mirefen-02",
+    "mirefen-03",
+    "mirefen-04",
+    "mirefen-05",
+    "mirefen-06",
+    "mirefen-07",
+    "mirefen-08",
+    "mirefen-09",
+    "mirefen-10",
+    "mirefen-11",
+    "mirefen-12"
+  ],
+  "palette": {
+    "ink": "#2f3326",
+    "paper": "#eef0e2",
+    "ground_top": "#86a05c",
+    "ground": "#5d7240",
+    "ground_deep": "#3a4528",
+    "far": "#93a3a6",
+    "mid": "#71905f",
+    "near": "#4f6c3f",
+    "accent": "#b89a3a"
+  },
+  "backdrop": {
+    "layers": 4,
+    "roughness": 0.5,
+    "props": "reeds",
+    "ridge": "rolling"
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-07",
+  "name": "Iron Curtain",
+  "grievance": "Margrave Kettle hid behind an iron wall and said I'd never see him again. Promises, promises.",
+  "time_of_day": "night",
+  "realm": "cinderreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.5,
+        0.6
+      ],
+      "size": [
+        1.0,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.5,
+        1.8
+      ],
+      "size": [
+        1.0,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        25.5,
+        3.0
+      ],
+      "size": [
+        1.0,
+        1.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.25,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.75,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.5,
+        2.0
+      ],
+      "size": [
+        5,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.8,
+        3.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.2,
+        3.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.5,
+        3.95
+      ],
+      "size": [
+        3.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "iron",
+      "pos": [
+        30.5,
+        4.55
+      ],
+      "size": [
+        4.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        33.6,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        34.4,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        36.375,
+        0.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        38.425,
+        0.8
+      ],
+      "size": [
+        0.35,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        37.4,
+        1.75
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        29.2,
+        0.575
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        31.8,
+        0.575
+      ],
+      "flip": true
+    },
+    {
+      "type": "king",
+      "pos": [
+        30.5,
+        2.75
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        37.4,
+        0.55
+      ]
+    }
+  ],
+  "wind": -4.0
+}

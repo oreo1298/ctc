@@ -1,0 +1,168 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-01",
+  "name": "Thin Air",
+  "grievance": "The Sky Margrave says the air is thinner up there. So is his patience. So is mine.",
+  "time_of_day": "morning",
+  "realm": "skyreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          26.7,
+          -8
+        ],
+        [
+          27,
+          3.0
+        ],
+        [
+          35,
+          3.0
+        ],
+        [
+          35.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.25,
+        3.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.75,
+        3.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.0,
+        5.0
+      ],
+      "size": [
+        6,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.95,
+        6.0
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.05,
+        6.0
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.0,
+        6.95
+      ],
+      "size": [
+        4.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        31.0,
+        7.6
+      ],
+      "size": [
+        4.8,
+        1.0
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        29.2,
+        3.575
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        32.8,
+        3.55
+      ],
+      "flip": true
+    },
+    {
+      "type": "king",
+      "pos": [
+        31,
+        5.75
+      ]
+    }
+  ],
+  "wind": 4.0
+}

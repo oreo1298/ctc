@@ -2,6 +2,7 @@
   "$schema": "../schemas/realm.schema.json",
   "id": "saffron",
   "name": "Saffron Reach",
+  "short_name": "Saffron",
   "tagline": "Sandstone, silk awnings and a sultan who won't return King Grumbold's letters.",
   "order": 2,
   "levels": [

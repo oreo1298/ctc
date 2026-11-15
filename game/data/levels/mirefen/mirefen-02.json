@@ -1,0 +1,327 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-02",
+  "name": "On Stilts",
+  "grievance": "The Fen Reeve built his house on stilts so the frogs can't reach him. Neither can I. Yet.",
+  "time_of_day": "morning",
+  "realm": "mirefen",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          23,
+          -2.5
+        ],
+        [
+          41,
+          -2.5
+        ],
+        [
+          42,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.0,
+        -0.75
+      ],
+      "size": [
+        0.25,
+        3.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        27.0,
+        -0.75
+      ],
+      "size": [
+        0.25,
+        3.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.0,
+        1.125
+      ],
+      "size": [
+        2.4,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        25.025,
+        2.0
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.975,
+        2.0
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        26.0,
+        2.875
+      ],
+      "size": [
+        2.2,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        26.0,
+        3.4
+      ],
+      "size": [
+        2.4,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.0,
+        -0.75
+      ],
+      "size": [
+        0.25,
+        3.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        33.0,
+        -0.75
+      ],
+      "size": [
+        0.25,
+        3.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.0,
+        1.125
+      ],
+      "size": [
+        2.4,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.025,
+        2.0
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.975,
+        2.0
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.0,
+        2.875
+      ],
+      "size": [
+        2.2,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        32.0,
+        3.4
+      ],
+      "size": [
+        2.4,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        37.0,
+        -0.75
+      ],
+      "size": [
+        0.25,
+        3.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        39.0,
+        -0.75
+      ],
+      "size": [
+        0.25,
+        3.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        38.0,
+        1.125
+      ],
+      "size": [
+        2.4,
+        0.25
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        37.025,
+        2.0
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        38.975,
+        2.0
+      ],
+      "size": [
+        0.25,
+        1.5
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        38.0,
+        2.875
+      ],
+      "size": [
+        2.2,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        38.0,
+        3.4
+      ],
+      "size": [
+        2.4,
+        0.8
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        26,
+        1.8
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        32,
+        1.8
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        38,
+        1.825
+      ]
+    }
+  ],
+  "wind": 1.5
+}

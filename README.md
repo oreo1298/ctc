@@ -13,14 +13,15 @@ tap again to let go. The moment of release is your aim.
 
 * Unlimited shots, with gold/silver/bronze medals for doing it in fewer
 * 8 kinds of ammo (boulders, iron balls, powder kegs, frost flasks, a tiny
-  black hole…) and 7 materials that each break their own way
-* 3 realms × 12 levels, plus a castle builder with shareable level codes
+  black hole…) and 8 materials that each break their own way
+* 6 realms × 12 levels (72 castles), plus a castle builder with shareable
+  level codes
 * Made for Linux first, also on Windows and iOS
 * No ads, no in-app purchases, no tracking, no network. Ever.
 
 > **Status: release candidate 1.0.0-rc.1.** Milestones 0–7 are done: the
-> full campaign (3 realms × 12 levels, each proven beatable by a bot that
-> also sets par),
+> full campaign (6 realms × 12 levels, each proven beatable by a bot that
+> also sets par), wind, powder stores that chain-react,
 > eight ammo types, seven materials that crack and break into real pieces,
 > fire and frost, procedural sound, level select, settings and accessibility
 > options, a castle editor with offline share codes, and packages for

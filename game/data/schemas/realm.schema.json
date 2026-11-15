@@ -79,7 +79,9 @@
             "trees",
             "cacti",
             "pines",
-            "none"
+            "none",
+            "reeds",
+            "spires"
           ]
         },
         "ridge": {
@@ -95,6 +97,11 @@
           "maximum": 1
         }
       }
+    },
+    "short_name": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "Name on the level-select tab (English; extracted for translation)."
     }
   }
 }

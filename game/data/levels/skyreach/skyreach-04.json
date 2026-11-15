@@ -1,0 +1,231 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-04",
+  "name": "Eyrie",
+  "grievance": "The Eagle Duke's eyrie is the highest castle in the world. That's a lot of falling to do.",
+  "time_of_day": "golden",
+  "realm": "skyreach",
+  "world": {
+    "right": 62,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          29.7,
+          -8
+        ],
+        [
+          30,
+          2.5
+        ],
+        [
+          33,
+          2.5
+        ],
+        [
+          33.3,
+          -8
+        ],
+        [
+          43.7,
+          -8
+        ],
+        [
+          44,
+          7.0
+        ],
+        [
+          50,
+          7.0
+        ],
+        [
+          50.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.45,
+        3.3
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.55,
+        3.3
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        31.5,
+        4.25
+      ],
+      "size": [
+        2.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        31.5,
+        4.8
+      ],
+      "size": [
+        2.6,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.7,
+        7.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.3,
+        7.8
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        47.0,
+        8.75
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        45.7,
+        9.7
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        48.3,
+        9.7
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        47.0,
+        10.65
+      ],
+      "size": [
+        3.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        47.0,
+        11.3
+      ],
+      "size": [
+        3.2,
+        1.0
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        31.5,
+        3.075
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        47,
+        7.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        47,
+        9.45
+      ]
+    }
+  ],
+  "wind": 6.0
+}

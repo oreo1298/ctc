@@ -1,0 +1,221 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-10",
+  "name": "The Crucible",
+  "grievance": "Lord Cauldron lives in the crater of his own volcano. Who does that? He does. For now.",
+  "time_of_day": "night",
+  "realm": "cinderreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          25,
+          2.0
+        ],
+        [
+          27,
+          2.0
+        ],
+        [
+          27.3,
+          -3.0
+        ],
+        [
+          36.7,
+          -3.0
+        ],
+        [
+          37,
+          2.0
+        ],
+        [
+          40,
+          2.0
+        ],
+        [
+          43,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        28.725,
+        -2.1
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        35.275,
+        -2.1
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        32.0,
+        -1.0
+      ],
+      "size": [
+        7.0,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        29.5,
+        -2.55
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        30.3,
+        -2.55
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.7,
+        0.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        34.3,
+        0.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.0,
+        0.95
+      ],
+      "size": [
+        5.0,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.4,
+        2.7
+      ],
+      "size": [
+        0.6,
+        1.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        31.8,
+        -2.45
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        33.2,
+        -2.45
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        34.4,
+        -2.425
+      ],
+      "flip": true
+    },
+    {
+      "type": "knight",
+      "pos": [
+        32,
+        -0.225
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        26,
+        2.575
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        38.3,
+        2.55
+      ]
+    }
+  ],
+  "wind": -3.0
+}

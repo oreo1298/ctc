@@ -11,7 +11,7 @@ var _realm_index: int = 0
 var _grid: GridContainer
 var _title: Label
 var _tagline: Label
-var _tabs: HBoxContainer
+var _tabs: HFlowContainer
 
 
 func _ready() -> void:
@@ -31,7 +31,7 @@ func _rebuild() -> void:
 	for c: Node in get_children():
 		c.queue_free()
 	var realm: Dictionary = Data.realms[_realm_index]
-	var times: Array[String] = ["golden", "afternoon", "night"]
+	var times: Array[String] = ["golden", "afternoon", "night", "dusk", "dawn", "morning"]
 	build_frame(str(realm.get("id", "")), times[_realm_index % times.size()])
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -46,22 +46,9 @@ func _rebuild() -> void:
 	top.add_theme_constant_override("separation", 12)
 	col.add_child(top)
 	top.add_child(button(tr("Back"), go_back))
-	_tabs = HBoxContainer.new()
-	_tabs.add_theme_constant_override("separation", 8)
-	_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_tabs.alignment = BoxContainer.ALIGNMENT_CENTER
-	top.add_child(_tabs)
-	for i: int in Data.realms.size():
-		var r: Dictionary = Data.realms[i]
-		var open: bool = Game.is_realm_unlocked(str(r.get("id", "")))
-		var tab := button(tr(str(r.get("name", ""))), _select_realm.bind(i))
-		tab.disabled = not open
-		if not open:
-			tab.icon = LOCK
-			tab.expand_icon = false
-		tab.toggle_mode = true
-		tab.button_pressed = i == _realm_index
-		_tabs.add_child(tab)
+	var gap := Control.new()
+	gap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top.add_child(gap)
 	var medals := Label.new()
 	medals.theme_type_variation = "HudLabel"
 	medals.text = (
@@ -74,6 +61,26 @@ func _rebuild() -> void:
 	)
 	medals.tooltip_text = tr("Gold · Silver · Bronze medals")
 	top.add_child(medals)
+
+	# Six realms do not fit beside Back on a phone: the tabs get their own
+	# row and wrap if they must.
+	_tabs = HFlowContainer.new()
+	_tabs.add_theme_constant_override("h_separation", 8)
+	_tabs.add_theme_constant_override("v_separation", 8)
+	_tabs.alignment = FlowContainer.ALIGNMENT_CENTER
+	col.add_child(_tabs)
+	for i: int in Data.realms.size():
+		var r: Dictionary = Data.realms[i]
+		var open: bool = Game.is_realm_unlocked(str(r.get("id", "")))
+		var tab := button(tr(str(r.get("short_name", r.get("name", "")))), _select_realm.bind(i))
+		tab.tooltip_text = tr(str(r.get("name", "")))
+		tab.disabled = not open
+		if not open:
+			tab.icon = LOCK
+			tab.expand_icon = false
+		tab.toggle_mode = true
+		tab.button_pressed = i == _realm_index
+		_tabs.add_child(tab)
 
 	_title = Label.new()
 	_title.theme_type_variation = "TitleLabel"

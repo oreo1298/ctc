@@ -2,6 +2,7 @@
   "$schema": "../schemas/realm.schema.json",
   "id": "greenmantle",
   "name": "Greenmantle Hills",
+  "short_name": "Greenmantle",
   "tagline": "Where King Grumbold's grudges grow greenest.",
   "order": 1,
   "levels": [

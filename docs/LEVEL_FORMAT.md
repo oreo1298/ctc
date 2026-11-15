@@ -34,6 +34,7 @@ compressed JSON, see §5).
   "time_of_day": "morning",           // dawn|morning|noon|afternoon|golden|dusk|night
   "realm": "greenmantle",             // palette/backdrop set; editor levels pick one
   "world": { "right": 48, "kill_y": -12 },
+  "wind": 3.5,                        // optional, m/s, -12..12; + blows towards the castle
   "trebuchet": { "x": 0, "y": 0 },
   "terrain": [ /* §3 */ ],
   "blocks":  [ /* §4 */ ],
@@ -44,6 +45,10 @@ compressed JSON, see §5).
   "solution_basic": [ { "ammo": "boulder", "phase": 0.65, "tap": -1 } ]  // first-visit ammo only
 }
 ```
+
+`wind` pushes every shot sideways while it flies, until its first impact
+(0.35 m/s² per m/s, times the ammo's `wind_factor`: iron 0.5, scatter 1.5,
+flasks 1.3). Blocks and people are not affected. Leave it out for calm air.
 
 `phase` is the trebuchet release phase (0–1). `tap` is the delay in seconds
 from release to the mid-air action (`-1` = none), applied on an exact
@@ -91,8 +96,11 @@ Points must be ordered left to right.
 ```
 
 `material` is an id from `game/data/materials.json` (`wood`, `stone`, `glass`,
-`ice`, `iron`, `thatch`, `cloth`). Mass, HP and break behaviour come from the
-material and the block's area.
+`ice`, `iron`, `thatch`, `cloth`, `powder`). Mass, HP and break behaviour come
+from the material and the block's area. A `powder` block (a cask) does not
+break: when its HP runs out, or fire reaches it, it is lit and explodes a few
+ticks later (the material's `explosive` entry sets radius, push and damage),
+which can set off the casks around it.
 
 ```json
 { "type": "king",    "pos": [31, 3.2] }
@@ -129,7 +137,9 @@ its author beating it in test-play.
 
 Campaign castles are written as short Python functions in
 `tools/levels/build_levels.py`. The building primitives place blocks so they
-touch exactly, which keeps castles from shifting on load. Run
+touch exactly, which keeps castles from shifting on load. `L(..., wind=…)`
+sets the wind, `ledge()` adds an anchored shelf and `casks()` a row of powder
+casks. Run
 `make levels && make validate-levels`. Regenerating keeps the existing par and
 proofs until the bot replaces them. Levels in `game/data/levels/dev/` are
 developer test scenes and never appear in the campaign.

@@ -1,0 +1,211 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "skyreach-10",
+  "name": "Thunderhead",
+  "grievance": "The Storm Baron keeps his powder dry in an iron keep on a mountain. Dry is relative.",
+  "time_of_day": "night",
+  "realm": "skyreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22.3,
+          -8
+        ],
+        [
+          27.7,
+          -8
+        ],
+        [
+          28,
+          2.5
+        ],
+        [
+          38,
+          2.5
+        ],
+        [
+          38.3,
+          -8
+        ],
+        [
+          90,
+          -8
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        29.225,
+        3.45
+      ],
+      "size": [
+        0.45,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        34.775,
+        3.45
+      ],
+      "size": [
+        0.45,
+        1.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        32.0,
+        4.6
+      ],
+      "size": [
+        6,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        30.0,
+        2.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        30.8,
+        2.95
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.025,
+        5.65
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        33.975,
+        5.65
+      ],
+      "size": [
+        0.45,
+        1.7
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.0,
+        6.7
+      ],
+      "size": [
+        4.4,
+        0.4
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "iron",
+      "pos": [
+        32.0,
+        7.4
+      ],
+      "size": [
+        4.8,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        37.2,
+        3.2
+      ],
+      "size": [
+        0.6,
+        1.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        32.2,
+        3.05
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        33.6,
+        3.075
+      ],
+      "flip": true
+    },
+    {
+      "type": "queen",
+      "pos": [
+        32,
+        5.35
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        36.2,
+        3.0
+      ]
+    }
+  ],
+  "wind": -6.0
+}

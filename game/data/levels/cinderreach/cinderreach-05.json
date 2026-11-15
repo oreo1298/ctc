@@ -1,0 +1,308 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "cinderreach-05",
+  "name": "Magazine Row",
+  "grievance": "The Gunner General keeps his powder in a tidy row. Tidiness should be rewarded.",
+  "time_of_day": "noon",
+  "realm": "cinderreach",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "rock"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        24.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.8,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.5,
+        2.0
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        24.9,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.8,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        28.5,
+        2.0
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        27.9,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        32.8,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.5,
+        2.0
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        30.9,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        24.55,
+        3.0
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        32.45,
+        3.0
+      ],
+      "size": [
+        0.3,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.5,
+        3.95
+      ],
+      "size": [
+        8.2,
+        0.3
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "cloth",
+      "pos": [
+        28.5,
+        4.6
+      ],
+      "size": [
+        8.4,
+        1.0
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        40.2,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        42.8,
+        0.9
+      ],
+      "size": [
+        0.4,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "iron",
+      "pos": [
+        41.5,
+        1.975
+      ],
+      "size": [
+        3,
+        0.35
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "knight",
+      "pos": [
+        26.0,
+        0.575
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        29.0,
+        0.5
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        32.0,
+        0.575
+      ]
+    },
+    {
+      "type": "king",
+      "pos": [
+        27,
+        2.75
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        30,
+        2.75
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        41.5,
+        0.575
+      ]
+    }
+  ],
+  "wind": -2.0
+}

@@ -1,0 +1,282 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "mirefen-03",
+  "name": "Cellar Door",
+  "grievance": "Lord Mossgrave keeps powder in his cellar and his mother-in-law in the attic. Mind the attic.",
+  "time_of_day": "noon",
+  "realm": "mirefen",
+  "world": {
+    "right": 52.0,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.0,
+        0.4
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.0,
+        1.2
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        25.0,
+        2.0
+      ],
+      "size": [
+        1.0,
+        0.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.25,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.75,
+        0.9
+      ],
+      "size": [
+        0.5,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        29.5,
+        2.0
+      ],
+      "size": [
+        5,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        28.0,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        28.8,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        27.8,
+        3.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        31.2,
+        3.0
+      ],
+      "size": [
+        0.4,
+        1.6
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.5,
+        3.95
+      ],
+      "size": [
+        3.8,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.325,
+        4.8
+      ],
+      "size": [
+        0.25,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        30.675,
+        4.8
+      ],
+      "size": [
+        0.25,
+        1.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        29.5,
+        5.625
+      ],
+      "size": [
+        2.6,
+        0.25
+      ]
+    },
+    {
+      "shape": "tri",
+      "material": "thatch",
+      "pos": [
+        29.5,
+        6.2
+      ],
+      "size": [
+        3.0,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        39.225,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        41.775,
+        0.9
+      ],
+      "size": [
+        0.45,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        40.5,
+        2.0
+      ],
+      "size": [
+        3,
+        0.4
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        30.6,
+        0.55
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        29.5,
+        2.75
+      ]
+    },
+    {
+      "type": "hostage",
+      "pos": [
+        29.5,
+        4.6
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        40.5,
+        0.575
+      ]
+    }
+  ],
+  "wind": 2.0
+}
