@@ -476,32 +476,42 @@
   ],
   "wind": -2.0,
   "par": {
-    "gold": 2,
-    "silver": 3,
-    "bronze": 5
+    "gold": 3,
+    "silver": 4,
+    "bronze": 6
   },
   "par_override": null,
   "solution": [
     {
-      "ammo": "void",
-      "phase": 0.642,
+      "ammo": "iron",
+      "phase": 0.636,
       "tap": -1.0
     },
     {
       "ammo": "void",
-      "phase": 0.6195,
+      "phase": 0.5765,
+      "tap": -1.0
+    },
+    {
+      "ammo": "iron",
+      "phase": 0.6493,
       "tap": -1.0
     }
   ],
   "solution_basic": [
     {
-      "ammo": "void",
-      "phase": 0.642,
+      "ammo": "iron",
+      "phase": 0.636,
       "tap": -1.0
     },
     {
       "ammo": "void",
-      "phase": 0.6195,
+      "phase": 0.5765,
+      "tap": -1.0
+    },
+    {
+      "ammo": "iron",
+      "phase": 0.6493,
       "tap": -1.0
     }
   ]

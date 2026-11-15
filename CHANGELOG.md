@@ -18,7 +18,8 @@ All notable changes are documented here. The format follows
   powder magazines) and **Skyreach** (peaks over bottomless gorges, shelves
   bolted to cliffs, strong wind). Each has its own music loop and backdrop
   (reeds, ash spires, bare peaks). Every level is proven beatable by the
-  bot, which also set its par.
+  bot, which also set its par: gold takes 2 shots on most of them and 3
+  on the finales. The performance check now covers all six finales.
 - Powder stores: a new castle material. Casks don't break; they are lit,
   and go off a moment later, setting off their neighbours and anything
   flammable. Fire lights them too. In the editor as the "Powder" material

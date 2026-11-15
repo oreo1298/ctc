@@ -171,8 +171,12 @@ two **compounds** 15–20 m apart, each with protected targets, so gold
 usually takes two well-placed shots. The bot's par tracks this (gold 1 → 2).
 The three later realms (added after playtest feedback that the first 36
 levels took about half an hour) spread targets over several compounds,
-put them behind iron and stone, and add wind and gorges, so gold is
-mostly 2–4 shots. Powder stores give each castle a weak point to find.
+put them behind iron and stone, and add wind and gorges. Ridges, terraces,
+pits and gorges sit between compounds so that neither a flat iron ball nor a
+toppling tower can sweep a whole row (the first search pass found exactly
+that on nine castles, which were rebuilt). Bot par: gold 1 for each realm's
+opener, 2 through the middle, 3 for the finales, which spread over three
+separate compounds. Powder stores give each castle a weak point to find.
 Royals stay fragile (playtest feedback), so the challenge is reaching them,
 not grinding them down. The first validator pass showed the iron ball and a
 wide scatter fan solving every level in one shot, so both were toned down.

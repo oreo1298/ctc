@@ -478,9 +478,9 @@
   ],
   "wind": 4.0,
   "par": {
-    "gold": 2,
-    "silver": 3,
-    "bronze": 5
+    "gold": 3,
+    "silver": 4,
+    "bronze": 6
   },
   "par_override": null,
   "solution": [
@@ -490,8 +490,13 @@
       "tap": -1.0
     },
     {
-      "ammo": "iron",
-      "phase": 0.597,
+      "ammo": "void",
+      "phase": 0.6288,
+      "tap": -1.0
+    },
+    {
+      "ammo": "boulder",
+      "phase": 0.5612,
       "tap": -1.0
     }
   ],
@@ -502,8 +507,13 @@
       "tap": -1.0
     },
     {
-      "ammo": "iron",
-      "phase": 0.597,
+      "ammo": "void",
+      "phase": 0.6288,
+      "tap": -1.0
+    },
+    {
+      "ammo": "boulder",
+      "phase": 0.5612,
       "tap": -1.0
     }
   ]

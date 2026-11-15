@@ -17,7 +17,7 @@ Usage: scripts/perf.sh [--level ID]... [--budget MS] [--write] [--dry-run]
 
 Plays each level headlessly at a fixed 60 Hz with its stored solution and
 prints the cost of a physics tick (percentiles) and the most bodies awake
-at once. Default: the three realm finales and a shatter-everything scene.
+at once. Default: the six realm finales and a shatter-everything scene.
   --level ID   measure this level instead (repeatable)
   --budget MS  fail if any run's tick p95 is above MS milliseconds
   --write      also write the table to docs/benchmarks/perf.md
@@ -51,7 +51,7 @@ while [[ $# -gt 0 ]]; do
 	esac
 	shift
 done
-[[ ${#LEVELS[@]} -gt 0 ]] || LEVELS=(greenmantle-12 saffron-12 frostfang-12 shatter)
+[[ ${#LEVELS[@]} -gt 0 ]] || LEVELS=(greenmantle-12 saffron-12 frostfang-12 mirefen-12 cinderreach-12 skyreach-12 shatter)
 godot="$(resolve_godot)"
 need_cmd python3
 
