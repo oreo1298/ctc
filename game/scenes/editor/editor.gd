@@ -941,6 +941,24 @@ func _open_settings() -> void:
 	width_row.add_child(value)
 	_field(box, tr("Width"), width_row)
 
+	var wind_row := HBoxContainer.new()
+	wind_row.add_theme_constant_override("separation", 10)
+	var wind := HSlider.new()
+	wind.min_value = -10.0
+	wind.max_value = 10.0
+	wind.step = 1.0
+	wind.value = float(model.doc.get("wind", 0.0))
+	wind.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	wind.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	var wind_value := Label.new()
+	wind_value.custom_minimum_size.x = 150
+	wind_value.text = _wind_text(wind.value)
+	wind.value_changed.connect(func(v: float) -> void: wind_value.text = _wind_text(v))
+	wind.drag_ended.connect(func(_c: bool) -> void: _set_wind(wind.value))
+	wind_row.add_child(wind)
+	wind_row.add_child(wind_value)
+	_field(box, tr("Wind"), wind_row)
+
 	_modal_buttons(
 		box,
 		[
@@ -949,6 +967,26 @@ func _open_settings() -> void:
 			_button(tr("Done"), _close_settings.bind(slider)),
 		]
 	)
+
+
+func _wind_text(v: float) -> String:
+	if absf(v) < 0.5:
+		return tr("Calm")
+	return (
+		tr("Tailwind %d m/s") % roundi(absf(v))
+		if v > 0.0
+		else tr("Headwind %d m/s") % roundi(absf(v))
+	)
+
+
+func _set_wind(v: float) -> void:
+	if absf(v) < 0.5:
+		if model.doc.has("wind"):
+			model.checkpoint()
+			model.doc.erase("wind")
+			model.changed.emit()
+		return
+	model.set_meta_field("wind", v)
 
 
 ## Name and grievance edits: one undo step per editing session, not per key.

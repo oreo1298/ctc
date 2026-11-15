@@ -29,6 +29,7 @@ Renders these scenes to DIR (default build/screenshots/):
   win         win card with medal
   pause       the pause menu
   keg         a powder keg going off (and just after)
+  powder      powder stores chain-reacting in a tailwind (wind, powder, after)
   materials   every material, heavily cracked
   shatter     every material breaking at once
   fire        flammable materials burning (fire spread, charring)
@@ -124,6 +125,8 @@ shot impact 4.0 "${L[@]}" --autoplay=0.65 --screenshots="3.45:${OUT}/impact.png"
 shot collapse 5.5 "${L[@]}" --autoplay=0.65 --screenshots="4.9:${OUT}/collapse.png"
 shot win 8.0 "${L[@]}" --autoplay=0.65 --screenshots="7.5:${OUT}/win.png"
 shot pause 2.0 "${L[@]}" --no-intro --debug-pause --screenshots="1.6:${OUT}/pause.png"
+shot powder 5.0 --level=dev-powder --no-intro --autoplay=0.68 \
+	--screenshots="2.1:${OUT}/wind.png,3.0:${OUT}/powder.png,3.6:${OUT}/powder-after.png"
 shot keg 4.0 "${L[@]}" --unlock-all --autoplay=keg:0.65 \
 	--screenshots="3.4:${OUT}/keg.png,3.85:${OUT}/keg-after.png"
 # Every material: cracked, then all breaking at once.

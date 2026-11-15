@@ -11,7 +11,9 @@ signal preset_chosen(preset: Dictionary)
 signal person_chosen(type: String)
 signal material_chosen(id: String)
 
-const MATERIAL_ORDER: Array[String] = ["wood", "stone", "glass", "ice", "iron", "thatch", "cloth"]
+const MATERIAL_ORDER: Array[String] = [
+	"wood", "stone", "glass", "ice", "iron", "thatch", "cloth", "powder"
+]
 
 var current_material: String = "wood"
 var _modes := ButtonGroup.new()

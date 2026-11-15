@@ -239,6 +239,7 @@ func _build() -> void:
 	# catalogue, and a player-written name must never be looked up as a key.
 	var title: String = data.name if custom else tr(data.name)
 	hud.setup(title, _par())
+	hud.set_wind(data.wind)
 	hud.set_ammo(trebuchet.ammo, ammo_list.size())
 	hud.set_hint(tr("Tap to swing, tap again to let go"))
 	if not bot_mode and not Game.cli.has("autoplay") and not Game.cli.has("no-intro"):
@@ -436,6 +437,7 @@ func _on_released(phase: float, pos: Vector2, vel: Vector2) -> void:
 	projectile = Projectile.new()
 	world.add_child(projectile)
 	projectile.setup(trebuchet.ammo, pos, vel)
+	projectile.set_wind(data.wind)
 	var right: float = Units.to_px(Vector2(data.world_right + 25.0, 0)).x
 	projectile.world_rect_px = Rect2(
 		Vector2(-3000.0, -8000.0),

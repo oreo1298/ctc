@@ -102,6 +102,17 @@ vec3 pat_cloth(vec2 p) {
 	return mix(c, col_light.rgb, weave * 0.12);
 }
 
+// Powder store: dark staves with iron hoops every half metre.
+vec3 pat_powder(vec2 p) {
+	float stave = smoothstep(0.0, 0.04, abs(fract(p.x / 0.22) - 0.5) - 0.44);
+	float grain = fbm(p * vec2(3.0, 18.0) + seed);
+	vec3 c = mix(col_base.rgb, col_light.rgb, grain * 0.3);
+	c = mix(c, col_dark.rgb, (1.0 - stave) * 0.6);
+	float hoop = 1.0 - smoothstep(0.035, 0.05, abs(fract(p.y / 0.5 + 0.25) - 0.5));
+	vec3 iron = mix(vec3(0.16, 0.16, 0.18), vec3(0.42, 0.42, 0.46), grain);
+	return mix(c, iron, hoop);
+}
+
 vec3 pat_rock(vec2 p) {
 	float m = fbm(p * 3.2 + seed);
 	float blot = smoothstep(0.45, 0.75, fbm(p * 6.5 + seed * 2.0));
@@ -142,6 +153,8 @@ void fragment() {
 		albedo = pat_thatch(p);
 	} else if (pattern == 6) {
 		albedo = pat_cloth(p);
+	} else if (pattern == 8) {
+		albedo = pat_powder(p);
 	} else {
 		albedo = pat_rock(p);
 	}
@@ -175,6 +188,7 @@ void fragment() {
 		else if (pattern == 1) mark = 1.0 - smoothstep(0.05, 0.08, length(g));
 		else if (pattern == 2 || pattern == 3) mark = 1.0 - smoothstep(0.02, 0.04, abs(g.x - g.y));
 		else if (pattern == 4) mark = 1.0 - smoothstep(0.02, 0.04, min(abs(g.x), abs(g.y)));
+		else if (pattern == 8) mark = 1.0 - smoothstep(0.03, 0.05, min(abs(g.x + g.y), abs(g.x - g.y)) * step(length(g), 0.32));
 		else mark = 1.0 - smoothstep(0.02, 0.04, abs(abs(g.x) - abs(g.y)));
 		albedo = mix(albedo, ink.rgb, mark * 0.35);
 	}

@@ -187,6 +187,13 @@
           }
         }
       }
+    },
+    "wind": {
+      "type": "number",
+      "minimum": -12,
+      "maximum": 12,
+      "default": 0,
+      "description": "Crosswind in m/s pushing projectiles sideways in flight; positive blows towards the castle."
     }
   },
   "$defs": {

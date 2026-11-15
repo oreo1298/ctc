@@ -19,7 +19,13 @@ signal fractured(block: Block, cells: Array[PackedVector2Array], impact_local: V
 
 enum Layer { WORLD = 1, BLOCKS = 2, ENEMIES = 4, PROJECTILES = 8, PROPS = 16 }
 
-const PATTERNS: Array[String] = ["wood", "stone", "glass", "ice", "iron", "thatch", "cloth"]
+const PATTERNS: Array[String] = [
+	"wood", "stone", "glass", "ice", "iron", "thatch", "cloth", "rock", "powder"
+]
+## Powder stores: physics ticks from 0 HP to the bang (so chains ripple
+## outwards rather than going off all at once), and from catching fire.
+const CHAIN_FUSE_TICKS: int = 7
+const BURN_FUSE_TICKS: int = 48
 const SHADER: Shader = preload("res://shaders/block.gdshader")
 const MAX_MARKS: int = 4
 ## Pieces smaller than this become particles instead of bodies.
@@ -43,6 +49,8 @@ var pre_velocity: Vector2 = Vector2.ZERO
 var burning: bool = false
 var frozen: bool = false
 var charred: float = 0.0
+## Powder stores: ticks until it goes off (-1 = not lit).
+var fuse_ticks: int = -1
 
 var _pending_damage: float = 0.0
 var _pending_impulse: float = 0.0
@@ -128,6 +136,11 @@ func setup(
 
 
 func _physics_process(delta: float) -> void:
+	if fuse_ticks >= 0:
+		fuse_ticks -= 1
+		if fuse_ticks < 0:
+			_explode()
+			return
 	if _pending_damage > 0.0:
 		var dmg: float = _pending_damage
 		var imp: float = _pending_impulse
@@ -219,8 +232,19 @@ func _add_mark(local_px: Vector2, strength: float) -> void:
 
 
 # ------------------------------------------------------------- fracture ---
+func is_explosive() -> bool:
+	return mat.get("explosive") is Dictionary
+
+
 func break_apart() -> void:
 	if is_broken:
+		return
+	if is_explosive():
+		# A powder store does not crumble: it is lit, and goes off shortly.
+		if fuse_ticks < 0:
+			fuse_ticks = CHAIN_FUSE_TICKS
+			_ensure_own_material()
+			_flash = 1.0
 		return
 	is_broken = true
 	var pts: int = Scoring.block_points(int(mat.get("points", 50)), area_m2)
@@ -287,10 +311,24 @@ func piece_spec(cell: PackedVector2Array) -> Dictionary:
 
 
 # ---------------------------------------------------------------- status ---
+## A powder store goes off: a blast centred on it (Blast), no debris.
+func _explode() -> void:
+	if is_broken:
+		return
+	is_broken = true
+	broken.emit(self, Scoring.block_points(int(mat.get("points", 50)), area_m2))
+	Effects.break_burst(get_parent(), global_position, material_id, mat, area_m2, "splinter")
+	Blast.detonate(self, global_position, mat["explosive"], self, 0.7)
+	fractured.emit(self, [] as Array[PackedVector2Array], _last_impact_local)
+	queue_free()
+
+
 func ignite() -> void:
 	if burning or not bool(mat.get("flammable", false)) or is_broken:
 		return
 	burning = true
+	if is_explosive() and fuse_ticks < 0:
+		fuse_ticks = BURN_FUSE_TICKS
 	_ensure_own_material()
 	var bb: Rect2 = Fracture._bounds(ShapeGeometry.polygon_for(spec))
 	_burn_fx = Effects.flames(self, sqrt(area_m2), bb.size * 0.5)

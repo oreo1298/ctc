@@ -96,7 +96,8 @@
             "ice",
             "iron",
             "thatch",
-            "cloth"
+            "cloth",
+            "powder"
           ]
         },
         "colors": {
@@ -141,6 +142,30 @@
           "type": "number",
           "minimum": 0,
           "description": "Fraction of max HP lost per second while burning."
+        },
+        "explosive": {
+          "type": "object",
+          "description": "Powder store: blasts when it breaks or burns through (radius m, impulse N\u00b7s, damage).",
+          "required": [
+            "radius",
+            "impulse",
+            "damage"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "radius": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "impulse": {
+              "type": "number",
+              "minimum": 0
+            },
+            "damage": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
         }
       }
     }

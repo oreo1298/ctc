@@ -153,6 +153,34 @@
         "break": "cloth_break"
       },
       "burn_rate": 0.5
+    },
+    "powder": {
+      "name": "Powder store",
+      "density": 700,
+      "hp_per_m2": 30,
+      "impact_speed": 1.1,
+      "damage_scale": 1.3,
+      "friction": 0.7,
+      "bounce": 0.05,
+      "flammable": true,
+      "fracture": "splinter",
+      "pattern": "powder",
+      "colors": {
+        "base": "#8a3324",
+        "dark": "#3d1a12",
+        "light": "#c0583c"
+      },
+      "points": 120,
+      "sounds": {
+        "hit": "wood_hit",
+        "break": "wood_break"
+      },
+      "burn_rate": 0.6,
+      "explosive": {
+        "radius": 3.2,
+        "impulse": 4800,
+        "damage": 125
+      }
     }
   }
 }

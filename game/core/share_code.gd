@@ -17,7 +17,10 @@ const TAG: String = "SF1"
 const MAX_CODE_CHARS: int = 64000
 const MAX_JSON_BYTES: int = 262144
 const SHAPES: Array[String] = ["rect", "circle", "tri", "wedge", "poly"]
-const MATERIALS: Array[String] = ["wood", "stone", "glass", "ice", "iron", "thatch", "cloth"]
+## Append only: codes store indices into these tables.
+const MATERIALS: Array[String] = [
+	"wood", "stone", "glass", "ice", "iron", "thatch", "cloth", "powder"
+]
 const ENEMIES: Array[String] = ["king", "queen", "knight", "hostage"]
 const TIMES: Array[String] = ["dawn", "morning", "noon", "afternoon", "golden", "dusk", "night"]
 const STYLES: Array[String] = ["grass", "sand", "snow", "rock"]
@@ -130,6 +133,9 @@ static func _compact(lv: Dictionary) -> Dictionary:
 		"b": blocks,
 		"e": enemies,
 	}
+	var wind: float = float(lv.get("wind", 0.0))
+	if absf(wind) >= 0.05:
+		out["wi"] = roundi(wind * 10.0)
 	var par: Variant = lv.get("par")
 	if par is Dictionary and not (par as Dictionary).is_empty():
 		var pd: Dictionary = par
@@ -215,6 +221,8 @@ static func _expand(c: Dictionary) -> Dictionary:
 		"blocks": blocks,
 		"enemies": enemies,
 	}
+	if c.has("wi"):
+		level["wind"] = clampf(float(c["wi"]) / 10.0, -12.0, 12.0)
 	var p: Variant = c.get("p")
 	if p is Array and (p as Array).size() == 3:
 		var g: int = clampi(int(p[0]), 1, 99)

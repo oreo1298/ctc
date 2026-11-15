@@ -159,6 +159,14 @@ msgid "Bronze ≤ %d"
 msgstr ""
 
 #: scenes/editor/editor.gd
+msgid "Calm"
+msgstr ""
+
+#: data/editor.json
+msgid "Cask"
+msgstr ""
+
+#: scenes/editor/editor.gd
 msgid "Castle"
 msgstr ""
 
@@ -409,6 +417,12 @@ msgstr ""
 
 #: data/levels/frostfang/frostfang-06.json
 msgid "Hall of Mirrors"
+msgstr ""
+
+#: scenes/editor/editor.gd
+#: ui/hud.gd
+#, c-format
+msgid "Headwind %d m/s"
 msgstr ""
 
 #: data/levels/greenmantle/greenmantle-09.json
@@ -697,6 +711,10 @@ msgstr ""
 msgid "Powder keg"
 msgstr ""
 
+#: data/materials.json
+msgid "Powder store"
+msgstr ""
+
 #: scenes/menu/settings_menu.gd
 msgid "Press a key…"
 msgstr ""
@@ -936,6 +954,12 @@ msgstr ""
 
 #: scenes/menu/settings_menu.gd
 msgid "Swing speed"
+msgstr ""
+
+#: scenes/editor/editor.gd
+#: ui/hud.gd
+#, c-format
+msgid "Tailwind %d m/s"
 msgstr ""
 
 #: scenes/editor/editor.gd
@@ -1188,6 +1212,10 @@ msgstr ""
 
 #: scenes/editor/editor.gd
 msgid "Width"
+msgstr ""
+
+#: scenes/editor/editor.gd
+msgid "Wind"
 msgstr ""
 
 #: data/materials.json

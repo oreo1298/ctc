@@ -17,6 +17,9 @@ signal settled(projectile: Projectile)
 signal split(parent: Projectile, children: Array[Projectile])
 
 const VOID_SHADER: Shader = preload("res://shaders/void.gdshader")
+## Sideways acceleration (m/s²) per m/s of wind, before the ammo's own
+## `wind_factor` (light ammo drifts more).
+const WIND_ACCEL: float = 0.35
 
 var ammo: Dictionary = {}
 var kind: String = "circle"
@@ -27,6 +30,8 @@ var tap_used: bool = false
 var world_rect_px: Rect2 = Rect2(-4000, -6000, 14000, 8000)
 ## Physics ticks since launch (used to record taps for exact replays).
 var ticks: int = 0
+## Current sideways acceleration from wind (m/s²), until the first contact.
+var wind_accel: float = 0.0
 
 var _age: float = 0.0
 var _since_impact: float = 0.0
@@ -281,7 +286,23 @@ func _do_tap() -> void:
 			_open_void()
 
 
+## Wind pushes the projectile while it flies (deterministic: a constant
+## force, applied by the physics engine every step).
+func set_wind(wind_mps: float) -> void:
+	set_wind_accel(wind_accel_for(wind_mps, ammo))
+
+
+func set_wind_accel(accel_mps2: float) -> void:
+	wind_accel = accel_mps2
+	constant_force = Vector2(wind_accel * Units.PX_PER_M * mass, 0.0)
+
+
+static func wind_accel_for(wind_mps: float, ammo_def: Dictionary) -> float:
+	return wind_mps * WIND_ACCEL * float(ammo_def.get("wind_factor", 1.0))
+
+
 func _on_first_impact() -> void:
+	constant_force = Vector2.ZERO
 	if _effect_done:
 		return
 	match kind:
@@ -319,6 +340,7 @@ func _spawn_children(defs: Array[Dictionary]) -> void:
 		get_parent().add_child(p)
 		p.setup(d["ammo"], d["pos"], d["vel"])
 		p.world_rect_px = world_rect_px
+		p.set_wind_accel(wind_accel)
 		kids.append(p)
 	_effect_done = true
 	split.emit(self, kids)
@@ -371,19 +393,7 @@ func _snap() -> void:
 
 ## Bodies (blocks and enemies) within `radius_px` of `center`.
 func _bodies_near(center: Vector2, radius_px: float) -> Array[RigidBody2D]:
-	var out: Array[RigidBody2D] = []
-	for group: String in ["blocks", "enemies"]:
-		for n: Node in get_tree().get_nodes_in_group(group):
-			var b := n as RigidBody2D
-			if b == null or b == self:
-				continue
-			if b is Block and (b as Block).is_broken:
-				continue
-			if b is Enemy and (b as Enemy).is_dead:
-				continue
-			if b.global_position.distance_to(center) <= radius_px:
-				out.append(b)
-	return out
+	return Blast.bodies_near(get_tree(), center, radius_px, self)
 
 
 func _explode() -> void:
@@ -391,33 +401,7 @@ func _explode() -> void:
 		return
 	_effect_done = true
 	_fuse = -1.0
-	var center: Vector2 = global_position
-	var radius: float = float(_fx.get("radius", 3.5)) * Units.PX_PER_M
-	var impulse: float = float(_fx.get("impulse", 5000.0)) * Units.PX_PER_M
-	var damage: float = float(_fx.get("damage", 120.0))
-	for b: RigidBody2D in _bodies_near(center, radius):
-		var off: Vector2 = b.global_position - center
-		var f: float = 1.0 - off.length() / radius
-		var dir: Vector2 = off.normalized() if off.length() > 1.0 else Vector2.UP
-		b.sleeping = false
-		b.apply_central_impulse(dir * impulse * f)
-		if b is Block:
-			var blk: Block = b
-			blk.apply_damage(
-				damage * f * f * float(blk.mat.get("damage_scale", 1.0)),
-				impulse * f / 100.0,
-				center
-			)
-		elif b is Enemy:
-			(b as Enemy).take_damage(
-				damage * f * f * 0.6 * float((b as Enemy).def.get("damage_taken", 1.0))
-			)
-	Effects.explosion(get_parent(), center, radius)
-	Effects.shake(0.95)
-	Effects.haptic(1.0)
-	Effects.slow_motion(0.3, 0.35)
-	Sfx.play_at("boom", center, 2.0)
-	Sfx.play_at("rumble", center, -3.0)
+	Blast.detonate(self, global_position, _fx, self)
 	_finish(true)
 
 

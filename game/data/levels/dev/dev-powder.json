@@ -1,0 +1,191 @@
+{
+  "$schema": "../../schemas/level.schema.json",
+  "format": "level",
+  "version": 1,
+  "id": "dev-powder",
+  "name": "Powder Test",
+  "grievance": "Developer level: casks chain-react; a tailwind.",
+  "time_of_day": "afternoon",
+  "realm": "greenmantle",
+  "world": {
+    "right": 56,
+    "kill_y": -10
+  },
+  "trebuchet": {
+    "x": 0,
+    "y": 0
+  },
+  "terrain": [
+    {
+      "points": [
+        [
+          -24,
+          0
+        ],
+        [
+          90,
+          0
+        ]
+      ],
+      "style": "grass"
+    }
+  ],
+  "blocks": [
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        26.2,
+        1.1
+      ],
+      "size": [
+        0.5,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        27.0,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        27.85,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        28.7,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        29.55,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "stone",
+      "pos": [
+        30.6,
+        1.1
+      ],
+      "size": [
+        0.5,
+        2.2
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        28.4,
+        2.4
+      ],
+      "size": [
+        4.9,
+        0.4
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        34.75,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        37.85,
+        0.9
+      ],
+      "size": [
+        0.3,
+        1.8
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "wood",
+      "pos": [
+        36.3,
+        1.95
+      ],
+      "size": [
+        3.4,
+        0.3
+      ]
+    },
+    {
+      "shape": "rect",
+      "material": "powder",
+      "pos": [
+        35.3,
+        0.45
+      ],
+      "size": [
+        0.8,
+        0.9
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "type": "king",
+      "pos": [
+        28.4,
+        3.15
+      ]
+    },
+    {
+      "type": "knight",
+      "pos": [
+        28.4,
+        1.475
+      ]
+    },
+    {
+      "type": "queen",
+      "pos": [
+        36.9,
+        0.55
+      ]
+    }
+  ],
+  "wind": 4
+}

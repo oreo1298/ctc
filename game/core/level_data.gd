@@ -11,6 +11,7 @@ const FORMAT: String = "level"
 const VERSION: int = 1
 const MAX_BLOCKS: int = 400
 const MAX_ENEMIES: int = 40
+const MAX_WIND: float = 12.0
 const SHAPES: Array[String] = ["rect", "circle", "tri", "wedge", "poly"]
 const TIMES: Array[String] = ["dawn", "morning", "noon", "afternoon", "golden", "dusk", "night"]
 
@@ -21,6 +22,8 @@ var time_of_day: String = "noon"
 var realm: String = ""
 var world_right: float = 50.0
 var kill_y: float = -10.0
+## Crosswind in m/s: positive blows towards the castle (a tailwind).
+var wind: float = 0.0
 var trebuchet_pos: Vector2 = Vector2.ZERO
 ## Each entry: {"points": PackedVector2Array (metres), "style": String}
 var terrain: Array[Dictionary] = []
@@ -82,6 +85,8 @@ func _parse_v1(d: Dictionary, materials: Dictionary, enemy_types: Dictionary) ->
 		kill_y = minf(float(w.get("kill_y", -10.0)), 0.0)
 	else:
 		errors.append("missing world")
+
+	wind = clampf(float(d.get("wind", 0.0)), -MAX_WIND, MAX_WIND)
 
 	var treb: Variant = d.get("trebuchet")
 	if treb is Dictionary:

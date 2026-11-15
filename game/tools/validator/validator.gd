@@ -185,6 +185,8 @@ func _useful_phases(lv: LevelData, ammo_id: String, step: float) -> PackedFloat3
 		rect = rect.expand(e["pos"])
 	rect = rect.grow(1.5)
 	var scale: float = float(Data.ammo_def(ammo_id).get("speed_scale", 1.0))
+	# The same push the game applies in flight (Projectile.set_wind).
+	var wind_a: float = Projectile.wind_accel_for(lv.wind, Data.ammo_def(ammo_id))
 	var out := PackedFloat32Array()
 	var p: float = PHASE_MIN
 	while p <= PHASE_MAX + 1e-6:
@@ -193,7 +195,9 @@ func _useful_phases(lv: LevelData, ammo_id: String, step: float) -> PackedFloat3
 		var hit: bool = false
 		for i: int in 240:
 			var t: float = i * 0.03
-			var q: Vector2 = pos + v * t + Vector2(0.0, -0.5 * Units.GRAVITY_M * t * t)
+			var q: Vector2 = (
+				pos + v * t + Vector2(0.5 * wind_a * t * t, -0.5 * Units.GRAVITY_M * t * t)
+			)
 			if rect.has_point(q):
 				hit = true
 				break

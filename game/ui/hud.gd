@@ -28,6 +28,9 @@ var _win: Control = null
 var _pause: Control = null
 var _title: Label
 var _intro: Control = null
+var _wind_row: HBoxContainer
+var _wind_flag: WindFlag
+var _wind_label: Label
 
 
 func _ready() -> void:
@@ -81,6 +84,19 @@ func _ready() -> void:
 		chip.add_theme_stylebox_override("normal", sb)
 		chips.add_child(chip)
 		_par_chips.append(chip)
+	_wind_row = HBoxContainer.new()
+	_wind_row.add_theme_constant_override("separation", 6)
+	_wind_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_wind_row.visible = false
+	left.add_child(_wind_row)
+	_wind_flag = WindFlag.new()
+	_wind_flag.custom_minimum_size = Vector2(44, 30) * Settings.text_scale
+	_wind_flag.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_wind_row.add_child(_wind_flag)
+	_wind_label = Label.new()
+	_wind_label.theme_type_variation = "HudLabel"
+	_wind_label.add_theme_font_size_override("font_size", roundi(18 * Settings.text_scale))
+	_wind_row.add_child(_wind_label)
 
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -211,6 +227,16 @@ func hide_intro() -> void:
 	var tw := create_tween()
 	tw.tween_property(p, "modulate:a", 0.0, 0.3)
 	tw.tween_callback(p.queue_free)
+
+
+## Show the level's wind (m/s, positive towards the castle); hidden at 0.
+func set_wind(mps: float) -> void:
+	_wind_row.visible = absf(mps) >= 0.5
+	_wind_flag.wind = mps
+	var speed: int = roundi(absf(mps))
+	_wind_label.text = (
+		tr("Tailwind %d m/s") % speed if mps > 0.0 else tr("Headwind %d m/s") % speed
+	)
 
 
 func set_shots(n: int) -> void:
@@ -462,6 +488,38 @@ class _PauseKeys:
 		var f: Control = get_viewport().gui_get_focus_owner()
 		var i: int = buttons.find(f as Button) if f is Button else -1
 		buttons[(i + 1) % buttons.size()].grab_focus()
+
+
+## A pennant on a pole that streams with the wind (longer and livelier in a
+## stronger wind; it points the way the wind blows).
+class WindFlag:
+	extends Control
+	var wind: float = 0.0
+	var _t: float = 0.0
+
+	func _process(delta: float) -> void:
+		_t += delta * (2.0 + absf(wind) * 0.5)
+		queue_redraw()
+
+	func _draw() -> void:
+		var s: float = size.y
+		var dir: float = 1.0 if wind >= 0.0 else -1.0
+		var pole_x: float = size.x * (0.2 if dir > 0.0 else 0.8)
+		draw_line(Vector2(pole_x, 2.0), Vector2(pole_x, s), UiTheme.INK, 3.0, true)
+		var length: float = size.x * clampf(0.35 + absf(wind) / 12.0 * 0.6, 0.35, 0.78)
+		var pts := PackedVector2Array()
+		var n: int = 8
+		for i: int in n + 1:
+			var u: float = float(i) / n
+			var wave: float = sin(_t * 3.0 - u * 5.0) * s * 0.08 * u
+			pts.append(Vector2(pole_x + dir * length * u, 3.0 + s * 0.25 * u + wave))
+		for i: int in range(n, -1, -1):
+			var u: float = float(i) / n
+			var wave: float = sin(_t * 3.0 - u * 5.0) * s * 0.08 * u
+			pts.append(Vector2(pole_x + dir * length * u, 3.0 + s * 0.5 - s * 0.25 * u + wave))
+		draw_colored_polygon(pts, UiTheme.ACCENT)
+		pts.append(pts[0])
+		draw_polyline(pts, UiTheme.INK, 2.0, true)
 
 
 ## Thin swing meter: track, live needle, and a notch at the last release.
